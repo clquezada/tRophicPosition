@@ -5,7 +5,7 @@
 #'
 #' @return A jags model as a character string
 #'
-#'  @export
+#' @export
 
 jagsOneBaseline <- function ()
 {
