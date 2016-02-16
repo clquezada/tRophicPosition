@@ -8,8 +8,6 @@ jagsOneBaseline()
 }
 \value{
 A jags model as a character string
-
- @export
 }
 \description{
 Takes no input parameters and returns a jags model object as a
