@@ -17,7 +17,8 @@ dNsc <- rnorm(25, 6.8, 0.1)
 # Finally we simulate some deltaN observed data
 deltaN <- rnorm (20, 3.4, 0.1)
 
-#Here we call the model without arguments i.e. with uninformative priors
+# Here we call the model without arguments i.e. will return a model with
+# uninformative priors
 model.string <- jagsOneBaseline()
 
 #Here we call the model with some arguments
