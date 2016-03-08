@@ -17,10 +17,10 @@
 
 jagsOneBaseline <- function (muBprior = NULL,
 							sigmaBprior = NULL,
-							muDeltaN = NULL,
-							sigmaDeltaN = NULL,
-							sigma = NULL,
-							TP = NULL,
+							muDeltaNprior = NULL,
+							sigmaDeltaNprior = NULL,
+							sigmaPrior = NULL,
+							TPprior = NULL,
 							lambda = NULL)
 {
 
@@ -69,7 +69,7 @@ jagsOneBaseline <- function (muBprior = NULL,
     newString <-     "tauB <- pow(sigmaB, -2)
                       sigmaB ~ dunif(0, 100)"
   } else {
-    newString <- "taub <- pow(sigmaB, -2)"
+    newString <- "tauB <- pow(sigmaB, -2)"
     newString2 <- paste("sigmaB ~", toString(sigmaBprior))
     newString <- paste(newString, newString2, sep = "\n")
   }
@@ -78,43 +78,43 @@ jagsOneBaseline <- function (muBprior = NULL,
 
   # Here the process is repeated to define prior mean and precision
   # for deltaN (trophic enrichment factor)
-    if (is.null(muDeltaN)) {
+    if (is.null(muDeltaNprior)) {
     newString <-     "muDeltaN ~ dnorm(0, 0.0001)"
   } else {
-    newString <- paste("muDeltaN ~", toString(muDeltaN))
+    newString <- paste("muDeltaN ~", toString(muDeltaNprior))
   }
 
   modelstring <- paste (modelstring, newString, sep = "\n")
 
   # And now is repeated to define prior distribution for sigmaDeltaN
-  if (is.null(sigmaDeltaN)) {
+  if (is.null(sigmaDeltaNprior)) {
     newString <-     "tauDeltaN <- pow(sigmaDeltaN, -2)
                       sigmaDeltaN ~ dunif(0, 100)"
   } else {
     newString <- "tauDeltaN <- pow(sigmaDeltaN, -2)"
-    newString2 <- paste("sigmaDeltaN ~", toString(sigmaDeltaN))
+    newString2 <- paste("sigmaDeltaN ~", toString(sigmaDeltaNprior))
     newString <- paste(newString, newString2, sep = "\n")
   }
 
   modelstring <- paste (modelstring, newString, sep = "\n")
 
   # And here it is defined prior precision for the consumer
-  if (is.null(sigma)) {
+  if (is.null(sigmaPrior)) {
     newString <-     "tau <- pow(sigma, -2)
                       sigma ~ dunif(0, 100)"
   } else {
     newString <- "tau <- pow(sigma, -2)"
-    newString2 <- paste("sigma ~", toString(sigma))
+    newString2 <- paste("sigma ~", toString(sigmaPrior))
     newString <- paste(newString, newString2, sep = "\n")
   }
 
   modelstring <- paste (modelstring, newString, sep = "\n")
 
   # Here we define prior for Trophic Position (TP)
-  if (is.null(TP)) {
+  if (is.null(TPprior)) {
     newString <-     "TP ~ dunif(lambda, 10)"
   } else {
-    newString <- paste("TP ~ ", toString(TP))
+    newString <- paste("TP ~ ", toString(TPprior))
   }
 
   modelstring <- paste (modelstring, newString, sep = "\n")

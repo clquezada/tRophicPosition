@@ -3,7 +3,7 @@
 library(tRophicPosition)
 
 # Now we simulate some isotope data
-# For the baseline1
+# or the baseline1
 
 dCb1 <- rnorm(25, -18, 2)
 dNb1 <- rnorm(25, 0, 0.1)
@@ -22,11 +22,20 @@ deltaN <- rnorm (20, 3.4, 0.1)
 model.string <- jagsOneBaseline()
 
 #Here we call the model with some arguments
-model.string <- jagsOneBaseline(muBprior = "dunif(0, 500)")
+model.string <- jagsOneBaseline(muBprior = "dnorm(0, 0.0001)")
 
 #And so on...
-model.string <- jagsOneBaseline(muBprior = "dunif(0, 500)",
-                                sigmaBprior = "dunif (0, 10)")
+model.string <- jagsOneBaseline(muBprior = "dnorm(0, 0.0001)",
+                                sigmaBprior = "dunif (0, 100)")
+
+#Then we test the model with a full argument input
+model.string <- jagsOneBaseline(muBprior = "dnorm(0, 0.0001)",
+                                sigmaBprior = "dunif(0, 100)",
+                                sigmaDeltaNprior = "dunif(0, 100)",
+                                muDeltaNprior = "dnorm(0, 0.0001)",
+                                sigmaPrior = "dunif(0, 100)",
+                                TPprior = "dunif(lambda, 6)",
+                                lambda = 2)
 
 # Here we set up the model
 model <- rjags::jags.model(textConnection(model.string),

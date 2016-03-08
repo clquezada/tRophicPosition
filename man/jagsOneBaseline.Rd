@@ -4,13 +4,14 @@
 \alias{jagsOneBaseline}
 \title{Defines the jags model to fit the single baseline trohpic position model}
 \usage{
-jagsOneBaseline(muBprior = NULL, sigmaBprior = NULL, muDeltaN = NULL,
-  sigmaDeltaN = NULL, sigma = NULL, TP = NULL, lambda = NULL)
+jagsOneBaseline(muBprior = NULL, sigmaBprior = NULL, muDeltaNprior = NULL,
+  sigmaDeltaNprior = NULL, sigmaPrior = NULL, TPprior = NULL,
+  lambda = NULL)
 }
 \arguments{
-\item{TP}{}
-
 \item{lambda}{an integer indicating the trophic position of the baseline.}
+
+\item{TP}{}
 }
 \value{
 A jags model as a character string
