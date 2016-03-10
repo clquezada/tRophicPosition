@@ -8,10 +8,11 @@ Depends:
 Imports:
     rjags,
     coda
-Author: Claudio Quezada-Romegialli, Christelle Lopes, Andrew L Jackson, Chris Harrod
+Author: Claudio Quezada-Romegialli, Christelle Lopes, Andrew L Jackson, Chris
+    Harrod
 Maintainer: Who to complain to <clquezada@harrodlab.net>
 Description: Estimates the trophic position of a consumer relative to a baseline
     species.
 License: GPL (>= 2)
 LazyData: TRUE
-RoxygenNote: 5.0.1.9000
+RoxygenNote: 5.0.1

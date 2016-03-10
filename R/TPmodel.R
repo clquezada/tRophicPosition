@@ -1,10 +1,10 @@
 
 #' Function to build a JAGS-based Bayesian model to calculate trophic position
 #'
-#' @param data
-#' @param n.chains
-#' @param model.string
-#' @param n.adapt
+#' @param data data
+#' @param n.chains number of chains
+#' @param model.string model string
+#' @param n.adapt number of iterations for adaptation
 #'
 #' @return
 #' @export

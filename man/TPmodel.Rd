@@ -7,7 +7,13 @@
 TPmodel(data = NULL, model.string = NULL, n.chains = 2, n.adapt = 10000)
 }
 \arguments{
-\item{n.adapt}{}
+\item{data}{data}
+
+\item{model.string}{model string}
+
+\item{n.chains}{number of chains}
+
+\item{n.adapt}{number of iterations for adaptation}
 }
 \description{
 Function to build a JAGS-based Bayesian model to calculate trophic position
