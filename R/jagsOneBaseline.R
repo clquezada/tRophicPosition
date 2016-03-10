@@ -4,12 +4,12 @@
 #' character string for passing to \code{\link[rjags.model]{rjags.model}}.
 #'
 #' @param lambda an integer indicating the trophic position of the baseline.
-#' @param muBprior
+#' @param muBprior a distribution defining prior for mu of Baseline.
+#' @param muDeltaNprior
+#' @param sigmaDeltaNprior
+#' @param sigmaPrior
+#' @param TPprior
 #' @param sigmaBprior
-#' @param muDeltaN
-#' @param sigmaDeltaN
-#' @param sigma
-#' @param TP
 #'
 #' @return A jags model as a character string
 #'
@@ -28,7 +28,7 @@ jagsOneBaseline <- function (muBprior = NULL,
   # JAGS code for fitting Inverse Wishart version of SIBER to a single group
   # ----------------------------------------------------------------------------
 
-  modelstring <- "
+  modelString <- "
 
     model {
       # First we define all the likelihood functions
@@ -52,7 +52,7 @@ jagsOneBaseline <- function (muBprior = NULL,
       }"
 
   # Now we define prior mean and precision for the baseline.
-  # If muBprior don't exist, an uninformative prior is defined.
+  # If muBprior doesn't exist, an uninformative prior is defined.
   # Otherwise muBprior is defined as the prior distribution
   # for muB
   if (is.null(muBprior)) {
@@ -62,7 +62,7 @@ jagsOneBaseline <- function (muBprior = NULL,
     newString <- paste("muB ~", toString(muBprior))
   }
 
-  modelstring <- paste (modelstring, newString, sep = "\n")
+  modelString <- paste (modelString, newString, sep = "\n")
 
   # Here the process is repeated to define prior distribution for sigmaB
   if (is.null(sigmaBprior)) {
@@ -74,7 +74,7 @@ jagsOneBaseline <- function (muBprior = NULL,
     newString <- paste(newString, newString2, sep = "\n")
   }
 
-  modelstring <- paste (modelstring, newString, sep = "\n")
+  modelString <- paste (modelString, newString, sep = "\n")
 
   # Here the process is repeated to define prior mean and precision
   # for deltaN (trophic enrichment factor)
@@ -84,7 +84,7 @@ jagsOneBaseline <- function (muBprior = NULL,
     newString <- paste("muDeltaN ~", toString(muDeltaNprior))
   }
 
-  modelstring <- paste (modelstring, newString, sep = "\n")
+  modelString <- paste (modelString, newString, sep = "\n")
 
   # And now is repeated to define prior distribution for sigmaDeltaN
   if (is.null(sigmaDeltaNprior)) {
@@ -96,7 +96,7 @@ jagsOneBaseline <- function (muBprior = NULL,
     newString <- paste(newString, newString2, sep = "\n")
   }
 
-  modelstring <- paste (modelstring, newString, sep = "\n")
+  modelString <- paste (modelString, newString, sep = "\n")
 
   # And here it is defined prior precision for the consumer
   if (is.null(sigmaPrior)) {
@@ -108,7 +108,7 @@ jagsOneBaseline <- function (muBprior = NULL,
     newString <- paste(newString, newString2, sep = "\n")
   }
 
-  modelstring <- paste (modelstring, newString, sep = "\n")
+  modelString <- paste (modelString, newString, sep = "\n")
 
   # Here we define prior for Trophic Position (TP)
   if (is.null(TPprior)) {
@@ -117,7 +117,7 @@ jagsOneBaseline <- function (muBprior = NULL,
     newString <- paste("TP ~ ", toString(TPprior))
   }
 
-  modelstring <- paste (modelstring, newString, sep = "\n")
+  modelString <- paste (modelString, newString, sep = "\n")
 
 
   # Finally we define lambda (i.e. trophic position of the baseline)
@@ -127,12 +127,12 @@ jagsOneBaseline <- function (muBprior = NULL,
     newString <- paste("lambda <-", toString(lambda))
   }
 
-  modelstring <- paste (modelstring, newString, sep = "\n")
+  modelString <- paste (modelString, newString, sep = "\n")
 
 
   newString <- "}" # end of jags model script
-  modelstring <- paste (modelstring, newString, sep = "\n")
+  modelString <- paste (modelString, newString, sep = "\n")
 
-  return(modelstring)
+  return(modelString)
 
 } # end of function

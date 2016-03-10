@@ -9,9 +9,11 @@ jagsOneBaseline(muBprior = NULL, sigmaBprior = NULL, muDeltaNprior = NULL,
   lambda = NULL)
 }
 \arguments{
-\item{lambda}{an integer indicating the trophic position of the baseline.}
+\item{muBprior}{a distribution defining prior for mu of Baseline.}
 
-\item{TP}{}
+\item{sigmaBprior}{}
+
+\item{lambda}{an integer indicating the trophic position of the baseline.}
 }
 \value{
 A jags model as a character string

@@ -9,6 +9,7 @@
 #' @export
 #'
 #' @examples
+
 screenIsotopeData <- function (iso1 = NULL,
                                iso2 = NULL,
                                b1 = NULL,
