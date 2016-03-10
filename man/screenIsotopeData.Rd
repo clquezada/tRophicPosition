@@ -2,14 +2,16 @@
 % Please edit documentation in R/screenIsotopeData.R
 \name{screenIsotopeData}
 \alias{screenIsotopeData}
-\title{Function to plot and screen Isotope Data with one or two baselines}
+\title{Function to plot and screen Isotope Data with one or two baselines.}
 \usage{
-screenIsotopeData(iso1 = NULL, iso2 = NULL, b1 = NULL, b2 = NULL)
+screenIsotopeData(TPdata = NULL)
 }
 \arguments{
-\item{b2}{}
+\item{TPdata}{a named list composed of two vectors, dNb1 and dNsc.
+dNb1 stands for delta Nitrogen of baseline 1, while dNsc stands for
+delta Nitrogen of secondary consumer.}
 }
 \description{
-Function to plot and screen Isotope Data with one or two baselines
+This function receives a named list of two vectors, and plot a basic histogram.
 }
 

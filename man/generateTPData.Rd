@@ -2,15 +2,43 @@
 % Please edit documentation in R/generataTPData.R
 \name{generateTPData}
 \alias{generateTPData}
-\title{A function to generate some data for trophic position calculation}
+\title{A function to generate random data for trophic position calculation}
 \usage{
-generateTPData(n.obs = 25, std.dev = 0.1, n.baselines = 1, dNb1 = NULL,
-  dNsc = NULL, deltaN = 3.4)
+generateTPData(n.baselines = 1, n.obsB = 25, n.obsSC = 25, dNb1 = NULL,
+  std.devB = 0.1, dNsc = NULL, std.devSC = 0.1, n.obsDeltaN = 20,
+  deltaN = 3.4, std.devDeltaN = 0.1)
 }
 \arguments{
-\item{deltaN}{}
+\item{n.baselines}{Number of baselines (could be 1 or 2)}
+
+\item{n.obsB}{Number of observations for baseline. Default is 25.}
+
+\item{n.obsSC}{Number of observations for secondary consumer Default is 25.}
+
+\item{dNb1}{mean value for delta Nitrogen of baseline 1. Default is a random
+number between -5 and 5}
+
+\item{std.devB}{Standard deviation for randomly generated observations for
+baseline. Default is 0.1}
+
+\item{dNsc}{mean value for delta Nitrogen of secondary consumer. Default value
+is dNb1 multiplied 2 times the trophic enrichment factor.}
+
+\item{std.devSC}{Standard deviation for randomly generated observations for
+secondary consumer. Default is 0.1}
+
+\item{n.obsDeltaN}{Number of observations of deltaN (trophic enrichment factor).
+Default is 20.}
+
+\item{deltaN}{mean value for trophic enrichment factor}
+
+\item{std.devDeltaN}{Standard deviation for randomly generated observations for
+deltaN. Default is 0.1}
+}
+\value{
+A named list with dNb1, dNsc and deltaN randomly generated observations.
 }
 \description{
-A function to generate some data for trophic position calculation
+This function generates
 }
 

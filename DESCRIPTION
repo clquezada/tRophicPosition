@@ -1,15 +1,15 @@
 Package: tRophicPosition
 Type: Package
-Title: Trophic Position Esimation Based on Stable Isotope Data
-Version: 0.1
-Date: 2016-01-10
+Title: Trophic Position Estimation Based on Stable Isotope Data
+Version: 0.2
+Date: 2016-03-10
 Depends:
     R (>= 2.10)
 Imports:
     rjags,
     coda
-Author: Lopes, Andrew L Jackson, Chris Harrod
-Maintainer: Who to complain to <yourfault@somewhere.net>
+Author: Claudio Quezada-Romegialli, Christelle Lopes, Andrew L Jackson, Chris Harrod
+Maintainer: Who to complain to <clquezada@harrodlab.net>
 Description: Estimates the trophic position of a consumer relative to a baseline
     species.
 License: GPL (>= 2)
