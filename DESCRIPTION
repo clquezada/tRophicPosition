@@ -15,4 +15,4 @@ Description: Estimates the trophic position of a consumer relative to a baseline
     species.
 License: GPL (>= 2)
 LazyData: TRUE
-RoxygenNote: 5.0.1
+RoxygenNote: 5.0.1.9000

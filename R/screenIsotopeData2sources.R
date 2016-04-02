@@ -14,7 +14,7 @@ screenIsotopeData2sources <- function (isotopeData = NULL) {
 
   #library(RColorBrewer)
   library(ggplot2)
-  #library(gridExtra)
+  library(gridExtra)
   #library(ggExtra)
 
   # Since this function is called from inside the package, we already checked
@@ -119,7 +119,7 @@ screenIsotopeData2sources <- function (isotopeData = NULL) {
       theme_bw() +
       theme0(plot.margin = unit(c(0,1,2,-0.1),"lines"))
 
-    gridExtra::grid.arrange(arrangeGrob(p2,ncol=2,widths=c(3,1)),
+    grid.arrange(arrangeGrob(p2,ncol=2,widths=c(3,1)),
                  arrangeGrob(p1,p3,ncol=2,widths=c(3,1)),
                  heights=c(1,3))
 

@@ -3,7 +3,7 @@
 library(tRophicPosition)
 
 # Now we simulate some isotope data
-# You can specify how many baselines (though not working yet: n.baselines),
+# You can specify how many baselines (n.baselines),
 # how many observations per baseline (n.obsB) and secondary consumer (n.obsSC),
 # mean for dN of baseline 1 (dNb1), mean for dN of secondary consumer (dNsc),
 # mean for trophic enrichment factor (deltaN), and standard deviation for
@@ -12,8 +12,18 @@ library(tRophicPosition)
 data <- generateTPData()
 
 # Here we screen the data
-# For now it is just a basic histogram, although more fancy plots are planned.
+# When there is one baseline it is just a basic histogram,
+# although more fancy plots are planned.
 screenIsotopeData(data)
+
+#We can generate data with two baselines as well
+data <- generateTPData(n.baselines = 2, std.devB1 = 0.5, std.devSC = 0.5)
+
+#In that case, the plot is a scatterplot with density plots for each dN and dC
+screenIsotopeData(data)
+
+#Here we check the data
+head(data)
 
 #Here we call the model without arguments i.e. will return a model with
 #uninformative priors
@@ -35,12 +45,16 @@ model.string <- jagsOneBaseline(muBprior = "dnorm(0, 0.0001)",
                                 TPprior = "dunif(lambda, 6)",
                                 lambda = 2)
 
+#In case we have two baselines
+model.string <- jagsTwoBaselines()
+
+
 # Here we set up the model
 model <- TPmodel(data = data,
                  model.string = model.string)
 
 # and sample our parameters of interest
-samp <- posteriorTP(model)
+samp <- posteriorTP(model, c("TP", "muDeltaN", "alpha"))
 
 summary(samp)
 plot(samp)

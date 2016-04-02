@@ -2,7 +2,8 @@
 % Please edit documentation in R/compareTwoDistributions.R
 \name{compareTwoDistributions}
 \alias{compareTwoDistributions}
-\title{Function to compare two TP posterior distributions and test an hypothesis, in a Bayesian context}
+\title{Function to compare two TP posterior distributions and test an hypothesis,
+in a Bayesian context}
 \usage{
 compareTwoDistributions(dist1 = NULL, dist2 = NULL, test = NULL)
 }
@@ -14,6 +15,7 @@ compareTwoDistributions(dist1 = NULL, dist2 = NULL, test = NULL)
 \item{test}{A variable indicating the test we want to calculate}
 }
 \description{
-Function to compare two TP posterior distributions and test an hypothesis, in a Bayesian context
+Function to compare two TP posterior distributions and test an hypothesis,
+in a Bayesian context
 }
 
