@@ -4,14 +4,19 @@
 \alias{screenIsotopeData}
 \title{Function to plot and screen Isotope Data with one or two baselines.}
 \usage{
-screenIsotopeData(TPdata = NULL)
+screenIsotopeData(IsotopeData = NULL)
 }
 \arguments{
-\item{TPdata}{a named list composed of two vectors, dNb1 and dNsc.
+\item{IsotopeData}{a named list composed of two vectors, dNb1 and dNsc.
 dNb1 stands for delta Nitrogen of baseline 1, while dNsc stands for
 delta Nitrogen of secondary consumer.}
 }
+\value{
+none
+}
 \description{
-This function receives a named list of two vectors, and plot a basic histogram.
+This function receives a named list of vectors, and plot a basic
+histogram if the list has 3 elements. If it receives a list of 7 elements,
+calls another function to plot a scatterplot with 2 sources and a consumer.
 }
 

@@ -5,7 +5,7 @@
 \title{A function to generate random data for trophic position calculation}
 \usage{
 generateTPData(n.baselines = 1, n.obsB = 25, n.obsSC = 25, dNb1 = NULL,
-  std.devB = 0.1, dNsc = NULL, std.devSC = 0.1, n.obsDeltaN = 20,
+  std.devB1 = 0.1, dNsc = NULL, std.devSC = 0.1, n.obsDeltaN = 20,
   deltaN = 3.4, std.devDeltaN = 0.1)
 }
 \arguments{
@@ -18,7 +18,7 @@ generateTPData(n.baselines = 1, n.obsB = 25, n.obsSC = 25, dNb1 = NULL,
 \item{dNb1}{mean value for delta Nitrogen of baseline 1. Default is a random
 number between -5 and 5}
 
-\item{std.devB}{Standard deviation for randomly generated observations for
+\item{std.devB1}{Standard deviation for randomly generated observations for
 baseline. Default is 0.1}
 
 \item{dNsc}{mean value for delta Nitrogen of secondary consumer. Default value
@@ -36,9 +36,12 @@ Default is 20.}
 deltaN. Default is 0.1}
 }
 \value{
-A named list with dNb1, dNsc and deltaN randomly generated observations.
+A named list with dNb1, dNsc and deltaN randomly generated
+observations. If n.baselines = 2, then dCb1, dNb2, dCb2 and dCsc are also
+returned.
 }
 \description{
-This function generates
+This function generates random data for using the tRophicPosition basic
+functions.
 }
 

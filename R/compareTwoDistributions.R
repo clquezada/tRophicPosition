@@ -1,5 +1,6 @@
 
-#' Function to compare two TP posterior distributions and test an hypothesis, in a Bayesian context
+#' Function to compare two TP posterior distributions and test an hypothesis,
+#' in a Bayesian context
 #'
 #' @param dist1 A collection of TP data (posterior distribution)
 #' @param dist2 A collection of TP data (posterior distribution)
