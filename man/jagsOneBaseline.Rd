@@ -2,7 +2,7 @@
 % Please edit documentation in R/jagsOneBaseline.R
 \name{jagsOneBaseline}
 \alias{jagsOneBaseline}
-\title{Defines the jags model to fit the single baseline trohpic position model}
+\title{Defines the jags model to fit the single baseline trophic position model}
 \usage{
 jagsOneBaseline(muBprior = NULL, sigmaBprior = NULL, muDeltaNprior = NULL,
   sigmaDeltaNprior = NULL, sigmaPrior = NULL, TPprior = NULL,

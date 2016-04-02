@@ -1,4 +1,4 @@
-#' Defines the jags model to fit the single baseline trohpic position model
+#' Defines the jags model to fit the single baseline trophic position model
 #'
 #' Takes some parameters and returns a jags model object as a
 #' character string for passing to \code{\link[rjags.model]{rjags.model}}.
@@ -31,6 +31,7 @@ jagsOneBaseline <- function (muBprior = NULL,
   modelString <- "
 
     model {
+      # -----------------------------------------------------------------------
       # First we define all the likelihood functions
 
       # Likelihood for the baseline
@@ -51,6 +52,7 @@ jagsOneBaseline <- function (muBprior = NULL,
         mu[i] <- muB + muDeltaN * (TP - lambda)
       }"
 
+  # -----------------------------------------------------------------------
   # Now we define prior mean and precision for the baseline.
   # If muBprior doesn't exist, an uninformative prior is defined.
   # Otherwise muBprior is defined as the prior distribution
@@ -64,6 +66,7 @@ jagsOneBaseline <- function (muBprior = NULL,
 
   modelString <- paste (modelString, newString, sep = "\n")
 
+  # -----------------------------------------------------------------------
   # Here the process is repeated to define prior distribution for sigmaB
   if (is.null(sigmaBprior)) {
     newString <-     "tauB <- pow(sigmaB, -2)
@@ -76,6 +79,7 @@ jagsOneBaseline <- function (muBprior = NULL,
 
   modelString <- paste (modelString, newString, sep = "\n")
 
+  # -----------------------------------------------------------------------
   # Here the process is repeated to define prior mean and precision
   # for deltaN (trophic enrichment factor)
     if (is.null(muDeltaNprior)) {
@@ -86,6 +90,7 @@ jagsOneBaseline <- function (muBprior = NULL,
 
   modelString <- paste (modelString, newString, sep = "\n")
 
+  # -----------------------------------------------------------------------
   # And now is repeated to define prior distribution for sigmaDeltaN
   if (is.null(sigmaDeltaNprior)) {
     newString <-     "tauDeltaN <- pow(sigmaDeltaN, -2)
@@ -98,6 +103,7 @@ jagsOneBaseline <- function (muBprior = NULL,
 
   modelString <- paste (modelString, newString, sep = "\n")
 
+  # -----------------------------------------------------------------------
   # And here it is defined prior precision for the consumer
   if (is.null(sigmaPrior)) {
     newString <-     "tau <- pow(sigma, -2)
@@ -110,6 +116,7 @@ jagsOneBaseline <- function (muBprior = NULL,
 
   modelString <- paste (modelString, newString, sep = "\n")
 
+  # -----------------------------------------------------------------------
   # Here we define prior for Trophic Position (TP)
   if (is.null(TPprior)) {
     newString <-     "TP ~ dunif(lambda, 10)"
@@ -120,6 +127,7 @@ jagsOneBaseline <- function (muBprior = NULL,
   modelString <- paste (modelString, newString, sep = "\n")
 
 
+  # -----------------------------------------------------------------------
   # Finally we define lambda (i.e. trophic position of the baseline)
   if (is.null(lambda)) {
     newString <-     "lambda <- 2"
