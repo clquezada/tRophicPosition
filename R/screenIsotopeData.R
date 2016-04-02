@@ -1,45 +1,39 @@
 #' Function to plot and screen Isotope Data with one or two baselines.
 #'
-#' This function receives a named list of two vectors, and plot a basic histogram.
+#' This function receives a named list of vectors, and plot a basic
+#' histogram if the list has 3 elements. If it receives a list of 7 elements,
+#' calls another function to plot a scatterplot with 2 sources and a consumer.
 #'
-#' @param TPdata a named list composed of two vectors, dNb1 and dNsc.
+#' @param IsotopeData a named list composed of two vectors, dNb1 and dNsc.
 #' dNb1 stands for delta Nitrogen of baseline 1, while dNsc stands for
 #' delta Nitrogen of secondary consumer.
 #'
-#' @return
+#' @return none
 #' @export
 #'
 #' @examples
 
-screenIsotopeData <- function (TPdata = NULL) {
+screenIsotopeData <- function (IsotopeData = NULL) {
 
-  if (!is.null(TPdata)){
+  if (!is.null(IsotopeData)) {
+    #To do: IsotopeData will be an object of the class IsoData. It would be a great
+    #idea to have an object of some class, that can be used in every SIA R pkg.
+    #So, instead of checking the length of the list, we will check first if the
+    #object has the required class. Maybe, the class will inform the length
+    #(dimension) of the list and some other nice information.
+    if (length(IsotopeData) == 3) {
 
-    if (min(TPdata$dNb1) < min(TPdata$dNsc)) {
-
-      xlimMin = min(TPdata$dNb1)
-
-    } else {
-      xlimMin = min(TPdata$dNsc)
-    }
-
-    if (max(TPdata$dNsc) > max(TPdata$dNb1)) {
-
-      xlimMax = max(TPdata$dNsc)
-
-    } else {
-
-      xlimMax = max(TPdata$dNb1)
+      screenIsotopeData1source(IsotopeData)
 
     }
+    if (length(IsotopeData) == 7) {
 
-    extra = abs(xlimMax - xlimMin)* 0.2
+      screenIsotopeData2sources(IsotopeData)
 
-    hist(TPdata$dNb1, xlim = c(xlimMin - extra, xlimMax + extra),
-         col=rgb(0, 1, 0,0.5), xlab = "isotopic value of Nitrogen",
-         main = "Basic histogram of baseline (green)\n and secondary consumer (red)")
-    hist(TPdata$dNsc, col=rgb(1, 0, 0,0.5), add = T)
-
+    }
+  } else {
+    cat("You should call this function using IsotopeData as argument.\n")
+    cat("If you don't have your own dataset, call first generateData() function.")
   }
 
 }
