@@ -44,10 +44,12 @@ generateTPData <- function (n.baselines = 3,
   # within -5 and 5, with a standard deviation std.dev
   if (is.null(dNb1)){
     dNb1 <- rnorm(n.obsB, runif(1, -5, 5), std.devB1)
+
   } else {
     # If the user supply dNb1, then n.obsB numbers are randomly generated
     # from a normal distribution with mean dNb1 and standard deviation std.devB1
     dNb1 <- rnorm(n.obsB, dNb1, std.devB1)
+
   }
 
   # Now we simulate some data for the [secondary] consumer we want
@@ -68,14 +70,18 @@ generateTPData <- function (n.baselines = 3,
   # with a mean 3.4 with stdev 0.1
   deltaN <- rnorm (n.obsDeltaN, deltaN, std.devDeltaN)
 
+  # We simulate then values for the deltaC of baseline 1
+  dCb1 <- rnorm(n.obsB, runif(1, -25, -10), std.devB1)
+
+  # And values for deltaC of secondary consumer
+  dCsc <- rnorm(n.obsSC, runif(1, -25, -10), std.devSC)
+
+
   if (n.baselines == 2){
 
-    dCb1 <- rnorm(n.obsB, runif(1, -25, -10), std.devB1)
 
     dNb2 <- rnorm(n.obsB, runif(1, -5, 5), std.devB1)
     dCb2 <- rnorm(n.obsB, runif(1, -25, -10), std.devB1)
-
-    dCsc <- rnorm(n.obsSC, runif(1, -25, -10), std.devSC)
 
     return(list(dNb1 = dNb1, dCb1 = dCb1,
                 dNb2 = dNb2, dCb2 = dCb2,
@@ -84,16 +90,11 @@ generateTPData <- function (n.baselines = 3,
 
   } else if (n.baselines == 3){
 
-    dCb1 <- rnorm(n.obsB, runif(1, -25, -10), std.devB1)
-
     dCb2 <- rnorm(n.obsB, runif(1, -25, -10), std.devB1)
     dNb2 <- rnorm(n.obsB, runif(1, -5, 5), std.devB1)
 
     dCb3 <- rnorm(n.obsB, runif(1, -25, -10), std.devB1)
     dNb3 <- rnorm(n.obsB, runif(1, -5, 5), std.devB1)
-
-
-    dCsc <- rnorm(n.obsSC, runif(1, -25, -10), std.devSC)
 
     return(list(dNb1 = dNb1, dCb1 = dCb1,
                 dNsc = dNsc, dCsc = dCsc,
@@ -103,7 +104,9 @@ generateTPData <- function (n.baselines = 3,
 
   } else {
 
-    return(list(dNb1 = dNb1, dNsc = dNsc, deltaN = deltaN))
+    return(list(dNb1 = dNb1, dCb1 = dCb1,
+                dCsc = dCsc, dNsc = dNsc,
+                deltaN = deltaN))
 
     }
 }

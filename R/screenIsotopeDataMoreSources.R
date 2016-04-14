@@ -11,7 +11,7 @@
 #' @note
 #'
 
-screenIsotopeDataMoresources <- function (isotopeData = NULL,
+screenIsotopeDataMoreSources <- function (isotopeData = NULL,
                                           density = "both",
                                           baselines = 2) {
 
@@ -28,9 +28,9 @@ screenIsotopeDataMoresources <- function (isotopeData = NULL,
     #First we create a dataframe, reordering the IsotopeData
     #Check the class of IsotopeData
     #if (class(IsotopeData))
-    if (baselines == 2){
+    if (baselines == 1){
 
-      df <- toStacked(isotopeData, baselines = 2)
+      df <- toStacked(isotopeData, baselines = 1)
 
       #And now we calculate mean and standard deviation for baselines and consumer
       df.b1 <- df[which(df$Factor=="Baseline 1"),c("d13C","d15N")]
@@ -40,13 +40,6 @@ screenIsotopeDataMoresources <- function (isotopeData = NULL,
       names(b) <- c("sd_d13C", "sd_d15N")
       b1.meansSDs <- data.frame(a, b, Factor="Baseline 1")
 
-      df.b2 <- df[which(df$Factor=="Baseline 2"),c("d13C","d15N")]
-      a <- lapply(df.b2, mean)
-      names(a) <- c("mean_d13C", "mean_d15N")
-      b <- lapply(df.b2, sd)
-      names(b) <- c("sd_d13C", "sd_d15N")
-      b2.meansSDs <- data.frame(a, b, Factor="Baseline 2")
-
       df.sc <- df[which(df$Factor=="Secondary consumer"),c("d13C","d15N")]
       a <- lapply(df.sc, mean)
       names(a) <- c("mean_d13C", "mean_d15N")
@@ -54,7 +47,35 @@ screenIsotopeDataMoresources <- function (isotopeData = NULL,
       names(b) <- c("sd_d13C", "sd_d15N")
       sc.meansSDs <- data.frame(a, b, Factor="Secondary consumer")
 
-      df2 <- rbind(sc.meansSDs, b1.meansSDs,b2.meansSDs)
+      df2 <- rbind(sc.meansSDs, b1.meansSDs)
+
+    } else if (baselines == 2){
+
+      df <- toStacked(isotopeData, baselines = 2)
+
+      #And now we calculate mean and standard deviation for baselines and consumer
+      df.b1 <- df[which(df$Factor=="Baseline 1"), c("d13C","d15N")]
+      a <- lapply(df.b1, mean)
+      names(a) <- c("mean_d13C", "mean_d15N")
+      b <- lapply(df.b1, sd)
+      names(b) <- c("sd_d13C", "sd_d15N")
+      b1.meansSDs <- data.frame(a, b, Factor="Baseline 1")
+
+      df.b2 <- df[which(df$Factor=="Baseline 2"), c("d13C","d15N")]
+      a <- lapply(df.b2, mean)
+      names(a) <- c("mean_d13C", "mean_d15N")
+      b <- lapply(df.b2, sd)
+      names(b) <- c("sd_d13C", "sd_d15N")
+      b2.meansSDs <- data.frame(a, b, Factor="Baseline 2")
+
+      df.sc <- df[which(df$Factor=="Secondary consumer"), c("d13C","d15N")]
+      a <- lapply(df.sc, mean)
+      names(a) <- c("mean_d13C", "mean_d15N")
+      b <- lapply(df.sc, sd)
+      names(b) <- c("sd_d13C", "sd_d15N")
+      sc.meansSDs <- data.frame(a, b, Factor="Secondary consumer")
+
+      df2 <- rbind(sc.meansSDs, b1.meansSDs, b2.meansSDs)
 
     } else if (baselines == 3) {
       df <- toStacked(isotopeData, baselines = 3)
@@ -67,21 +88,21 @@ screenIsotopeDataMoresources <- function (isotopeData = NULL,
       names(b) <- c("sd_d13C", "sd_d15N")
       b1.meansSDs <- data.frame(a, b, Factor="Baseline 1")
 
-      df.b2 <- df[which(df$Factor=="Baseline 2"),c("d13C","d15N")]
+      df.b2 <- df[which(df$Factor=="Baseline 2"), c("d13C","d15N")]
       a <- lapply(df.b2, mean)
       names(a) <- c("mean_d13C", "mean_d15N")
       b <- lapply(df.b2, sd)
       names(b) <- c("sd_d13C", "sd_d15N")
       b2.meansSDs <- data.frame(a, b, Factor="Baseline 2")
 
-      df.b3 <- df[which(df$Factor=="Baseline 3"),c("d13C","d15N")]
+      df.b3 <- df[which(df$Factor=="Baseline 3"), c("d13C","d15N")]
       a <- lapply(df.b3, mean)
       names(a) <- c("mean_d13C", "mean_d15N")
       b <- lapply(df.b3, sd)
       names(b) <- c("sd_d13C", "sd_d15N")
       b3.meansSDs <- data.frame(a, b, Factor="Baseline 3")
 
-      df.sc <- df[which(df$Factor=="Secondary consumer"),c("d13C","d15N")]
+      df.sc <- df[which(df$Factor=="Secondary consumer"), c("d13C","d15N")]
       a <- lapply(df.sc, mean)
       names(a) <- c("mean_d13C", "mean_d15N")
       b <- lapply(df.sc, sd)

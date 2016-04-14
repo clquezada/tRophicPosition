@@ -7,11 +7,11 @@
 #'
 #' @examples
 #'
-screenIsotopeData1source <- function (isotopeData = NULL, histogram = T) {
+screenIsotopeData1source <- function (isotopeData = NULL, type = "histogram") {
 
   if (!is.null(isotopeData)){
 
-    if (histogram){
+    if (type == "histogram"){
 
       if (min(isotopeData$dNb1) < min(isotopeData$dNsc)) {
 
@@ -51,8 +51,18 @@ screenIsotopeData1source <- function (isotopeData = NULL, histogram = T) {
 
         }
 
-    } else {
+    } else if (type == "density") {
+
+      df <- toStacked(isotopeData)
+
+      ggplot2::ggplot(df, aes(x = d15N, colour = Factor, fill = Factor)) +
+        ggplot2::geom_density(alpha=0.7) +
+        ggplot2::theme_bw() +
+        ggplot2::xlab(expression(paste(delta^{15}, "N (\u2030)"))) +
+        ggplot2::coord_flip()
+
 
     }
+
     }
   }

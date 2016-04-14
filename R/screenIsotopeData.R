@@ -1,4 +1,4 @@
-#' Function to plot and screen Isotope Data with one or two baselines.
+#' Function to plot and screen Isotope Data with one or more baselines.
 #'
 #' This function receives a named list of vectors, and plot a basic
 #' histogram if the list has 3 elements. If it receives a list of 7 elements,
@@ -13,8 +13,7 @@
 #'
 #' @examples
 
-screenIsotopeData <- function (IsotopeData = NULL, histogram = T,
-                               density = "both") {
+screenIsotopeData <- function (IsotopeData = NULL, density = "both") {
 
   if (!is.null(IsotopeData)) {
     #To do: IsotopeData will be an object of the class IsoData. It would be a great
@@ -22,13 +21,13 @@ screenIsotopeData <- function (IsotopeData = NULL, histogram = T,
     #So, instead of checking the length of the list, we will check first if the
     #object has the required class. Maybe, the class will inform the length
     #(dimension) of the list and some other nice information.
-    if (length(IsotopeData) == 3) {
+    if (length(IsotopeData) == 5) {
 
-      screenIsotopeData1source(IsotopeData, histogram)
+      screenIsotopeDataMoreSources(IsotopeData, density)
 
     } else if (length(IsotopeData) == 7) {
 
-      screenIsotopeData2sources(IsotopeData, density)
+      screenIsotopeDataMoreSources(IsotopeData, density)
 
     } else if (length(IsotopeData) == 9){
 
