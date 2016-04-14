@@ -5,14 +5,14 @@
 \title{Function to compare two TP posterior distributions and test an hypothesis,
 in a Bayesian context}
 \usage{
-compareTwoDistributions(dist1 = NULL, dist2 = NULL, test = NULL)
+compareTwoDistributions(dist1 = NULL, dist2 = NULL, test = "<=")
 }
 \arguments{
 \item{dist1}{A collection of TP data (posterior distribution)}
 
 \item{dist2}{A collection of TP data (posterior distribution)}
 
-\item{test}{A variable indicating the test we want to calculate}
+\item{test}{A logical operator which states what to test for}
 }
 \description{
 Function to compare two TP posterior distributions and test an hypothesis,

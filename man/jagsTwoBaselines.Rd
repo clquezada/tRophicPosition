@@ -4,10 +4,13 @@
 \alias{jagsTwoBaselines}
 \title{Defines the jags model to fit the two baseline trophic position model}
 \usage{
-jagsTwoBaselines(TPprior = NULL, mubprior = NULL)
+jagsTwoBaselines(muCb1 = NULL, sigmaCb1 = NULL, muNb1 = NULL,
+  sigmaNb1 = NULL, muCb2 = NULL, sigmaCb2 = NULL, muNb2 = NULL,
+  sigmaNb2 = NULL, alpha = NULL, sigmaCsc = NULL, TP = NULL,
+  sigmaNsc = NULL, muDeltaN = NULL, sigmaDeltaN = NULL, lambda = NULL)
 }
 \arguments{
-\item{mubprior}{}
+\item{lambda}{}
 }
 \value{
 A jags model as a character string

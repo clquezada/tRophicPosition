@@ -13,7 +13,8 @@
 #'
 #' @examples
 
-screenIsotopeData <- function (IsotopeData = NULL) {
+screenIsotopeData <- function (IsotopeData = NULL, histogram = T,
+                               density = "both") {
 
   if (!is.null(IsotopeData)) {
     #To do: IsotopeData will be an object of the class IsoData. It would be a great
@@ -23,14 +24,19 @@ screenIsotopeData <- function (IsotopeData = NULL) {
     #(dimension) of the list and some other nice information.
     if (length(IsotopeData) == 3) {
 
-      screenIsotopeData1source(IsotopeData)
+      screenIsotopeData1source(IsotopeData, histogram)
 
-    }
-    if (length(IsotopeData) == 7) {
+    } else if (length(IsotopeData) == 7) {
 
-      screenIsotopeData2sources(IsotopeData)
+      screenIsotopeData2sources(IsotopeData, density)
 
-    }
+    } else if (length(IsotopeData) == 9){
+
+      screenIsotopeData3sources(IsotopeData, density)
+
+    } else {warning("IsotopeData doesn't have the correct dimension.
+                    We expect to have length of 3, 7 or 9.")}
+
   } else {
     cat("You should call this function using IsotopeData as argument.\n")
     cat("If you don't have your own dataset, call first generateData() function.")

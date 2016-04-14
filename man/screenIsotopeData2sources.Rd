@@ -4,10 +4,10 @@
 \alias{screenIsotopeData2sources}
 \title{Title}
 \usage{
-screenIsotopeData2sources(isotopeData = NULL)
+screenIsotopeData2sources(isotopeData = NULL, density = "both")
 }
 \arguments{
-\item{isotopeData}{}
+\item{density}{}
 }
 \description{
 Title

@@ -4,12 +4,12 @@
 \alias{generateTPData}
 \title{A function to generate random data for trophic position calculation}
 \usage{
-generateTPData(n.baselines = 1, n.obsB = 25, n.obsSC = 25, dNb1 = NULL,
+generateTPData(n.baselines = 3, n.obsB = 25, n.obsSC = 25, dNb1 = NULL,
   std.devB1 = 0.1, dNsc = NULL, std.devSC = 0.1, n.obsDeltaN = 20,
   deltaN = 3.4, std.devDeltaN = 0.1)
 }
 \arguments{
-\item{n.baselines}{Number of baselines (could be 1 or 2)}
+\item{n.baselines}{Number of baselines (could be 1, 2 or 3)}
 
 \item{n.obsB}{Number of observations for baseline. Default is 25.}
 

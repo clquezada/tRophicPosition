@@ -4,7 +4,7 @@
 \alias{screenIsotopeData1source}
 \title{Title}
 \usage{
-screenIsotopeData1source(isotopeData = NULL)
+screenIsotopeData1source(isotopeData = NULL, histogram = T)
 }
 \arguments{
 \item{isotopeData}{}

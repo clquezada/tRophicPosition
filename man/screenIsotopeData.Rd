@@ -4,7 +4,7 @@
 \alias{screenIsotopeData}
 \title{Function to plot and screen Isotope Data with one or two baselines.}
 \usage{
-screenIsotopeData(IsotopeData = NULL)
+screenIsotopeData(IsotopeData = NULL, histogram = T, density = "both")
 }
 \arguments{
 \item{IsotopeData}{a named list composed of two vectors, dNb1 and dNsc.
