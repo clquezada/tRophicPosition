@@ -41,7 +41,7 @@ trophicDensityPlot <- function (df = NULL, quantiles = FALSE, grouped = TRUE) {
 
     p <- ggplot2::ggplot(df, aes(x = TP, colour = Species, fill = Species)) +
       ggplot2::geom_density(alpha=0.7) + ggplot2::theme_bw() +
-      ggplot2::xlab("Trophic position") + ggplot2::coord_flip() + q + g
+      ggplot2::xlab("Trophic position") + q + g
 
     } else if (quantiles) {
       p <- ggplot2::ggplot(df, aes(x = TP, colour = Species, fill = Species)) +
@@ -52,7 +52,7 @@ trophicDensityPlot <- function (df = NULL, quantiles = FALSE, grouped = TRUE) {
 
     p <- ggplot2::ggplot(df, aes(x = TP, colour = Species, fill = Species)) +
       ggplot2::geom_density(alpha=0.7) + ggplot2::theme_bw() +
-      ggplot2::xlab("Trophic position") + ggplot2::coord_flip() + g
+      ggplot2::xlab("Trophic position") + g
 
   } else {
 
