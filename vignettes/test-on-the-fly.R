@@ -9,7 +9,7 @@ library(tRophicPosition)
 # mean for trophic enrichment factor (deltaN), and standard deviation for
 # each dNb1 (std.devB), dNsc (std.devSC) and deltaN (std.devDeltaN).
 # Additionally the user can specify number of observations for deltaN (n.obsDeltaN).
-data <- generateTPData()
+data <- generateTPData(std.devB1 = 1, std.devSC = 1)
 
 # Here we screen the data
 # When there is one baseline it is just a basic histogram,
@@ -58,3 +58,4 @@ samp <- posteriorTP(model, c("TP", "muDeltaN", "alpha"))
 
 summary(samp)
 plot(samp)
+trophicDensityPlot(samp[[4]][,"TP"])

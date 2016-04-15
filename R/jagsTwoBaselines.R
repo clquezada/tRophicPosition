@@ -3,22 +3,48 @@
 #' Takes some parameters and returns a jags model object as a
 #' character string for passing to \code{\link[rjags.model]{rjags.model}}.
 #'
-#' @param TPprior
-#' @param mubprior
+#' @param muCb1
+#' @param sigmaCb1
+#' @param muNb1
+#' @param sigmaNb1
+#' @param muCb2
+#' @param sigmaCb2
+#' @param muNb2
+#' @param sigmaNb2
+#' @param alpha
+#' @param sigmaCsc
+#' @param TP
+#' @param sigmaNsc
+#' @param muDeltaN
+#' @param sigmaDeltaN
+#' @param lambda
 #'
 #' @return A jags model as a character string
 #'
 #' @export
 
-jagsTwoBaselines <- function (TPprior = NULL,
-                              mubprior = NULL)
+jagsTwoBaselines <- function (muCb1 = NULL,
+                              sigmaCb1 = NULL,
+                              muNb1 = NULL,
+                              sigmaNb1 = NULL,
+                              muCb2 = NULL,
+                              sigmaCb2 = NULL,
+                              muNb2 = NULL,
+                              sigmaNb2 = NULL,
+                              alpha = NULL,
+                              sigmaCsc = NULL,
+                              TP = NULL,
+                              sigmaNsc = NULL,
+                              muDeltaN = NULL,
+                              sigmaDeltaN = NULL,
+                              lambda = NULL)
 {
 
   # ----------------------------------------------------------------------------
   # JAGS code for fitting Inverse Wishart version of SIBER to two groups
   # ----------------------------------------------------------------------------
 
-  modelstring <- "
+  modelString <- "
 
     model {
   # -----------------------------------------------------------------------
@@ -48,7 +74,6 @@ jagsTwoBaselines <- function (TPprior = NULL,
     deltaN[j] ~ dnorm(muDeltaN, tauDeltaN)
   }
 
-
   # ----------------------------------------------------------------------------
   #And now we are ready to calculate the trophic position
   # ----------------------------------------------------------------------------
@@ -67,57 +92,181 @@ jagsTwoBaselines <- function (TPprior = NULL,
   # proportion of baseline 1 and 2 in the consumer to inform trophic position.
   for (i in 1:length(dNsc)){
   dNsc[i] ~ dnorm(muDeltaN * (TP - lambda) + muNb1*alpha + muNb2 * (1 - alpha), tauNsc)
-  }
+  }"
+
+  # ----------------------------------------------------------------------------
+  # Priors
+  # ----------------------------------------------------------------------------
 
   # ----------------------------------------------------------------------------
   # Priors for dCb1
-  muCb1 ~ dnorm(0, 0.0001)
-  #tau (precision) is deterministic with sigma raised to -2
-  tauCb1 <- pow(sigmaCb1, -2)
-  #sigma is stochastic with an uninformative prior between 0 and 100
-  sigmaCb1 ~ dunif(0, 100)
+  if (is.null(muCb1)) {
+    newString <- "muCb1 ~ dnorm(0, 0.0001)"
+
+  } else {
+    newString <- paste("muCb1 ~", toString(muCb1))
+  }
+
+  modelString <- paste (modelString, newString, sep = "\n")
+
+  if (is.null(sigmaCb1)) {
+    newString <-     "tauCb1 <- pow(sigmaCb1, -2)
+                      sigmaCb1 ~ dunif(0, 100)"
+  } else {
+    newString <- "tauCb1 <- pow(sigmaCb1, -2)"
+    newString2 <- paste("sigmaCb1 ~", toString(sigmaCb1))
+    newString <- paste(newString, newString2, sep = "\n")
+  }
+
+  modelString <- paste (modelString, newString, sep = "\n")
 
   # ----------------------------------------------------------------------------
   # Priors for dNb1
-  muNb1 ~ dnorm(0, 0.0001)
-  tauNb1 <- pow(sigmaNb1, -2)
-  sigmaNb1 ~ dunif(0, 100)
+  if (is.null(muNb1)) {
+    newString <- "muNb1 ~ dnorm(0, 0.0001)"
+
+  } else {
+    newString <- paste("muNb1 ~", toString(muNb1))
+  }
+
+  modelString <- paste (modelString, newString, sep = "\n")
+
+  if (is.null(sigmaNb1)) {
+    newString <-     "tauNb1 <- pow(sigmaNb1, -2)
+                      sigmaNb1 ~ dunif(0, 100)"
+  } else {
+    newString <- "tauNb1 <- pow(sigmaNb1, -2)"
+    newString2 <- paste("sigmaNb1 ~", toString(sigmaNb1))
+    newString <- paste(newString, newString2, sep = "\n")
+  }
+
+  modelString <- paste (modelString, newString, sep = "\n")
+
 
   # ----------------------------------------------------------------------------
   # Priors for dCb2
-  muCb2 ~ dnorm(0, 0.0001)
-  tauCb2 <- pow(sigmaCb2, -2)
-  sigmaCb2 ~ dunif(0, 100)
+  if (is.null(muCb2)) {
+    newString <- "muCb2 ~ dnorm(0, 0.0001)"
+
+  } else {
+    newString <- paste("muCb2 ~", toString(muCb2))
+  }
+
+  modelString <- paste (modelString, newString, sep = "\n")
+
+  if (is.null(sigmaCb2)) {
+    newString <-     "tauCb2 <- pow(sigmaCb2, -2)
+                      sigmaCb2 ~ dunif(0, 100)"
+  } else {
+    newString <- "tauCb2 <- pow(sigmaCb2, -2)"
+    newString2 <- paste("sigmaCb2 ~", toString(sigmaCb2))
+    newString <- paste(newString, newString2, sep = "\n")
+  }
+
+  modelString <- paste (modelString, newString, sep = "\n")
 
   # ----------------------------------------------------------------------------
   # Priors for dNb2
-  muNb2 ~ dnorm(0, 0.0001)
-  tauNb2 <- pow(sigmaNb2, -2)
-  sigmaNb2 ~ dunif(0, 100)
+  if (is.null(muNb2)) {
+    newString <- "muNb2 ~ dnorm(0, 0.0001)"
+
+  } else {
+    newString <- paste("muNb2 ~", toString(muNb2))
+  }
+
+  modelString <- paste (modelString, newString, sep = "\n")
+
+  if (is.null(sigmaNb2)) {
+    newString <-     "tauNb2 <- pow(sigmaNb2, -2)
+                      sigmaNb2 ~ dunif(0, 100)"
+  } else {
+    newString <- "tauNb2 <- pow(sigmaNb2, -2)"
+    newString2 <- paste("sigmaNb2 ~", toString(sigmaNb2))
+    newString <- paste(newString, newString2, sep = "\n")
+  }
+
+  modelString <- paste (modelString, newString, sep = "\n")
+
 
   # ----------------------------------------------------------------------------
   # Priors on the carbon mixing model
-  alpha ~ dbeta(1,1) # the proportion of baseline 1 in the consumer.
-  tauCsc <- pow(sigmaCsc, -2)
-  sigmaCsc ~ dunif(0, 100)
+  if (is.null(alpha)) {
+    newString <- "alpha ~ dbeta(1,1)"
+
+  } else {
+    newString <- paste("alpha ~", toString(alpha))
+  }
+
+  modelString <- paste (modelString, newString, sep = "\n")
+
+  if (is.null(sigmaCsc)) {
+    newString <-     "tauCsc <- pow(sigmaCsc, -2)
+                      sigmaCsc ~ dunif(0, 100)"
+  } else {
+    newString <- "tauCsc <- pow(sigmaCsc, -2)"
+    newString2 <- paste("sigmaCsc ~", toString(sigmaCsc))
+    newString <- paste(newString, newString2, sep = "\n")
+  }
+
+  modelString <- paste (modelString, newString, sep = "\n")
 
   # ----------------------------------------------------------------------------
   # Priors on the dN in the consumer
-  tauNsc <- pow(sigmaNsc, -2)
-  sigmaNsc ~ dunif(0, 100)
-  TP ~ dunif(lambda, 10)
+  if (is.null(TP)) {
+    newString <- "TP ~ dunif(lambda, 10)"
+
+  } else {
+    newString <- paste("TP ~", toString(TP))
+  }
+
+  modelString <- paste (modelString, newString, sep = "\n")
+
+  if (is.null(sigmaNsc)) {
+    newString <-     "tauNsc <- pow(sigmaNsc, -2)
+                      sigmaNsc ~ dunif(0, 100)"
+  } else {
+    newString <- "tauNsc <- pow(sigmaNsc, -2)"
+    newString2 <- paste("sigmaNsc ~", toString(sigmaNsc))
+    newString <- paste(newString, newString2, sep = "\n")
+  }
+
+  modelString <- paste (modelString, newString, sep = "\n")
 
   # ----------------------------------------------------------------------------
   # Priors on the deltaN (trophic enrichment factor)
-  muDeltaN ~ dnorm(0, 0.0001)
-  tauDeltaN <- pow(sigmaDeltaN, -2)
-  sigmaDeltaN ~ dunif(0, 100)
+  if (is.null(muDeltaN)) {
+    newString <- "muDeltaN ~ dnorm(0, 0.0001)"
+
+  } else {
+    newString <- paste("muDeltaN ~", toString(muDeltaN))
+  }
+
+  modelString <- paste (modelString, newString, sep = "\n")
+
+  if (is.null(sigmaDeltaN)) {
+    newString <-     "tauDeltaN <- pow(sigmaDeltaN, -2)
+                      sigmaDeltaN ~ dunif(0, 100)"
+  } else {
+    newString <- "tauDeltaN <- pow(sigmaDeltaN, -2)"
+    newString2 <- paste("sigmaDeltaN ~", toString(sigmaDeltaN))
+    newString <- paste(newString, newString2, sep = "\n")
+  }
+
+  modelString <- paste (modelString, newString, sep = "\n")
+
 
   #constants
-  lambda <- 2
+  if (is.null(lambda)) {
+    newString <- "lambda <- 2"
 
-}" # end of jags model script
+  } else {
+    newString <- paste("lambda ~", toString(lambda))
+  }
+  modelString <- paste (modelString, newString, sep = "\n")
 
-  return(modelstring)
+  newString <- "}" # end of jags model script
+  modelString <- paste (modelString, newString, sep = "\n")
+
+  return(modelString)
 
 } # end of function

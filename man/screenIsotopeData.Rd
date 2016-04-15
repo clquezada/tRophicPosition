@@ -2,9 +2,9 @@
 % Please edit documentation in R/screenIsotopeData.R
 \name{screenIsotopeData}
 \alias{screenIsotopeData}
-\title{Function to plot and screen Isotope Data with one or two baselines.}
+\title{Function to plot and screen Isotope Data with one or more baselines.}
 \usage{
-screenIsotopeData(IsotopeData = NULL)
+screenIsotopeData(IsotopeData = NULL, density = "both")
 }
 \arguments{
 \item{IsotopeData}{a named list composed of two vectors, dNb1 and dNsc.

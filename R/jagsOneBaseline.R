@@ -1,26 +1,39 @@
 #' Defines the jags model to fit the single baseline trophic position model
 #'
 #' Takes some parameters and returns a jags model object as a
-#' character string for passing to \code{\link[rjags.model]{rjags.model}}.
+#' character string for passing to \code{\link[jags.model]{rjags}. Although
+#' it is possible to use a number of predefined or customized
+#' distributions (see JAGS documentation), it is likelly that most of the time
+#' you will be using a normal distribution. This is the default option (i.e.
+#' when the function is called withouth arguments) and it is like this:
+#' "mu ~ dnorm(0, 0.0001)". In this case, a prior of normally distributed mu is
+#' defined, with a mean 0, and a standard deviation of 0.0001. This is a normal
+#' distributed prior, although uninformative. You might want to change the mean
+#' and/or the standard deviation according to your previously knowledge of the
+#' system you are working on. As well as the prior for mu, JAGS uses "tau",
+#' which is the precision. Precision is a deterministic function (instead of the
+#' distributional "~"), and it is calculated as "tau <- power(sigma, -2)", thus
+#' you have to define as well sigma, which stands for the standard deviation.
 #'
 #' @param lambda an integer indicating the trophic position of the baseline.
-#' @param muBprior a distribution defining prior for mu of Baseline.
-#' @param muDeltaNprior
-#' @param sigmaDeltaNprior
-#' @param sigmaPrior
-#' @param TPprior
-#' @param sigmaBprior
+#' @param muB a distribution defining prior for mean (mu) of baseline.
+#' @param sigmaB a distribution defining sigma (std dev) of baseline.
+#' @param muDeltaN a distribution defining prior for the mean (mu) of
+#' deltaN. deltaN stands for trophic enrichment factor of Nitrogen.
+#' @param sigmaDeltaN a distribution defining sigma (std dev) of deltaN.
+#' @param TP a distribution defining prior of trophic position.
+#' @param sigma a value defining sigma (std dev) of baseline.
 #'
 #' @return A jags model as a character string
 #'
 #' @export
 
-jagsOneBaseline <- function (muBprior = NULL,
-							sigmaBprior = NULL,
-							muDeltaNprior = NULL,
-							sigmaDeltaNprior = NULL,
-							sigmaPrior = NULL,
-							TPprior = NULL,
+jagsOneBaseline <- function (muB = NULL,
+							sigmaB = NULL,
+							muDeltaN = NULL,
+							sigmaDeltaN = NULL,
+							sigma = NULL,
+							TP = NULL,
 							lambda = NULL)
 {
 
@@ -55,25 +68,25 @@ jagsOneBaseline <- function (muBprior = NULL,
   # -----------------------------------------------------------------------
   # Now we define prior mean and precision for the baseline.
   # If muBprior doesn't exist, an uninformative prior is defined.
-  # Otherwise muBprior is defined as the prior distribution
+  # Otherwise muB is defined as the prior distribution
   # for muB
-  if (is.null(muBprior)) {
+  if (is.null(muB)) {
     newString <- "muB ~ dnorm(0, 0.0001)"
 
   } else {
-    newString <- paste("muB ~", toString(muBprior))
+    newString <- paste("muB ~", toString(muB))
   }
 
   modelString <- paste (modelString, newString, sep = "\n")
 
   # -----------------------------------------------------------------------
   # Here the process is repeated to define prior distribution for sigmaB
-  if (is.null(sigmaBprior)) {
+  if (is.null(sigmaB)) {
     newString <-     "tauB <- pow(sigmaB, -2)
                       sigmaB ~ dunif(0, 100)"
   } else {
     newString <- "tauB <- pow(sigmaB, -2)"
-    newString2 <- paste("sigmaB ~", toString(sigmaBprior))
+    newString2 <- paste("sigmaB ~", toString(sigmaB))
     newString <- paste(newString, newString2, sep = "\n")
   }
 
@@ -82,22 +95,22 @@ jagsOneBaseline <- function (muBprior = NULL,
   # -----------------------------------------------------------------------
   # Here the process is repeated to define prior mean and precision
   # for deltaN (trophic enrichment factor)
-    if (is.null(muDeltaNprior)) {
+    if (is.null(muDeltaN)) {
     newString <-     "muDeltaN ~ dnorm(0, 0.0001)"
   } else {
-    newString <- paste("muDeltaN ~", toString(muDeltaNprior))
+    newString <- paste("muDeltaN ~", toString(muDeltaN))
   }
 
   modelString <- paste (modelString, newString, sep = "\n")
 
   # -----------------------------------------------------------------------
   # And now is repeated to define prior distribution for sigmaDeltaN
-  if (is.null(sigmaDeltaNprior)) {
+  if (is.null(sigmaDeltaN)) {
     newString <-     "tauDeltaN <- pow(sigmaDeltaN, -2)
                       sigmaDeltaN ~ dunif(0, 100)"
   } else {
     newString <- "tauDeltaN <- pow(sigmaDeltaN, -2)"
-    newString2 <- paste("sigmaDeltaN ~", toString(sigmaDeltaNprior))
+    newString2 <- paste("sigmaDeltaN ~", toString(sigmaDeltaN))
     newString <- paste(newString, newString2, sep = "\n")
   }
 
@@ -105,12 +118,12 @@ jagsOneBaseline <- function (muBprior = NULL,
 
   # -----------------------------------------------------------------------
   # And here it is defined prior precision for the consumer
-  if (is.null(sigmaPrior)) {
+  if (is.null(sigma)) {
     newString <-     "tau <- pow(sigma, -2)
                       sigma ~ dunif(0, 100)"
   } else {
     newString <- "tau <- pow(sigma, -2)"
-    newString2 <- paste("sigma ~", toString(sigmaPrior))
+    newString2 <- paste("sigma ~", toString(sigma))
     newString <- paste(newString, newString2, sep = "\n")
   }
 
@@ -118,10 +131,10 @@ jagsOneBaseline <- function (muBprior = NULL,
 
   # -----------------------------------------------------------------------
   # Here we define prior for Trophic Position (TP)
-  if (is.null(TPprior)) {
+  if (is.null(TP)) {
     newString <-     "TP ~ dunif(lambda, 10)"
   } else {
-    newString <- paste("TP ~ ", toString(TPprior))
+    newString <- paste("TP ~ ", toString(TP))
   }
 
   modelString <- paste (modelString, newString, sep = "\n")

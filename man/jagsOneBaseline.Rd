@@ -4,22 +4,26 @@
 \alias{jagsOneBaseline}
 \title{Defines the jags model to fit the single baseline trophic position model}
 \usage{
-jagsOneBaseline(muBprior = NULL, sigmaBprior = NULL, muDeltaNprior = NULL,
-  sigmaDeltaNprior = NULL, sigmaPrior = NULL, TPprior = NULL,
-  lambda = NULL)
+jagsOneBaseline(muB = NULL, sigmaB = NULL, muDeltaN = NULL,
+  sigmaDeltaN = NULL, sigma = NULL, TP = NULL, lambda = NULL)
 }
 \arguments{
-\item{muBprior}{a distribution defining prior for mu of Baseline.}
+\item{muB}{a distribution defining prior for mean (mu) of baseline.}
 
-\item{sigmaBprior}{}
+\item{sigmaB}{a distribution defining sigma (std dev) of baseline.}
+
+\item{muDeltaN}{a distribution defining prior for the mean (mu) of
+deltaN. deltaN stands for trophic enrichment factor of Nitrogen.}
+
+\item{sigmaDeltaN}{a distribution defining sigma (std dev) of deltaN.}
+
+\item{sigma}{a value defining sigma (std dev) of baseline.}
+
+\item{TP}{a distribution defining prior of trophic position.}
 
 \item{lambda}{an integer indicating the trophic position of the baseline.}
 }
 \value{
 A jags model as a character string
-}
-\description{
-Takes some parameters and returns a jags model object as a
-character string for passing to \code{\link[rjags.model]{rjags.model}}.
 }
 

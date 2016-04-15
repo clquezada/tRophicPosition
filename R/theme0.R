@@ -7,16 +7,17 @@
 #'
 #' @examples
 #'
-theme0 <- function(...) {theme( legend.position = "none",
-                                       panel.background = element_blank(),
-                                       panel.grid.major = element_blank(),
-                                       panel.grid.minor = element_blank(),
-                                       panel.margin = unit(0,"null"),
-                                       axis.ticks = element_blank(),
-                                       axis.text.x = element_blank(),
-                                       axis.text.y = element_blank(),
-                                       axis.title.x = element_blank(),
-                                       axis.title.y = element_blank(),
-                                       axis.ticks.length = unit(0,"null"),
-                                       #axis.ticks.margin = unit(0,"null"),
-                                       panel.border=element_rect(color=NA),...)}
+theme0 <- function(...) {
+  theme( legend.position = "none",
+         panel.background = ggplot2::element_blank(),
+         panel.grid.major = ggplot2::element_blank(),
+         panel.grid.minor = ggplot2::element_blank(),
+         panel.margin = ggplot2::unit(0,"null"),
+         axis.ticks = ggplot2::element_blank(),
+         axis.text.x = ggplot2::element_blank(),
+         axis.text.y = ggplot2::element_blank(),
+         axis.title.x = ggplot2::element_blank(),
+         axis.title.y = ggplot2::element_blank(),
+         axis.ticks.length = ggplot2::unit(0,"null"),
+         #axis.ticks.margin = unit(0,"null"),
+         panel.border = ggplot2::element_rect(color=NA),...)}
