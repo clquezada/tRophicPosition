@@ -23,15 +23,15 @@ screenIsotopeData <- function (IsotopeData = NULL, density = "both") {
     #(dimension) of the list and some other nice information.
     if (length(IsotopeData) == 5) {
 
-      screenIsotopeDataMoreSources(IsotopeData, density)
+      screenIsotopeDataMoreSources(IsotopeData, density, baselines = 1)
 
     } else if (length(IsotopeData) == 7) {
 
-      screenIsotopeDataMoreSources(IsotopeData, density)
+      screenIsotopeDataMoreSources(IsotopeData, density, baselines = 2)
 
     } else if (length(IsotopeData) == 9){
 
-      screenIsotopeData3sources(IsotopeData, density)
+      screenIsotopeDataMoreSources(IsotopeData, density, baselines = 3)
 
     } else {warning("IsotopeData doesn't have the correct dimension.
                     We expect to have length of 3, 7 or 9.")}
