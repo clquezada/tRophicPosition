@@ -34,19 +34,19 @@ compareTwoDistributions <- function (dist1 = NULL,
   }
 
   if (test == "<=") {
-    return(sum(dist1 <= dist2) / length(length(dist1)))
+    return(sum(dist1 <= dist2) / length(dist1))
   }
 
   if (test == "<") {
-    return(sum(dist1 < dist2) / length(length(dist1)))
+    return(sum(dist1 < dist2) / length(dist1))
   }
 
   if (test == ">") {
-    return(sum(dist1 > dist2) / length(length(dist1)))
+    return(sum(dist1 > dist2) / length(dist1))
   }
 
   if (test == ">=") {
-    return(sum(dist1 >= dist2) / length(length(dist1)))
+    return(sum(dist1 >= dist2) / length(dist1))
   }
 
   warning('Do you check that the logical operator is "<", "<=", ">"" or ">="?
