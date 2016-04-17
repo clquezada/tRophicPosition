@@ -8,7 +8,7 @@
 #' @examples
 #'
 theme0 <- function(...) {
-  theme( legend.position = "none",
+  ggplot2::theme( legend.position = "none",
          panel.background = ggplot2::element_blank(),
          panel.grid.major = ggplot2::element_blank(),
          panel.grid.minor = ggplot2::element_blank(),

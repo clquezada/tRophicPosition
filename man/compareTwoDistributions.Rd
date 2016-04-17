@@ -18,4 +18,7 @@ compareTwoDistributions(dist1 = NULL, dist2 = NULL, test = "<=")
 Function to compare two TP posterior distributions and test an hypothesis,
 in a Bayesian context
 }
+\examples{
+
+}
 
