@@ -10,9 +10,11 @@
 #' @export
 #'
 #' @examples
+#'
 compareTwoDistributions <- function (dist1 = NULL,
                                      dist2 = NULL,
                                      test = "<=") {
+
   if (is.null(dist1) | is.null(dist2)) {
 
     warning("At least one of the distributions you want to compare is NULL.")
