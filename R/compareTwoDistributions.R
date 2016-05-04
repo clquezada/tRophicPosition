@@ -13,7 +13,10 @@
 #'
 compareTwoDistributions <- function (dist1 = NULL,
                                      dist2 = NULL,
-                                     test = "<=") {
+                                     test = "<=",
+                                     ordered = FALSE,
+                                     sample = NULL,
+                                     ...) {
 
   if (is.null(dist1) | is.null(dist2)) {
 
@@ -34,6 +37,13 @@ compareTwoDistributions <- function (dist1 = NULL,
 
     return(NULL)
   }
+
+  if (is.numeric(sample)) {
+
+    dist1 <- base::sample(dist1, sample, ...)
+    dist2 <- base::sample(dist2, sample, ...)
+
+    }
 
   if (test == "<=") {
     return(sum(dist1 <= dist2) / length(dist1))
