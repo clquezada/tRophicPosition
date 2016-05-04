@@ -5,7 +5,8 @@
 \title{Function to compare two TP posterior distributions and test an hypothesis,
 in a Bayesian context}
 \usage{
-compareTwoDistributions(dist1 = NULL, dist2 = NULL, test = "<=")
+compareTwoDistributions(dist1 = NULL, dist2 = NULL, test = "<=",
+  ordered = FALSE, sample = NULL, ...)
 }
 \arguments{
 \item{dist1}{A collection of TP data (posterior distribution)}
