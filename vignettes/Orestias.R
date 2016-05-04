@@ -92,16 +92,4 @@ trophicDensityPlot(df, quantiles = TRUE, grouped = FALSE)
 SIBER::siberDensityPlot(data.frame(Orestias.TP, Trout.TP))
 
 #And finally, we test for differences in a Bayesian way
-compareTwoDistributions(Orestias.TP, Trout.TP, ">=", sample = 20000, replace = F)
-
-#Comparing differences in means with BEST package (Bayesian way)
-samp.BEST <- BEST::BESTmcmc(sample(Orestias.TP, 100), sample(Trout.TP, 100), parallel = TRUE)
-plot(samp.BEST)
-
-#Or we can just simply do permutations and calcualte the mean
-perm::permTS(Orestias.TP, Trout.TP, alternative = "greater")
-
-BEST::postPriorOverlap(Orestias.TP, dunif, min = 2, max = 5, xlim = c(2,5),
-                       xlab = "Trophic position")
-
-BEST::plotPost(Orestias.TP, xlim = c(2,5), xlab = "Trophic position")
+compareTwoDistributions(Orestias.TP, Trout.TP, "<=")

@@ -7,18 +7,16 @@
 screenIsotopeData(IsotopeData = NULL, density = "both")
 }
 \arguments{
-\item{IsotopeData}{a named list composed at least of 6 vectors, dNb1, dCb1,
-dCsc, dNsc, deltaN and deltaC.
-dNb1 and dCb1 stands for delta Nitrogen and delta Carbon of baseline 1, dNsc
-and dCsc stands for delta N and delta C of secondary consumer, and deltaN
-and deltaC stands for the trophic enrichment factor (capital letter delta)
-of Nitrogen and Carbon.}
+\item{IsotopeData}{a named list composed of two vectors, dNb1 and dNsc.
+dNb1 stands for delta Nitrogen of baseline 1, while dNsc stands for
+delta Nitrogen of secondary consumer.}
 }
 \value{
 none
 }
 \description{
-This function receives a named list of vectors, and plots a scatterplot with
- 2 sources and a consumer.
+This function receives a named list of vectors, and plot a basic
+histogram if the list has 3 elements. If it receives a list of 7 elements,
+calls another function to plot a scatterplot with 2 sources and a consumer.
 }
 
