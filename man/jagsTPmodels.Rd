@@ -2,14 +2,14 @@
 % Please edit documentation in R/jagsTPModels.R
 \name{jagsTPmodels}
 \alias{jagsTPmodels}
-\title{Title}
+\title{Return a JAGS model with one to three baselines.}
 \usage{
 jagsTPmodels(nb = 1, ...)
 }
 \arguments{
-\item{nb}{}
+\item{nb}{integer, numbers of baselines required.}
 }
 \description{
-Title
+To do.
 }
 

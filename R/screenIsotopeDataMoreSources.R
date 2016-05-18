@@ -1,7 +1,12 @@
-#' Title
+#' Internal function that plots the data
 #'
-#' @param isotopeData
-#' @param density
+#' This function is intended to be used within the package. For details refer to
+#' \code{\link{screenIsotopeData}}.
+#'
+#' @param isotopeData a named list composed at least of 6 vectors, dNb1, dCb1,
+#' dCsc, dNsc, deltaN and deltaC.
+#' @param density a character that might plot the density function.
+#' @param baselines integer defining the number of baselines (1, 2 or 3).
 #'
 #' @return
 #' @export

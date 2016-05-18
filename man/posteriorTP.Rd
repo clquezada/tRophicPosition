@@ -2,14 +2,21 @@
 % Please edit documentation in R/posteriorTP.R
 \name{posteriorTP}
 \alias{posteriorTP}
-\title{Function to generate posterior samples of trophic position}
+\title{Function to generate posterior samples of a trophic position JAGS model}
 \usage{
 posteriorTP(model, variable.names = c("TP", "muDeltaN"), n.iter = 10000)
 }
 \arguments{
-\item{n.iter}{}
+\item{model}{a JAGS model object returned by any of the family of jagsBaseline}
+
+\item{variable.names}{vector of characters giving the names of variables to
+be monitored}
+
+\item{n.iter}{integer defining the number of iterations. By default is 10000}
 }
 \description{
-Function to generate posterior samples of trophic position
+This is a wrapper of \code{\link[rjags]{coda.samples}} which in turn, is a
+wrapper of \code{\link[rjags]{jags.samples}}. It extracts random samples from
+ the posterior distribution of the parameters of a jags model.
 }
 

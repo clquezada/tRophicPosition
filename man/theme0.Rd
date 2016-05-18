@@ -2,7 +2,7 @@
 % Please edit documentation in R/theme0.R
 \name{theme0}
 \alias{theme0}
-\title{Title}
+\title{Internal function that plots the data}
 \usage{
 theme0(...)
 }
@@ -10,7 +10,7 @@ theme0(...)
 \item{...}{}
 }
 \description{
-Title
+This function is intended to be used within the package
 }
 \examples{
 

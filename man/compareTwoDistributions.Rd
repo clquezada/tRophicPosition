@@ -9,11 +9,17 @@ compareTwoDistributions(dist1 = NULL, dist2 = NULL, test = "<=",
   ordered = FALSE, sample = NULL, ...)
 }
 \arguments{
-\item{dist1}{A collection of TP data (posterior distribution)}
+\item{dist1}{A collection of Trophic Position data (posterior distribution)}
 
-\item{dist2}{A collection of TP data (posterior distribution)}
+\item{dist2}{A collection of Trophic Position data (posterior distribution)}
 
-\item{test}{A logical operator which states what to test for}
+\item{test}{A logical operator which states what to test for. Might be "<",
+"<=", ">" or ">=".}
+
+\item{ordered}{Not implemented yet.}
+
+\item{sample}{If sample is numeric, it will take 'sample' elements of each of
+the distributions of Trophic Position data.}
 }
 \description{
 Function to compare two TP posterior distributions and test an hypothesis,

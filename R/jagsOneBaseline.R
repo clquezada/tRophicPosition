@@ -1,11 +1,13 @@
 #' Defines the jags model to fit the single baseline trophic position model
 #'
 #' Takes some parameters and returns a jags model object as a
-#' character string for passing to \code{\link[jags.model]{rjags}. Although
+#' character string for passing to \code{\link[rjags]{jags.model}}. Although
 #' it is possible to use a number of predefined or customized
-#' distributions (see JAGS documentation), it is likelly that most of the time
+#' distributions (see
+#' \href{https://sourceforge.net/projects/mcmc-jags/files/Manuals/}{JAGS documentation}),
+#'  it is likelly that most of the time
 #' you will be using a normal distribution. This is the default option (i.e.
-#' when the function is called withouth arguments) and it is like this:
+#' when the function is called without arguments) and it is like this:
 #' "mu ~ dnorm(0, 0.0001)". In this case, a prior of normally distributed mu is
 #' defined, with a mean 0, and a standard deviation of 0.0001. This is a normal
 #' distributed prior, although uninformative. You might want to change the mean

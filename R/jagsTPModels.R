@@ -1,7 +1,9 @@
-#' Title
+#' Return a JAGS model with one to three baselines.
+#'
+#' To do.
 #'
 #' @param ...
-#' @param nb
+#' @param nb integer, numbers of baselines required.
 #'
 #' @return
 #' @export

@@ -1,6 +1,9 @@
-#' Title
+#' Internal function that check the names.
 #'
-#' @param df
+#' Not intended to be used by the user.
+#'
+#' @param df named list with the variables to be checked for.
+#' @param baselines integer stating the number of baselines.
 #'
 #' @return
 #' @export

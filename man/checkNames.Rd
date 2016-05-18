@@ -2,15 +2,17 @@
 % Please edit documentation in R/checkNames.R
 \name{checkNames}
 \alias{checkNames}
-\title{Title}
+\title{Internal function that check the names.}
 \usage{
 checkNames(df = NULL, baselines = NULL)
 }
 \arguments{
-\item{df}{}
+\item{df}{named list with the variables to be checked for.}
+
+\item{baselines}{integer stating the number of baselines.}
 }
 \description{
-Title
+Not intended to be used by the user.
 }
 \examples{
 

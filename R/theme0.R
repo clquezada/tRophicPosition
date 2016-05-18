@@ -1,4 +1,6 @@
-#' Title
+#' Internal function that plots the data
+#'
+#' This function is intended to be used within the package
 #'
 #' @param ...
 #'

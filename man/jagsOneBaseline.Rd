@@ -26,4 +26,22 @@ deltaN. deltaN stands for trophic enrichment factor of Nitrogen.}
 \value{
 A jags model as a character string
 }
+\description{
+Takes some parameters and returns a jags model object as a
+character string for passing to \code{\link[rjags]{jags.model}}. Although
+it is possible to use a number of predefined or customized
+distributions (see
+\href{https://sourceforge.net/projects/mcmc-jags/files/Manuals/}{JAGS documentation}),
+ it is likelly that most of the time
+you will be using a normal distribution. This is the default option (i.e.
+when the function is called without arguments) and it is like this:
+"mu ~ dnorm(0, 0.0001)". In this case, a prior of normally distributed mu is
+defined, with a mean 0, and a standard deviation of 0.0001. This is a normal
+distributed prior, although uninformative. You might want to change the mean
+and/or the standard deviation according to your previously knowledge of the
+system you are working on. As well as the prior for mu, JAGS uses "tau",
+which is the precision. Precision is a deterministic function (instead of the
+distributional "~"), and it is calculated as "tau <- power(sigma, -2)", thus
+you have to define as well sigma, which stands for the standard deviation.
+}
 

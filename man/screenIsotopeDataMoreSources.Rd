@@ -2,16 +2,22 @@
 % Please edit documentation in R/screenIsotopeDataMoreSources.R
 \name{screenIsotopeDataMoreSources}
 \alias{screenIsotopeDataMoreSources}
-\title{Title}
+\title{Internal function that plots the data}
 \usage{
 screenIsotopeDataMoreSources(isotopeData = NULL, density = "both",
   baselines = 2)
 }
 \arguments{
-\item{density}{}
+\item{isotopeData}{a named list composed at least of 6 vectors, dNb1, dCb1,
+dCsc, dNsc, deltaN and deltaC.}
+
+\item{density}{a character that might plot the density function.}
+
+\item{baselines}{integer defining the number of baselines (1, 2 or 3).}
 }
 \description{
-Title
+This function is intended to be used within the package. For details refer to
+\code{\link{screenIsotopeData}}.
 }
 \note{
 

@@ -1,7 +1,11 @@
 #' Function to plot and screen Isotope Data with one or more baselines.
 #'
 #' This function receives a named list of vectors, and plots a scatterplot with
-#'  2 sources and a consumer.
+#'  2 sources and a consumer. Depending on the length of the named list, this
+#'  function plots one (length = 6), or two (length = 8) baselines. Also the
+#'  user can states whether he/she wants a density function ploted above, to the
+#'  right, both or does not want it to be ploted.
+#'
 #'
 #' @param IsotopeData a named list composed at least of 6 vectors, dNb1, dCb1,
 #' dCsc, dNsc, deltaN and deltaC.
@@ -9,6 +13,9 @@
 #' and dCsc stands for delta N and delta C of secondary consumer, and deltaN
 #' and deltaC stands for the trophic enrichment factor (capital letter delta)
 #' of Nitrogen and Carbon.
+#' @param density a character that might plot the density function. Accepted
+#' characters are "both" in which case will plot the density function above and
+#' to the right, "right", "above" or "none".
 #'
 #' @return none
 #'

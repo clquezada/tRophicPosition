@@ -1,6 +1,8 @@
-#' Title
+#' Internal function that re-order variables from a data frame.
 #'
-#' @param df
+#' Not intended to be used by the user.
+#'
+#' @param df data frame containing the data to be ordered.
 #'
 #' @return
 #' @export

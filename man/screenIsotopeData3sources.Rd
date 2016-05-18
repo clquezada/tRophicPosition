@@ -2,15 +2,20 @@
 % Please edit documentation in R/screenIsotopeData3sources.R
 \name{screenIsotopeData3sources}
 \alias{screenIsotopeData3sources}
-\title{Title}
+\title{Internal function that plots the data}
 \usage{
-screenIsotopeData3sources(isotopeData = NULL, density = TRUE)
+screenIsotopeData3sources(isotopeData = NULL, density = "both")
 }
 \arguments{
-\item{density}{}
+\item{isotopeData}{a named list composed at least of 6 vectors, dNb1, dCb1,
+dCsc, dNsc, deltaN and deltaC.}
+
+\item{density}{a character that might plot the density function.}
 }
 \description{
-Title
+This function is intended to be used within the package. For details refer to
+\code{\link{screenIsotopeData}}. This function plots 3 baselines coupled with
+the siar version of tRophicPosition.
 }
 \note{
 

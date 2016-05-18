@@ -1,7 +1,10 @@
-#' Title
+#' Internal function that stack variables from a named list.
 #'
-#' @param isotopeData
-#' @param baselines
+#' Not intended to be used by the user.
+#'
+#' @param isotopeData a named list composed at least of 6 vectors, dNb1, dCb1,
+#' dCsc, dNsc, deltaN and deltaC
+#' @param baselines integer stating the number of baselines.
 #'
 #' @return
 #' @export

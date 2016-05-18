@@ -2,20 +2,27 @@
 % Please edit documentation in R/TPmodel.R
 \name{TPmodel}
 \alias{TPmodel}
-\title{Function to build a JAGS-based Bayesian model to calculate trophic position}
+\title{Function to create a JAGS-based Bayesian model to calculate trophic position}
 \usage{
 TPmodel(data = NULL, model.string = NULL, n.chains = 2, n.adapt = 10000)
 }
 \arguments{
-\item{data}{data}
+\item{data}{a list containing the data}
 
-\item{model.string}{model string}
+\item{model.string}{model string containing a description of the model}
 
-\item{n.chains}{number of chains}
+\item{n.chains}{number of parallel chains for the model}
 
-\item{n.adapt}{number of iterations for adaptation}
+\item{n.adapt}{number of iterations for adaptation (initial sampling phase)}
+}
+\value{
+\code{TPmodel} returns an object inheriting from class jags which can be used to
+generate dependent samples from the posterior distribution of the parameters
 }
 \description{
-Function to build a JAGS-based Bayesian model to calculate trophic position
+This function is a wrapper of \code{\link[rjags]{jags.model}}. It receives a
+named list containing the data, a model string returned by either
+\code{\link{jagsOneBaseline}}, \code{\link{jagsTwoBaselines}} or
+\code{\link{jagsTwoBaselinesFull}}, and creates a JAGS model object.
 }
 

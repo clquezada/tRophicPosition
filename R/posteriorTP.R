@@ -1,9 +1,13 @@
-
-#' Function to generate posterior samples of trophic position
+#' Function to generate posterior samples of a trophic position JAGS model
 #'
-#' @param model
-#' @param variable.names
-#' @param n.iter
+#' This is a wrapper of \code{\link[rjags]{coda.samples}} which in turn, is a
+#' wrapper of \code{\link[rjags]{jags.samples}}. It extracts random samples from
+#'  the posterior distribution of the parameters of a jags model.
+#'
+#' @param model a JAGS model object returned by any of the family of jagsBaseline
+#' @param variable.names vector of characters giving the names of variables to
+#' be monitored
+#' @param n.iter integer defining the number of iterations. By default is 10000
 #'
 #' @return
 #' @export

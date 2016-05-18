@@ -13,9 +13,9 @@ TEF(author = "Post", element = "both", type = "all")
 
 \item{type}{thys argument only works for "McCutchan" author (their Table 3).
 "all" returns all TEF data; "whole" and "muscle" returns TEF separated per
-analysis; "acidified" and "unacidified" returns TEF separated per acidification;
-and "Rainbow Trout" and "Brook Trout" returns TEF separated per fish species
-(according to their Table 1).}
+type analysis; "acidified" and "unacidified" returns TEF separated per
+acidification; and "Rainbow Trout" and "Brook Trout" returns TEF separated
+per fish species (according to their Table 1).}
 }
 \description{
 \code{TEF} return trophic enrichment factors (TEF), given an author, element
