@@ -78,5 +78,4 @@ trophicDensityPlot <- function (df = NULL, quantiles = FALSE, grouped = TRUE) {
 
   return(p)
 
-
 }
