@@ -1,4 +1,6 @@
-#' Title
+#' Function that creates biplot with marginal density functions
+#'
+#' This function is intended to be used within the package.
 #'
 #' @param df
 #' @param df2

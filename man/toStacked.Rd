@@ -2,14 +2,17 @@
 % Please edit documentation in R/toStacked.R
 \name{toStacked}
 \alias{toStacked}
-\title{Title}
+\title{Internal function that stack variables from a named list.}
 \usage{
 toStacked(isotopeData = NULL, baselines = 1)
 }
 \arguments{
-\item{baselines}{}
+\item{isotopeData}{a named list composed at least of 6 vectors, dNb1, dCb1,
+dCsc, dNsc, deltaN and deltaC}
+
+\item{baselines}{integer stating the number of baselines.}
 }
 \description{
-Title
+Not intended to be used by the user.
 }
 

@@ -1,6 +1,13 @@
-#' Title
+#' Internal function that plots the data
 #'
-#' @param isotopeData
+#' This function is intended to be used within the package. For details refer to
+#' \code{\link{screenIsotopeData}}. Is planned to deprecate it in the near
+#' future.
+#'
+#' @param isotopeData a named list composed at least of 6 vectors, dNb1, dCb1,
+#' dCsc, dNsc, deltaN and deltaC
+#' @param type character that states if an "histogram" or a "density" will be
+#' ploted.
 #'
 #' @return
 #' @export

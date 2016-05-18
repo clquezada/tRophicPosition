@@ -1,7 +1,12 @@
-#' Title
+#' Internal function that plots the data
 #'
-#' @param isotopeData
-#' @param density
+#' This function is intended to be used within the package. For details refer to
+#' \code{\link{screenIsotopeData}}. This function plots 3 baselines coupled with
+#' the siar version of tRophicPosition.
+#'
+#' @param isotopeData a named list composed at least of 6 vectors, dNb1, dCb1,
+#' dCsc, dNsc, deltaN and deltaC.
+#' @param density a character that might plot the density function.
 #'
 #' @return
 #' @export
@@ -11,7 +16,7 @@
 #' @note
 #'
 
-screenIsotopeData3sources <- function (isotopeData = NULL, density = TRUE ) {
+screenIsotopeData3sources <- function (isotopeData = NULL, density = "both" ) {
 
   #library(RColorBrewer)
   #library(ggplot2)

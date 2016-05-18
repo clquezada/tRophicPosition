@@ -2,7 +2,7 @@
 % Please edit documentation in R/biPlot.R
 \name{biPlot}
 \alias{biPlot}
-\title{Title}
+\title{Function that creates biplot with marginal density functions}
 \usage{
 biPlot(df = NULL, df2 = NULL, ylab = NULL, xlab = NULL, p = "p1", ...)
 }
@@ -10,6 +10,6 @@ biPlot(df = NULL, df2 = NULL, ylab = NULL, xlab = NULL, p = "p1", ...)
 \item{...}{}
 }
 \description{
-Title
+This function is intended to be used within the package.
 }
 

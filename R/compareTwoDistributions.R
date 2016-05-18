@@ -1,10 +1,14 @@
-
 #' Function to compare two TP posterior distributions and test an hypothesis,
 #' in a Bayesian context
 #'
-#' @param dist1 A collection of TP data (posterior distribution)
-#' @param dist2 A collection of TP data (posterior distribution)
-#' @param test A logical operator which states what to test for
+#' @param dist1 A collection of Trophic Position data (posterior distribution)
+#' @param dist2 A collection of Trophic Position data (posterior distribution)
+#' @param test A logical operator which states what to test for. Might be "<",
+#' "<=", ">" or ">=".
+#' @param ordered Not implemented yet.
+#' @param sample If sample is numeric, it will take 'sample' elements of each of
+#' the distributions of Trophic Position data.
+#' @param ... extra arguments are passed to \code{\link{sample}
 #'
 #' @return
 #' @export

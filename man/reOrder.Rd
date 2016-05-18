@@ -2,14 +2,14 @@
 % Please edit documentation in R/reOrder.R
 \name{reOrder}
 \alias{reOrder}
-\title{Title}
+\title{Internal function that re-order variables from a data frame.}
 \usage{
 reOrder(df = NULL)
 }
 \arguments{
-\item{df}{}
+\item{df}{data frame containing the data to be ordered.}
 }
 \description{
-Title
+Not intended to be used by the user.
 }
 
