@@ -9,7 +9,7 @@ TEF(author = "Post", element = "both", type = "all")
 \arguments{
 \item{author}{could be either "Post" or "McCutchan" at the moment.}
 
-\item{element}{either "N" or "C"}
+\item{element}{can be "both", "N" or "C"}
 
 \item{type}{thys argument only works for "McCutchan" author (their Table 3).
 "all" returns all TEF data; "whole" and "muscle" returns TEF separated per

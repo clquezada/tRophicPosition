@@ -1,16 +1,16 @@
 ---
 title: "How to use tRophicPosition from scrath"
-author: "Claudio Quezada-Romegialli"
-date: "18 de mayo de 2016"
+author: "Claudio Quezada-Romegialli & Chris Harrod"
+date: "19th of May 2016"
 output:
-  html_document:
-    toc: yes
   pdf_document:
+    toc: yes
+  html_document:
     toc: yes
 ---
 
-In this vignette, I will guide you through the dangerous mission of estimate the
-trophic position of a species with stable isotopes, in a Bayesian framework.
+In this vignette, we will guide you through the dangerous mission of estimate the
+trophic position of some species with stable isotopes, in a Bayesian framework.
 
 First, we load the packages needed. Obviously [tRophicPosition](https://github.com/AndrewLJackson/tRophicPosition)
 
@@ -59,7 +59,7 @@ YourOwnDataSet <- read.table("clipboard", header=TRUE, sep="\t",
                        dec=",", strip.white=TRUE)
 ```
 
-Remember to look for differences in regional settings. You have to change the decimal (comma to point) if you are using a different locale than Spanish. The **separator** "\t" stands for the tab key (the one that most spreadsheets uses to separate cells). **Header** is `TRUE` because we copied the headers from the spreadsheet. This is important, as we require the each variable has its own name in R.
+Remember to look for differences in regional settings. You have to change the decimal (comma to point) if you are using a different locale than Spanish. The **separator** `"\t"` stands for the tab key (the one that most spreadsheets uses to separate cells). **Header** is `TRUE` because we copied the headers from the spreadsheet. This is important, as we require the each variable has its own name in R.
 
 Ok, so now we will load some data that we have previously formatted to use it in tRophicPosition:
 ```{r}
@@ -113,7 +113,7 @@ This is really easy:
 model <- TPmodel(data = IsotopeData,
                  model.string = model.string,
                  n.chains = 2,
-                 n.adapt = 50000)
+                 n.adapt = 100000)
 ```
 
 Note here that we fed the model with more data that it used (deltaC). When there is more data that the variables that the model needs, it will warn you. The problem will appear when you don't send enough data, so always check how many variables (and the type of them) the model will need.
