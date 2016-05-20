@@ -7,7 +7,7 @@
 #'
 #'
 #' @param author could be either "Post" or "McCutchan" at the moment.
-#' @param element either "N" or "C"
+#' @param element can be "both", "N" or "C"
 #' @param type thys argument only works for "McCutchan" author (their Table 3).
 #' "all" returns all TEF data; "whole" and "muscle" returns TEF separated per
 #' type analysis; "acidified" and "unacidified" returns TEF separated per
