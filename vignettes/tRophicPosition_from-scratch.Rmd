@@ -36,6 +36,7 @@ str(Orestias_trout)
 As you see, the `Orestias_trout` file is a data.frame object, and has 62 observations of 4 variables. Species stands for all the species found, FG stands for the functional group of each species, and d13C and d15N are the stable isotope values that we will be using for this example. 
 
 Now we plot the data, in order to have a rough idea of what it looks like our isotope data:
+
 ```{r}
 ggplot(data = Orestias_trout, aes(d13C, d15N, shape = FG, colour = Species)) +
   geom_point(size = 3) + theme(legend.position = "none") +
