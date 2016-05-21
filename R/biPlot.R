@@ -31,7 +31,8 @@ biPlot <- function (df = NULL, df2 = NULL, ylab = NULL, xlab = NULL, p = "p1",
       ggplot2::ylab(ylab) +
       ggplot2::xlab(xlab) +
       #ggplot2::scale_colour_brewer(palette = palette, type = type) +
-      ggplot2::theme(legend.position = "none")
+      ggplot2::theme(legend.position = c(0.85, 0.85),
+                     legend.title = ggplot2::element_blank())
 
   } else if (p == "p2") {
 

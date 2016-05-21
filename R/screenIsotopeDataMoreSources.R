@@ -124,7 +124,7 @@ screenIsotopeDataMoreSources <- function (isotopeData = NULL,
     palette <- "Set1"
     type <- "qual"
 
-    #At some point we need to take these three ggplots to an outside function
+    #At some point we need to take these three ggplots to a function outside
 
     #get the limits (to set the densities plot limits)
     x_min <- min(df$d13C)
