@@ -41,6 +41,8 @@ screenIsotopeData <- function (IsotopeData = NULL, density = "both") {
 
     } else if (length(IsotopeData) == 10){
 
+      #To do...
+
       screenIsotopeDataMoreSources(IsotopeData, density, baselines = 3)
 
     } else {warning("IsotopeData doesn't have the correct dimension.

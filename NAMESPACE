@@ -21,4 +21,3 @@ export(simulateTEF)
 export(theme0)
 export(toStacked)
 export(trophicDensityPlot)
-
