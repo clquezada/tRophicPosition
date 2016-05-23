@@ -1,247 +1,54 @@
 ---
-title: "How to use tRophicPosition from scrath"
+title: "How to use tRophicPosition from scratch"
 author: "Claudio Quezada-Romegialli & Chris Harrod"
-date: "19th of May 2016"
+date: "23th of May 2016"
 output:
-  pdf_document:
-    toc: yes
   html_document:
     toc: yes
+  pdf_document:
+    toc: yes
+  word_document: default
 ---
 
-In this vignette, we will guide you through the dangerous mission of estimate the
-trophic position of some species with stable isotopes, in a Bayesian framework.
+In this vignette, we will guide you to all the steps necessary to estimate the
+trophic position of one or more species with stable isotopes, in a Bayesian framework.
+
+# What is the trophic position
+
+Briefly introduce the reader to the subject.
+
+# Installing tRophicPosition
+
+In order to use tRophicPosition, first you have to install it, either from GitHub, a package archive file or CRAN, and then load the library into memory.
+
+## From GitHub
+
+The easiest way to install the latest version of tRophicPosition is to install it from GitHub. In this way you always will have the code updated. You have to install the release version of devtools from CRAN, and **RTools** which is necessary to use it. Install RTools from here: http://cran.r-project.org/bin/windows/Rtools/. For other operating systems (Linux, Mac) refer to the [README](https://cran.r-project.org/web/packages/devtools/README.html) of devtools.
+
+To install the devtools package from CRAN:
+```{r eval = FALSE}
+install.packages(devtools)
+```
+
+```{r eval = FALSE}
+library(devtools)
+install_github("AndrewLJackson/tRophicPosition")
+```
+
+## From a package archive file
+
+## From CRAN
+
+# Loading and saving data
+
+## Loading data from the clipboard
+
+## Loading data from a csv/txt file
+
+## Saving the data
+
+# Working with tRophicPosition
+
+## Flow chart
 
 First, we load the packages needed. Obviously [tRophicPosition](https://github.com/AndrewLJackson/tRophicPosition)
-
-```{r}
-library(tRophicPosition)
-library(ggplot2)
-```
-
-We load [ggplot2](http://ggplot2.org/) here as well because we will need it below, but 
-normally you don't have to load it, unless you use it outside of the package. It is a preety good option to plot though. In this part we will load data into R and plot it, but we have already loaded the data previously. Sometimes, loading data into R can be really complicated, so I suggest that you check the basics of R if you are having troubles here. You can always check google, and R-cran manuals as well, and here you fill one useful link: [Quick-R](http://www.statmethods.net/input/importingdata.html).
-
-```{r}
-#Here we load the Orestias and Rainbow trout data
-data(Orestias_trout)
-
-#Then we check the header of the recently loaded file
-head(Orestias_trout)
-
-#And we check the type of it
-str(Orestias_trout)
-```
-
-As you see, the `Orestias_trout` file is a data.frame object, and has 62 observations of 4 variables. Species stands for all the species found, FG stands for the functional group of each species, and d13C and d15N are the stable isotope values that we will be using for this example. 
-
-Now we plot the data, in order to have a rough idea of what it looks like our isotope data:
-
-```{r}
-ggplot(data = Orestias_trout, aes(d13C, d15N, shape = FG, colour = Species)) +
-  geom_point(size = 3) + theme(legend.position = "none") +
-  theme_bw() + ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
-  xlab(expression(paste(delta^{13}, "C (\u2030)")))
-```
-
-If you have your isotope data in a spreadsheet, organized like this:
-
-d13C	|	d15N	|	dCsc	|	dNsc	|	dCb1	|	dNb1	|	deltaC	|	deltaN
----	|	---	|	---	|	---	|	---	|	---	|	---	|	---
--12,8	|	9,08	|	-18	|	4,09	|	-6,75	|	2,87	|	2,64	|	1,04
--12,9	|	9,27	|	-15,7	|	3,91	|	-12,6	|	4,22	|	2,6	|	1,2
--13,3	|	8,79	|	-18,8	|	4,45	|	-8,62	|	2,67	|	2,61	|	2,25
-NA	|	NA	|	NA	|	NA	|	-9,52	|	3,41	|	2,62	|	1,85
-
-You can copy and paste your **own data** directly from the spreadsheet, and probably this is the easiest way to enter data into R. Besides, if you enter data into R like this, it will be in the format required by tRophicPosition at the same time:
-
-```
-YourOwnDataSet <- read.table("clipboard", header=TRUE, sep="\t",
-                       dec=",", strip.white=TRUE)
-```
-
-Remember to look for differences in regional settings. You have to change the decimal (comma to point) if you are using a different locale than Spanish. The **separator** `"\t"` stands for the tab key (the one that most spreadsheets uses to separate cells). **Header** is `TRUE` because we copied the headers from the spreadsheet. This is important, as we require the each variable has its own name in R.
-
-Ok, so now we will load some data that we have previously formatted to use it in tRophicPosition:
-```{r}
-#Orestias data is organized as having each variable its own column
-data(Orestias)
-
-#Here we check the first 6 elements of the list
-head(Orestias)
-
-#And finnally we check the structure of "Orestias"
-str(Orestias)
-```
-
-As you see, it is a list of 8 named variables, and each named variable has 19 elements. If you look closer, some of the elements are "NA". This has happened because you don't have to have the exact number of isotope data for your baseline 1, that match the data for your baseline 2, or for your secondary consumer. If you have hundreds of isotope d13C and d15N values for your consumers, then it is unlikely that you will have the same amount of data for the trophic enrichment factors of N and C, right?
-
-For example, lets take a look into dC of the baseline 2:
-
-```{r}
-Orestias$dCb2
-```
-
-In order to use the data copied from the spreadsheets into R, we need to omit the NA values. We have to do the following code. With this line, we will omit every `NA` that appears in everyone of the named variables of _Orestias_.
-
-```{r}
-IsotopeData <- lapply(Orestias, na.omit)
-```
-
-And now we are ready to proceed. The first function we will use is screenIsotopeData. This function receives a named list (like the one we just set up) and screen the data.
-
-```{r}
-screenIsotopeData(IsotopeData)
-```
-
-This output is really easy to interpret. We have one secondary consumer (our _Orestias_ fish from the High Andean of Chile: the red points), and a number of individuals that are our two baselines (the green and blue points). For now we won't concentrate on the amount of data (as you see, the baseline observations are not too many), but we will look into the density functions that are above and to the right of the main plot. There you will see how the d13C values of each baselines overlaps with the consumer, and at the same time you will see how the d15N overlaps (or not) between the two baselines.
-
-Now we are reaty to move one and build our first JAGS based Bayesian model in R. JAGS stands for Just Another Gibbs Sampler. It is a program for the analysis of Bayesian hierarchical models using Markov Chain Monte Carlo (MCMC) simulation, and uses BUGS syntaxis for it. You definitely have to check [JAGS website](http://mcmc-jags.sourceforge.net/) and [BUGS website](http://www.openbugs.info/) if you are just entering into Bayesian models.
-
-with the following line, you will define a JAGS model with two baselines for the calculation of the trophic position:
-```{r}
-model.string <- jagsTwoBaselines()
-```
-
-We have three options now: `jagsOneBaseline()`, `jagsTwoBaselines()` and `jagsTwoBaselinesFull()`. The difference between them is the number of baselines, and if you use only deltaN as trophic enrichment factor, or you use both deltaN and deltaC as trophic enrichment factors.
-
-After defining the model, we need to set up it. This is 1) feed the model with data, 2) state the actual model, 3) set up the number of chains, and 4) state how long will be the adaptative phase.
-
-This is really easy:
-
-```{r}
-# Here we set up the model
-model <- TPmodel(data = IsotopeData,
-                 model.string = model.string,
-                 n.chains = 2,
-                 n.adapt = 100000)
-```
-
-Note here that we fed the model with more data that it used (deltaC). When there is more data that the variables that the model needs, it will warn you. The problem will appear when you don't send enough data, so always check how many variables (and the type of them) the model will need.
-
-Now we are ready to sample the parameters we want:
-```{r}
-# and sample our parameters of interest
-samp <- posteriorTP(model, c("TP", "muDeltaN", "alpha"))
-```
-
-Note here that all of the posterior samples (2 chains in parallel) were saved into the `samp` variable. As we didn't state how many iterations we want, the default is 10,000 iterations. You always can check the help for every function adding "?" at the beggining of a function: `?posteriorTP`.
-
-Now we will se the summary of all the posterior samples for our three variables:
-```{r}
-summary(samp)
-```
-
-And finally we can plot the data:
-```{r}
-plot(samp)
-```
-
-If we want to compare the posterior estimates of trophic position of our species with another species, we have to use this trick:
-
-```{r}
-#Here we save the mcmc sampled posterior trophic position (only first chain)
-Orestias.TP <- as.data.frame(samp[[1]][,"TP"])$var1
-
-#And then we combine it with the posterior samples from the second chain
-Orestias.TP <- c(Orestias.TP,as.data.frame(samp[[2]][,"TP"])$var1)
-
-#And here we check the structure of Orestias.TP
-str(Orestias.TP)
-```
-
-So, we have now 20,000 posterior estimates of the trophic position of _Orestias_, given two baselines, and given a trophic enrichment factor for deltaN. We will repeat the same process now for the trout, and see if they are different each other:
-
-
-```{r}
-#Here we load the data for the trout
-data(Trout)
-
-#omit the NA from them
-IsotopeData <- lapply(Trout, na.omit)
-
-#screen the Isotope Data
-screenIsotopeData(IsotopeData)
-
-#And define the two baselines model as a string
-model.string <- jagsTwoBaselines()
-```
-
-Because we didn't know the trophic enrichment factor for the _Orestias_, we used above the trophic enrichment factor that kindly shared with Us Jon Grey, which is a fairly neutral TEF for all fishes. But for the Rainbow Trout there is a lot of information, so we will use the deltaN TEF from McCutchan et al. (2003). For this, we will use the function `TEF()`.
-
-```{r}
-IsotopeData$deltaN <- TEF(author = "McCutchan", element = "N", type = "rainbowTrout")
-IsotopeData$deltaN
-```
-
-Note that we just change the elements of the variable `Trout$deltaN`, keeping all of the rest intact. Now we are ready to set up the model:
-
-```{r}
-# Here we set up the model for the rainbow trout
-model <- TPmodel(data = IsotopeData,
-                 model.string = model.string,
-                 n.chains = 2)
-
-# and sample our parameters of interest
-samp <- posteriorTP(model, c("TP", "muDeltaN", "alpha"))
-
-#Then we check the summary of posterior estimates
-summary(samp)
-
-#and plot the data
-plot(samp)
-```
-
-
-And just like we did with the _Orestias_, we perform the same trick to extract the posterior samples of trophic position from the two chains:
-```{r}
-#And then combine the posterior TP samples from the two chains
-Trout.TP <- as.data.frame(samp[[1]][,"TP"])$var1
-Trout.TP <- c(Trout.TP,as.data.frame(samp[[2]][,"TP"])$var1)
-```
-
-Finally, we will compare the two trophic position posterior estimates of both species. First, we have to merge them in a data frame.
-
-```{r}
-##################
-#Orestias vs trout
-
-#Now we build a data frame combining both TP and creating a Species factor
-TP <- c(Orestias.TP, Trout.TP)
-Species <- c(rep("Orestias chungarensis", length(Orestias.TP)),
-             rep("Onchorhynchus mykiss", length(Trout.TP)))
-
-df <- data.frame(TP, Species)
-```
-
-Here you will see that the posterior estimates are not the best. This is likely for two reasons: 1) we have poor data for trophic enrichment factor of deltaN, only 4 values. and 2) we have poor data for the two baselines. Considering all that uncertainty, we have a posterior estimate of trophic position of Rainbow Trout in an High Andean stream.
-
-And now we plot them with the functions of the package:
-```{r}
-# Here we use the function for plotting trophic position grouped without
-# quantiles (that is the default)
-trophicDensityPlot(df)
-
-#Or we can add quantiles
-trophicDensityPlot(df, quantiles = TRUE)
-
-#Or we can plot one species separated from the another
-# (by default this plot flip the coordinates)
-trophicDensityPlot(df, grouped = FALSE)
-
-#Or we can add quantiles and separate the plot per the Species factor
-trophicDensityPlot(df, quantiles = TRUE, grouped = FALSE)
-```
-
-Because the posterior samples are the same kind of information of the MCMC samples from SIBER, we can borrow one function to plot the data:
-```{r}
-#Or we can borrow from siber the density plot function ;)
-SIBER::siberDensityPlot(data.frame(Orestias.TP, Trout.TP))
-```
-
-And we can test for differences, with the function `compareTwoDistributions`:
-```{r}
-#And finally, we test for differences in a Bayesian way
-compareTwoDistributions(Orestias.TP, Trout.TP, ">=", sample = 20000, replace = F)
-```
-
