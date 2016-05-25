@@ -2,7 +2,7 @@
 % Please edit documentation in R/checkNames.R
 \name{checkNames}
 \alias{checkNames}
-\title{Internal function that check the names.}
+\title{Internal function that check the names of a list.}
 \usage{
 checkNames(df = NULL, baselines = NULL)
 }

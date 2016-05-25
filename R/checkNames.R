@@ -1,4 +1,4 @@
-#' Internal function that check the names.
+#' Internal function that check the names of a list.
 #'
 #' Not intended to be used by the user.
 #'
@@ -13,14 +13,14 @@
 checkNames <- function (df = NULL, baselines = NULL) {
 
   if (baselines == 1) {
-    namesDF <- c("dNb1", "dCb1", "dNsc", "dCsc", "deltaN")
+    namesDF <- c("dNb1", "dCb1", "dNsc", "dCsc")
 
   } else if (baselines == 2) {
-    namesDF <- c("dNb1", "dNb2", "dCb1", "dCb2", "dNsc", "dCsc", "deltaN")
+    namesDF <- c("dNb1", "dNb2", "dCb1", "dCb2", "dNsc", "dCsc")
 
   } else if (baselines == 3) {
     namesDF <- c("dNb1", "dNb2", "dNb3", "dCb1", "dCb2", "dCb3", "dNsc",
-                 "dCsc", "deltaN")
+                 "dCsc")
 
   } else {
 
