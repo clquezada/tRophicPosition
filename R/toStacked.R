@@ -1,4 +1,4 @@
-#' Internal function that stack variables from a named list.
+#' Internal function that stack variables from a named list into a data frame.
 #'
 #' Not intended to be used by the user.
 #'

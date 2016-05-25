@@ -1,0 +1,63 @@
+Species	FG	d13C	d15N
+Amphipod	Baseline	-18.01196599	4.090707942
+Amphipod	Baseline	-15.7457071	3.914633069
+Bivalve	Baseline	-6.756631631	2.871995779
+Bivalve	Baseline	-12.69629824	4.223670466
+Bivalve	Baseline	-8.627629988	2.674563177
+Bivalve	Baseline	-8.654645161	2.896213325
+Coleoptra	Baseline	-18.88835826	4.451877302
+Corixid	Baseline	-16.02858801	4.976480564
+Stonefly	Baseline	-15.19337525	4.245888467
+Orestias	Consumer	-12.85859995	9.082380658
+Orestias	Consumer	-12.93754625	9.272941684
+Orestias	Consumer	-13.31186484	8.790593286
+Orestias	Consumer	-13.74707258	8.939349207
+Orestias	Consumer	-14.71790366	8.312475511
+Orestias	Consumer	-12.27741706	8.623401386
+Orestias	Consumer	-13.23212764	8.385376648
+Orestias	Consumer	-16.09253951	7.961659907
+Orestias	Consumer	-14.90881876	8.136133131
+Orestias	Consumer	-13.42239124	8.614134466
+Orestias	Consumer	-15.07653839	8.566662105
+Orestias	Consumer	-13.62005505	8.851406375
+Orestias	Consumer	-13.26374246	8.563994543
+Orestias	Consumer	-14.48745579	8.527098811
+Orestias	Consumer	-13.16102657	8.33896172
+Orestias	Consumer	-14.26286125	9.209100654
+Orestias	Consumer	-11.96360359	7.992309806
+Orestias	Consumer	-14.40134722	8.444662542
+Orestias	Consumer	-14.90673938	8.64554862
+Rainbow trout	Consumer	-14.71510196	7.612520787
+Rainbow trout	Consumer	-14.2412658	7.735474153
+Rainbow trout	Consumer	-14.03445272	7.726341614
+Rainbow trout	Consumer	-15.20159075	7.878569579
+Rainbow trout	Consumer	-17.85987863	7.235800376
+Rainbow trout	Consumer	-13.65093886	7.605087616
+Rainbow trout	Consumer	-14.59465762	5.836396965
+Rainbow trout	Consumer	-16.30945138	6.937318133
+Rainbow trout	Consumer	-12.15973449	8.034906075
+Rainbow trout	Consumer	-22.18655637	6.684540578
+Rainbow trout	Consumer	-21.50125883	6.660218792
+Rainbow trout	Consumer	-15.84486187	7.369700068
+Rainbow trout	Consumer	-17.68066213	7.148499556
+Rainbow trout	Consumer	-16.24585391	7.25595259
+Rainbow trout	Consumer	-15.39944521	8.54260786
+Rainbow trout	Consumer	-11.15357461	7.046598831
+Rainbow trout	Consumer	-13.80251734	6.683067632
+Rainbow trout	Consumer	-14.95682946	6.023561378
+Rainbow trout	Consumer	-14.84564513	6.195987514
+Rainbow trout	Consumer	-15.03879698	6.52212273
+Rainbow trout	Consumer	-14.91990541	5.932373296
+Rainbow trout	Consumer	-7.990625801	6.049043776
+Rainbow trout	Consumer	-10.99876539	5.493323445
+Rainbow trout	Consumer	-13.67506542	6.444487519
+Rainbow trout	Consumer	-11.33662648	7.91709725
+Rainbow trout	Consumer	-18.76892294	8.387660011
+Rainbow trout	Consumer	-15.34180075	6.498887148
+Rainbow trout	Consumer	-16.1756851	6.543971278
+Rainbow trout	Consumer	-15.65087223	6.339310601
+Rainbow trout	Consumer	-14.45797868	6.238544115
+Rainbow trout	Consumer	-13.68780289	6.440333172
+Rainbow trout	Consumer	-12.86971275	6.191774413
+Rainbow trout	Consumer	-17.07345618	6.642029557
+Rainbow trout	Consumer	-12.26858363	6.648872681

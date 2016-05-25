@@ -31,9 +31,18 @@ screenIsotopeData <- function (IsotopeData = NULL, density = "both") {
     #So, instead of checking the length of the list, we will check first if the
     #object has the required class. Maybe, the class will inform the length
     #(dimension) of the list and some other nice information.
-    if (length(IsotopeData) == 6) {
+
+    if (length(IsotopeData) == 5) {
 
       screenIsotopeDataMoreSources(IsotopeData, density, baselines = 1)
+
+    } else if (length(IsotopeData) == 6) {
+
+      screenIsotopeDataMoreSources(IsotopeData, density, baselines = 1)
+
+    } else if (length(IsotopeData) == 7) {
+
+      screenIsotopeDataMoreSources(IsotopeData, density, baselines = 2)
 
     } else if (length(IsotopeData) == 8) {
 

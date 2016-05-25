@@ -2,7 +2,7 @@
 % Please edit documentation in R/toStacked.R
 \name{toStacked}
 \alias{toStacked}
-\title{Internal function that stack variables from a named list.}
+\title{Internal function that stack variables from a named list into a data frame.}
 \usage{
 toStacked(isotopeData = NULL, baselines = 1)
 }
