@@ -45,12 +45,12 @@ screenIsotopeDataMoreSources <- function (isotopeData = NULL,
       names(b) <- c("sd_d13C", "sd_d15N")
       b1.meansSDs <- data.frame(a, b, Factor="Baseline 1")
 
-      df.sc <- df[which(df$Factor=="Secondary consumer"),c("d13C","d15N")]
+      df.sc <- df[which(df$Factor=="Consumer"),c("d13C","d15N")]
       a <- lapply(df.sc, mean)
       names(a) <- c("mean_d13C", "mean_d15N")
       b <- lapply(df.sc, sd)
       names(b) <- c("sd_d13C", "sd_d15N")
-      sc.meansSDs <- data.frame(a, b, Factor="Secondary consumer")
+      sc.meansSDs <- data.frame(a, b, Factor="Consumer")
 
       df2 <- rbind(sc.meansSDs, b1.meansSDs)
 
@@ -73,12 +73,12 @@ screenIsotopeDataMoreSources <- function (isotopeData = NULL,
       names(b) <- c("sd_d13C", "sd_d15N")
       b2.meansSDs <- data.frame(a, b, Factor="Baseline 2")
 
-      df.sc <- df[which(df$Factor=="Secondary consumer"), c("d13C","d15N")]
+      df.sc <- df[which(df$Factor=="Consumer"), c("d13C","d15N")]
       a <- lapply(df.sc, mean)
       names(a) <- c("mean_d13C", "mean_d15N")
       b <- lapply(df.sc, sd)
       names(b) <- c("sd_d13C", "sd_d15N")
-      sc.meansSDs <- data.frame(a, b, Factor="Secondary consumer")
+      sc.meansSDs <- data.frame(a, b, Factor="Consumer")
 
       df2 <- rbind(sc.meansSDs, b1.meansSDs, b2.meansSDs)
 
@@ -107,12 +107,12 @@ screenIsotopeDataMoreSources <- function (isotopeData = NULL,
       names(b) <- c("sd_d13C", "sd_d15N")
       b3.meansSDs <- data.frame(a, b, Factor="Baseline 3")
 
-      df.sc <- df[which(df$Factor=="Secondary consumer"), c("d13C","d15N")]
+      df.sc <- df[which(df$Factor=="Consumer"), c("d13C","d15N")]
       a <- lapply(df.sc, mean)
       names(a) <- c("mean_d13C", "mean_d15N")
       b <- lapply(df.sc, sd)
       names(b) <- c("sd_d13C", "sd_d15N")
-      sc.meansSDs <- data.frame(a, b, Factor="Secondary consumer")
+      sc.meansSDs <- data.frame(a, b, Factor="Consumer")
 
       df2 <- rbind(sc.meansSDs, b1.meansSDs, b2.meansSDs, b3.meansSDs)
     }

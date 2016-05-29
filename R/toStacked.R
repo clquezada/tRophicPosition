@@ -21,7 +21,7 @@ toStacked <- function (isotopeData = NULL, baselines = 1){
 
         df <- data.frame(d13C = isotopeData$dCsc,
                          d15N =isotopeData$dNsc,
-                         Factor = rep("Secondary consumer",
+                         Factor = rep("Consumer",
                                       length(isotopeData$dCsc)))
 
         df <- rbind (df, data.frame(d13C = isotopeData$dCb1,
@@ -38,7 +38,7 @@ toStacked <- function (isotopeData = NULL, baselines = 1){
 
         df <- data.frame(d13C = isotopeData$dCsc,
                          d15N =isotopeData$dNsc,
-                         Factor = rep("Secondary consumer",
+                         Factor = rep("Consumer",
                                       length(isotopeData$dCsc)))
 
         df <- rbind (df, data.frame(d13C = isotopeData$dCb1,
@@ -60,7 +60,7 @@ toStacked <- function (isotopeData = NULL, baselines = 1){
 
         df <- data.frame(d13C = isotopeData$dCsc,
                          d15N =isotopeData$dNsc,
-                         Factor = rep("Secondary consumer",
+                         Factor = rep("Consumer",
                                       length(isotopeData$dCsc)))
 
         df <- rbind (df, data.frame(d13C = isotopeData$dCb1,
