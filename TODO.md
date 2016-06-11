@@ -5,3 +5,4 @@
 - [ ] Change deltaC to DELTAC (same to deltaN)
 - [ ] Check the decimal points in the vignette
 - [ ] Add the test for "=" in compareTwoDistributions()
+- [ ] Check the messages of TEF()
