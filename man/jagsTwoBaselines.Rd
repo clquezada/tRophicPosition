@@ -6,8 +6,8 @@
 \usage{
 jagsTwoBaselines(muCb1 = NULL, sigmaCb1 = NULL, muNb1 = NULL,
   sigmaNb1 = NULL, muCb2 = NULL, sigmaCb2 = NULL, muNb2 = NULL,
-  sigmaNb2 = NULL, alpha = NULL, sigmaCsc = NULL, TP = NULL,
-  sigmaNsc = NULL, muDeltaN = NULL, sigmaDeltaN = NULL, lambda = NULL)
+  sigmaNb2 = NULL, alpha = NULL, sigmaCc = NULL, TP = NULL,
+  sigmaNc = NULL, muDeltaN = NULL, sigmaDeltaN = NULL, lambda = NULL)
 }
 \arguments{
 \item{muCb1}{a distribution defining prior for mean (mu) for C of baseline 1.}
@@ -28,11 +28,11 @@ jagsTwoBaselines(muCb1 = NULL, sigmaCb1 = NULL, muNb1 = NULL,
 
 \item{alpha}{a distribution defining alpha (mixing model between 2 sources).}
 
-\item{sigmaCsc}{a distribution defining sigma (std dev) for C of consumer.}
+\item{sigmaCc}{a distribution defining sigma (std dev) for C of consumer.}
 
 \item{TP}{a distribution defining prior of trophic position.}
 
-\item{sigmaNsc}{a distribution defining sigma (std dev) for N of consumer.}
+\item{sigmaNc}{a distribution defining sigma (std dev) for N of consumer.}
 
 \item{muDeltaN}{a distribution defining prior for the mean (mu) of
 deltaN. deltaN stands for trophic enrichment factor of Nitrogen.}

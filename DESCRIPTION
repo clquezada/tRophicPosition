@@ -20,7 +20,7 @@ Description: Estimates the trophic position of a consumer relative to a baseline
     species. It implements a Bayesian approach wich combines an interface to
     the JAGS MCMC library of rjags and stable isotopes. This is the version 0.3.8.9000
     beta, so users are encouraged to test every possibility within the package
-    and send bugs and reports to trophicposition-support@googlegroups.com
+    and send bugs and reports to trophicposition-support@googlegroups.com.
 License: GPL (>= 2)
 LazyData: TRUE
 RoxygenNote: 5.0.1
