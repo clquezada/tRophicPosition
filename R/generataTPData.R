@@ -10,11 +10,11 @@
 #' is dNb1 multiplied 2 times the trophic enrichment factor.
 #' @param deltaN mean value for trophic enrichment factor
 #' @param n.obsB Number of observations for baseline. Default is 25.
-#' @param n.obsSC Number of observations for secondary consumer Default is 25.
+#' @param n.obsC Number of observations for consumer. Default is 25.
 #' @param std.devB1 Standard deviation for randomly generated observations for
 #' baseline. Default is 0.1
-#' @param std.devSC Standard deviation for randomly generated observations for
-#' secondary consumer. Default is 0.1
+#' @param std.devC Standard deviation for randomly generated observations for
+#' consumer. Default is 0.1
 #' @param n.obsDeltaN Number of observations of deltaN (trophic enrichment factor).
 #' Default is 20.
 #' @param std.devDeltaN Standard deviation for randomly generated observations for
@@ -29,10 +29,10 @@
 
 generateTPData <- function (n.baselines = 2,
                             n.obsB = 25,
-                            n.obsSC = 25,
+                            n.obsC = 25,
                             dNb1 = NULL,
                             std.devB1 = 0.1,
-                            dNsc = NULL,
+                            dNc = NULL,
                             std.devSC = 0.1,
                             n.obsDeltaN = 56,
                             deltaN = 3.4,

@@ -3,7 +3,7 @@
 #' Not intended to be used by the user.
 #'
 #' @param isotopeData a named list composed at least of 6 vectors, dNb1, dCb1,
-#' dCsc, dNsc, deltaN and deltaC
+#' dCc, dNc, deltaN and deltaC
 #' @param baselines integer stating the number of baselines.
 #'
 #' @return
@@ -19,10 +19,10 @@ toStacked <- function (isotopeData = NULL, baselines = 1){
 
       if (checkNames(isotopeData, 1)) {
 
-        df <- data.frame(d13C = isotopeData$dCsc,
-                         d15N =isotopeData$dNsc,
+        df <- data.frame(d13C = isotopeData$dCc,
+                         d15N =isotopeData$dNc,
                          Factor = rep("Consumer",
-                                      length(isotopeData$dCsc)))
+                                      length(isotopeData$dCc)))
 
         df <- rbind (df, data.frame(d13C = isotopeData$dCb1,
                                     d15N = isotopeData$dNb1,
@@ -36,10 +36,10 @@ toStacked <- function (isotopeData = NULL, baselines = 1){
 
       if (checkNames(isotopeData, 2)) {
 
-        df <- data.frame(d13C = isotopeData$dCsc,
-                         d15N =isotopeData$dNsc,
+        df <- data.frame(d13C = isotopeData$dCc,
+                         d15N =isotopeData$dNc,
                          Factor = rep("Consumer",
-                                      length(isotopeData$dCsc)))
+                                      length(isotopeData$dCc)))
 
         df <- rbind (df, data.frame(d13C = isotopeData$dCb1,
                                     d15N = isotopeData$dNb1,
@@ -58,10 +58,10 @@ toStacked <- function (isotopeData = NULL, baselines = 1){
 
       if (checkNames(isotopeData, 3)) {
 
-        df <- data.frame(d13C = isotopeData$dCsc,
-                         d15N =isotopeData$dNsc,
+        df <- data.frame(d13C = isotopeData$dCc,
+                         d15N =isotopeData$dNc,
                          Factor = rep("Consumer",
-                                      length(isotopeData$dCsc)))
+                                      length(isotopeData$dCc)))
 
         df <- rbind (df, data.frame(d13C = isotopeData$dCb1,
                                     d15N = isotopeData$dNb1,

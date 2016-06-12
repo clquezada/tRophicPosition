@@ -10,8 +10,9 @@
 #' @param model.string model string containing a description of the model
 #' @param n.adapt number of iterations for adaptation (initial sampling phase)
 #'
-#' @return \code{TPmodel} returns an object inheriting from class jags which can be used to
-#' generate dependent samples from the posterior distribution of the parameters
+#' @return \code{TPmodel} returns an object inheriting from class jags which
+#' can be used to generate dependent samples from the posterior distribution of
+#' the parameters
 #' @export
 #'
 #' @examples

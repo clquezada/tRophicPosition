@@ -62,8 +62,8 @@ jagsOneBaseline <- function (muB = NULL,
       # And likelihood for the consumer
       # NB this is where trophic position TP
       # enters the model.
-      for (i in 1:length(dNsc)) {
-        dNsc[i] ~ dnorm(mu[i], tau)
+      for (i in 1:length(dNc)) {
+        dNc[i] ~ dnorm(mu[i], tau)
         mu[i] <- muB + muDeltaN * (TP - lambda)
       }"
 
