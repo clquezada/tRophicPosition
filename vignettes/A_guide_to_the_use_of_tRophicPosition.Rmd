@@ -28,7 +28,7 @@ In this vignette we present an R package `tRophicPosition`, incorporating a Baye
 
 ## Future releases and how to get support
 
-As of 2016-05-26, we have released a beta-testing version of `tRophicPosition` (version 0.3.5.9000). You are encouraged to use it with your own data, test the package and see if there are any issues or problems. You can send your questions or commentaries to the google group [tRophicPosition-support](https://groups.google.com/d/forum/trophicposition-support) or directly to the email trophicposition-support@googlegroups.com. You can send your questions to http://stackexchange.com/ http://stackoverflow.com/ or even [Facebook](https://www.facebook.com/groups/stableisotopes/).
+As of 2016-06-12, we have released a beta-testing version of `tRophicPosition` (version 0.3.8.9000). You are encouraged to use it with your own data, test the package and see if there are any issues or problems. You can send your questions or commentaries to the google group [tRophicPosition-support](https://groups.google.com/d/forum/trophicposition-support) or directly to the email trophicposition-support@googlegroups.com. You can send your questions to http://stackexchange.com/ http://stackoverflow.com/ or even [Facebook](https://www.facebook.com/groups/stableisotopes/).
 
 We are working on future releases of `tRophicPosition`, so feedback is very much appreciated.
 
