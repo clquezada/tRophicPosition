@@ -30,7 +30,8 @@ compareTwoDistributions <- function (dist1 = NULL,
 
   if (length(dist1) != length(dist2)) {
 
-    warning("You are comparing two distributions that have different length.
+    warning("
+You are comparing two distributions that have different length.
             Although this is possible, it is likely that the two distributions
             came from different analysis, thus you need to check if the
             distributions you are comparing are those you actually want to
@@ -65,6 +66,7 @@ compareTwoDistributions <- function (dist1 = NULL,
     return(sum(dist1 >= dist2) / length(dist1))
   }
 
-  warning('Do you check that the logical operator is "<", "<=", ">"" or ">="?
+  warning('
+Do you check that the logical operator is "<", "<=", ">"" or ">="?
           Otherwise the function will not work properly.')
 }
