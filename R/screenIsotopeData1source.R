@@ -5,7 +5,7 @@
 #' future.
 #'
 #' @param isotopeData a named list composed at least of 6 vectors, dNb1, dCb1,
-#' dCsc, dNsc, deltaN and deltaC
+#' dCc, dNc, deltaN and deltaC
 #' @param type character that states if an "histogram" or a "density" will be
 #' ploted.
 #'
@@ -20,17 +20,17 @@ screenIsotopeData1source <- function (isotopeData = NULL, type = "histogram") {
 
     if (type == "histogram"){
 
-      if (min(isotopeData$dNb1) < min(isotopeData$dNsc)) {
+      if (min(isotopeData$dNb1) < min(isotopeData$dNc)) {
 
         xlimMin = min(isotopeData$dNb1)
 
       } else {
-        xlimMin = min(isotopeData$dNsc)
+        xlimMin = min(isotopeData$dNc)
       }
 
-      if (max(isotopeData$dNsc) > max(isotopeData$dNb1)) {
+      if (max(isotopeData$dNc) > max(isotopeData$dNb1)) {
 
-        xlimMax = max(isotopeData$dNsc)
+        xlimMax = max(isotopeData$dNc)
 
       } else {
 
@@ -40,19 +40,19 @@ screenIsotopeData1source <- function (isotopeData = NULL, type = "histogram") {
 
       extra = abs(xlimMax - xlimMin) * 0.3
 
-      if (length(isotopeData$dNb1) >= length(isotopeData$dNsc)) {
+      if (length(isotopeData$dNb1) >= length(isotopeData$dNc)) {
 
         hist(isotopeData$dNb1, xlim = c(xlimMin - extra, xlimMax + extra),
-             col=rgb(0, 1, 0,0.5), xlab = "isotopic value of Nitrogen",
-             main = "Basic histogram of baseline (green)\n and secondary consumer (red)")
+             col=rgb(0, 1, 0,0.5), xlab = "isotopic value of nitrogen",
+             main = "Basic histogram of baseline (green)\n and consumer (red)")
 
-        hist(isotopeData$dNsc, col=rgb(1, 0, 0,0.5), add = T)
+        hist(isotopeData$dNc, col=rgb(1, 0, 0,0.5), add = T)
 
       } else {
 
-        hist(isotopeData$dNsc, xlim = c(xlimMin - extra, xlimMax + extra),
-             col=rgb(1, 0, 0,0.5), xlab = "isotopic value of Nitrogen",
-             main = "Basic histogram of baseline (green)\n and secondary consumer (red)")
+        hist(isotopeData$dNc, xlim = c(xlimMin - extra, xlimMax + extra),
+             col=rgb(1, 0, 0,0.5), xlab = "isotopic value of nitrogen",
+             main = "Basic histogram of baseline (green)\n and consumer (red)")
 
         hist(isotopeData$dNb1, col=rgb(0, 1, 0,0.5), add = T)
 

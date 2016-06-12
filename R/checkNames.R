@@ -13,14 +13,14 @@
 checkNames <- function (df = NULL, baselines = NULL) {
 
   if (baselines == 1) {
-    namesDF <- c("dNb1", "dCb1", "dNsc", "dCsc")
+    namesDF <- c("dNb1", "dCb1", "dNc", "dCc")
 
   } else if (baselines == 2) {
-    namesDF <- c("dNb1", "dNb2", "dCb1", "dCb2", "dNsc", "dCsc")
+    namesDF <- c("dNb1", "dNb2", "dCb1", "dCb2", "dNc", "dCc")
 
   } else if (baselines == 3) {
-    namesDF <- c("dNb1", "dNb2", "dNb3", "dCb1", "dCb2", "dCb3", "dNsc",
-                 "dCsc")
+    namesDF <- c("dNb1", "dNb2", "dNb3", "dCb1", "dCb2", "dCb3", "dNc",
+                 "dCc")
 
   } else {
 

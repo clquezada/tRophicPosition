@@ -26,9 +26,9 @@
 #' @param muNb2 a distribution defining prior for mean (mu) for N of baseline 2.
 #' @param sigmaNb2 a distribution defining sigma (std dev) for N of baseline 2.
 #' @param alpha  a distribution defining alpha (mixing model between 2 sources).
-#' @param sigmaCsc a distribution defining sigma (std dev) for C of consumer.
+#' @param sigmaCc a distribution defining sigma (std dev) for C of consumer.
 #' @param TP a distribution defining prior of trophic position.
-#' @param sigmaNsc a distribution defining sigma (std dev) for N of consumer.
+#' @param sigmaNc a distribution defining sigma (std dev) for N of consumer.
 #' @param muDeltaN a distribution defining prior for the mean (mu) of
 #' deltaN. deltaN stands for trophic enrichment factor of Nitrogen.
 #' @param sigmaDeltaN a value defining sigma (std dev) for the mean (mu) of
@@ -52,9 +52,9 @@ jagsTwoBaselinesFull <- function (muCb1 = NULL,
                               muNb2 = NULL,
                               sigmaNb2 = NULL,
                               alpha = NULL,
-                              sigmaCsc = NULL,
+                              sigmaCc = NULL,
                               TP = NULL,
-                              sigmaNsc = NULL,
+                              sigmaNc = NULL,
                               muDeltaN = NULL,
                               sigmaDeltaN = NULL,
                               muDeltaC = NULL,
@@ -105,20 +105,20 @@ jagsTwoBaselinesFull <- function (muCb1 = NULL,
   #And now we are ready to calculate the trophic position
   # ----------------------------------------------------------------------------
 
-  # Likelihood for dC of secondary consumer (dCsc) is a simple mixing model of
+  # Likelihood for dC of consumer (dCc) is a simple mixing model of
   # the dC of the two baselines
 
-  #dCsc is modelled as having a normal distribution
-  #with mean calculated with the two baselines weighted by alpha
-  for (i in 1:length(dCsc)) {
-  dCsc[i] ~ dnorm(muCb2 + muDeltaC - (alpha * (muCb2 - muCb1)), tauCsc)
+  # dCc is modelled as having a normal distribution
+  # with mean calculated with the two baselines weighted by alpha
+  for (i in 1:length(dCc)) {
+  dCc[i] ~ dnorm(muCb2 + muDeltaC - (alpha * (muCb2 - muCb1)), tauCc)
   }
 
   # ----------------------------------------------------------------------------
   # Likelihood for the nitrogen data in the consumer uses the estimated
   # proportion of baseline 1 and 2 in the consumer to inform trophic position.
-  for (i in 1:length(dNsc)){
-  dNsc[i] ~ dnorm(muDeltaN * (TP - lambda) + muNb1*alpha + muNb2 * (1 - alpha), tauNsc)
+  for (i in 1:length(dNc)){
+  dNc[i] ~ dnorm(muDeltaN * (TP - lambda) + muNb1*alpha + muNb2 * (1 - alpha), tauNc)
   }"
 
   # ----------------------------------------------------------------------------
@@ -226,12 +226,12 @@ jagsTwoBaselinesFull <- function (muCb1 = NULL,
 
   modelString <- paste (modelString, newString, sep = "\n")
 
-  if (is.null(sigmaCsc)) {
-    newString <-     "tauCsc <- pow(sigmaCsc, -2)
-    sigmaCsc ~ dunif(0, 100)"
+  if (is.null(sigmaCc)) {
+    newString <-     "tauCc <- pow(sigmaCc, -2)
+    sigmaCc ~ dunif(0, 100)"
   } else {
-    newString <- "tauCsc <- pow(sigmaCsc, -2)"
-    newString2 <- paste("sigmaCsc ~", toString(sigmaCsc))
+    newString <- "tauCc <- pow(sigmaCc, -2)"
+    newString2 <- paste("sigmaCc ~", toString(sigmaCc))
     newString <- paste(newString, newString2, sep = "\n")
   }
 
@@ -248,12 +248,12 @@ jagsTwoBaselinesFull <- function (muCb1 = NULL,
 
   modelString <- paste (modelString, newString, sep = "\n")
 
-  if (is.null(sigmaNsc)) {
-    newString <-     "tauNsc <- pow(sigmaNsc, -2)
-    sigmaNsc ~ dunif(0, 100)"
+  if (is.null(sigmaNc)) {
+    newString <-     "tauNc <- pow(sigmaNc, -2)
+    sigmaNc ~ dunif(0, 100)"
   } else {
-    newString <- "tauNsc <- pow(sigmaNsc, -2)"
-    newString2 <- paste("sigmaNsc ~", toString(sigmaNsc))
+    newString <- "tauNc <- pow(sigmaNc, -2)"
+    newString2 <- paste("sigmaNc ~", toString(sigmaNc))
     newString <- paste(newString, newString2, sep = "\n")
   }
 

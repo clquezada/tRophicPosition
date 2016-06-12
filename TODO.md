@@ -6,3 +6,4 @@
 - [ ] Check the decimal points in the vignette
 - [ ] Add the test for "=" in compareTwoDistributions()
 - [ ] Check the messages of TEF()
+- [ ] Modify generateTPData() and add to vignette

@@ -1,7 +1,7 @@
 ---
 title: "A guide to the use of tRophicPosition"
 author: "Claudio Quezada-Romegialli, Andrew L Jackson & Chris Harrod"
-date: "11th of June 2016"
+date: "12th of June 2016"
 output:
   pdf_document:
     fig_caption: yes
@@ -45,7 +45,7 @@ To install the devtools package from CRAN:
 install.packages(devtools)
 ```
 
-As of 2016-05-26, the current version of tRophicPosition available on GitHub is 0.3.5.9000. To install `tRophicPosition` use this code:
+As of 2016-06-12, the current version of tRophicPosition available on GitHub is 0.3.8.9000. To install `tRophicPosition` use this code:
 ```{r eval = FALSE}
 library(devtools)
 install_github("AndrewLJackson/tRophicPosition")
@@ -100,19 +100,11 @@ grid::grid.raster(png::readPNG(system.file("extdata", "flowchart1.png", package 
 
 Figure 1 shows a basic flow chart describing these steps. The rounded rectangles (light grey) refers to functions inside or outside the package, the grey rectangle refers to input data, and the grey rectangles with broken lines refer to optional arguments for each function. 
 
-<<<<<<< HEAD:vignettes/A_guide_to_the_use_of_tRophicPosition.Rmd
-As an example, in order to initialize the Bayesian model you just need to load Isotope Data and have previously defined Bayesian model itself. Establishing the number of baselines and defining the number of parallel chains is optional. These two arguments are defined by default in the `TPmodel()` function. Each of the functions of `tRophicPosition` have a help page, that you can refer to if you are not sure how to proceed. To access the relevant help page, simply just write a question mark before the function name and press enter in the console: e.g. `?TPmodel`.
-
-# Loading and saving data
-
-Although loading/saving data for all the packages available in R would be a desirable task, most packages use their own data formats. This is especially true with Isotope Data. We are working in a standardized way to load/save isotope data, but in the meantime, here we provide some examples on how to load isotope data into R, and get it ready to work within `tRophicPosition`. Also, if you want to reproduce the examples, or conduct your own data analysis, this task will be much easier if you save your data properly.
-=======
 As an example, in order to initialize the Bayesian model you just need to load isotope data and have previously defined the Bayesian model itself. Establishing the number of baselines and defining the number of parallel chains is optional. These two arguments are defined by default in the `TPmodel()` function. Each of the functions of `tRophicPosition` have a help page, that you can refer to if you are not sure how to proceed. To access the relevant help page, simply write a question mark before the function name and press enter in the console: e.g. `?TPmodel`.
 
 # Loading and saving data
 
 Although loading/saving data for all the packages available in R would be a desirable task, most packages use their own data formats. This is especially true with isotope data. We are working in a standardized way to load/save isotope data, but in the meantime, here we provide some examples on how to load isotope data into R, and get it ready to work within `tRophicPosition`. Also, if you want to reproduce the examples, or conduct your own data analysis, this task will be much easier if you save your data properly.
->>>>>>> master:vignettes/A_guide_to_the_use_of_tRophicPosition.Rmd
 
 ## Loading data from the clipboard
 
@@ -305,6 +297,10 @@ Trout <- list("dNb1" = dNb1, "dCb1" = dCb1, "dNb2" = dNb2,
               "dCb2" = dCb2, "dNc" = dN_Trout, "dCc" = dC_Trout)
 ```
 
+```{r echo=FALSE, fig.cap='Basic flowchart of loading and saving isotope data.'}
+grid::grid.raster(png::readPNG(system.file("extdata", "flowchart2.png", package = "tRophicPosition")))
+```
+
 ## Generating TEFs
 
 At this point we have manipulated a data frame that has stacked information of two fish species, and two baselines. we are missing an essential component of the model to estimate TP, namely the trophic enrichment factor (TEF). We have several options – we can simply use $\Delta$N (the TEF for nitrogen) when using a single or dual baseline model, or we can include $\Delta$C to account for shifts in C between baseline and consumers (as Post 2002).
@@ -314,10 +310,6 @@ As to the actual TEFs used in the model, there are 3 options (Figure 2):
 1. Use your own empirical values for TEFs, that correspond to an experiment for your model organism;
 2. Use 'standard' TEFs from the inbuilt bibliography in `tRophicPosition` (e.g. Post 2002, McCutchan et al. 2003); or
 3. Use a mean, SD and n to simulate some TEF values, i.e. to follow a published TEF for your taxa of interest.
-
-```{r echo=FALSE, fig.cap='Basic flowchart of loading and saving isotope data.'}
-grid::grid.raster(png::readPNG(system.file("extdata", "flowchart2.png", package = "tRophicPosition")))
-```
 
 In this flow chart, light grey rectangles refer to functions within `tRophicPosition`, grey rectangles are input/output data, and white rectangles are questions on how to proceed. 
 
@@ -375,10 +367,6 @@ In this example we have replaced the `deltaN` and `deltaC` values of `YourOwnNam
 # Defining the Bayesian model for trophic position
 
 Now that we have introduced the basics of loading and saving isotope data, and you are able to generate or simulate trophic enrichment factors values, we are ready to get into the core of `tRophicPosition`. Depending on how many baselines you have, and if you want to use the simple ($\Delta$N only), dual ($\Delta$N, two baselines) or the full (both $\Delta$N and $\Delta$C, two baselines) model, you may choose among the three Bayesian models we have implemented in `tRophicPosition`. This is shown in Figure 3.
-
-```{r echo=FALSE, fig.cap='Basic flowchart for defining the Bayesian model for the estimation of trophic position.'}
-grid::grid.raster(png::readPNG(system.file("extdata", "flowchart3.png", package = "tRophicPosition")))
-```
 
 ## Only one baseline
 
@@ -667,24 +655,3 @@ colnames(df2) <- c("Orestias chungarensis", "Oncorhynchus mykiss")
 SIBER::siberDensityPlot(df2, xlab = "Species",
                         ylab = "Trophic Position")
 ```
-
-
-# Some tricks
-
-## Generating random isotope data
-
-If you do not have your own data, then you can use the function `generateTPData()`. Every time you call this function, it will generate some random data for use within the package. This is useful for us to check the performance of the package, and it may be helpful to you, if you don't have data and want to test the package.
-
-The function `generateTPData()` return a named list, so you have to assign it to a variable:
-
-```{r}
-myRandomData <- generateTPData()
-```
-
-And afterwards, you can plot the data:
-
-```{r}
-screenIsotopeData(myRandomData)
-```
-
-Remember, every function has its own help file, so if you don't know what arguments receives a function, or you are not sure what kind of data it returns, then use a "?" before the function you want to get help of: `?generateTPData`.

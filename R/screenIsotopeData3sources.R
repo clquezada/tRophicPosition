@@ -5,7 +5,7 @@
 #' the siar version of tRophicPosition.
 #'
 #' @param isotopeData a named list composed at least of 6 vectors, dNb1, dCb1,
-#' dCsc, dNsc, deltaN and deltaC.
+#' dCc, dNc, deltaN and deltaC.
 #' @param density a character that might plot the density function.
 #'
 #' @return

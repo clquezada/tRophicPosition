@@ -11,10 +11,10 @@
 
 reOrder <- function (df = NULL){
 
-  df <- data.frame(d13C = isotopeData$dCsc,
-                   d15N =isotopeData$dNsc,
+  df <- data.frame(d13C = isotopeData$dCc,
+                   d15N =isotopeData$dNc,
                    Factor = rep("Secondary consumer",
-                                length(isotopeData$dCsc)))
+                                length(isotopeData$dCc)))
 
   df <- rbind (df, data.frame(d13C = isotopeData$dCb1,
                               d15N = isotopeData$dNb1,
