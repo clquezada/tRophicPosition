@@ -1,22 +1,22 @@
 ---
 title: "A guide to the use of tRophicPosition"
 author: "Claudio Quezada-Romegialli, Andrew L Jackson & Chris Harrod"
-date: "10th of June 2016"
+date: "11th of June 2016"
 output:
-  word_document: default
   pdf_document:
     fig_caption: yes
     toc: yes
   html_document:
     fig_caption: yes
     toc: yes
+  word_document: default
 ---
 
 # Introduction
 
 In this vignette, we will guide you through the necessary steps to estimate trophic position (TP) of groups of consumers using stable isotope ratios, in a Bayesian framework.
 
-## What is TP
+## What is TP?
 
 Stable isotopes have proven ability to capture the complexity of trophic interactions, to identify energy sources and to infer consumer trophic position. **Trophic position** is an important concept used to describe the ecological role of consumers in food webs – it tells us on average how many tropic levels are there between the consumer and the primary producers fueling the food web. However, current methods used to estimate TP using $\delta^{15}$N stable isotopes are limited and do not fulfil the full potential of the isotopic approach. 
 
@@ -63,7 +63,7 @@ install.packages(file.choose(), repos = NULL)
 When the package is finally available on CRAN, you will be able to install it using this code:
 
 ```{r eval = FALSE}
-install.packages(tRophicPosition)
+install.packages("tRophicPosition")
 ```
 
 # Working with `tRophicPosition`
@@ -81,7 +81,7 @@ packageDescription("tRophicPosition")$Version
 
 The basic use of `tRophicPosition` is outlined in Figure 1. Briefly, it involves:
 
-1. Load Isotope Data into R: from csv, txt (both common extensions of text files) or xlsx/ods (spreadsheet) files, the clipboard or other preferred source you like. Data can be organized either as a data frame with 4 variables ($\delta^{13}$C, $\delta^{15}$N, Functional Group and Species) or a named list (N and C isotope values for your consumer, one or more baselines, and trophic enrichment factors). We will cover how to load and manipulate data in detail in this vignette.
+1. Load isotope data into R: from csv, txt (both common extensions of text files) or xlsx/ods (spreadsheet) files, the clipboard or other preferred source you like. Data can be organized either as a data frame with 4 variables ($\delta^{13}$C, $\delta^{15}$N, Functional Group and Species) or a named list (N and C isotope values for your consumer, one or more baselines, and trophic enrichment factors). We will cover how to load and manipulate data in detail in this vignette.
 
 2. Define a Bayesian model for the calculation of trophic position. Here you have to select a model that reflects your scientific question from the following options:
   + One baseline model, using the ` jagsOneBaseline()` function,
@@ -100,17 +100,25 @@ grid::grid.raster(png::readPNG(system.file("extdata", "flowchart1.png", package 
 
 Figure 1 shows a basic flow chart describing these steps. The rounded rectangles (light grey) refers to functions inside or outside the package, the grey rectangle refers to input data, and the grey rectangles with broken lines refer to optional arguments for each function. 
 
+<<<<<<< HEAD:vignettes/A_guide_to_the_use_of_tRophicPosition.Rmd
 As an example, in order to initialize the Bayesian model you just need to load Isotope Data and have previously defined Bayesian model itself. Establishing the number of baselines and defining the number of parallel chains is optional. These two arguments are defined by default in the `TPmodel()` function. Each of the functions of `tRophicPosition` have a help page, that you can refer to if you are not sure how to proceed. To access the relevant help page, simply just write a question mark before the function name and press enter in the console: e.g. `?TPmodel`.
 
 # Loading and saving data
 
 Although loading/saving data for all the packages available in R would be a desirable task, most packages use their own data formats. This is especially true with Isotope Data. We are working in a standardized way to load/save isotope data, but in the meantime, here we provide some examples on how to load isotope data into R, and get it ready to work within `tRophicPosition`. Also, if you want to reproduce the examples, or conduct your own data analysis, this task will be much easier if you save your data properly.
+=======
+As an example, in order to initialize the Bayesian model you just need to load isotope data and have previously defined the Bayesian model itself. Establishing the number of baselines and defining the number of parallel chains is optional. These two arguments are defined by default in the `TPmodel()` function. Each of the functions of `tRophicPosition` have a help page, that you can refer to if you are not sure how to proceed. To access the relevant help page, simply write a question mark before the function name and press enter in the console: e.g. `?TPmodel`.
+
+# Loading and saving data
+
+Although loading/saving data for all the packages available in R would be a desirable task, most packages use their own data formats. This is especially true with isotope data. We are working in a standardized way to load/save isotope data, but in the meantime, here we provide some examples on how to load isotope data into R, and get it ready to work within `tRophicPosition`. Also, if you want to reproduce the examples, or conduct your own data analysis, this task will be much easier if you save your data properly.
+>>>>>>> master:vignettes/A_guide_to_the_use_of_tRophicPosition.Rmd
 
 ## Loading data from the clipboard
 
 In order to work with `tRophicPosition`, you can have your isotope data in a spreadsheet, organized like this:
 
-dCsc	|	dNsc	|	dCb1	|	dNb1	|	dCb2	|	dNb2	|	deltaC	|	deltaN
+dCc	|	dNc	|	dCb1	|	dNb1	|	dCb2	|	dNb2	|	deltaC	|	deltaN
 ---	|	---	|	---	|	---	|	---	|	---	|	---	|	---
 -12,8	|	9,1	|	-18	|	4,1	|	-6,8	|	2,9	|	2,6	|	1,1
 -12,9	|	9,3	|	-15,7	|	3,9	|	-12,6	|	4,2	|	2,6	|	1,2
@@ -119,9 +127,9 @@ NA	|	NA	|	NA	|	NA	|	-9,5	|	3,4	|	2,6	|	1,9
 
 In this example, each column of the spreadsheet may have several isotope values, and each column may have a different number of values as well. An example of a spreadsheet formatted like this can be found [here]( https://github.com/clquezada/tRophicPosition/blob/master/Spreadsheet_example.xlsx?raw=true).
 
-You can copy to the clipboard a table like the one in the example, with your **own data** directly from the spreadsheet, and probably this is the easiest way to enter data into R. Besides, if you enter data like this (using the exact headers in the example above), it will be in the exact **format required** by `tRophicPosition`. The headers stands for the following, *dCsc* is $\delta^{13}$C of the secondary consumer, *dNsc* is $\delta^{15}$N of the secondary consumer, *dCb1* is $\delta^{13}$C of the baseline 1, *dNb1* is $\delta^{15}$N of the baseline 1, *dCb2* is $\delta^{13}$C of the baseline 2, *dNb2* is $\delta^{15}$N of the baseline 2, *deltaC* is $\Delta$C (TEF) for carbon and *deltaN* is $\Delta$N (TEF) for nitrogen. The order of the columns does not have to be the same, but all the columns must be there if you have two baselines available. If you have only one baseline, then you can have less columns (at least dCsc, dNsc, dNb1m, dCb1 and deltaN if you want to plot the data).
+You can copy to the clipboard a table like the one in the example, with your **own data** directly from the spreadsheet, and probably this is the easiest way to enter data into R. Besides, if you enter data like this (using the exact headers in the example above), it will be in the exact **format required** by `tRophicPosition`. The headers stands for the following, *dCc* and *dNc* are both $\delta^{13}$C and $\delta^{15}$N of the consumer we want to calculate the trophic position of, *dCb1* is $\delta^{13}$C of the baseline 1, *dNb1* is $\delta^{15}$N of the baseline 1, *dCb2* is $\delta^{13}$C of the baseline 2, *dNb2* is $\delta^{15}$N of the baseline 2, *deltaC* is $\Delta$C (TEF) for carbon and *deltaN* is $\Delta$N (TEF) for nitrogen. The order of the columns does not have to be the same, but all the columns must be there if you have two baselines available. If you have only one baseline, then you can have less columns (at least dCc, dNc, dNb1, dCb1 and deltaN if you want to plot the data).
 
-Once you have selected all the data (remember to check that you have 8 columns in the [spreadsheets example])( https://github.com/clquezada/tRophicPosition/blob/master/Spreadsheet_example.xlsx?raw=true), copy it to the clipboard, and then use this code in R:
+Once you have selected all the data (remember to check that you have 8 columns in the [spreadsheets example]( https://github.com/clquezada/tRophicPosition/blob/master/Spreadsheet_example.xlsx?raw=true), copy it to the clipboard, and then use this code in R:
 
 ```{r eval = FALSE}
 YourOwnDataSet <- read.table("clipboard", header=TRUE, sep="\t",
@@ -141,12 +149,12 @@ YourOwnDataSet
 
 You can access every column from "YourOwnDataSet" adding a "$" and the name of the variable at the end, for example try:
 ```{r eval=FALSE}
-YourOwnDataSet$dCsc
+YourOwnDataSet$dCc
 ```
 
 ## Loading data from a csv/txt file
 
-Another possibility is to have the data in a plaintext ASCII file, either as a comma separated value (csv) or as a plaintext (txt) file. It is worth noting that the filename extension not necesarilly reflects the format of the file. If you change the extension of a ".txt" file into ".csv", the content and the format of the file will remain as plaintext and will not change into a "comma separated value (csv)" file. Here we mention "txt file" not referring to its extension, but the format of the file. Same applies for csv or xls files (in the latter, we refer to xls as a standard spreadsheet, not necesarilly referring to the propietary format/file extension of Microsoft Excel).
+Another possibility is to have the data in a plaintext ASCII file, either as a comma separated value (csv) or as a plaintext (txt) file. It is worth noting that the filename extension not necesarilly reflects the format of the file. If you change the extension of a ".txt" file into ".csv", the content and the format of the file will remain as plaintext and will not change into a "comma separated value (csv)" file. Here we mention "txt file" not referring to its extension, but to the format of the file. Same applies for csv or xls/xlsx files (in the latter, we refer to xls/xlsx as a standard spreadsheet, not necesarilly referring to the propietary format/file extension of Microsoft Excel).
 
 In the following example, we will enter data into R from a txt tab delimited file that has the following structure (download this txt example from [here](https://github.com/clquezada/tRophicPosition/blob/master/Altiplano.txt?raw=true)):
 
@@ -159,7 +167,9 @@ Bivalve | Baseline | -12.7 | 4.2	|
 Bivalve | Baseline | -8.6 | 2.7	|
 Bivalve | Baseline | -8.7 | 2.9	|
 
-This file includes data from two species of fish - one endemic native (killifish *Orestias chungarensis*) and one invasive (juvenile rainbow trout *Oncorhynchus mykiss*) that live sympatrically in a high altitude small river (Río Chungará) in the North of Chile. Also included are invertebrates that we will use to form an isotopic baseline (primary consumers with a putative trophic level of 2). We will use these data to estimate the trophic position of the two fishes and to examine if there are differences between the native and invasive species. As you see, this txt file has 4 columns. The first column details the species, then the second column has the functional group, and the last two columns have the isotope values. In order to load a txt file organized like this [txt file](https://github.com/clquezada/tRophicPosition/blob/master/Altiplano.txt?raw=true) we will use the following code:
+This file includes data from two species of fish - one endemic native (killifish *Orestias chungarensis*) and one invasive (juvenile rainbow trout *Oncorhynchus mykiss*) that live sympatrically in a high altitude small river (Río Chungará) in the North of Chile. Also included are invertebrates that we will use to form an isotopic baseline (primary consumers with a putative trophic level of 2). We will use these data to estimate the trophic position of the two fishes and to examine if there are differences between the native and invasive species. 
+
+As you see, this txt file has 4 columns. The first column details the species, then the second column has the functional group, and the last two columns have the isotope values. In order to load a txt file organized like this [txt file](https://github.com/clquezada/tRophicPosition/blob/master/Altiplano.txt?raw=true) we will use the following code:
 
 ```{r eval=FALSE}
 # This code will open up a dialog to choose the file you just downloaded
@@ -182,15 +192,15 @@ If everything went well, we can check the structure of the data:
 str(Altiplano)
 ```
 
-When you open a txt file with the `read.table()` function, you get a data.frame object, and in this case it has 62 observations of 4 variables. In this example Species provides information on the species examined, FG stands for the functional group of each species (i.e. baselines or consumers), and d13C and d15N are the stable isotope values associated with each sample.
+When you open a txt file with the `read.table()` function, you get a data.frame object, and in this case it has 62 observations of 4 variables. In this example `Species` provides information on the species examined, `FG` stands for the functional group of each species (i.e. baselines or consumers), and `d13C` and `d15N` are the stable isotope values associated with each sample.
 
 ## Saving the data
 
-If you could copy some data from the spreadsheet to the clipboard, and then you were able to enter it into R (with the `read.table("clipboard")` function), you will have an object stored in the *R Environment*. If you didn't change the name, that object is called `YourOwnDataSet`. This object is a data frame.
+If you could copy some data from the spreadsheet to the clipboard, and then you were able to enter it into R (with the `read.table("clipboard")` function), you will have an object stored in the *R Environment*. If you did not change the name, that object is called `YourOwnDataSet`. This object is a data frame.
 
 If you downloaded the txt file and you could open it (using `read.table(file.choose())`), you will also have an object called `Altiplano`, which is also a data frame.
 
-If you want to save the data from the spreadsheet to reuse it later, you can use the `save()` function. In order to save an object you have use a code like this:
+If you want to save the data from the spreadsheet to reuse it later, you can use the `save()` function. In order to save an object you have to use a code like this:
 
 ```{r eval=FALSE}
 save(Altiplano, file = "Altiplano_fish_from_txt_file")
@@ -278,7 +288,7 @@ And now we combine these variables together, in a named list (could be a data fr
 
 ```{r}
 Orestias <- list("dNb1" = dNb1, "dCb1" = dCb1, "dNb2" = dNb2,
-                 "dCb2" = dCb2, "dNsc" = dN_Orestias, "dCsc" = dC_Orestias)
+                 "dCb2" = dCb2, "dNc" = dN_Orestias, "dCc" = dC_Orestias)
 ```
 
 Why is important to make a named list? Because when we feed the Bayesian model, we have to explicitly state which data we have. With this approach, we know exactly what the values are for each variable.
@@ -292,12 +302,12 @@ dC_Trout <- Altiplano$d13C[which(Altiplano$Species == "Rainbow trout")]
 
 # And we create a named list
 Trout <- list("dNb1" = dNb1, "dCb1" = dCb1, "dNb2" = dNb2,
-              "dCb2" = dCb2, "dNsc" = dN_Orestias, "dCsc" = dC_Orestias)
+              "dCb2" = dCb2, "dNc" = dN_Trout, "dCc" = dC_Trout)
 ```
 
 ## Generating TEFs
 
-At this point we have manipulated a data frame that has stacked information of two fish species, and two baselines. we are missing an essential component of the model to estimate TP, namely the trophic enrichment factor (TEF). We have several options – we can simply use $\Delta$N (the TEF for nitrogen) when using a single or dual baseline model, or we can include $\Delta$C to account for shifts in C between baseline and consumers (as Post, 2002).
+At this point we have manipulated a data frame that has stacked information of two fish species, and two baselines. we are missing an essential component of the model to estimate TP, namely the trophic enrichment factor (TEF). We have several options – we can simply use $\Delta$N (the TEF for nitrogen) when using a single or dual baseline model, or we can include $\Delta$C to account for shifts in C between baseline and consumers (as Post 2002).
 
 As to the actual TEFs used in the model, there are 3 options (Figure 2):
 
@@ -317,7 +327,7 @@ Getting accurate and relevant TEFs for your taxa of interest can be sometimes di
 
 If you do not have an approximate idea of the mean and standard deviation of the TEF for your organism, then you can use the function `TEF()`. This provides the overall mean $\pm$ SD values provided from Post's (2002) meta-analysis, which are widely used in the literature. Without giving any argument (i.e. using `TEF()`), this function returns 56 values with a mean 3.4 $\pm$ 0.98 SD values for $\Delta$N, and 107 values with a mean 0.39 $\pm$ 1.3 SD for $\Delta$C.
 
-We have also included information from another major review (McCutchan et al., 2003), which includes estimates of TEFs for different tissues and trophic functional groups. To use these TEFs we have to state the `author` argument as `"McCutchan"`, the tissue type argument (`type = "muscle"`) and if we want TEFs for both N and C (`element = "both"`). As usual, as this function returns a list, you have to assign it to a variable:
+We have also included information from another major review (McCutchan et al. 2003), which includes estimates of TEFs for different tissues and trophic functional groups. To use these TEFs we have to state the `author` argument as `"McCutchan"`, the tissue type argument (`type` can be `"muscle"`, `"whole"`, `"acidified"`, `"unacidified"`, `"Rainbow Trout"` or  `"Brook Trout"`) and if we want TEFs for both N and C (`element = "both"`) or by element, in which case `element` would be either `"N"` or `"C"`. As usual, as this function returns a list, you have to assign it to a variable:
 
 ```{r}
 McCutchanTEF <- TEF(author = "McCutchan", type = "muscle", element = "both")
@@ -328,7 +338,7 @@ McCutchanTEF <- TEF(author = "McCutchan", type = "muscle", element = "both")
 str(Orestias)
 ```
 
-*Orestias* is a named list with 6 variables: dNb1, dCb1, dNb2, dCb2, dNsc and dCsc. As that list doesn't have TEF (what we refer to as deltaN or deltaC), we may want to add one, e.g. the one we previously generated from the bibliography:
+*Orestias* is a named list with 6 variables: dNb1, dCb1, dNb2, dCb2, dNc and dCc. As that list doesn't have TEF (what we refer to as deltaN or deltaC), we may want to add one, e.g. the one we previously generated from the bibliography:
 
 ```{r}
 # In this line we add deltaN of McCutchanTEF to Orestias
@@ -348,7 +358,8 @@ str(Orestias)
 We might want to add TEF for a species based on a particular study that provides mean $\pm$ SD TEFs values rather than using those calculated from a particular meta-analyses (i.e. Post 2002 or McCutchan et al. 2003). In this case, we can simulate data with the function `simulateTEF()`. If you do not state any arguments, by default this function returns 56 values for nitrogen and 107 for carbon - which are the same values used by Post. However, as an example we will use a mean $\pm$ SD TEF of 1.5 $\pm$ 1 for $\Delta$N and 0.25 $\pm$ 0.5 for $\Delta$C (n = 15 for both):
 
 ```{r}
-simulatedTEFValues <- simulateTEF(nN = 15, meanN = 1.5, sdN = 1, nC = 15, meanC = 0.25, sdC = 0.5)
+simulatedTEFValues <- simulateTEF(nN = 15, meanN = 1.5, sdN = 1, 
+                                  nC = 15, meanC = 0.25, sdC = 0.5)
 ```
 
 In case we want to include those values to a named list that doesn't have TEFS values, or if we want to replace them, we can do the following:
@@ -363,7 +374,7 @@ In this example we have replaced the `deltaN` and `deltaC` values of `YourOwnNam
 
 # Defining the Bayesian model for trophic position
 
-Now that we have introduced the the basics of loading and saving Isotope Data, and you are able to generate or simulate trophic enrichment factors values, we are ready to get into the core of `tRophicPosition`. Depending on how many baselines you have, and if you want to use the simple ($\Delta$N only) or the full (both $\Delta$N and $\Delta$C) two baselines model, you may choose among the three Bayesian models we have implemented in `tRophicPosition`. This is shown in Figure 3.
+Now that we have introduced the basics of loading and saving isotope data, and you are able to generate or simulate trophic enrichment factors values, we are ready to get into the core of `tRophicPosition`. Depending on how many baselines you have, and if you want to use the simple ($\Delta$N only), dual ($\Delta$N, two baselines) or the full (both $\Delta$N and $\Delta$C, two baselines) model, you may choose among the three Bayesian models we have implemented in `tRophicPosition`. This is shown in Figure 3.
 
 ```{r echo=FALSE, fig.cap='Basic flowchart for defining the Bayesian model for the estimation of trophic position.'}
 grid::grid.raster(png::readPNG(system.file("extdata", "flowchart3.png", package = "tRophicPosition")))
@@ -391,7 +402,7 @@ By default, `jagsOneBaseline()` (and the other more complex models) uses $\lambd
 model.string <- jagsOneBaseline(lambda = 1)
 ```
 
-If you have some information for your organism (given stomach content analysis for example), you may define a *prior* distribution for the trophic position of it. By default trophic position is calculated as a random parameter with a uniform prior with lower and upper boundaries between $\lambda$ and 10. If $\lambda = 2$, then by default this *prior* gives you an uniform *prior* distribution between 2 and 10.
+If you have some information for your organism (given stomach content analysis for example), you may define a *prior* distribution for the trophic position of it. By default trophic position is calculated as a random parameter with an uniform prior with lower and upper boundaries between $\lambda$ and 10. If $\lambda = 2$, then by default this *prior* gives you an uniform *prior* distribution between 2 and 10.
 
 If you have information that your species has a trophic position of 3, given the stomach content analysis, then you can define a *prior* distribution that includes your previous knowledge in order to improve the calculation of the trophic position. This is done either with:
 
@@ -407,9 +418,9 @@ or giving a normal prior (or other distribution you may think appropriate)
 model.string <- jagsOneBaseline(TP = "dnorm(3, 0.5)", lambda = 1)
 ```
 
-You can define the *priors* for the mean of the baseline (`muB`), the precision for the baseline (`sigmaB`), the mean of the $\Delta$N (`muDeltaN`), precision for $\Delta$N (`sigmaDeltaN`), and both trophic position (`TP`) and $\lambda$ (`lambda`).
+You can define the *priors* for the mean of the baseline (`muB`), the standard deviation for the baseline (`sigmaB`), the mean of the $\Delta$N (`muDeltaN`), standard deviation for $\Delta$N (`sigmaDeltaN`), and both trophic position (`TP`) and $\lambda$ (`lambda`).
 
-## Two baseline mode, only using the TEF for N
+## Two baselines model, only using the TEF for N
 
 This model implements a different equation for the calculation of trophic position, for a situation where there are two distinct sources of C and N, e.g. pelagic vs benthic or terrestrial vs aquatic: 
 
@@ -419,7 +430,7 @@ And also includes a simple mixing model to calculate $\alpha$, which allows to e
 
 (@foo3) $\delta^{13}C_{c} = \alpha (\delta^{13}C_{b1} - \delta^{13}C_{b2}) + \delta^{13}C_{b2}$
 
-This Bayesian model needs thus two baselines. In order to use this Bayesian model with your data, you need to use the following function:
+This Bayesian model needs thus two baselines. In order to use this model with your data, you need to use the following function:
 
 ```{r}
 model.string <- jagsTwoBaselines()
@@ -431,7 +442,7 @@ As usual, you can define the *prior* distribution for all of the variables inclu
 model.string <- jagsTwoBaselines(muDeltaN = "dnorm(3.4, 1)")
 ```
 
-## Two baseline model, including TEFs for both N and C
+## Two baselines model, including TEFs for both N and C
 
 Finally, the most complex model included in `tRophicPosition` is `jagsTwoBaselinesFull()`. This model implements the same equation as above (2), allowing the calculation of TP from two baselines, but the calculation of $\alpha$ is a little bit different, because it includes $\Delta$C:
 
@@ -443,24 +454,17 @@ In order to use this Bayesian model, you have to use it like this:
 model.string <- jagsTwoBaselinesFull()
 ```
 
-By default, as the simplest models, the *prior* distributions defined are uninformative, and you can improve the estimation of trophic position by including your *prior* knowledge. The random variables you can define are the same of the `jagsTwoBaselines()` model, plus $\mu_{\Delta C}$ and $\sigma_{\Delta C}$.
+By default, as the simplest models, the *prior* distributions defined are uninformative, and you can improve the estimation of trophic position by including your *prior* knowledge. The random variables you can define are the same of the `jagsTwoBaselines()` model, plus $\mu_{\Delta C}$ (muDeltaC) and $\sigma_{\Delta C}$ (sigmaDeltaC).
 
 # Initializing the model and sampling the posterior estimates
 
-Once you have loaded the isotope data, you have formatted it to use it with `tRophicPosition`, you can run a suitable Bayesian model to generate large numbers of posterior estimated values of trophic position. Once this is done, it is necessary to summarize the posterior sample of trophic position and other variables in order to calculate some statistics. As such, we therefore have to initialize the Bayesian model, and then sample the posterior estimates of trophic position.
+Once you have loaded the isotope data and you have formatted it accordingly, you can run a suitable Bayesian model to generate large numbers of posterior estimated values of trophic position. Once this is done, it is necessary to summarize the posterior sample of trophic position and other variables in order to calculate some statistics. As such, we therefore have to initialize the Bayesian model, and then sample the posterior estimates of trophic position.
 
 ## Initializing the Bayesian model
 
 In order to initialize the Bayesian model, we need to feed the Bayesian model we have selected before with data. This is done with the function `TPmodel()`.
 
-If you were practicing with data while reading this vignette, you can use your own data. In the following example we will use a dataset that is included with the package. First we will remove the *Orestias* data set from memory:
-
-```{r}
-# In case you have the Object "Orestias" in memory we will delete it
-remove(Orestias)
-```
-
-NB: if you did not play with the data above, it is unlikely that you have `Orestias` in memory, and you will see a warning. After removing the object `Orestias` (we don't want to mix up the datasets), we will load the data that it is included within `tRophicPosition`, and we will see its structure:
+If you were practicing with data while reading this vignette, you can use your own data. In the following example we will use a dataset that is included within `tRophicPosition`, and we will see its structure:
 
 ```{r}
 # Here we load the data set included within tRophicPosition
@@ -540,14 +544,14 @@ Now, we create the data frame:
 # "Orestias chungarensis"
 Species <- c(rep("Orestias chungarensis", length(Orestias.TP)))
 
-# and then we combine it with the posterior sample of Orestias trophic position
+# and then we combine it with the posterior samples of Orestias trophic position
 df <- data.frame(Orestias.TP, Species)
 ```
 
 We need the data frame to include the variable names `TP` and `Species`, so we need to change the names accordingly:
 
 ```{r}
-# Changing the variable names  of the dataframe "df"
+# Changing the variable names of the dataframe "df"
 colnames(df) <- c("TP", "Species")
 
 # We check that everything worked well
@@ -608,10 +612,10 @@ Finally, we extract the posterior trophic position samples, and save them into a
 # Here we extract the first chain
 Trout.TP <- as.data.frame(samples.Trout[[1]][,"TP"])$var1
 
-# Here we extract the second chain
+# Here we extract the second chain and combine it with the first chain
 Trout.TP <- c(Trout.TP,as.data.frame(samples.Trout[[2]][,"TP"])$var1)
 
-# And we check the length of the variable, i.e. how many posterior values we have
+# And then we check the length of the variable, i.e. how many posterior values we have
 length(Trout.TP)
 ```
 
@@ -629,7 +633,7 @@ And also we have the rainbow trout posterior trophic position:
 summary(Trout.TP)
 ```
 
-From the summary statistics, *Orestias* has a median estimated TP of 3.74 and rainbow trout of 3.05 (your results may be slightly different). We want to know whether there is any statistical support for differences in TP between *Orestias* and the juvenile rainbow trout. We can simply inquire wheter "the posterior distribution of trophic position of *Orestias* is higher than the posterior distribution of Rainbow trout". With the `compareTwoDistributions` function, we ask the folowing:
+From the summary statistics, *Orestias* has a median estimated TP of 3.74 and rainbow trout of 3.05 (your results may be slightly different). We want to know whether there is any statistical support for differences in TP between *Orestias* and the juvenile rainbow trout. We can simply inquire wheter "the posterior distribution of trophic position of *Orestias* is higher than the posterior distribution of rainbow trout". With the `compareTwoDistributions` function, we ask the folowing:
 
 ```{r}
 compareTwoDistributions(Orestias.TP, Trout.TP, test = ">")
@@ -650,7 +654,7 @@ df <- data.frame(TP, Species)
 trophicDensityPlot(df)
 ```
 
-Because we have posterior data in the same format that used by Jackson et al.'s (2011) [`SIBER`](https://cran.r-project.org/web/packages/SIBER/index.html) package uses, we can borrow the `siberDensityPlot()` function:
+Because we have posterior data in the same format to that used by Jackson et al.'s (2011) [`SIBER`](https://cran.r-project.org/web/packages/SIBER/index.html) package, we can borrow the `siberDensityPlot()` function:
 
 ```{r}
 # First we combine the two posterior samples into a data frame
