@@ -8,7 +8,7 @@ toStacked(isotopeData = NULL, baselines = 1)
 }
 \arguments{
 \item{isotopeData}{a named list composed at least of 6 vectors, dNb1, dCb1,
-dCsc, dNsc, deltaN and deltaC}
+dCc, dNc, deltaN and deltaC}
 
 \item{baselines}{integer stating the number of baselines.}
 }

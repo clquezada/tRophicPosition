@@ -4,8 +4,8 @@
 \alias{generateTPData}
 \title{A function to generate random data for trophic position calculation}
 \usage{
-generateTPData(n.baselines = 2, n.obsB = 25, n.obsSC = 25, dNb1 = NULL,
-  std.devB1 = 0.1, dNsc = NULL, std.devSC = 0.1, n.obsDeltaN = 56,
+generateTPData(n.baselines = 2, n.obsB = 25, n.obsC = 25, dNb1 = NULL,
+  std.devB1 = 0.1, dNc = NULL, std.devSC = 0.1, n.obsDeltaN = 56,
   deltaN = 3.4, std.devDeltaN = 0.98, n.obsDeltaC = 107, deltaC = 0.39,
   std.devDeltaC = 1.3)
 }
@@ -14,19 +14,13 @@ generateTPData(n.baselines = 2, n.obsB = 25, n.obsSC = 25, dNb1 = NULL,
 
 \item{n.obsB}{Number of observations for baseline. Default is 25.}
 
-\item{n.obsSC}{Number of observations for secondary consumer Default is 25.}
+\item{n.obsC}{Number of observations for consumer. Default is 25.}
 
 \item{dNb1}{mean value for delta Nitrogen of baseline 1. Default is a random
 number between -5 and 5}
 
 \item{std.devB1}{Standard deviation for randomly generated observations for
 baseline. Default is 0.1}
-
-\item{dNsc}{mean value for delta Nitrogen of secondary consumer. Default value
-is dNb1 multiplied 2 times the trophic enrichment factor.}
-
-\item{std.devSC}{Standard deviation for randomly generated observations for
-secondary consumer. Default is 0.1}
 
 \item{n.obsDeltaN}{Number of observations of deltaN (trophic enrichment factor).
 Default is 20.}
@@ -35,6 +29,12 @@ Default is 20.}
 
 \item{std.devDeltaN}{Standard deviation for randomly generated observations for
 deltaN. Default is 0.1}
+
+\item{dNsc}{mean value for delta Nitrogen of secondary consumer. Default value
+is dNb1 multiplied 2 times the trophic enrichment factor.}
+
+\item{std.devC}{Standard deviation for randomly generated observations for
+consumer. Default is 0.1}
 }
 \value{
 A named list with dNb1, dNsc and deltaN randomly generated
