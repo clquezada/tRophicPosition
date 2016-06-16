@@ -276,7 +276,7 @@ jagsTwoBaselines <- function (muCb1 = NULL,
     newString <- "lambda <- 2"
 
   } else {
-    newString <- paste("lambda ~", toString(lambda))
+    newString <- paste("lambda <- ", toString(lambda))
   }
   modelString <- paste (modelString, newString, sep = "\n")
 
