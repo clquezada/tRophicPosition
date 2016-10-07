@@ -61,7 +61,7 @@ TEF <- function (author = "Post", element = "both", type = "all") {
 
       allN = meanSE(73, 2.3, 0.18)
       wholeN = allN
-      muscleN = wholeN
+      muscleN = meanSE(15, 2.9, 0.32)
       unacidifiedN = meanSE(15, 1.1, 0.29)
       acidifiedN = meanSE(36, 2.4, 0.24)
       #raisedInvN = meanSE(25, 1.4, 0.21)
@@ -120,7 +120,7 @@ TEF <- function (author = "Post", element = "both", type = "all") {
 
         if (element == "N") {
 
-          message("You select McCutchan's et al (2003) muscle tissue d15N: 73 values with 2.3 mean +- 0.18 se")
+          message("You select McCutchan's et al (2003) muscle tissue d15N: 15 values with 2.9 mean +- 0.32 se")
           return(muscleN)
 
         } else if (element == "C") {
@@ -130,7 +130,7 @@ TEF <- function (author = "Post", element = "both", type = "all") {
 
         } else if (element == "both") {
 
-          message("You select McCutchan's et al (2003) muscle tissue d15N: 73 values with 2.3 mean +- 0.18 se")
+          message("You select McCutchan's et al (2003) muscle tissue d15N: 73 values with 2.9 mean +- 0.32 se")
           message("and also McCutchan's et al (2003) muscle tissue d13C: 18 values with 1.3 mean +- 0.3 se")
           return(list(deltaN = muscleN, deltaC = muscleC))
         }
