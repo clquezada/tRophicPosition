@@ -20,13 +20,15 @@
 TPmodel <- function (data = NULL,
                      model.string = NULL,
                      n.chains = 2,
-                     n.adapt = 10000)
+                     n.adapt = 10000,
+                     inits = NULL)
                      {
 
   model <- rjags::jags.model(textConnection(model.string),
                              data = data,
                              n.chains = n.chains,
-                             n.adapt = n.adapt)
+                             n.adapt = n.adapt,
+                             inits = inits)
 
   #Here we check if the model has the class required
   if (class(model) == "jags") {

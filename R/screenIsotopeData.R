@@ -23,7 +23,8 @@
 #'
 #' @examples
 
-screenIsotopeData <- function (IsotopeData = NULL, density = "both") {
+screenIsotopeData <- function (IsotopeData = NULL, density = "both",
+                               species = NULL) {
 
   if (!is.null(IsotopeData)) {
     #To do: IsotopeData will be an object of the class IsoData. It would be a great
@@ -34,25 +35,30 @@ screenIsotopeData <- function (IsotopeData = NULL, density = "both") {
 
     if (length(IsotopeData) == 5) {
 
-      screenIsotopeDataMoreSources(IsotopeData, density, baselines = 1)
+      screenIsotopeDataMoreSources(IsotopeData, density, baselines = 1,
+                                   species = species)
 
     } else if (length(IsotopeData) == 6) {
 
-      screenIsotopeDataMoreSources(IsotopeData, density, baselines = 1)
+      screenIsotopeDataMoreSources(IsotopeData, density, baselines = 1,
+                                   species = species)
 
     } else if (length(IsotopeData) == 7) {
 
-      screenIsotopeDataMoreSources(IsotopeData, density, baselines = 2)
+      screenIsotopeDataMoreSources(IsotopeData, density, baselines = 2,
+                                   species = species)
 
     } else if (length(IsotopeData) == 8) {
 
-      screenIsotopeDataMoreSources(IsotopeData, density, baselines = 2)
+      screenIsotopeDataMoreSources(IsotopeData, density, baselines = 2,
+                                   species = species)
 
     } else if (length(IsotopeData) == 10){
 
       #To do...
 
-      screenIsotopeDataMoreSources(IsotopeData, density, baselines = 3)
+      screenIsotopeDataMoreSources(IsotopeData, density, baselines = 3,
+                                   species = species)
 
     } else {warning("IsotopeData doesn't have the correct dimension.
                     We expect to have length of 6, 8 or 10.")}

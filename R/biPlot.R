@@ -15,7 +15,7 @@
 #' @examples
 
 biPlot <- function (df = NULL, df2 = NULL, ylab = NULL, xlab = NULL, p = "p1",
-                    ...){
+                    species = NULL, ...){
 
   if (p == "p1") {
 
@@ -34,6 +34,7 @@ biPlot <- function (df = NULL, df2 = NULL, ylab = NULL, xlab = NULL, p = "p1",
       ggplot2::theme(legend.position = c(0.85, 0.85),
                      legend.title = ggplot2::element_blank(),
                      legend.background = ggplot2::element_rect(fill="transparent"))
+
 
   } else if (p == "p2") {
 
