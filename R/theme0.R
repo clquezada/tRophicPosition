@@ -14,7 +14,7 @@ theme0 <- function(...) {
          panel.background = ggplot2::element_blank(),
          panel.grid.major = ggplot2::element_blank(),
          panel.grid.minor = ggplot2::element_blank(),
-         panel.margin = ggplot2::unit(0,"null"),
+         panel.spacing = ggplot2::unit(0,"null"),
          axis.ticks = ggplot2::element_blank(),
          axis.text.x = ggplot2::element_blank(),
          axis.text.y = ggplot2::element_blank(),

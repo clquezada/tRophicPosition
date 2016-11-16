@@ -18,7 +18,8 @@
 
 screenIsotopeDataMoreSources <- function (isotopeData = NULL,
                                           density = "both",
-                                          baselines = 2) {
+                                          baselines = 2,
+                                          species = NULL) {
 
   #library(RColorBrewer)
   #library(ggplot2)
@@ -35,7 +36,8 @@ screenIsotopeDataMoreSources <- function (isotopeData = NULL,
     #if (class(IsotopeData))
     if (baselines == 1){
 
-      df <- toStacked(isotopeData, baselines = 1)
+      if (!is.null(species)) df <- toStacked(isotopeData, baselines = 1, species)
+      else  df <- toStacked(isotopeData, baselines = 1)
 
       #And now we calculate mean and standard deviation for baselines and consumer
       df.b1 <- df[which(df$Factor=="Baseline 1"),c("d13C","d15N")]
@@ -45,18 +47,23 @@ screenIsotopeDataMoreSources <- function (isotopeData = NULL,
       names(b) <- c("sd_d13C", "sd_d15N")
       b1.meansSDs <- data.frame(a, b, Factor="Baseline 1")
 
-      df.sc <- df[which(df$Factor=="Consumer"),c("d13C","d15N")]
+      if (!is.null(species)) df.sc <- df[which(df$Factor == species),c("d13C","d15N")]
+      else df.sc <- df[which(df$Factor == "Consumer"),c("d13C","d15N")]
+
       a <- lapply(df.sc, mean)
       names(a) <- c("mean_d13C", "mean_d15N")
       b <- lapply(df.sc, sd)
       names(b) <- c("sd_d13C", "sd_d15N")
-      sc.meansSDs <- data.frame(a, b, Factor="Consumer")
+
+      if (!is.null(species)) sc.meansSDs <- data.frame(a, b, Factor=species)
+      else sc.meansSDs <- data.frame(a, b, Factor="Consumer")
 
       df2 <- rbind(sc.meansSDs, b1.meansSDs)
 
     } else if (baselines == 2){
 
-      df <- toStacked(isotopeData, baselines = 2)
+      if (!is.null(species)) df <- toStacked(isotopeData, baselines = 2, species = species)
+      else df <- toStacked(isotopeData, baselines = 2)
 
       #And now we calculate mean and standard deviation for baselines and consumer
       df.b1 <- df[which(df$Factor=="Baseline 1"), c("d13C","d15N")]
@@ -73,17 +80,24 @@ screenIsotopeDataMoreSources <- function (isotopeData = NULL,
       names(b) <- c("sd_d13C", "sd_d15N")
       b2.meansSDs <- data.frame(a, b, Factor="Baseline 2")
 
-      df.sc <- df[which(df$Factor=="Consumer"), c("d13C","d15N")]
+      if (!is.null(species)) df.sc <- df[which(df$Factor==species), c("d13C","d15N")]
+      else df.sc <- df[which(df$Factor=="Consumer"), c("d13C","d15N")]
+
       a <- lapply(df.sc, mean)
       names(a) <- c("mean_d13C", "mean_d15N")
       b <- lapply(df.sc, sd)
       names(b) <- c("sd_d13C", "sd_d15N")
-      sc.meansSDs <- data.frame(a, b, Factor="Consumer")
+
+      if (!is.null(species)) sc.meansSDs <- data.frame(a, b, Factor=species)
+      else sc.meansSDs <- data.frame(a, b, Factor="Consumer")
 
       df2 <- rbind(sc.meansSDs, b1.meansSDs, b2.meansSDs)
 
     } else if (baselines == 3) {
-      df <- toStacked(isotopeData, baselines = 3)
+
+
+      if (!is.null(species)) df <- toStacked(isotopeData, baselines = 3, species = species)
+      else df <- toStacked(isotopeData, baselines = 3)
 
       #And now we calculate mean and standard deviation for baselines and consumer
       df.b1 <- df[which(df$Factor=="Baseline 1"),c("d13C","d15N")]
@@ -107,12 +121,16 @@ screenIsotopeDataMoreSources <- function (isotopeData = NULL,
       names(b) <- c("sd_d13C", "sd_d15N")
       b3.meansSDs <- data.frame(a, b, Factor="Baseline 3")
 
-      df.sc <- df[which(df$Factor=="Consumer"), c("d13C","d15N")]
+      if (!is.null(species)) df.sc <- df[which(df$Factor == species), c("d13C","d15N")]
+      else df.sc <- df[which(df$Factor=="Consumer"), c("d13C","d15N")]
+
       a <- lapply(df.sc, mean)
       names(a) <- c("mean_d13C", "mean_d15N")
       b <- lapply(df.sc, sd)
       names(b) <- c("sd_d13C", "sd_d15N")
-      sc.meansSDs <- data.frame(a, b, Factor="Consumer")
+
+      if (!is.null(species)) sc.meansSDs <- data.frame(a, b, Factor=species)
+      else sc.meansSDs <- data.frame(a, b, Factor="Consumer")
 
       df2 <- rbind(sc.meansSDs, b1.meansSDs, b2.meansSDs, b3.meansSDs)
     }
@@ -133,7 +151,8 @@ screenIsotopeDataMoreSources <- function (isotopeData = NULL,
     y_min <- min(df$d15N)
     y_max <- max(df$d15N)
 
-    p1 <- biPlot(df, df2, ylab, xlab, p = "p1")
+    if (!is.null(species)) p1 <- biPlot(df, df2, ylab, xlab, p = "p1", species = species)
+    else p1 <- biPlot(df, df2, ylab, xlab, p = "p1")
 
     p2 <- biPlot(df, p = "p2")
 

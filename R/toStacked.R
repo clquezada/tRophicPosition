@@ -11,7 +11,7 @@
 #'
 #' @examples
 
-toStacked <- function (isotopeData = NULL, baselines = 1){
+toStacked <- function (isotopeData = NULL, baselines = 1, species = "Consumer"){
 
   if(!is.null(isotopeData)){
 
@@ -21,7 +21,7 @@ toStacked <- function (isotopeData = NULL, baselines = 1){
 
         df <- data.frame(d13C = isotopeData$dCc,
                          d15N =isotopeData$dNc,
-                         Factor = rep("Consumer",
+                         Factor = rep(species,
                                       length(isotopeData$dCc)))
 
         df <- rbind (df, data.frame(d13C = isotopeData$dCb1,
@@ -38,7 +38,7 @@ toStacked <- function (isotopeData = NULL, baselines = 1){
 
         df <- data.frame(d13C = isotopeData$dCc,
                          d15N =isotopeData$dNc,
-                         Factor = rep("Consumer",
+                         Factor = rep(species,
                                       length(isotopeData$dCc)))
 
         df <- rbind (df, data.frame(d13C = isotopeData$dCb1,
@@ -60,7 +60,7 @@ toStacked <- function (isotopeData = NULL, baselines = 1){
 
         df <- data.frame(d13C = isotopeData$dCc,
                          d15N =isotopeData$dNc,
-                         Factor = rep("Consumer",
+                         Factor = rep(species,
                                       length(isotopeData$dCc)))
 
         df <- rbind (df, data.frame(d13C = isotopeData$dCb1,
