@@ -2,21 +2,18 @@
 % Please edit documentation in R/screenIsotopeData.R
 \name{screenIsotopeData}
 \alias{screenIsotopeData}
-\title{Function to plot and screen Isotope Data with one or more baselines.}
+\title{Function to plot and screen isotope data with one or more baselines.}
 \usage{
-screenIsotopeData(IsotopeData = NULL, density = "both")
+screenIsotopeData(IsotopeData = NULL, density = "both",
+  consumer = "Consumer", b1 = "Pelagic baseline", b2 = "Benthic baseline",
+  legend = c(0.85, 0.85), ...)
 }
 \arguments{
-\item{IsotopeData}{a named list composed at least of 6 vectors, dNb1, dCb1,
-dCc, dNc, deltaN and deltaC.
-dNb1 and dCb1 stands for delta Nitrogen and delta Carbon of baseline 1, dNc
-and dCc stands for delta N and delta C of consumer, and deltaN
-and deltaC stands for the trophic enrichment factor (capital letter delta)
-of Nitrogen and Carbon.}
-
 \item{density}{a character that might plot the density function. Accepted
 characters are "both" in which case will plot the density function above and
 to the right, "right", "above" or "none".}
+
+\item{...}{}
 }
 \value{
 none

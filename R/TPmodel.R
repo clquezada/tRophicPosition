@@ -21,7 +21,7 @@ TPmodel <- function (data = NULL,
                      model.string = NULL,
                      n.chains = 2,
                      n.adapt = 10000,
-                     inits = NULL)
+                     inits = NULL, ...)
                      {
 
   model <- rjags::jags.model(textConnection(model.string),

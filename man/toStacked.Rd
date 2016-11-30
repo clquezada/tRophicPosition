@@ -4,13 +4,25 @@
 \alias{toStacked}
 \title{Internal function that stack variables from a named list into a data frame.}
 \usage{
-toStacked(isotopeData = NULL, baselines = 1)
+toStacked(isotopeData = NULL, baselines = 1, consumer = consumer,
+  b1 = b1, b2 = b2)
 }
 \arguments{
 \item{isotopeData}{a named list composed at least of 6 vectors, dNb1, dCb1,
 dCc, dNc, deltaN and deltaC}
 
 \item{baselines}{integer stating the number of baselines.}
+
+\item{consumer}{string indicating the name of the consumer. By default it is
+Consumer}
+
+\item{b1}{string indicating the baseline 1. By default is pelagic baseline.}
+
+\item{b2}{string indicating the baseline 2. By default is benthic baseline.}
+}
+\value{
+a dataframe with 3 columns: d13C, d15N and Factor. Factor is a factor
+with "Consumer", "Pelagic baseline" and "Benthic baseline" as levels.
 }
 \description{
 Not intended to be used by the user.

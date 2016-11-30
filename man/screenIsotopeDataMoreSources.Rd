@@ -5,7 +5,8 @@
 \title{Internal function that plots the data}
 \usage{
 screenIsotopeDataMoreSources(isotopeData = NULL, density = "both",
-  baselines = 2)
+  baselines = 2, consumer = consumer, b1 = b1, b2 = b2,
+  legend = legend, ...)
 }
 \arguments{
 \item{isotopeData}{a named list composed at least of 6 vectors, dNb1, dCb1,
@@ -14,6 +15,8 @@ dCc, dNc, deltaN and deltaC.}
 \item{density}{a string character that might plot the density function.}
 
 \item{baselines}{integer defining the number of baselines (1, 2 or 3).}
+
+\item{...}{}
 }
 \description{
 This function is intended to be used within the package. For details refer to

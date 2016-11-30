@@ -4,7 +4,8 @@
 \alias{biPlot}
 \title{Function that creates biplot with marginal density functions}
 \usage{
-biPlot(df = NULL, df2 = NULL, ylab = NULL, xlab = NULL, p = "p1", ...)
+biPlot(df = NULL, df2 = NULL, ylab = NULL, xlab = NULL, p = "p1",
+  legend = legend, limits = limits, ...)
 }
 \arguments{
 \item{...}{}

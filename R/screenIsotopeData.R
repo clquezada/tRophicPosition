@@ -1,4 +1,4 @@
-#' Function to plot and screen Isotope Data with one or more baselines.
+#' Function to plot and screen isotope data with one or more baselines.
 #'
 #' This function receives a named list of vectors, and plots a scatterplot with
 #'  2 sources and a consumer. Depending on the length of the named list, this
@@ -7,15 +7,15 @@
 #'  right, both or does not want it to be ploted.
 #'
 #'
-#' @param IsotopeData a named list composed at least of 6 vectors, dNb1, dCb1,
-#' dCc, dNc, deltaN and deltaC.
-#' dNb1 and dCb1 stands for delta Nitrogen and delta Carbon of baseline 1, dNc
-#' and dCc stands for delta N and delta C of consumer, and deltaN
-#' and deltaC stands for the trophic enrichment factor (capital letter delta)
-#' of Nitrogen and Carbon.
+#' @param IsotopeData
 #' @param density a character that might plot the density function. Accepted
 #' characters are "both" in which case will plot the density function above and
 #' to the right, "right", "above" or "none".
+#' @param consumer
+#' @param b1
+#' @param b2
+#' @param legend
+#' @param ...
 #'
 #' @return none
 #'
@@ -24,11 +24,20 @@
 #' @examples
 
 screenIsotopeData <- function (IsotopeData = NULL, density = "both",
-                               species = NULL) {
+                               consumer = "Consumer", b1 = "Pelagic baseline",
+                               b2 = "Benthic baseline", legend = c(0.85, 0.85),
+                               ...) {
 
-  if (!is.null(IsotopeData)) {
-    #To do: IsotopeData will be an object of the class IsoData. It would be a great
-    #idea to have an object of some class, that can be used in every SIA R pkg.
+  if (class(IsotopeData) == "isotopeData")
+
+    screenIsotopeDataMoreSources(IsotopeData, density, baselines = 2,
+                                 consumer = consumer, b1 = b1, b2 = b2,
+                                 legend = legend)
+
+  else if (!is.null(IsotopeData)) {
+    #To do: IsotopeData will be an object of the class IsoData. It would be a
+    #great idea to have an object of some class, that can be used in every
+    #stable isotopes R pkg. #Partially done in Nov 26 2016 (see above)
     #So, instead of checking the length of the list, we will check first if the
     #object has the required class. Maybe, the class will inform the length
     #(dimension) of the list and some other nice information.
@@ -36,29 +45,31 @@ screenIsotopeData <- function (IsotopeData = NULL, density = "both",
     if (length(IsotopeData) == 5) {
 
       screenIsotopeDataMoreSources(IsotopeData, density, baselines = 1,
-                                   species = species)
+                                   consumer = consumer, ...)
 
     } else if (length(IsotopeData) == 6) {
 
       screenIsotopeDataMoreSources(IsotopeData, density, baselines = 1,
-                                   species = species)
+                                   consumer = consumer, ...)
 
     } else if (length(IsotopeData) == 7) {
 
       screenIsotopeDataMoreSources(IsotopeData, density, baselines = 2,
-                                   species = species)
+                                   consumer = consumer, b1 = b1, b2 = b2,
+                                   legend = legend)
 
     } else if (length(IsotopeData) == 8) {
 
       screenIsotopeDataMoreSources(IsotopeData, density, baselines = 2,
-                                   species = species)
+                                   consumer = consumer, b1 = b1, b2 = b2,
+                                   legend = legend)
 
     } else if (length(IsotopeData) == 10){
 
       #To do...
 
       screenIsotopeDataMoreSources(IsotopeData, density, baselines = 3,
-                                   species = species)
+                                   consumer = consumer)
 
     } else {warning("IsotopeData doesn't have the correct dimension.
                     We expect to have length of 6, 8 or 10.")}

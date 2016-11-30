@@ -43,7 +43,7 @@
 #'
 #' @export
 
-jagsTwoBaselinesFull <- function (muCb1 = NULL,
+jagsTwoBaselinesPost <- function (muCb1 = NULL,
                               sigmaCb1 = NULL,
                               muNb1 = NULL,
                               sigmaNb1 = NULL,
@@ -111,7 +111,7 @@ jagsTwoBaselinesFull <- function (muCb1 = NULL,
   # dCc is modelled as having a normal distribution
   # with mean calculated with the two baselines weighted by alpha
   for (i in 1:length(dCc)) {
-  dCc[i] ~ dnorm(muCb2 + (muDeltaC * TP/lambda) + (alpha * (muCb1 - muCb2)), tauCc)
+  dCc[i] ~ dnorm(muCb2 - (muDeltaC * TP) - (alpha * (muCb2 - muCb1)), tauCc)
   }
 
   # ----------------------------------------------------------------------------
