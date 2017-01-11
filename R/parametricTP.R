@@ -11,6 +11,7 @@
 parametricTP <- function (siData, lambda = 2, print = TRUE) {
 
   if (class(siData) != "isotopeData") stop ("We need an isotopeData class object")
+  print("Beta version! check the values with your calculations")
   sm <- summary(siData)
 
   dNb1 <- sm[[1,4]]
@@ -32,11 +33,11 @@ parametricTP <- function (siData, lambda = 2, print = TRUE) {
     (dCb2 - (dCc + (deltaC*tp) ) ) / (dCb2 - dCb1)
 
   TPoneBaseline <- lambda + (dNc - dNb1)/deltaN
-  if (isTRUE(print)) print(paste("TP1: ", round(TPoneBaseline,2)))
+  if (isTRUE(print)) print(paste("One baseline TP: ", round(TPoneBaseline,2)))
 
   alpha <- (dCc - dCb2) / (dCb1 - dCb2)
   TPTwoBaselines <- TP(dNc, dNb1, dNb2, deltaN, alpha)
-  if (isTRUE(print)) print(paste("TP2: ", round(TPTwoBaselines,2), round(alpha,3)))
+  if (isTRUE(print)) print(paste("Two baselines TP: ", round(TPTwoBaselines,2), round(alpha,3)))
 
   i = 0
   TP_p1 <- TPTwoBaselines
@@ -44,7 +45,7 @@ parametricTP <- function (siData, lambda = 2, print = TRUE) {
   alpha_p2 <- alpha_p1
   TP_p2 <- TP(dNc, dNb1, dNb2, deltaN, alpha_p1)
 
-  if (isTRUE(print)) print(paste("CQR version. At the beginning: ", round(TP_p1,2),
+  if (isTRUE(print)) print(paste("Full model TP. At the beginning: ", round(TP_p1,2),
                                  round(alpha_p1,3)))
   while (TP_p1 != TP_p2) {
     TP_p1 <- TP_p2
@@ -71,7 +72,7 @@ parametricTP <- function (siData, lambda = 2, print = TRUE) {
   alpha_p2 <- alpha_p1
   TP_p2 <- TP(dNc, dNb1, dNb2, deltaN, alpha_p1)
 
-  if (isTRUE(print)) print(paste("Post version. At the beginning, TP: ", round(TP_p1,2),
+  if (isTRUE(print)) print(paste("Post's full model. At the beginning, TP: ", round(TP_p1,2),
                                  " alpha: ", round(alpha_p1,3)))
   while (TP_p1 != TP_p2) {
     TP_p1 <- TP_p2

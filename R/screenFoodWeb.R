@@ -21,25 +21,26 @@
 
 screenFoodWeb <- function (df = NULL, grouping = c("Species", "FG"),
                                 printSummary = FALSE, ...){
+  require(ggplot2)
 
   summary <- tRophicPosition::summariseIsotopeData(df, grouping, printSummary)
 
   shape <- as.numeric(factor(summary[[grouping[2]]]))+20
 
-  p <- ggplot(summary, aes(meanC, meanN, fill = factor(summary[[grouping[1]]]))) +
-    geom_errorbar(data=summary,aes(ymin=meanN-sdN,ymax=meanN+sdN),width=0.15,
+  p <- ggplot2::ggplot(summary, ggplot2::aes(meanC, meanN, fill = factor(summary[[grouping[1]]]))) +
+    ggplot2::geom_errorbar(data=summary,ggplot2::aes(ymin=meanN-sdN,ymax=meanN+sdN),width=0.15,
                   color="black", size=.5) +
-    geom_errorbarh(data=summary,aes(xmin=meanC-(sdC),xmax=meanC+(sdC)),
+    ggplot2::geom_errorbarh(data=summary,ggplot2::aes(xmin=meanC-(sdC),xmax=meanC+(sdC)),
                    height=0.15, color="black", size=.5) +
-    geom_point(size=4, shape = shape)+
-    ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
-    xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
-    labs(fill = grouping[1])+
+    ggplot2::geom_point(size=4, shape = shape)+
+    ggplot2::ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
+    ggplot2::xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
+    ggplot2::labs(fill = grouping[1])+
     #scale_colour_brewer(RColorBrewer::brewer.pal(length(Strangford.summary$Species_name),"Set1"))+
     #title = "Strangford Lough (mean +- sd)") +
     #geom_point(data=Strangford.summary, size=3, shape = Strangford.summary$FG) +
     #scale_shape_discrete(solid = T) +
-    theme_bw()
+    ggplot2::theme_bw()
 
   #if (!is.null(title)) p <- p + labs(title = title)
 

@@ -3,14 +3,22 @@
 #' @param siData
 #' @param lambda
 #' @param print
+#' @param n.adapt
+#' @param n.iter
+#' @param n.chains
+#' @param models
+#' @param parallel
+#' @param burnin
 #'
 #' @return
 #' @export
 #'
 #' @examples
 easyTP <- function (siData = siData, lambda = 2, print = TRUE,
-                                n.adapt = 10000, n.iter = 10000, n.chains = 2,
-                                models = c("oneBaseline", "twoBaselines", "twoBaselinesFull"))
+                    n.adapt = 20000, n.iter = 20000, n.chains = 2,
+                    models = c("oneBaseline", "twoBaselines", "twoBaselinesFull"),
+                    parallel = NULL,
+                    burnin = 20000)
   {
 
   if (class(siData) != "isotopeData") stop("We need an isotopeData class object")
@@ -28,11 +36,17 @@ easyTP <- function (siData = siData, lambda = 2, print = TRUE,
     if (isTRUE(print)) message(paste("################### Model: ", model))
 
     siData_mod <- siData
+    # Check this...
+    # variable.names = c("TP", "alpha", "muDeltaC")
+    variable.names = c("TP", "alpha")
+
 
     if (model == "oneBaseline") {
       model.string <- tRophicPosition::jagsOneBaseline(lambda = lambda)
       myvars <- names(siData) %in% c("dCb1", "dNb2", "dCb2", "dCc", "deltaC")
-      siData_mod <- siData[!myvars] }
+      siData_mod <- siData[!myvars]
+      variable.names = c("TP", "muDeltaN")
+      }
 
     else if (model == "twoBaselines") {
       model.string <- tRophicPosition::jagsTwoBaselines(lambda = lambda)
@@ -42,23 +56,53 @@ easyTP <- function (siData = siData, lambda = 2, print = TRUE,
     else if (model == "twoBaselinesFull")
       model.string <- tRophicPosition::jagsTwoBaselinesFull(lambda = lambda)
 
-    modelTP <- TPmodel(data = siData_mod,
-                     model.string = model.string,
-                     n.chains = n.chains,
-                     n.adapt = n.adapt)
+    if (!is.null(parallel) & is.numeric(parallel)) {
 
-    if (model == "oneBaseline")
-      samples <- posteriorTP(modelTP,
-                             variable.names = c("TP", "muDeltaN"),
-                             n.iter = n.iter)
-    else
-      samples <- posteriorTP(modelTP,
-                             variable.names = c("TP", "alpha"),
-                             n.iter = n.iter)
+      class(siData_mod) <- "list"
 
-    if (isTRUE(print)) plot(samples, sub = model)
-    if (isTRUE(print)) print(summary(samples))
-    if (isTRUE(print)) print(coda::gelman.diag(samples))
+      if (isTRUE(print)) {
+        summarise = TRUE
+        plots = TRUE
+      }
+      else {
+        summarise = FALSE
+        plots = FALSE
+      }
+
+      runJagsOut <- runjags::run.jags(method = "parallel", model = model, monitor = c("TP", "muDeltaN"),
+                                      data = siData_mod, n.chains = n.chains, adapt = n.adapt, burnin = burnin,
+                                      sample = n.iter, thin = 5, summarise = summarise, plots = plots)
+
+      if (isTRUE(print)) {
+        plot(runJagsOut)
+        print(runJagsOut)
+      }
+
+      easySamples_list[[model]] <- runJagsOut
+
+      break
+
+      }
+
+
+    else {
+
+      modelTP <- TPmodel(data = siData_mod,
+                         model.string = model.string,
+                         n.chains = n.chains,
+                         n.adapt = n.adapt)
+
+      samples <- posteriorTP(modelTP,
+                             variable.names = variable.names,
+                             n.iter = n.iter)}
+
+    if (isTRUE(print)) {
+
+      plot(samples, sub = model)
+      print(summary(samples))
+      print(coda::gelman.diag(samples))
+
+      }
 
     TP.combined <- coda::mcmc(do.call(rbind, samples))
     HPD <- coda::HPDinterval(TP.combined)
