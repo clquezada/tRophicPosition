@@ -28,11 +28,11 @@ trophicDensityPlot <- function (df = NULL, quantiles = FALSE, grouped = TRUE) {
 
   if (quantiles) {
     Species.stats <- plyr::ddply(df, "Species", plyr::summarise, TP.mean = mean(TP),
-                           TP.median=stats::median(TP),
-                           TP.025 = stats::quantile(TP, .025),
-                           TP.25 = stats::quantile(TP, .25),
-                           TP.75 = stats::quantile(TP, .75),
-                           TP.975 = stats::quantile(TP, .975))
+                                 TP.median=stats::median(TP),
+                                 TP.025 = stats::quantile(TP, .025),
+                                 TP.25 = stats::quantile(TP, .25),
+                                 TP.75 = stats::quantile(TP, .75),
+                                 TP.975 = stats::quantile(TP, .975))
 
     q <- list(ggplot2::geom_vline(ggplot2::aes(xintercept = TP.median),
                                   data = Species.stats, linetype="dotted",
@@ -54,11 +54,11 @@ trophicDensityPlot <- function (df = NULL, quantiles = FALSE, grouped = TRUE) {
       ggplot2::geom_density(alpha=0.7) + ggplot2::theme_bw() +
       ggplot2::xlab("Trophic position") + q + g
 
-    } else if (quantiles) {
-      p <- ggplot2::ggplot(df, ggplot2::aes(x = TP, colour = Species,
-                                            fill = Species)) +
-        ggplot2::geom_density(alpha=0.7) + ggplot2::theme_bw() +
-        ggplot2::xlab("Trophic position") + ggplot2::coord_flip() + q
+  } else if (quantiles) {
+    p <- ggplot2::ggplot(df, ggplot2::aes(x = TP, colour = Species,
+                                          fill = Species)) +
+      ggplot2::geom_density(alpha=0.7) + ggplot2::theme_bw() +
+      ggplot2::xlab("Trophic position") + ggplot2::coord_flip() + q
 
   } else if (!grouped) {
 
@@ -68,6 +68,8 @@ trophicDensityPlot <- function (df = NULL, quantiles = FALSE, grouped = TRUE) {
       ggplot2::xlab("Trophic position") + g
 
   } else {
+
+
 
     p <- ggplot2::ggplot(df, ggplot2::aes(x = TP, colour = Species,
                                           fill = Species)) +

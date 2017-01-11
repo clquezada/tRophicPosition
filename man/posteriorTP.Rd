@@ -4,7 +4,8 @@
 \alias{posteriorTP}
 \title{Function to generate posterior samples of a trophic position JAGS model}
 \usage{
-posteriorTP(model, variable.names = c("TP", "muDeltaN"), n.iter = 10000)
+posteriorTP(model, variable.names = c("TP", "muDeltaN"), n.iter = 10000,
+  ...)
 }
 \arguments{
 \item{model}{a JAGS model object returned by any of the family of jagsBaseline}

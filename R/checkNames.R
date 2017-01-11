@@ -3,28 +3,36 @@
 #' Not intended to be used by the user.
 #'
 #' @param df named list with the variables to be checked for.
-#' @param baselines integer stating the number of baselines.
+#' @param flag integer (stating the number of baselines) or a list of names
+#' (stating the names expected).
 #'
 #' @return
 #' @export
 #'
 #' @examples
 #'
-checkNames <- function (df = NULL, baselines = NULL) {
+checkNames <- function (df = NULL, flag = NULL) {
 
-  if (baselines == 1) {
-    namesDF <- c("dNb1", "dCb1", "dNc", "dCc")
+  if (typeof(flag) == "double") {
 
-  } else if (baselines == 2) {
-    namesDF <- c("dNb1", "dNb2", "dCb1", "dCb2", "dNc", "dCc")
+    if (flag == 1) {
+      namesDF <- c("dNb1", "dCb1", "dNc", "dCc")
 
-  } else if (baselines == 3) {
-    namesDF <- c("dNb1", "dNb2", "dNb3", "dCb1", "dCb2", "dCb3", "dNc",
-                 "dCc")
+    } else if (flag == 2) {
+      namesDF <- c("dNb1", "dNb2", "dCb1", "dCb2", "dNc", "dCc")
+
+    } else if (flag == 3) {
+      namesDF <- c("dNb1", "dNb2", "dNb3", "dCb1", "dCb2", "dCb3", "dNc",
+                   "dCc")
+    }
+
+  } else if (typeof(flag) == "character") {
+
+    namesDF <- flag
 
   } else {
 
-    stop("Baseline must be either 1, 2 or 3. Check the argument 'baselines'.")
+    stop("Flag must be either 1, 2, 3 or a list of names. Check the argument 'flag'.")
     }
 
   for (name in namesDF) {
@@ -36,12 +44,11 @@ checkNames <- function (df = NULL, baselines = NULL) {
   }
 
   if (counter > 0) {
-    cat("Names of your dataframe: ", names(df), "\n")
-    cat("Names expected: ", namesDF, "\n")
-    cat("Number of baselines: ", baselines, "\n")
-    message("
-            You have at least one variable in your dataframe that does not
-            match the names expected for the number of baselines.")
+    message("Names of your dataframe: ", names(df), "\n")
+    message("Names expected: ", namesDF, "\n")
+    message("Flag: ", flag, "\n")
+    message("You have at least one variable in your dataframe that does not
+match the names expected.")
     return(NULL)
   }
 

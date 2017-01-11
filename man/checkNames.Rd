@@ -4,12 +4,13 @@
 \alias{checkNames}
 \title{Internal function that check the names of a list.}
 \usage{
-checkNames(df = NULL, baselines = NULL)
+checkNames(df = NULL, flag = NULL)
 }
 \arguments{
 \item{df}{named list with the variables to be checked for.}
 
-\item{baselines}{integer stating the number of baselines.}
+\item{flag}{integer (stating the number of baselines) or a list of names
+(stating the names expected).}
 }
 \description{
 Not intended to be used by the user.

@@ -16,7 +16,7 @@
 
 posteriorTP <- function (model,
                      variable.names = c("TP", "muDeltaN"),
-                     n.iter = 10000)
+                     n.iter = 10000, ...)
                      {
 
   posterior <- rjags::coda.samples(model,
