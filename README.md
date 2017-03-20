@@ -3,7 +3,7 @@ A package to estimate trophic position using SIA.
 
 If you are reading this, then you are on the GitHub site and/or have download the version from there. 
 
-As of 12th of January 2017, we are releasing the version 0.5.0.1000 of the package, that is ready for testing. Probably you will find a number of errors, so we encourage you to send them to trophicposition-support@googlegroups.com
+As of 19th of March 2017, we are releasing the version 0.6.1.1000 of the package, that is ready for testing. Probably you will find a number of errors, so we encourage you to send them to trophicposition-support@googlegroups.com
 
 If you are interested in join the tRophicPosition support group, do it at https://groups.google.com/d/forum/trophicposition-support
 
