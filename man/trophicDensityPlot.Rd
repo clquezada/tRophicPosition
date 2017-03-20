@@ -23,4 +23,3 @@ can states whether he/she wants the density plots are grouped or not. For
 visualization purposes, if quantiles are added, density functions look better
 if they are not grouped.
 }
-

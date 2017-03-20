@@ -21,4 +21,3 @@ future.
 \examples{
 
 }
-

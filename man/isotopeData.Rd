@@ -4,7 +4,7 @@
 \alias{isotopeData}
 \title{Construct isotope data from a data frame}
 \usage{
-isotopeData(df, d15N = "d15N", d13C = "d13C", FG = "FG",
+isotopeData(df, d15N = "d15N", d13C = "d13C", grouping = "FG",
   consumer = NULL, b1 = NULL, b2 = NULL, TEF = NULL)
 }
 \arguments{
@@ -13,4 +13,3 @@ isotopeData(df, d15N = "d15N", d13C = "d13C", FG = "FG",
 \description{
 Construct isotope data from a data frame
 }
-

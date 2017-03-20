@@ -20,4 +20,3 @@ This is a wrapper of \code{\link[rjags]{coda.samples}} which in turn, is a
 wrapper of \code{\link[rjags]{jags.samples}}. It extracts random samples from
  the posterior distribution of the parameters of a jags model.
 }
-

@@ -16,12 +16,15 @@
 
 posteriorTP <- function (model,
                      variable.names = c("TP", "muDeltaN"),
-                     n.iter = 10000, ...)
+                     n.iter = 10000,
+                     thin = 10,
+                     ...)
                      {
 
   posterior <- rjags::coda.samples(model,
                                    variable.names = variable.names,
-                                   n.iter = n.iter)
+                                   n.iter = n.iter,
+                                   thin = thin)
 
   #Here we check if the model has the class required
   if (class(posterior) == "mcmc.list") {

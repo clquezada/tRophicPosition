@@ -1,7 +1,7 @@
 #' Simulate trophic enrichment factors
 #'
 #' \code{simulateTEF} return trophic enrichment factors (TEF), given a number of
-#' observations, a mean and a standard deviation.
+#' observations, a mean and a standard deviation for DeltaN and/or DeltaC.
 #'
 #'
 #' @param nN number of observations for deltaN
@@ -17,10 +17,10 @@
 #' @examples
 #'
 simulateTEF <- function (nN = 56,
-                         meanN = 3.4,
+                         meanN = NULL,
                          sdN = 0.98,
                          nC = 107,
-                         meanC = 0.39,
+                         meanC = NULL,
                          sdC = 1.3) {
 
   meanSD <- function(x, mean, sd) {
@@ -33,9 +33,24 @@ simulateTEF <- function (nN = 56,
     MEAN + Z
   }
 
-  deltaC = meanSD(nN, meanC, sdC)
-  deltaN = meanSD(nC, meanN, sdN)
+  deltaN = NULL
+  deltaC = NULL
 
-  return (list("deltaC" = deltaC, "deltaN" = deltaN))
+  if (!is.null(meanN)) deltaN = meanSD(nN, meanN, sdN)
+
+  if (!is.null(meanC)) deltaC = meanSD(nC, meanC, sdC)
+
+  if (!is.null(deltaN) & !is.null(deltaC))
+    return (list("deltaC" = deltaC, "deltaN" = deltaN))
+
+  else {
+    if (!is.null(deltaN))
+      return(deltaN)
+
+    else if (!is.null(deltaC))
+      return(deltaC)
+  }
+
+  return(list("deltaN" = meanSD(nN, 3.4, sdN), "deltaC" = meanSD(nC, 0.39, sdN)))
 
 }

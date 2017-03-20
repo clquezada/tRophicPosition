@@ -1,6 +1,6 @@
 #' A function to generate random isotope data for trophic position calculation
 #'
-#' This function generates random isotope (d13c and d15N) data for using the
+#' This function generates random isotope (d13C and d15N) data for using the
 #' basic functions of tRophicPosition package.
 #'
 #' @param n.baselines Number of baselines (could be 1 or 2), by default is 2.
@@ -77,7 +77,8 @@ generateTPData <- function (n.baselines = 2,
   # Finally we simulate some data for the trophic enrichment factor (deltaN)
   # By default we generate 56 values randomly drawn from a normal distribution
   # with a mean 3.4 with sd 0.98 (defined in the arguments of this function)
-  deltaN <- rnorm (n.obsDeltaN, DeltaN, sd.DeltaN)
+  # deltaN <- rnorm (n.obsDeltaN, DeltaN, sd.DeltaN)
+  deltaN <- simulateTEF(nN = n.obsDeltaN, meanN = DeltaN, sdN = sd.DeltaN)
 
   # We simulate then values for the dC of baseline 1 (with the same sd of dNb1)
   if (is.null(dCb1)) dCb1 <- rnorm(n.obsB, runif(1, -25, -10), sd.dNb1)
@@ -99,7 +100,7 @@ generateTPData <- function (n.baselines = 2,
     else
       dCb2 <- rnorm(n.obsB, dCb2, sd.dCb2)
 
-    deltaC <- rnorm(n.obsDeltaC, DeltaC, sd.DeltaC)
+    deltaC <- simulateTEF(nC = n.obsDeltaC, meanC = DeltaC, sdC = sd.DeltaC)
 
     a <- list(dNb1 = dNb1, dCb1 = dCb1,
               dNb2 = dNb2, dCb2 = dCb2,

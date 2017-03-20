@@ -29,4 +29,3 @@ a data frame with the summary of the data frame.
 \description{
 A wrapper of plyr:ddply to summarise a data frame.
 }
-

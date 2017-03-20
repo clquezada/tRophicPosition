@@ -48,7 +48,9 @@ You are comparing two distributions that have different length.
     dist1 <- base::sample(dist1, sample, ...)
     dist2 <- base::sample(dist2, sample, ...)
 
-    }
+  }
+
+  # if (class(dist1) == "")
 
   if (test == "<=") {
     return(sum(dist1 <= dist2) / length(dist1))

@@ -70,4 +70,3 @@ which is the precision. Precision is a deterministic function (instead of the
 distributional "~"), and it is calculated as "tau <- power(sigma, -2)", thus
 you have to define as well sigma, which stands for the standard deviation.
 }
-

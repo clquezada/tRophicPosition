@@ -18,4 +18,3 @@ Not intended to be used by the user.
 \examples{
 
 }
-

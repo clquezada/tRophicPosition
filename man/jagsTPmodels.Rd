@@ -12,4 +12,3 @@ jagsTPmodels(nb = 1, ...)
 \description{
 To do.
 }
-

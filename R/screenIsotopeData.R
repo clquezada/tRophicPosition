@@ -7,7 +7,7 @@
 #'  right, both or does not want it to be ploted.
 #'
 #'
-#' @param IsotopeData
+#' @param isotopeData
 #' @param density a character that might plot the density function. Accepted
 #' characters are "both" in which case will plot the density function above and
 #' to the right, "right", "above" or "none".
@@ -23,59 +23,64 @@
 #'
 #' @examples
 
-screenIsotopeData <- function (IsotopeData = NULL, density = "both",
+screenIsotopeData <- function (isotopeData = NULL, density = "both",
                                consumer = "Consumer", b1 = "Pelagic baseline",
                                b2 = "Benthic baseline", legend = c(0.85, 0.85),
+                               title = NULL,
                                ...) {
 
-  if (class(IsotopeData) == "isotopeData")
+  if (class(isotopeData) == "isotopeData")
 
-    screenIsotopeDataMoreSources(IsotopeData, density, baselines = 2,
-                                 consumer = consumer, b1 = b1, b2 = b2,
-                                 legend = legend)
+    ifelse(is.null(title),
+           screenIsotopeDataMoreSources(isotopeData, density, baselines = 2,
+                                        consumer = consumer, b1 = b1, b2 = b2,
+                                        legend = legend),
+           screenIsotopeDataMoreSources(isotopeData, density, baselines = 2,
+                                        consumer = consumer, b1 = b1, b2 = b2,
+                                        legend = legend, title = title))
 
-  else if (!is.null(IsotopeData)) {
-    #To do: IsotopeData will be an object of the class IsoData. It would be a
+  else if (!is.null(isotopeData)) {
+    #To do: isotopeData will be an object of the class IsoData. It would be a
     #great idea to have an object of some class, that can be used in every
     #stable isotopes R pkg. #Partially done in Nov 26 2016 (see above)
     #So, instead of checking the length of the list, we will check first if the
     #object has the required class. Maybe, the class will inform the length
     #(dimension) of the list and some other nice information.
 
-    if (length(IsotopeData) == 5) {
+    if (length(isotopeData) == 5) {
 
-      screenIsotopeDataMoreSources(IsotopeData, density, baselines = 1,
+      screenIsotopeDataMoreSources(isotopeData, density, baselines = 1,
                                    consumer = consumer, ...)
 
-    } else if (length(IsotopeData) == 6) {
+    } else if (length(isotopeData) == 6) {
 
-      screenIsotopeDataMoreSources(IsotopeData, density, baselines = 1,
+      screenIsotopeDataMoreSources(isotopeData, density, baselines = 1,
                                    consumer = consumer, ...)
 
-    } else if (length(IsotopeData) == 7) {
+    } else if (length(isotopeData) == 7) {
 
-      screenIsotopeDataMoreSources(IsotopeData, density, baselines = 2,
+      screenIsotopeDataMoreSources(isotopeData, density, baselines = 2,
                                    consumer = consumer, b1 = b1, b2 = b2,
                                    legend = legend)
 
-    } else if (length(IsotopeData) == 8) {
+    } else if (length(isotopeData) == 8) {
 
-      screenIsotopeDataMoreSources(IsotopeData, density, baselines = 2,
+      screenIsotopeDataMoreSources(isotopeData, density, baselines = 2,
                                    consumer = consumer, b1 = b1, b2 = b2,
                                    legend = legend)
 
-    } else if (length(IsotopeData) == 10){
+    } else if (length(isotopeData) == 10){
 
       #To do...
 
-      screenIsotopeDataMoreSources(IsotopeData, density, baselines = 3,
+      screenIsotopeDataMoreSources(isotopeData, density, baselines = 3,
                                    consumer = consumer)
 
-    } else {warning("IsotopeData doesn't have the correct dimension.
+    } else {warning("isotopeData doesn't have the correct dimension.
                     We expect to have length of 6, 8 or 10.")}
 
   } else {
-    cat("You should call this function using IsotopeData as argument.\n")
+    cat("You should call this function using isotopeData as argument.\n")
     cat("If you don't have your own dataset, call first generateData() function.")
   }
 

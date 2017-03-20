@@ -19,10 +19,11 @@
 #'
 #' @examples
 #'
-TEF <- function (author = "Post", element = "both", type = "all") {
+TEF <- function (author = "Post", element = "both", type = "all", seed = 3) {
 
   meanSD <- function(x, mean, sd) {
 
+    set.seed(seed = seed)
     x <- stats::rnorm(x, mean, sd)
     X <- x
     MEAN <- mean
@@ -39,7 +40,9 @@ TEF <- function (author = "Post", element = "both", type = "all") {
 
   if (author == "Post") {
 
+    set.seed(seed = seed)
     deltaN = meanSD(56, 3.4, 0.98)
+    set.seed(seed = seed)
     deltaC = meanSD(107, 0.39, 1.3)
 
     if (element == "N") {
@@ -62,23 +65,37 @@ TEF <- function (author = "Post", element = "both", type = "all") {
 
     } } else if (author == "McCutchan") {
 
+      set.seed(seed = seed)
       allN = meanSE(73, 2.3, 0.18)
+      set.seed(seed = seed)
       wholeN = meanSE(58, 2.1, 0.21)
+      set.seed(seed = seed)
       muscleN = meanSE(15, 2.9, 0.32)
+      set.seed(seed = seed)
       unacidifiedN = meanSE(15, 1.1, 0.29)
+      set.seed(seed = seed)
       acidifiedN = meanSE(36, 2.4, 0.24)
       #raisedInvN = meanSE(25, 1.4, 0.21)
       #highProtN = meanSE(25, 3.3, 0.26)
       #plantAlgaeN = meanSE(25, 2.2, 0.3)
+      set.seed(seed = seed)
       rainbowTroutN = meanSE(4, 3.2, 0.2)
+      set.seed(seed = seed)
       brookTroutN = meanSE(8, 3.8, 0.17)
 
+      set.seed(seed = seed)
       allC = meanSE(102, 0.5, 0.13)
+      set.seed(seed = seed)
       wholeC = meanSE(84, 0.3, 0.14)
+      set.seed(seed = seed)
       muscleC = meanSE(18, 1.3, 0.3)
+      set.seed(seed = seed)
       unacidifiedC = meanSE(62, 0.5, 0.17)
+      set.seed(seed = seed)
       acidifiedC = meanSE(22, -0.2, 0.21)
+      set.seed(seed = seed)
       rainbowTroutC = meanSE(4, 1.9, 0.51)
+      set.seed(seed = seed)
       brookTroutC = meanSE(8, 3.3, 0.29)
 
       if (type == "all") {

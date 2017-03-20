@@ -27,4 +27,3 @@ named list containing the data, a model string returned by either
 \code{\link{jagsOneBaseline}}, \code{\link{jagsTwoBaselines}} or
 \code{\link{jagsTwoBaselinesFull}}, and creates a JAGS model object.
 }
-

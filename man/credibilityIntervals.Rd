@@ -4,7 +4,8 @@
 \alias{credibilityIntervals}
 \title{Title}
 \usage{
-credibilityIntervals(df, x, y, lower, upper, ...)
+credibilityIntervals(df, df2 = NULL, xlab = "Bayesian models",
+  ylab1 = "Posterior Trophic Position", ylab2 = "Posterior alpha")
 }
 \arguments{
 \item{df}{}
@@ -12,4 +13,3 @@ credibilityIntervals(df, x, y, lower, upper, ...)
 \description{
 Title
 }
-

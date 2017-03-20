@@ -23,4 +23,3 @@ the siar version of tRophicPosition.
 \examples{
 
 }
-
