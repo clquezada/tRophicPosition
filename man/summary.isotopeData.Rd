@@ -12,4 +12,3 @@
 \description{
 Summary for stable isotope data
 }
-

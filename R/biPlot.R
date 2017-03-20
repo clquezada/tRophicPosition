@@ -38,6 +38,9 @@ biPlot <- function (df = NULL, df2 = NULL, ylab = NULL, xlab = NULL, p = "p1",
                              legend.background = ggplot2::element_rect(fill="transparent"))
      }
 
+
+     # if(!is.null(title)) pNew <- pNew + ggplot2::ggtitle(title)
+
      list(ggplot2::ggplot_build(pNew)$layout$panel_ranges[[1]]$x.range,
           ggplot2::ggplot_build(pNew)$layout$panel_ranges[[1]]$y.range,
           pNew)

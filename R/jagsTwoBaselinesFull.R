@@ -111,7 +111,7 @@ jagsTwoBaselinesFull <- function (muCb1 = NULL,
   # dCc is modelled as having a normal distribution
   # with mean calculated with the two baselines weighted by alpha
   for (i in 1:length(dCc)) {
-  dCc[i] ~ dnorm(muCb2 + (muDeltaC * TP/lambda) + (alpha * (muCb1 - muCb2)), tauCc)
+  dCc[i] ~ dnorm(muCb2 + (muDeltaC * (TP-lambda)) + (alpha * (muCb1 - muCb2)), tauCc)
   }
 
   # ----------------------------------------------------------------------------

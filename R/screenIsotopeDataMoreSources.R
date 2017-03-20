@@ -28,6 +28,7 @@ screenIsotopeDataMoreSources <- function (isotopeData = NULL,
                                           b1 = b1,
                                           b2 = b2,
                                           legend = legend,
+                                          title = NULL,
                                           ...) {
 
   #library(RColorBrewer)
@@ -165,8 +166,9 @@ screenIsotopeDataMoreSources <- function (isotopeData = NULL,
     y_min <- min(df$d15N)
     y_max <- max(df$d15N)
 
+    # if(!is.null(title)) {cat(title); str(title)}
 
-    p0 <- biPlot(df, df2, ylab, xlab, p = "p1", legend)
+    p0 <- biPlot(df, df2, ylab, xlab, p = "p1", legend = legend)
     p1 <- p0[[3]]
 
     p2 <- biPlot(df, p = "p2", limits = p0[[1]])
@@ -181,17 +183,19 @@ screenIsotopeDataMoreSources <- function (isotopeData = NULL,
 
       gridExtra::grid.arrange(gridExtra::arrangeGrob(p2, ncol = 2, widths=c(3,1)),
                               gridExtra::arrangeGrob(p1, p3, ncol=2, widths=c(3,1)),
-                              heights=c(1,3))
+                              heights=c(1,3), top = title)
 
       } else if (density == "above") {
 
         gridExtra::grid.arrange(gridExtra::arrangeGrob(p2, p1, nrow=2,
-                                                       heights=c(1,3)))
+                                                       heights=c(1,3)),
+                                top = title)
 
       } else if (density == "right") {
 
         gridExtra::grid.arrange(gridExtra::arrangeGrob(p1, p3, ncol=2,
-                                                       widths=c(3,1)))
+                                                       widths=c(3,1)),
+                                top = title)
 
       } else {
 

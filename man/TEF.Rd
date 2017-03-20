@@ -4,7 +4,7 @@
 \alias{TEF}
 \title{Trophic enrichment factors from bibliography}
 \usage{
-TEF(author = "Post", element = "both", type = "all")
+TEF(author = "Post", element = "both", type = "all", seed = 3)
 }
 \arguments{
 \item{author}{could be either "Post" or "McCutchan" at the moment.}
@@ -26,4 +26,3 @@ McCutchan et al (2003).
 \examples{
 
 }
-

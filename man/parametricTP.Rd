@@ -12,4 +12,3 @@ parametricTP(siData, lambda = 2, print = TRUE)
 \description{
 Calculation of old school trophic position
 }
-

@@ -13,4 +13,3 @@ biPlot(df = NULL, df2 = NULL, ylab = NULL, xlab = NULL, p = "p1",
 \description{
 This function is intended to be used within the package.
 }
-

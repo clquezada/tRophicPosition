@@ -15,4 +15,3 @@ Function to perform a pairwise comparison between several posterior distribution
 \examples{
 
 }
-

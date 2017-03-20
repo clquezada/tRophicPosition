@@ -23,4 +23,3 @@ plotTP(data.frame(species1, species2))
 
 
 }
-

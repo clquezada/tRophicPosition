@@ -25,4 +25,3 @@ This function receives a named list of vectors, and plots a scatterplot with
  user can states whether he/she wants a density function ploted above, to the
  right, both or does not want it to be ploted.
 }
-

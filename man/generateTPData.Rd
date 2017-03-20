@@ -51,7 +51,6 @@ observations. If n.baselines = 2, then dCb1, dNb2, dCb2, dCc and deltaC are
 also returned.
 }
 \description{
-This function generates random isotope (d13c and d15N) data for using the
+This function generates random isotope (d13C and d15N) data for using the
 basic functions of tRophicPosition package.
 }
-

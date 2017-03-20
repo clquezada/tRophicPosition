@@ -28,4 +28,3 @@ This function is intended to be used within the package. For details refer to
 \examples{
 
 }
-

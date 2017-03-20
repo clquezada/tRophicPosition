@@ -4,7 +4,7 @@
 \alias{simulateTEF}
 \title{Simulate trophic enrichment factors}
 \usage{
-simulateTEF(nN = 56, meanN = 3.4, sdN = 0.98, nC = 107, meanC = 0.39,
+simulateTEF(nN = 56, meanN = NULL, sdN = 0.98, nC = 107, meanC = NULL,
   sdC = 1.3)
 }
 \arguments{
@@ -22,9 +22,8 @@ simulateTEF(nN = 56, meanN = 3.4, sdN = 0.98, nC = 107, meanC = 0.39,
 }
 \description{
 \code{simulateTEF} return trophic enrichment factors (TEF), given a number of
-observations, a mean and a standard deviation.
+observations, a mean and a standard deviation for DeltaN and/or DeltaC.
 }
 \examples{
 
 }
-

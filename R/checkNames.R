@@ -24,6 +24,9 @@ checkNames <- function (df = NULL, flag = NULL) {
     } else if (flag == 3) {
       namesDF <- c("dNb1", "dNb2", "dNb3", "dCb1", "dCb2", "dCb3", "dNc",
                    "dCc")
+    } else if (flag == 4) {
+      namesDF <- c("dNb1", "dCb1", "dNb2", "dCb2", "dNc", "dCc", "deltaN",
+                   "deltaC")
     }
 
   } else if (typeof(flag) == "character") {

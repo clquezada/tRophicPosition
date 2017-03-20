@@ -15,4 +15,3 @@ This function is intended to be used within the package
 \examples{
 
 }
-
