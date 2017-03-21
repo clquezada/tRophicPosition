@@ -4,8 +4,8 @@
 \alias{plot.isotopeData}
 \title{Title}
 \usage{
-\method{plot}{isotopeData}(isotopeData, consumer = "Consumer", b1 = NULL,
-  b2 = "Benthic baseline", legend = c(1.15, 1.15), density = "both")
+\method{plot}{isotopeData}(isotopeData, consumer = NULL, b1 = NULL,
+  b2 = NULL, legend = c(1.15, 1.15), density = "both")
 }
 \arguments{
 \item{density}{}

@@ -4,9 +4,9 @@
 \alias{screenIsotopeData}
 \title{Function to plot and screen isotope data with one or more baselines.}
 \usage{
-screenIsotopeData(IsotopeData = NULL, density = "both",
+screenIsotopeData(isotopeData = NULL, density = "both",
   consumer = "Consumer", b1 = "Pelagic baseline", b2 = "Benthic baseline",
-  legend = c(0.85, 0.85), ...)
+  legend = c(0.85, 0.85), title = NULL, ...)
 }
 \arguments{
 \item{density}{a character that might plot the density function. Accepted

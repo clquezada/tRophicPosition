@@ -6,7 +6,7 @@
 \usage{
 screenIsotopeDataMoreSources(isotopeData = NULL, density = "both",
   baselines = 2, consumer = consumer, b1 = b1, b2 = b2,
-  legend = legend, ...)
+  legend = legend, title = NULL, ...)
 }
 \arguments{
 \item{isotopeData}{a named list composed at least of 6 vectors, dNb1, dCb1,

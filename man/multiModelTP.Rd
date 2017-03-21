@@ -2,15 +2,15 @@
 % Please edit documentation in R/multiModelTP.R
 \name{multiModelTP}
 \alias{multiModelTP}
-\title{Title}
+\title{Multiple models calculation of trophic position}
 \usage{
-multiModelTP(siData = siData, lambda = 2, print = TRUE, n.adapt = 20000,
-  n.iter = 20000, n.chains = 2, models = c("oneBaseline", "twoBaselines",
-  "twoBaselinesFull"), parallel = NULL, burnin = 20000)
+multiModelTP(siData = siData, lambda = 2, n.chains = 2, n.adapt = 20000,
+  n.iter = 20000, burnin = 20000, thin = 10, models = c("oneBaseline",
+  "twoBaselines", "twoBaselinesFull"), parallel = NULL, print = FALSE, ...)
 }
 \arguments{
-\item{burnin}{}
+\item{...}{}
 }
 \description{
-Title
+Multiple models calculation of trophic position
 }
