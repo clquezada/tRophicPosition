@@ -66,6 +66,7 @@ extractIsotopeData <- function(df = NULL,
       dCc <- getValues(df, species, speciesColumn, d13C)
 
       if (!is.null(community)) species_community <- paste(community, species, sep = "-")
+      else species_community <- species
 
 
       data <- append(extracted, list("dNc" = dNc, "dCc" = dCc))

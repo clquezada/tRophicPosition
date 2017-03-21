@@ -42,7 +42,7 @@ multiSpeciesTP <- function (siDataList = siDataList, lambda = 2,
 
   species <- names(siDataList)
 
-  for (i in 1:length(species)) {
+  for (i in seq_along(species)) {
 
     if (isTRUE(print)) message(paste("################### Species: ", names(siDataList[i])))
 
