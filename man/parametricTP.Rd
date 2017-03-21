@@ -7,7 +7,7 @@
 parametricTP(siData, lambda = 2, print = TRUE)
 }
 \arguments{
-\item{df}{}
+\item{print}{}
 }
 \description{
 Calculation of old school trophic position

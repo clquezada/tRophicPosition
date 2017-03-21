@@ -4,13 +4,12 @@
 \alias{multiSpeciesTP}
 \title{Multiple species calculation of trophic position}
 \usage{
-multiSpeciesTP(siDataList = siDataList, lambda = 2, print = FALSE,
-  n.adapt = 20000, n.iter = 20000, n.chains = 5, burnin = 20000,
-  models = c("oneBaseline", "twoBaselines", "twoBaselinesFull"),
-  parallel = NULL)
+multiSpeciesTP(siDataList = siDataList, lambda = 2, n.chains = 2,
+  n.adapt = 20000, n.iter = 20000, burnin = 20000, thin = 10,
+  model = "oneBaseline", print = FALSE, parallel = NULL, ...)
 }
 \arguments{
-\item{burnin}{}
+\item{...}{}
 }
 \description{
 Multiple species calculation of trophic position
