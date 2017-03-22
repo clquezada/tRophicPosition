@@ -14,7 +14,7 @@ parametricTP <- function (siData, lambda = 2, print = TRUE) {
 
   if (class(siData) != "isotopeData") stop ("We need an isotopeData class object")
   cat("Beta version! check the values with your calculations")
-  sm <- summary(siData, print = FALSE)
+  sm <- summary(siData, print = FALSE, round_dec = 4)
 
   dNb1 <- sm[[1,2]]
   dCb1 <- sm[[2,2]]
