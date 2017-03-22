@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @examples
-summary.isotopeData <- function (siData, print = TRUE) {
+summary.isotopeData <- function (siData, print = TRUE, round_dec = 1) {
 
   if (class(siData) != "isotopeData") stop("The object don't have a class isotopeData")
 
@@ -17,14 +17,14 @@ summary.isotopeData <- function (siData, print = TRUE) {
   sef <- function(x) sd(x)/sqrt(length(x))
 
   n <- lapply(siData, length)
-  min <- lapply(lapply(siData, min), round, 3)
-  mean <- lapply(lapply(siData, mean), round, 3)
-  median <- lapply(lapply(siData, median), round, 3)
-  max <- lapply(lapply(siData, max), round, 3)
-  sd <- lapply(lapply(siData, sd), round, 3)
-  #sqrt <- lapply(lapply(n, sqrt), round, 1)
-  se  <- lapply(lapply(siData,sef), round, 3)
-  #se  <- lapply(as.list(mapply("/",sqrt,sd)), round, 1)
+  min <- lapply(lapply(siData, min), round, round_dec)
+  mean <- lapply(lapply(siData, mean), round, round_dec)
+  median <- lapply(lapply(siData, median), round, round_dec)
+  max <- lapply(lapply(siData, max), round, round_dec)
+  sd <- lapply(lapply(siData, sd), round, round_dec)
+  #sqrt <- lapply(lapply(n, sqrt), round, round_dec)
+  se  <- lapply(lapply(siData,sef), round, round_dec)
+  #se  <- lapply(as.list(mapply("/",sqrt,sd)), round, round_dec)
 
   if (isTRUE(print)) {
 
