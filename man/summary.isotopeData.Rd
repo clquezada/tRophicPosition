@@ -4,7 +4,7 @@
 \alias{summary.isotopeData}
 \title{Summary for stable isotope data}
 \usage{
-\method{summary}{isotopeData}(siData, print = TRUE)
+\method{summary}{isotopeData}(siData, print = TRUE, round_dec = 1)
 }
 \arguments{
 \item{siData}{}
