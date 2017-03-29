@@ -181,9 +181,10 @@ screenIsotopeDataMoreSources <- function (isotopeData = NULL,
 
     } else if (density == "both") {
 
-      gridExtra::grid.arrange(gridExtra::arrangeGrob(p2, ncol = 2, widths=c(3,1)),
-                              gridExtra::arrangeGrob(p1, p3, ncol=2, widths=c(3,1)),
-                              heights=c(1,3), top = title)
+      capture.output(temp <- gridExtra::grid.arrange(gridExtra::arrangeGrob(p2, ncol = 2, widths=c(3,1)),
+                                      gridExtra::arrangeGrob(p1, p3, ncol=2, widths=c(3,1)),
+                                      heights=c(1,3), top = title))
+      print(temp)
 
       } else if (density == "above") {
 

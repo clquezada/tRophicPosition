@@ -9,7 +9,6 @@
 #' @param burnin
 #' @param thin
 #' @param models
-#' @param parallel
 #' @param print
 #' @param ...
 #'
@@ -27,11 +26,13 @@ multiModelTP <- function (siData = siData, lambda = 2,
                           models = c("oneBaseline",
                                      "twoBaselines",
                                      "twoBaselinesFull"),
-                          parallel = NULL, print = FALSE, ...)
+                          print = FALSE, ...)
   {
 
   #To DO
   dots <- list(...)
+
+  parallel <- NULL
 
   if (class(siData) != "isotopeData") {
     if (checkNames(df = siData, flag = 4)) class(siData) <- "isotopeData"
