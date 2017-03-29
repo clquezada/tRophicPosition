@@ -10,7 +10,6 @@
 #' @param thin
 #' @param model
 #' @param print
-#' @param parallel
 #' @param ...
 #'
 #' @return
@@ -26,16 +25,16 @@ multiSpeciesTP <- function (siDataList = siDataList, lambda = 2,
                             thin = 10,
                             model = "oneBaseline",
                             print = FALSE,
-                            parallel = NULL, ...)
+                            ...)
   {
 
   #To DO
   # dots <- list(...)
   # if (!is.null(dots)) cat(names(...))
+  parallel <- NULL
 
   multiSpeciesTP_list <- list()
   multiSpeciesTP_df <- data.frame()
-
 
   multiSpecies_TP <- data.frame()
   multiSpecies_alpha <- data.frame()

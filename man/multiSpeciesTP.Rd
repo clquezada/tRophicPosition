@@ -6,7 +6,7 @@
 \usage{
 multiSpeciesTP(siDataList = siDataList, lambda = 2, n.chains = 2,
   n.adapt = 20000, n.iter = 20000, burnin = 20000, thin = 10,
-  model = "oneBaseline", print = FALSE, parallel = NULL, ...)
+  model = "oneBaseline", print = FALSE, ...)
 }
 \arguments{
 \item{...}{}

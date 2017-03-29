@@ -5,7 +5,7 @@
 \title{Title}
 \usage{
 credibilityIntervals(df, x = "species", plotAlpha = TRUE, y1 = "median",
-  y1min = "lower", y1max = "upper", y2 = "alpha.median",
+  y1min = "lower", y1max = "upper", y1lim = NULL, y2 = "alpha.median",
   y2min = "alpha.lower", y2max = "alpha.upper", xlab = "Bayesian models",
   ylab1 = "Posterior Trophic Position", ylab2 = "Posterior alpha")
 }

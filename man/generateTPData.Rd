@@ -8,7 +8,8 @@ generateTPData(n.baselines = 2, n.obsB = 25, n.obsC = 25, dNb1 = NULL,
   sd.dNb1 = 0.5, dNb2 = NULL, sd.dNb2 = 0.5, dCb1 = NULL,
   sd.dCb1 = 0.5, dCb2 = NULL, sd.dCb2 = 0.5, dNc = NULL, sd.dNc = 0.5,
   dCc = NULL, sd.dCc = 0.5, n.obsDeltaN = 56, DeltaN = 3.4,
-  sd.DeltaN = 0.98, n.obsDeltaC = 107, DeltaC = 0.39, sd.DeltaC = 1.3)
+  sd.DeltaN = 0.98, n.obsDeltaC = 107, DeltaC = 0.39, sd.DeltaC = 1.3,
+  consumer = NULL)
 }
 \arguments{
 \item{n.baselines}{Number of baselines (could be 1 or 2), by default is 2.}
@@ -33,17 +34,7 @@ factor). Default is 107}
 
 \item{DeltaC}{mean value for trophic enrichment factor. Default value is 0.39}
 
-\item{std.devB1}{Standard deviation for randomly generated observations for
-baseline. Default is 0.5}
-
-\item{std.devC}{Standard deviation for randomly generated observations for
-consumer. Default is 0.5}
-
-\item{std.devDeltaN}{Standard deviation for randomly generated observations
-for deltaN. Default is 0.98}
-
-\item{std.devDeltaC}{Standard deviation for randomly generated observations
-for DeltaC. Default is 1.3}
+\item{consumer}{}
 }
 \value{
 A named list with dNb1, dNc and deltaN randomly generated

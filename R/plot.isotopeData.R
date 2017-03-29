@@ -35,18 +35,19 @@ plot.isotopeData <- function (isotopeData, consumer = NULL,
       consumer = attributes(isotopeData)$consumer
 
 
-  ifelse(is.null(attributes(isotopeData)$community),
-         screenIsotopeData(isotopeData = isotopeData,
-                           consumer = consumer,
-                           b1 = b1,
-                           b2 = b2,
-                           legend = legend,
-                           density = density),
-         screenIsotopeData(isotopeData = isotopeData,
-                           consumer = consumer,
-                           b1 = b1,
-                           b2 = b2,
-                           legend = legend,
-                           density = density,
-                           title = attributes(isotopeData)$community))
+  if(is.null(attributes(isotopeData)$community))
+    invisible(capture.output(screenIsotopeData(isotopeData = isotopeData,
+                      consumer = consumer,
+                      b1 = b1,
+                      b2 = b2,
+                      legend = legend,
+                      density = density)))
+    else
+      invisible(capture.output(screenIsotopeData(isotopeData = isotopeData,
+                        consumer = consumer,
+                        b1 = b1,
+                        b2 = b2,
+                        legend = legend,
+                        density = density,
+                        title = attributes(isotopeData)$community)))
 }

@@ -9,7 +9,9 @@
 
 credibilityIntervals <- function (df, x = "species", plotAlpha = TRUE,
                                   y1 = "median", y1min = "lower", y1max = "upper",
-                                  y2 = "alpha.median", y2min = "alpha.lower", y2max = "alpha.upper",
+                                  y1lim = NULL,
+                                  y2 = "alpha.median", y2min = "alpha.lower",
+                                  y2max = "alpha.upper",
                                   xlab = "Bayesian models",
                                   ylab1 = "Posterior Trophic Position",
                                   ylab2 = "Posterior alpha") {
@@ -29,11 +31,14 @@ credibilityIntervals <- function (df, x = "species", plotAlpha = TRUE,
                        ymax = y1max)) +
     ggplot2::geom_pointrange(size = 1, shape = 16, colour = "grey50") +
     ggplot2::theme_bw() +
-    ggplot2::ylab(ylab1) +
-    ggplot2::theme(axis.text.x = ggplot2::element_blank(),
-          axis.text.y = ggplot2::element_text(size = 14),
-          axis.title = ggplot2::element_text(size = 14),
-          axis.title.x = ggplot2::element_blank())
+    ggplot2::ylab(ylab1)
+
+  if(!is.null(y1lim)) p1 <- p1 + ggplot2::ylim(y1lim)
+
+  p1 <- p1 + ggplot2::theme(axis.text.x = ggplot2::element_blank(),
+                            axis.text.y = ggplot2::element_text(size = 14),
+                            axis.title = ggplot2::element_text(size = 14),
+                            axis.title.x = ggplot2::element_blank())
 
   p2 <- ggplot2::ggplot(df, ggplot2::aes_string(x = x, y = y2, ymin = y2min, ymax = y2max)) +
     ggplot2::geom_pointrange(size = 1, shape = 16, colour = "grey50") +
@@ -44,7 +49,8 @@ credibilityIntervals <- function (df, x = "species", plotAlpha = TRUE,
           axis.text.y = ggplot2::element_text(size = 10),
           axis.title = ggplot2::element_text(size = 14))
 
-  gridExtra::grid.arrange(p1, p2, nrow = 2, heights = c(5,5))
+  if (isTRUE(!plotAlpha)) print(p1)
+  else gridExtra::grid.arrange(p1, p2, nrow = 2, heights = c(5,5))
 
 }
 

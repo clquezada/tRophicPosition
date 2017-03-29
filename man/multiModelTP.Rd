@@ -6,7 +6,7 @@
 \usage{
 multiModelTP(siData = siData, lambda = 2, n.chains = 2, n.adapt = 20000,
   n.iter = 20000, burnin = 20000, thin = 10, models = c("oneBaseline",
-  "twoBaselines", "twoBaselinesFull"), parallel = NULL, print = FALSE, ...)
+  "twoBaselines", "twoBaselinesFull"), print = FALSE, ...)
 }
 \arguments{
 \item{...}{}
