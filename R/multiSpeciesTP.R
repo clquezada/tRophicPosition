@@ -6,10 +6,11 @@
 #' @param n.chains
 #' @param n.adapt
 #' @param n.iter
-#' @param burnin only used in parallel - check that
+#' @param burnin
 #' @param thin
 #' @param model
 #' @param print
+#' @param quiet
 #' @param ...
 #'
 #' @return
@@ -19,12 +20,13 @@
 
 multiSpeciesTP <- function (siDataList = siDataList, lambda = 2,
                             n.chains = 2,
-                            n.adapt = 10000,
-                            n.iter = 10000,
-                            burnin = 10000,
+                            n.adapt = 20000,
+                            n.iter = 20000,
+                            burnin = 20000,
                             thin = 10,
                             model = "oneBaseline",
                             print = FALSE,
+                            quiet = FALSE,
                             ...)
   {
 
@@ -54,7 +56,8 @@ multiSpeciesTP <- function (siDataList = siDataList, lambda = 2,
                                thin = thin,
                                models = model,
                                parallel = parallel,
-                               print = print)
+                               print = print,
+                               quiet = quiet)
 
     if (is.null(attributes(siDataList[[i]])$consumer)) TP_results$gg$species <- names(siDataList[i])
 
