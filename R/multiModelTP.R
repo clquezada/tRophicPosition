@@ -6,7 +6,7 @@
 #' @param n.chains
 #' @param n.adapt
 #' @param n.iter
-#' @param burnin only used in parallel version
+#' @param burnin
 #' @param thin
 #' @param models
 #' @param print
@@ -20,9 +20,9 @@
 
 multiModelTP <- function (siData = siData, lambda = 2,
                           n.chains = 2,
-                          n.adapt = 10000,
-                          n.iter = 10000,
-                          burnin = 10000,
+                          n.adapt = 20000,
+                          n.iter = 20000,
+                          burnin = 20000,
                           thin = 10,
                           models = c("oneBaseline",
                                      "twoBaselines",
