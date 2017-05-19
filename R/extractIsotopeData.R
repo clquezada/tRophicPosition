@@ -88,7 +88,7 @@ extractIsotopeData <- function(df = NULL,
   }
 
   if (is.null(deltaN)) {
-    deltaN <- suppressMessages(tRophicPosition::TDF(author = "McCutchan",
+    deltaN <- suppressMessages(tRophicPosition::TDF(author = "Post",
                                                     type = "muscle",
                                                     element = "N"))
       #simulateTEF(meanN = 3.4, sdN = 0.98)
@@ -96,7 +96,7 @@ extractIsotopeData <- function(df = NULL,
 
   if (is.null(deltaC)) {
     set.seed(seed)
-    deltaC <- suppressMessages(tRophicPosition::TDF(author = "McCutchan",
+    deltaC <- suppressMessages(tRophicPosition::TDF(author = "Post",
                                                     type = "muscle",
                                                     element = "C"))
       #simulateTEF(meanC = 0.39, sdC = 1.3)
