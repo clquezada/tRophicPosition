@@ -5,7 +5,6 @@
 #' @param ...
 #'
 #' @return
-#' @export
 #'
 #' @examples
 #'

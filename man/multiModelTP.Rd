@@ -4,11 +4,13 @@
 \alias{multiModelTP}
 \title{Multiple models calculation of trophic position}
 \usage{
-multiModelTP(siData = siData, lambda = 2, n.chains = 2, n.adapt = 20000,
-  n.iter = 20000, burnin = 20000, thin = 10, models = c("oneBaseline",
-  "twoBaselines", "twoBaselinesFull"), print = FALSE, ...)
+multiModelTP(siData = siData, lambda = 2, n.chains = 2, n.adapt = 10000,
+  n.iter = 10000, burnin = 10000, thin = 10, models = c("oneBaseline",
+  "twoBaselines", "twoBaselinesFull"), print = FALSE, quiet = FALSE, ...)
 }
 \arguments{
+\item{burnin}{only used in parallel version}
+
 \item{...}{}
 }
 \description{

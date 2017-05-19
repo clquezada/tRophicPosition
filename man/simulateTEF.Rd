@@ -22,7 +22,10 @@ simulateTEF(nN = 56, meanN = NULL, sdN = 0.98, nC = 107, meanC = NULL,
 }
 \description{
 \code{simulateTEF} return trophic enrichment factors (TEF), given a number of
-observations, a mean and a standard deviation for DeltaN and/or DeltaC.
+observations, a mean and a standard deviation for DeltaN and/or DeltaC. This
+function has been replaced by simulateTDF, following the convention of naming
+trophic discrimination factors (TDF) instead of trophic enrichment factors
+(TEF).
 }
 \examples{
 

@@ -53,7 +53,8 @@ jagsTwoBaselines <- function (muCb1 = NULL,
                               sigmaNc = NULL,
                               muDeltaN = NULL,
                               sigmaDeltaN = NULL,
-                              lambda = NULL)
+                              lambda = NULL,
+                              ...)
 {
 
   # ----------------------------------------------------------------------------

@@ -2,7 +2,7 @@
 % Please edit documentation in R/extractIsotopeData.R
 \name{extractIsotopeData}
 \alias{extractIsotopeData}
-\title{Title}
+\title{Extracts stable isotope data from a data frame}
 \usage{
 extractIsotopeData(df = NULL, b1 = "Baseline 1", b2 = NULL,
   baselineColumn = "FG", speciesColumn = "Spp", communityColumn = NULL,
@@ -13,5 +13,5 @@ extractIsotopeData(df = NULL, b1 = "Baseline 1", b2 = NULL,
 \item{deltaN}{}
 }
 \description{
-Title
+Extracts stable isotope data from a data frame
 }

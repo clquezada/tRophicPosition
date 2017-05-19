@@ -41,7 +41,6 @@
 #'
 #' @return A jags model as a character string
 #'
-#' @export
 
 jagsTwoBaselinesFullc <- function (muCb1 = NULL,
                               sigmaCb1 = NULL,

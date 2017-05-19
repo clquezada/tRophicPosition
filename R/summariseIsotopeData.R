@@ -11,8 +11,8 @@
 #'  as well in the grouping variable.
 #' @param grouping a vector with the name of the columns (variables) that will
 #' be used to summarize, and plot the data frame.
-#' @param ... optional arguments that are passed to the function for later use.
 #' @param printSummary a boolean flag indicating whether the summary is printed.
+#' @param ... optional arguments that are passed to the function for later use.
 #'
 #' @return a data frame with the summary of the data frame.
 #'
@@ -23,7 +23,7 @@
 summariseIsotopeData <- function (df = NULL, grouping = c("Species", "FG"),
                                   printSummary = FALSE, ...){
 
-  if (is.null(tRophicPosition::checkNames(df, c("d13C", "d15N", grouping))))
+  if (is.null(checkNames(df, c("d13C", "d15N", grouping))))
     stop("Check the grouping variable or the names in your dataframe")
 
   summary <- plyr::ddply(df, grouping, plyr::summarise,

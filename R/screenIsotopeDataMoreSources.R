@@ -14,7 +14,6 @@
 #' @param ...
 #'
 #' @return
-#' @export
 #'
 #' @examples
 #'

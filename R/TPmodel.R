@@ -9,6 +9,9 @@
 #' @param n.chains number of parallel chains for the model
 #' @param model.string model string containing a description of the model
 #' @param n.adapt number of iterations for adaptation (initial sampling phase)
+#' @param inits
+#' @param quiet
+#' @param ...
 #'
 #' @return \code{TPmodel} returns an object inheriting from class jags which
 #' can be used to generate dependent samples from the posterior distribution of
@@ -21,14 +24,17 @@ TPmodel <- function (data = NULL,
                      model.string = NULL,
                      n.chains = 2,
                      n.adapt = 10000,
-                     inits = NULL, ...)
+                     inits = NULL,
+                     quiet = FALSE,
+                     ...)
                      {
 
-  model <- rjags::jags.model(textConnection(model.string),
+  model <- invisible(rjags::jags.model(textConnection(model.string),
                              data = data,
                              n.chains = n.chains,
                              n.adapt = n.adapt,
-                             inits = inits)
+                             inits = inits,
+                             quiet = quiet))
 
   #Here we check if the model has the class required
   if (class(model) == "jags") {

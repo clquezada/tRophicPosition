@@ -9,7 +9,6 @@
 #' @param density a character that might plot the density function.
 #'
 #' @return
-#' @export
 #'
 #' @examples
 #'

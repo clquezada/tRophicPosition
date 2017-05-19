@@ -1,4 +1,4 @@
-#' Function to perform a pairwise comparison between several posterior distributions
+#' Function to perform pairwise comparisons between several posterior distributions
 #'
 #' @param df
 #' @param print
@@ -29,7 +29,7 @@ pairwiseComparisons <- function (df, test = "<=", print = FALSE) {
       #print(comparison)
 
       if (i == j) pairwise[counter.i, counter.j] <- 0
-      else pairwise[counter.i, counter.j] <- comparison
+      else pairwise[counter.i, counter.j] <- round(comparison,3)
 
       counter.j <- counter.j + 1
 

@@ -5,7 +5,7 @@
 \title{Defines the jags model to fit the single baseline trophic position model}
 \usage{
 jagsOneBaseline(muB = NULL, sigmaB = NULL, muDeltaN = NULL,
-  sigmaDeltaN = NULL, sigma = NULL, TP = NULL, lambda = NULL)
+  sigmaDeltaN = NULL, sigma = NULL, TP = NULL, lambda = NULL, ...)
 }
 \arguments{
 \item{muB}{a distribution defining prior for mean (mu) of baseline.}

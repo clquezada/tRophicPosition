@@ -6,7 +6,7 @@
 in a Bayesian context}
 \usage{
 compareTwoDistributions(dist1 = NULL, dist2 = NULL, test = "<=",
-  ordered = FALSE, sample = NULL, ...)
+  sample = NULL, ...)
 }
 \arguments{
 \item{dist1}{A collection of Trophic Position data (posterior distribution)}
@@ -16,10 +16,8 @@ compareTwoDistributions(dist1 = NULL, dist2 = NULL, test = "<=",
 \item{test}{A logical operator which states what to test for. Might be "<",
 "<=", ">" or ">=".}
 
-\item{ordered}{Not implemented yet.}
-
 \item{sample}{If sample is numeric, it will take 'sample' elements of each of
-the distributions of Trophic Position data.}
+the distributions of posterior trophic position.}
 }
 \description{
 Function to compare two TP posterior distributions and test an hypothesis,

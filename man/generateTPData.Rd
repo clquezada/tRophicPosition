@@ -2,7 +2,8 @@
 % Please edit documentation in R/generataTPData.R
 \name{generateTPData}
 \alias{generateTPData}
-\title{A function to generate random isotope data for trophic position calculation}
+\title{A function to generate random stable isotope data for trophic position
+calculation}
 \usage{
 generateTPData(n.baselines = 2, n.obsB = 25, n.obsC = 25, dNb1 = NULL,
   sd.dNb1 = 0.5, dNb2 = NULL, sd.dNb2 = 0.5, dCb1 = NULL,
@@ -22,26 +23,26 @@ generateTPData(n.baselines = 2, n.obsB = 25, n.obsC = 25, dNb1 = NULL,
 number between -5 and 5}
 
 \item{dNc}{mean value for delta Nitrogen of secondary consumer. Default value
-is dNb1 multiplied 2 times the trophic enrichment factor.}
+is dNb1 multiplied 2 times the trophic discrimination factor.}
 
-\item{n.obsDeltaN}{Number of observations of deltaN (trophic enrichment
+\item{n.obsDeltaN}{Number of observations of deltaN (trophic discrimination
 factor). Default is 56}
 
-\item{DeltaN}{mean value for trophic enrichment factor. Default value is 3.4}
+\item{DeltaN}{mean value for trophic discrimination factor. Default value is 3.4}
 
-\item{n.obsDeltaC}{Number of observations of DeltaC (trophic enrichment
+\item{n.obsDeltaC}{Number of observations of DeltaC (trophic discrimination
 factor). Default is 107}
 
-\item{DeltaC}{mean value for trophic enrichment factor. Default value is 0.39}
+\item{DeltaC}{mean value for trophic discrimination factor. Default value is 0.39}
 
 \item{consumer}{}
 }
 \value{
-A named list with dNb1, dNc and deltaN randomly generated
-observations. If n.baselines = 2, then dCb1, dNb2, dCb2, dCc and deltaC are
-also returned.
+An isotopeData class object (named list) with dNb1, dNc and deltaN
+randomly generated observations. If n.baselines = 2, then dCb1, dNb2, dCb2,
+dCc and deltaC are also returned.
 }
 \description{
-This function generates random isotope (d13C and d15N) data for using the
+This function generates random stable isotope (d13C and d15N) data for using
 basic functions of tRophicPosition package.
 }

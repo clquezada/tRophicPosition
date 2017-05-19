@@ -2,14 +2,17 @@
 % Please edit documentation in R/biPlot.R
 \name{biPlot}
 \alias{biPlot}
-\title{Function that creates biplot with marginal density functions}
+\title{Internal functions within tRophicPosition}
 \usage{
 biPlot(df = NULL, df2 = NULL, ylab = NULL, xlab = NULL, p = "p1",
   legend = legend, limits = limits, ...)
 }
 \arguments{
-\item{...}{}
+\item{...}{Multiple parameters.}
+}
+\value{
+Multiple objects returned
 }
 \description{
-This function is intended to be used within the package.
+These functions are intended to be used within the package, and not directly by the users
 }

@@ -13,6 +13,9 @@ dCc, dNc, deltaN and deltaC}
 \item{type}{character that states if an "histogram" or a "density" will be
 ploted.}
 }
+\value{
+
+}
 \description{
 This function is intended to be used within the package. For details refer to
 \code{\link{screenIsotopeData}}. Is planned to deprecate it in the near
