@@ -7,7 +7,8 @@
 jagsTwoBaselines(muCb1 = NULL, sigmaCb1 = NULL, muNb1 = NULL,
   sigmaNb1 = NULL, muCb2 = NULL, sigmaCb2 = NULL, muNb2 = NULL,
   sigmaNb2 = NULL, alpha = NULL, sigmaCc = NULL, TP = NULL,
-  sigmaNc = NULL, muDeltaN = NULL, sigmaDeltaN = NULL, lambda = NULL)
+  sigmaNc = NULL, muDeltaN = NULL, sigmaDeltaN = NULL, lambda = NULL,
+  ...)
 }
 \arguments{
 \item{muCb1}{a distribution defining prior for mean (mu) for C of baseline 1.}

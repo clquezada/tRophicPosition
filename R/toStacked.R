@@ -12,7 +12,6 @@
 #'
 #' @return a dataframe with 3 columns: d13C, d15N and Factor. Factor is a factor
 #' with "Consumer", "Pelagic baseline" and "Benthic baseline" as levels.
-#' @export
 #'
 #' @examples
 

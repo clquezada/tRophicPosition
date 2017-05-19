@@ -2,7 +2,7 @@
 % Please edit documentation in R/pairwiseComparisons.R
 \name{pairwiseComparisons}
 \alias{pairwiseComparisons}
-\title{Function to perform a pairwise comparison between several posterior distributions}
+\title{Function to perform pairwise comparisons between several posterior distributions}
 \usage{
 pairwiseComparisons(df, test = "<=", print = FALSE)
 }
@@ -10,7 +10,7 @@ pairwiseComparisons(df, test = "<=", print = FALSE)
 \item{test}{}
 }
 \description{
-Function to perform a pairwise comparison between several posterior distributions
+Function to perform pairwise comparisons between several posterior distributions
 }
 \examples{
 

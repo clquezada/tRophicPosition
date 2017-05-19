@@ -1,16 +1,10 @@
-#' Function that creates biplot with marginal density functions
+#' Internal functions within tRophicPosition
 #'
-#' This function is intended to be used within the package.
+#' These functions are intended to be used within the package, and not directly by the users
 #'
-#' @param df
-#' @param df2
-#' @param ylab
-#' @param xlab
-#' @param p
-#' @param ...
+#' @param ... Multiple parameters.
 #'
-#' @return
-#' @export
+#' @return Multiple objects returned
 #'
 #' @examples
 

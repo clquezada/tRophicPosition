@@ -6,7 +6,7 @@
 #' @param n.chains
 #' @param n.adapt
 #' @param n.iter
-#' @param burnin
+#' @param burnin only used in parallel - check that
 #' @param thin
 #' @param model
 #' @param print
@@ -19,9 +19,9 @@
 
 multiSpeciesTP <- function (siDataList = siDataList, lambda = 2,
                             n.chains = 2,
-                            n.adapt = 20000,
-                            n.iter = 20000,
-                            burnin = 20000,
+                            n.adapt = 10000,
+                            n.iter = 10000,
+                            burnin = 10000,
                             thin = 10,
                             model = "oneBaseline",
                             print = FALSE,
@@ -68,11 +68,15 @@ multiSpeciesTP <- function (siDataList = siDataList, lambda = 2,
     else
       multiSpecies_TP <- cbind(multiSpecies_TP, as.data.frame(TP_results[["TP"]]))
 
-    names(TP_results[["alpha"]]) <- paste(names(siDataList[i]), names(TP_results[["alpha"]]))
-    if (ncol(multiSpecies_alpha) == 0)
-      multiSpecies_alpha <- as.data.frame(TP_results[["alpha"]])
-    else
-      multiSpecies_alpha <- cbind(multiSpecies_alpha, as.data.frame(TP_results[["alpha"]]))
+    if (model != "oneBaseline"){
+
+      names(TP_results[["alpha"]]) <- paste(names(siDataList[i]), names(TP_results[["alpha"]]))
+
+      if (ncol(multiSpecies_alpha) == 0)
+        multiSpecies_alpha <- as.data.frame(TP_results[["alpha"]])
+      else
+        multiSpecies_alpha <- cbind(multiSpecies_alpha, as.data.frame(TP_results[["alpha"]]))
+    }
 
     #multiSpecies_TP[[names(siDataList[i])]] <- TP_results[["TP"]]
     #multiSpecies_alpha[[names(siDataList[i])]] <- TP_results[["alpha"]]
@@ -84,14 +88,21 @@ multiSpeciesTP <- function (siDataList = siDataList, lambda = 2,
                               multiSpeciesTP_df$species,
                               multiSpeciesTP_df$model, sep = "-")
 
+  if (model != "oneBaseline") {
+    object <- list("multiSpeciesTP" = multiSpeciesTP_list,
+                   "df" = multiSpeciesTP_df,
+                   "TP's" = multiSpecies_TP,
+                   "Alpha's" = multiSpecies_alpha)
 
-  object <- list("multiSpeciesTP" = multiSpeciesTP_list,
-                 "df" = multiSpeciesTP_df,
-                 "TP's" = multiSpecies_TP,
-                 "Alpha's" = multiSpecies_alpha)
+    class(object[["Alpha's"]]) <- "posteriorAlpha"
+
+  } else {
+    object <- list("multiSpeciesTP" = multiSpeciesTP_list,
+                   "df" = multiSpeciesTP_df,
+                   "TP's" = multiSpecies_TP)
+    }
 
   class(object[["TP's"]]) <- "posteriorTP"
-  class(object[["Alpha's"]]) <- "posteriorAlpha"
 
   return(object)
 

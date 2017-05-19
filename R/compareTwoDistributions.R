@@ -5,9 +5,8 @@
 #' @param dist2 A collection of Trophic Position data (posterior distribution)
 #' @param test A logical operator which states what to test for. Might be "<",
 #' "<=", ">" or ">=".
-#' @param ordered Not implemented yet.
 #' @param sample If sample is numeric, it will take 'sample' elements of each of
-#' the distributions of Trophic Position data.
+#' the distributions of posterior trophic position.
 #' @param ... extra arguments are passed to \code{\link{sample}
 #'
 #' @return
@@ -18,9 +17,11 @@
 compareTwoDistributions <- function (dist1 = NULL,
                                      dist2 = NULL,
                                      test = "<=",
-                                     ordered = FALSE,
                                      sample = NULL,
                                      ...) {
+
+  # To do
+  # implement ordered = TRUE within arguments
 
   if (is.null(dist1) | is.null(dist2)) {
 
@@ -32,9 +33,9 @@ compareTwoDistributions <- function (dist1 = NULL,
 
     warning("
 You are comparing two distributions that have different length.
-            Although this is possible, it is likely that the two distributions
-            came from different analysis, thus you need to check if the
-            distributions you are comparing are those you actually want to
+Although this is possible, it is likely that the two distributions
+came from different analysis, thus you need to check if the
+distributions you are comparing are those you actually want to
             compare. The analysis will stop now.")
 
     cat("Length of distribution 1:", length(dist1), sep=" ")
@@ -69,6 +70,6 @@ You are comparing two distributions that have different length.
   }
 
   warning('
-Do you check that the logical operator is "<", "<=", ">"" or ">="?
+Have you checked that the logical operator is "<", "<=", ">"" or ">="?
           Otherwise the function will not work properly.')
 }

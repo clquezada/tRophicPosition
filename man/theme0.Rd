@@ -9,6 +9,9 @@ theme0(...)
 \arguments{
 \item{...}{}
 }
+\value{
+
+}
 \description{
 This function is intended to be used within the package
 }

@@ -7,10 +7,8 @@
 #' (stating the names expected).
 #'
 #' @return
-#' @export
-#'
 #' @examples
-#'
+
 checkNames <- function (df = NULL, flag = NULL) {
 
   if (typeof(flag) == "double") {

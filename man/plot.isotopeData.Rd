@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.isotopeData.R
 \name{plot.isotopeData}
 \alias{plot.isotopeData}
-\title{Title}
+\title{Plot stable isotope data (2 elements) with one or two baselines}
 \usage{
 \method{plot}{isotopeData}(isotopeData, consumer = NULL, b1 = NULL,
   b2 = NULL, legend = c(1.15, 1.15), density = "both")
@@ -11,7 +11,7 @@
 \item{density}{}
 }
 \description{
-Title
+Plot stable isotope data (2 elements) with one or two baselines
 }
 \examples{
 

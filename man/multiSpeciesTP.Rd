@@ -5,10 +5,12 @@
 \title{Multiple species calculation of trophic position}
 \usage{
 multiSpeciesTP(siDataList = siDataList, lambda = 2, n.chains = 2,
-  n.adapt = 20000, n.iter = 20000, burnin = 20000, thin = 10,
+  n.adapt = 10000, n.iter = 10000, burnin = 10000, thin = 10,
   model = "oneBaseline", print = FALSE, ...)
 }
 \arguments{
+\item{burnin}{only used in parallel - check that}
+
 \item{...}{}
 }
 \description{

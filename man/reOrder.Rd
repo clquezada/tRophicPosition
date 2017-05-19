@@ -9,6 +9,9 @@ reOrder(df = NULL)
 \arguments{
 \item{df}{data frame containing the data to be ordered.}
 }
+\value{
+
+}
 \description{
 Not intended to be used by the user.
 }

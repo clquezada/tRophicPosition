@@ -36,7 +36,8 @@ jagsOneBaseline <- function (muB = NULL,
 							sigmaDeltaN = NULL,
 							sigma = NULL,
 							TP = NULL,
-							lambda = NULL)
+							lambda = NULL,
+							...)
 {
 
   # ----------------------------------------------------------------------------

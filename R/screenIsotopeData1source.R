@@ -10,7 +10,6 @@
 #' ploted.
 #'
 #' @return
-#' @export
 #'
 #' @examples
 #'

@@ -1,0 +1,842 @@
+Study,Location,Spp,FG,d13C,d15N,NS
+MEL,CHI,Echinolittorina peruviana,Benthic_BL,-10.1,16.3,4
+MEL,CHI,Echinolittorina peruviana,Benthic_BL,-11.7,16.3,4
+MEL,CHI,Echinolittorina peruviana,Benthic_BL,-9.8,16.4,4
+MEL,CHI,Echinolittorina peruviana,Benthic_BL,-11.0,16.6,4
+MEL,CHI,Echinolittorina peruviana,Benthic_BL,-7.4,12.5,4
+MEL,CHI,Echinolittorina peruviana,Benthic_BL,-10.1,14.2,4
+MEL,CHI,Echinolittorina peruviana,Benthic_BL,-10.9,16.2,4
+MEL,CHI,Echinolittorina peruviana,Benthic_BL,-11.8,16.9,4
+MEL,CHI,Echinolittorina peruviana,Benthic_BL,-8.7,15.2,4
+MEL,CHI,Echinolittorina peruviana,Benthic_BL,-10.0,16.3,4
+MEL,CHI,Echinolittorina peruviana,Benthic_BL,-12.1,17.0,4
+MEL,CHI,Echinolittorina peruviana,Benthic_BL,-12.2,17.5,4
+MEL,CHI,Scurria viridula,Benthic_BL,-8.5,13.5,4
+MEL,CHI,Scurria viridula,Benthic_BL,-10.1,14.6,4
+MEL,CHI,Scurria viridula,Benthic_BL,-6.5,15.7,4
+MEL,CHI,Scurria viridula,Benthic_BL,-8.0,15.7,4
+MEL,CHI,Scurria viridula,Benthic_BL,-14.6,16.4,4
+MEL,CHI,Scurria viridula,Benthic_BL,-14.3,16.6,4
+MEL,CHI,Scurria viridula,Benthic_BL,-11.4,15.9,4
+MEL,CHI,Scurria viridula,Benthic_BL,-6.3,16.0,4
+MEL,CHI,Scurria viridula,Benthic_BL,-9.1,16.1,4
+MEL,CHI,Tegula,Benthic_BL,-10.4,17.5,4
+MEL,CHI,Tegula,Benthic_BL,-10.8,17.6,4
+MEL,CHI,Tegula,Benthic_BL,-10.9,17.6,4
+MEL,CHI,Tegula,Benthic_BL,-8.0,18.2,4
+MEL,CHI,Tegula,Benthic_BL,-11.9,17.5,4
+MEL,CHI,Tegula,Benthic_BL,-12.4,18.0,4
+MEL,CHI,Tegula,Benthic_BL,-9.9,18.1,4
+MEL,CHI,Tegula,Benthic_BL,-12.1,18.4,4
+MEL,CHI,Bilagay,Bilagay,-13.6,21.6,4
+MEL,CHI,Bilagay,Bilagay,-14.5,21.7,4
+MEL,CHI,Bilagay,Bilagay,-13.8,22.0,4
+MEL,CHI,Bilagay,Bilagay,-14.4,21.6,4
+MEL,CHI,Bilagay,Bilagay,-14.4,21.8,4
+MEL,CHI,Bilagay,Bilagay,-14.4,21.9,4
+MEL,CHI,Bilagay,Bilagay,-14.4,22.0,4
+MEL,CHI,Bilagay,Bilagay,-14.1,21.3,4
+MEL,CHI,Bilagay,Bilagay,-14.5,22.3,4
+MEL,CHI,Bilagay,Bilagay,-14.3,21.7,4
+MEL,CHI,Bilagay,Bilagay,-14.3,21.9,4
+MEL,CHI,Bilagay,Bilagay,-12.7,22.2,4
+MEL,CHI,Bilagay,Bilagay,-14.2,21.5,4
+MEL,CHI,Bilagay,Bilagay,-14.2,22.4,4
+MEL,CHI,Bilagay,Bilagay,-15.0,22.4,4
+MEL,CHI,Bilagay,Bilagay,-14.1,22.5,4
+MEL,CHI,Bilagay,Bilagay,-14.4,22.3,4
+MEL,CHI,Bilagay,Bilagay,-11.9,22.1,4
+MEL,CHI,Perumytilus purpuratus,Pelagic_BL,-14.5,16.3,4
+MEL,CHI,Perumytilus purpuratus,Pelagic_BL,-14.5,16.4,4
+MEL,CHI,Perumytilus purpuratus,Pelagic_BL,-14.3,16.4,4
+MEL,CHI,Perumytilus purpuratus,Pelagic_BL,-14.4,16.8,4
+MEL,CHI,Perumytilus purpuratus,Pelagic_BL,-15.1,15.6,4
+MEL,CHI,Perumytilus purpuratus,Pelagic_BL,-15.0,15.9,4
+MEL,CHI,Perumytilus purpuratus,Pelagic_BL,-14.4,16.3,4
+MEL,CHI,Perumytilus purpuratus,Pelagic_BL,-14.5,16.5,4
+MEL,CHI,Perumytilus purpuratus,Pelagic_BL,-14.8,15.7,4
+MEL,CHI,Perumytilus purpuratus,Pelagic_BL,-14.6,15.7,4
+MEL,CHI,Perumytilus purpuratus,Pelagic_BL,-14.7,16.1,4
+MEL,CHI,Perumytilus purpuratus,Pelagic_BL,-14.8,16.5,4
+MEL,CHI,Perumytilus purpuratus,Pelagic_BL,-16.3,16.2,4
+MEL,CHI,Perumytilus purpuratus,Pelagic_BL,-15.1,16.2,4
+MEL,CHI,Perumytilus purpuratus,Pelagic_BL,-14.7,16.8,4
+MEL,CHI,Perumytilus purpuratus,Pelagic_BL,-14.9,16.5,4
+MEL,CHI,Perumytilus purpuratus,Pelagic_BL,-14.7,16.3,4
+MEL,CHI,Perumytilus purpuratus,Pelagic_BL,-14.6,15.6,4
+MEL,CHI,Perumytilus purpuratus,Pelagic_BL,-15.6,15.8,4
+MEL,CHI,Perumytilus purpuratus,Pelagic_BL,-14.6,16.0,4
+MEL,CHI,Perumytilus purpuratus,Pelagic_BL,-15.0,15.7,4
+MEL,CHI,Perumytilus purpuratus,Pelagic_BL,-14.8,15.4,4
+MEL,CHI,Perumytilus purpuratus,Pelagic_BL,-15.8,15.9,4
+MEL,CHI,Perumytilus purpuratus,Pelagic_BL,-16.0,15.9,4
+MEL,CHI,Perumytilus purpuratus,Pelagic_BL,-15.2,16.9,4
+MEL,CHI,Perumytilus purpuratus,Pelagic_BL,-15.5,16.3,4
+MEL,COL,Echinolittorina peruviana,Benthic_BL,-6.9,15.7,3
+MEL,COL,Echinolittorina peruviana,Benthic_BL,-8.8,16.8,3
+MEL,COL,Echinolittorina peruviana,Benthic_BL,-7.7,17.0,3
+MEL,COL,Echinolittorina peruviana,Benthic_BL,-8.5,17.1,3
+MEL,COL,Echinolittorina peruviana,Benthic_BL,-11.3,17.4,3
+MEL,COL,Echinolittorina peruviana,Benthic_BL,-12.8,17.5,3
+MEL,COL,Echinolittorina peruviana,Benthic_BL,-9.8,18.4,3
+MEL,COL,Echinolittorina peruviana,Benthic_BL,-9.2,18.5,3
+MEL,COL,Echinolittorina peruviana,Benthic_BL,-8.6,13.7,3
+MEL,COL,Echinolittorina peruviana,Benthic_BL,-11.2,15.9,3
+MEL,COL,Echinolittorina peruviana,Benthic_BL,-12.4,16.3,3
+MEL,COL,Echinolittorina peruviana,Benthic_BL,-10.0,17.1,3
+MEL,COL,Scurria viridula,Benthic_BL,-6.7,15.4,3
+MEL,COL,Scurria viridula,Benthic_BL,-10.3,16.0,3
+MEL,COL,Scurria viridula,Benthic_BL,-10.8,16.2,3
+MEL,COL,Scurria viridula,Benthic_BL,-9.3,16.2,3
+MEL,COL,Scurria viridula,Benthic_BL,-9.0,16.0,3
+MEL,COL,Scurria viridula,Benthic_BL,-7.7,16.3,3
+MEL,COL,Scurria viridula,Benthic_BL,-7.2,16.4,3
+MEL,COL,Scurria viridula,Benthic_BL,-7.0,17.4,3
+MEL,COL,Tegula,Benthic_BL,-11.7,17.9,3
+MEL,COL,Tegula,Benthic_BL,-11.9,18.1,3
+MEL,COL,Tegula,Benthic_BL,-12.6,18.2,3
+MEL,COL,Tegula,Benthic_BL,-11.4,18.3,3
+MEL,COL,Tegula,Benthic_BL,-14.1,18.3,3
+MEL,COL,Tegula,Benthic_BL,-14.1,18.5,3
+MEL,COL,Tegula,Benthic_BL,-13.6,18.6,3
+MEL,COL,Tegula,Benthic_BL,-14.0,18.6,3
+MEL,COL,Tegula,Benthic_BL,-12.5,17.3,3
+MEL,COL,Tegula,Benthic_BL,-13.0,17.1,3
+MEL,COL,Tegula,Benthic_BL,-12.7,17.1,3
+MEL,COL,Tegula,Benthic_BL,-11.7,17.1,3
+MEL,COL,Tegula,Benthic_BL,-13.3,17.6,3
+MEL,COL,Tegula,Benthic_BL,-11.9,17.1,3
+MEL,COL,Tegula,Benthic_BL,-11.7,17.4,3
+MEL,COL,Tegula,Benthic_BL,-12.1,17.4,3
+MEL,COL,Tegula,Benthic_BL,-11.4,17.1,3
+MEL,COL,Tegula,Benthic_BL,-13.7,17.3,3
+MEL,COL,Tegula,Benthic_BL,-14.2,17.2,3
+MEL,COL,Tegula,Benthic_BL,-14.2,17.5,3
+MEL,COL,Tegula,Benthic_BL,-12.4,17.6,3
+MEL,COL,Tegula,Benthic_BL,-13.7,17.4,3
+MEL,COL,Bilagay,Bilagay,-15.5,21.2,3
+MEL,COL,Bilagay,Bilagay,-15.6,21.6,3
+MEL,COL,Bilagay,Bilagay,-14.8,21.3,3
+MEL,COL,Bilagay,Bilagay,-15.1,21.1,3
+MEL,COL,Bilagay,Bilagay,-15.0,20.8,3
+MEL,COL,Bilagay,Bilagay,-15.2,21.1,3
+MEL,COL,Bilagay,Bilagay,-15.3,21.0,3
+MEL,COL,Bilagay,Bilagay,-15.0,21.4,3
+MEL,COL,Bilagay,Bilagay,-15.0,21.7,3
+MEL,COL,Bilagay,Bilagay,-14.9,21.3,3
+MEL,COL,Bilagay,Bilagay,-14.2,21.5,3
+MEL,COL,Bilagay,Bilagay,-14.8,21.8,3
+MEL,COL,Bilagay,Bilagay,-15.7,21.0,3
+MEL,COL,Bilagay,Bilagay,-15.2,21.2,3
+MEL,COL,Bilagay,Bilagay,-15.2,20.9,3
+MEL,COL,Bilagay,Bilagay,-15.4,21.3,3
+MEL,COL,Bilagay,Bilagay,-15.2,21.6,3
+MEL,COL,Bilagay,Bilagay,-15.0,22.0,3
+MEL,COL,Bilagay,Bilagay,-15.2,20.8,3
+MEL,COL,Bilagay,Bilagay,-15.6,21.3,3
+MEL,COL,Bilagay,Bilagay,-15.0,21.8,3
+MEL,COL,Bilagay,Bilagay,-15.3,21.5,3
+MEL,COL,Bilagay,Bilagay,-15.0,21.0,3
+MEL,COL,Bilagay,Bilagay,-15.1,21.2,3
+MEL,COL,Bilagay,Bilagay,-14.5,21.1,3
+MEL,COL,Bilagay,Bilagay,-15.1,22.1,3
+MEL,COL,Bilagay,Bilagay,-15.8,21.5,3
+MEL,COL,Bilagay,Bilagay,-13.1,21.0,3
+MEL,COL,Bilagay,Bilagay,-13.1,21.1,3
+MEL,COL,Bilagay,Bilagay,-13.3,21.3,3
+MEL,COL,Bilagay,Bilagay,-12.8,21.3,3
+MEL,COL,Bilagay,Bilagay,-13.2,20.5,3
+MEL,COL,Bilagay,Bilagay,-14.5,20.8,3
+MEL,COL,Bilagay,Bilagay,-13.5,21.4,3
+MEL,COL,Bilagay,Bilagay,-14.0,21.1,3
+MEL,COL,Bilagay,Bilagay,-13.2,19.9,3
+MEL,COL,Bilagay,Bilagay,-15.6,20.9,3
+MEL,COL,Bilagay,Bilagay,-13.1,21.2,3
+MEL,COL,Bilagay,Bilagay,-14.1,20.5,3
+MEL,COL,Bilagay,Bilagay,-13.2,21.0,3
+MEL,COL,Bilagay,Bilagay,-13.8,21.0,3
+MEL,COL,Bilagay,Bilagay,-12.4,21.0,3
+MEL,COL,Perumytilus purpuratus,Pelagic_BL,-15.2,15.5,3
+MEL,COL,Perumytilus purpuratus,Pelagic_BL,-14.5,15.9,3
+MEL,COL,Perumytilus purpuratus,Pelagic_BL,-14.9,16.1,3
+MEL,COL,Perumytilus purpuratus,Pelagic_BL,-14.5,16.3,3
+MEL,COL,Perumytilus purpuratus,Pelagic_BL,-14.0,16.5,3
+MEL,COL,Perumytilus purpuratus,Pelagic_BL,-15.0,16.5,3
+MEL,COL,Perumytilus purpuratus,Pelagic_BL,-14.9,16.9,3
+MEL,COL,Perumytilus purpuratus,Pelagic_BL,-14.0,17.1,3
+MEL,COL,Perumytilus purpuratus,Pelagic_BL,-15.0,15.6,3
+MEL,COL,Perumytilus purpuratus,Pelagic_BL,-15.0,16.1,3
+MEL,COL,Perumytilus purpuratus,Pelagic_BL,-14.6,16.4,3
+MEL,COL,Perumytilus purpuratus,Pelagic_BL,-14.4,17.1,3
+MEL,COL,Mytilus chilensis,Pelagic_BL,-14.3,15.2,3
+MEL,COL,Mytilus chilensis,Pelagic_BL,-13.9,15.1,3
+MEL,COL,Mytilus chilensis,Pelagic_BL,-14.5,14.9,3
+MEL,COL,Mytilus chilensis,Pelagic_BL,-14.4,15.0,3
+MEL,COL,Mytilus chilensis,Pelagic_BL,-13.5,15.8,3
+MEL,COL,Perumytilus purpuratus,Pelagic_BL,-14.9,16.8,3
+MEL,COL,Perumytilus purpuratus,Pelagic_BL,-15.9,15.7,3
+MEL,COL,Perumytilus purpuratus,Pelagic_BL,-15.2,16.5,3
+MEL,COL,Perumytilus purpuratus,Pelagic_BL,-15.0,16.5,3
+MEL,COL,Perumytilus purpuratus,Pelagic_BL,-15.3,15.5,3
+MEL,COL,Perumytilus purpuratus,Pelagic_BL,-16.7,16.7,3
+MEL,COL,Perumytilus purpuratus,Pelagic_BL,-15.4,16.6,3
+MEL,COL,Perumytilus purpuratus,Pelagic_BL,-15.3,16.2,3
+MEL,COL,Perumytilus purpuratus,Pelagic_BL,-15.4,16.2,3
+MEL,COL,Perumytilus purpuratus,Pelagic_BL,-14.8,16.4,3
+MEL,COL,Perumytilus purpuratus,Pelagic_BL,-16.7,15.3,3
+MEL,COL,Perumytilus purpuratus,Pelagic_BL,-14.1,16.8,3
+MEL,COL,Perumytilus purpuratus,Pelagic_BL,-14.3,16.8,3
+MEL,COL,Perumytilus purpuratus,Pelagic_BL,-14.1,16.8,3
+MEL,COL,Perumytilus purpuratus,Pelagic_BL,-14.9,16.2,3
+MEC,Coquimbo,Echinolittorina peruviana,Benthic_BL,-11.1,14.9,1
+MEC,Coquimbo,Echinolittorina peruviana,Benthic_BL,-11.9,15.2,1
+MEC,Coquimbo,Echinolittorina peruviana,Benthic_BL,-11.7,15.0,1
+MEC,Coquimbo,Echinolittorina peruviana,Benthic_BL,-11.5,15.2,1
+MEC,Coquimbo,Prisogaster niger,Benthic_BL,-14.6,16.3,1
+MEC,Coquimbo,Prisogaster niger,Benthic_BL,-13.8,15.7,1
+MEC,Coquimbo,Prisogaster niger,Benthic_BL,-14.5,15.4,1
+MEC,Coquimbo,Prisogaster niger,Benthic_BL,-14.3,15.5,1
+MEC,Coquimbo,Prisogaster niger,Benthic_BL,-14.6,16.4,1
+MEC,Coquimbo,Tegula atra,Benthic_BL,-13.9,15.4,1
+MEC,Coquimbo,Tegula atra,Benthic_BL,-14.5,15.9,1
+MEC,Coquimbo,Tegula atra,Benthic_BL,-13.0,15.1,1
+MEC,Coquimbo,Echinolittorina peruviana,Benthic_BL,-11.9,14.6,1
+MEC,Coquimbo,Echinolittorina peruviana,Benthic_BL,-12.0,14.8,1
+MEC,Coquimbo,Echinolittorina peruviana,Benthic_BL,-12.2,14.9,1
+MEC,Coquimbo,Echinolittorina peruviana,Benthic_BL,-12.0,15.1,1
+MEC,Coquimbo,Echinolittorina peruviana,Benthic_BL,-12.0,15.1,1
+MEC,Coquimbo,Prisogaster niger,Benthic_BL,-14.1,15.8,1
+MEC,Coquimbo,Prisogaster niger,Benthic_BL,-15.1,15.8,1
+MEC,Coquimbo,Prisogaster niger,Benthic_BL,-13.8,16.1,1
+MEC,Coquimbo,Prisogaster niger,Benthic_BL,-13.9,15.9,1
+MEC,Coquimbo,Prisogaster niger,Benthic_BL,-14.2,16.2,1
+MEC,Coquimbo,Tegula atra,Benthic_BL,-14.2,15.4,1
+MEC,Coquimbo,Tegula atra,Benthic_BL,-14.3,15.2,1
+MEC,Coquimbo,Tegula atra,Benthic_BL,-13.4,15.2,1
+MEC,Coquimbo,Tegula atra,Benthic_BL,-13.7,15.1,1
+MEC,Coquimbo,Tegula atra,Benthic_BL,-13.7,15.6,1
+MEC,Coquimbo,Tegula atra,Benthic_BL,-12.0,14.8,1
+MEC,Coquimbo,Bilagay,Bilagay,-16.2,19.4,1
+MEC,Coquimbo,Bilagay,Bilagay,-16.7,19.0,1
+MEC,Coquimbo,Bilagay,Bilagay,-17.8,19.1,1
+MEC,Coquimbo,Bilagay,Bilagay,-16.5,18.3,1
+MEC,Coquimbo,Bilagay,Bilagay,-16.8,19.8,1
+MEC,Coquimbo,Bilagay,Bilagay,-17.8,20.1,1
+MEC,Coquimbo,Bilagay,Bilagay,-16.3,19.6,1
+MEC,Coquimbo,Bilagay,Bilagay,-15.5,20.3,1
+MEC,Coquimbo,Bilagay,Bilagay,-16.3,19.5,1
+MEC,Coquimbo,Bilagay,Bilagay,-16.0,19.9,1
+MEC,Coquimbo,Perumytilus purpuratus,Pelagic_BL,-17.3,13.8,1
+MEC,Coquimbo,Perumytilus purpuratus,Pelagic_BL,-17.6,14.3,1
+MEC,Coquimbo,Perumytilus purpuratus,Pelagic_BL,-17.4,14.2,1
+MEC,Coquimbo,Perumytilus purpuratus,Pelagic_BL,-16.6,13.4,1
+MEC,Coquimbo,Perumytilus purpuratus,Pelagic_BL,-17.0,13.8,1
+MEC,Coquimbo,Perumytilus purpuratus,Pelagic_BL,-16.9,13.3,1
+MEC,Coquimbo,Perumytilus purpuratus,Pelagic_BL,-18.5,14.6,1
+MEC,Coquimbo,Perumytilus purpuratus,Pelagic_BL,-18.1,14.0,1
+MEC,Coquimbo,Perumytilus purpuratus,Pelagic_BL,-17.5,14.2,1
+MEC,Coquimbo,Perumytilus purpuratus,Pelagic_BL,-18.3,13.9,1
+MEC,Coquimbo,Perumytilus purpuratus,Pelagic_BL,-17.6,13.4,1
+MEC,Coquimbo,Perumytilus purpuratus,Pelagic_BL,-18.0,12.1,1
+MEC,Coquimbo,Perumytilus purpuratus,Pelagic_BL,-17.0,13.9,1
+MEC,Coquimbo,Perumytilus purpuratus,Pelagic_BL,-18.0,12.6,1
+MEC,Coquimbo,Perumytilus purpuratus,Pelagic_BL,-17.2,13.6,1
+Fondecyt,ISM,Tegula,Benthic_BL,-15.2,18.7,6
+Fondecyt,ISM,Tegula,Benthic_BL,-17.0,18.8,6
+Fondecyt,ISM,Tegula,Benthic_BL,-16.8,18.6,6
+Fondecyt,ISM,Tegula,Benthic_BL,-13.7,17.6,6
+Fondecyt,ISM,Tegula,Benthic_BL,-13.6,17.1,6
+Fondecyt,ISM,Tegula,Benthic_BL,-16.8,18.4,6
+Fondecyt,ISM,Tegula,Benthic_BL,-13.9,17.3,6
+Fondecyt,ISM,Tegula,Benthic_BL,-16.3,17.7,6
+Fondecyt,ISM,Tegula,Benthic_BL,-16.5,18.2,6
+Fondecyt,ISM,Tegula,Benthic_BL,-14.9,18.1,6
+Fondecyt,ISM,Tegula,Benthic_BL,-13.5,18.3,6
+Fondecyt,ISM,Lapa,Benthic_BL,-13.0,17.3,6
+Fondecyt,ISM,Lapa,Benthic_BL,-13.2,18.5,6
+Fondecyt,ISM,Lapa,Benthic_BL,-13.6,17.6,6
+Fondecyt,ISM,Lapa,Benthic_BL,-13.4,17.6,6
+Fondecyt,ISM,Lapa,Benthic_BL,-17.7,17.4,6
+Fondecyt,ISM,Lapa,Benthic_BL,-13.6,17.3,6
+Fondecyt,ISM,Bilagay,Bilagay,-16.5,21.9,6
+Fondecyt,ISM,Bilagay,Bilagay,-16.4,21.5,6
+Fondecyt,ISM,Bilagay,Bilagay,-16.1,21.6,6
+Fondecyt,ISM,Bilagay,Bilagay,-16.0,21.5,6
+Fondecyt,ISM,Bilagay,Bilagay,-17.1,21.5,6
+Fondecyt,ISM,Bilagay,Bilagay,-16.8,21.5,6
+Fondecyt,ISM,Bilagay,Bilagay,-17.1,21.4,6
+Fondecyt,ISM,Bilagay,Bilagay,-16.4,21.7,6
+Fondecyt,ISM,Bilagay,Bilagay,-16.8,21.7,6
+Fondecyt,ISM,Bilagay,Bilagay,-16.7,21.4,6
+Fondecyt,ISM,Bilagay,Bilagay,-15.6,21.0,6
+Fondecyt,ISM,Bilagay,Bilagay,-15.3,22.1,6
+Fondecyt,ISM,Bilagay,Bilagay,-16.5,22.2,6
+Fondecyt,ISM,Bilagay,Bilagay,-16.5,21.7,6
+Fondecyt,ISM,Bilagay,Bilagay,-14.6,22.2,6
+Fondecyt,ISM,Bilagay,Bilagay,-16.7,22.7,6
+Fondecyt,ISM,Bilagay,Bilagay,-16.2,22.2,6
+Fondecyt,ISM,Bilagay,Bilagay,-16.0,22.1,6
+Fondecyt,ISM,Bilagay,Bilagay,-16.8,22.1,6
+Fondecyt,ISM,Bilagay,Bilagay,-16.5,22.5,6
+Fondecyt,ISM,Bilagay,Bilagay,-17.1,22.1,6
+Fondecyt,ISM,Bilagay,Bilagay,-13.3,23.2,6
+Fondecyt,ISM,Bilagay,Bilagay,-17.5,22.3,6
+Fondecyt,ISM,Bilagay,Bilagay,-14.2,22.4,6
+Fondecyt,ISM,Bilagay,Bilagay,-15.6,21.9,6
+Fondecyt,ISM,Bivalve,Pelagic_BL,-17.2,15.4,6
+Fondecyt,ISM,Bivalve,Pelagic_BL,-16.4,16.0,6
+Fondecyt,ISM,Bivalve,Pelagic_BL,-16.4,16.0,6
+Fondecyt,ISM,Bivalve,Pelagic_BL,-17.1,15.1,6
+Fondecyt,ISM,Bivalve,Pelagic_BL,-17.6,15.5,6
+Fondecyt,ISM,Bivalve,Pelagic_BL,-18.7,15.8,6
+Fondecyt,ISM,Bivalve,Pelagic_BL,-18.3,15.5,6
+Fondecyt,ISM,Bivalve,Pelagic_BL,-17.9,16.4,6
+Fondecyt,ISM,Bivalve,Pelagic_BL,-18.2,16.8,6
+Fondecyt,ISM,Turritella,Pelagic_BL,-18.3,16.5,6
+Fondecyt,ISM,Turritella,Pelagic_BL,-17.5,16.4,6
+Fondecyt,ISM,Turritella,Pelagic_BL,-18.1,16.2,6
+Fondecyt,ISM,Turritella,Pelagic_BL,-18.3,17.0,6
+Fondecyt,ISM,Turritella,Pelagic_BL,-22.5,16.3,6
+Fondecyt,ISM,Turritella,Pelagic_BL,-22.1,16.3,6
+MEL,LAG,Echinolittorina peruviana,Benthic_BL,-11.1,17.7,7
+MEL,LAG,Echinolittorina peruviana,Benthic_BL,-14.0,17.9,7
+MEL,LAG,Echinolittorina peruviana,Benthic_BL,-14.8,18.0,7
+MEL,LAG,Echinolittorina peruviana,Benthic_BL,-10.7,19.4,7
+MEL,LAG,Echinolittorina peruviana,Benthic_BL,-13.0,18.2,7
+MEL,LAG,Echinolittorina peruviana,Benthic_BL,-11.4,18.2,7
+MEL,LAG,Echinolittorina peruviana,Benthic_BL,-11.7,18.5,7
+MEL,LAG,Echinolittorina peruviana,Benthic_BL,-10.5,24.3,7
+MEL,LAG,Echinolittorina peruviana,Benthic_BL,-11.3,17.1,7
+MEL,LAG,Echinolittorina peruviana,Benthic_BL,-15.0,17.2,7
+MEL,LAG,Echinolittorina peruviana,Benthic_BL,-11.2,17.6,7
+MEL,LAG,Echinolittorina peruviana,Benthic_BL,-12.0,17.9,7
+MEL,LAG,Scurria viridula,Benthic_BL,-9.4,17.2,7
+MEL,LAG,Scurria viridula,Benthic_BL,-7.7,16.6,7
+MEL,LAG,Scurria viridula,Benthic_BL,-5.5,16.8,7
+MEL,LAG,Scurria viridula,Benthic_BL,-7.6,16.6,7
+MEL,LAG,Scurria viridula,Benthic_BL,-9.5,16.7,7
+MEL,LAG,Scurria viridula,Benthic_BL,-6.1,17.2,7
+MEL,LAG,Scurria viridula,Benthic_BL,-5.2,17.6,7
+MEL,LAG,Scurria viridula,Benthic_BL,-2.7,17.9,7
+MEL,LAG,Tegula,Benthic_BL,-12.4,18.0,7
+MEL,LAG,Tegula,Benthic_BL,-12.0,18.3,7
+MEL,LAG,Tegula,Benthic_BL,-11.6,18.4,7
+MEL,LAG,Tegula,Benthic_BL,-11.2,18.7,7
+MEL,LAG,Tegula,Benthic_BL,-12.4,18.3,7
+MEL,LAG,Tegula,Benthic_BL,-13.0,18.4,7
+MEL,LAG,Tegula,Benthic_BL,-12.9,18.4,7
+MEL,LAG,Tegula,Benthic_BL,-12.6,18.5,7
+MEL,LAG,Tegula,Benthic_BL,-14.3,17.6,7
+MEL,LAG,Tegula,Benthic_BL,-12.9,17.6,7
+MEL,LAG,Tegula,Benthic_BL,-13.5,17.7,7
+MEL,LAG,Tegula,Benthic_BL,-13.5,17.8,7
+MEL,LAG,Tegula,Benthic_BL,-12.4,17.6,7
+MEL,LAG,Tegula,Benthic_BL,-13.7,17.3,7
+MEL,LAG,Tegula,Benthic_BL,-11.0,18.1,7
+MEL,LAG,Tegula,Benthic_BL,-12.8,18.2,7
+MEL,LAG,Tegula,Benthic_BL,-12.1,18.1,7
+MEL,LAG,Tegula,Benthic_BL,-13.9,17.9,7
+MEL,LAG,Tegula,Benthic_BL,-12.2,18.2,7
+MEL,LAG,Tegula,Benthic_BL,-12.7,17.6,7
+MEL,LAG,Tegula,Benthic_BL,-13.6,17.5,7
+MEL,LAG,Tegula,Benthic_BL,-11.8,18.2,7
+MEL,LAG,Tegula,Benthic_BL,-11.2,17.7,7
+MEL,LAG,Tegula,Benthic_BL,-10.3,17.5,7
+MEL,LAG,Tegula,Benthic_BL,-11.8,17.5,7
+MEL,LAG,Tegula,Benthic_BL,-13.2,17.2,7
+MEL,LAG,Tegula,Benthic_BL,-13.9,17.1,7
+MEL,LAG,Bilagay,Bilagay,-13.6,22.6,7
+MEL,LAG,Bilagay,Bilagay,-16.6,22.3,7
+MEL,LAG,Bilagay,Bilagay,-17.5,22.3,7
+MEL,LAG,Bilagay,Bilagay,-16.4,21.9,7
+MEL,LAG,Bilagay,Bilagay,-17.0,22.1,7
+MEL,LAG,Bilagay,Bilagay,-16.4,22.3,7
+MEL,LAG,Bilagay,Bilagay,-16.3,22.4,7
+MEL,LAG,Bilagay,Bilagay,-16.6,21.7,7
+MEL,LAG,Bilagay,Bilagay,-17.5,22.1,7
+MEL,LAG,Bilagay,Bilagay,-16.0,21.8,7
+MEL,LAG,Bilagay,Bilagay,-16.1,21.9,7
+MEL,LAG,Bilagay,Bilagay,-16.2,22.4,7
+MEL,LAG,Bilagay,Bilagay,-16.4,22.2,7
+MEL,LAG,Bilagay,Bilagay,-16.2,23.0,7
+MEL,LAG,Bilagay,Bilagay,-16.6,22.8,7
+MEL,LAG,Bilagay,Bilagay,-16.1,23.4,7
+MEL,LAG,Bilagay,Bilagay,-16.4,22.9,7
+MEL,LAG,Bilagay,Bilagay,-16.2,22.8,7
+MEL,LAG,Bilagay,Bilagay,-16.4,22.3,7
+MEL,LAG,Bilagay,Bilagay,-16.5,22.5,7
+MEL,LAG,Bilagay,Bilagay,-16.5,22.3,7
+MEL,LAG,Bilagay,Bilagay,-17.0,22.6,7
+MEL,LAG,Bilagay,Bilagay,-16.7,22.1,7
+MEL,LAG,Bilagay,Bilagay,-15.5,22.4,7
+MEL,LAG,Bilagay,Bilagay,-15.5,21.7,7
+MEL,LAG,Bilagay,Bilagay,-16.2,21.9,7
+MEL,LAG,Bilagay,Bilagay,-16.2,21.8,7
+MEL,LAG,Bilagay,Bilagay,-16.2,22.3,7
+MEL,LAG,Bilagay,Bilagay,-16.6,22.2,7
+MEL,LAG,Bilagay,Bilagay,-15.7,22.8,7
+MEL,LAG,Bilagay,Bilagay,-16.3,22.8,7
+MEL,LAG,Bilagay,Bilagay,-15.5,22.9,7
+MEL,LAG,Bilagay,Bilagay,-16.5,22.5,7
+MEL,LAG,Bilagay,Bilagay,-12.7,22.3,7
+MEL,LAG,Bilagay,Bilagay,-16.1,22.5,7
+MEL,LAG,Bilagay,Bilagay,-16.2,22.4,7
+MEL,LAG,Bilagay,Bilagay,-16.2,23.1,7
+MEL,LAG,Bilagay,Bilagay,-16.1,22.6,7
+MEL,LAG,Bilagay,Bilagay,-16.6,22.2,7
+MEL,LAG,Bilagay,Bilagay,-15.1,22.0,7
+MEL,LAG,Bilagay,Bilagay,-15.2,22.4,7
+MEL,LAG,Bilagay,Bilagay,-16.4,22.2,7
+MEL,LAG,Bilagay,Bilagay,-15.8,22.0,7
+MEL,LAG,Bilagay,Bilagay,-16.1,22.1,7
+MEL,LAG,Bilagay,Bilagay,-16.4,21.5,7
+MEL,LAG,Bilagay,Bilagay,-16.0,21.8,7
+MEL,LAG,Bilagay,Bilagay,-15.9,21.1,7
+MEL,LAG,Bilagay,Bilagay,-15.9,21.8,7
+MEL,LAG,Bilagay,Bilagay,-15.8,21.8,7
+MEL,LAG,Bilagay,Bilagay,-15.0,21.8,7
+MEL,LAG,Bilagay,Bilagay,-16.3,21.6,7
+MEL,LAG,Bilagay,Bilagay,-15.8,21.5,7
+MEL,LAG,Bilagay,Bilagay,-16.1,21.6,7
+MEL,LAG,Bilagay,Bilagay,-16.7,21.6,7
+MEL,LAG,Bilagay,Bilagay,-16.7,21.8,7
+MEL,LAG,Bilagay,Bilagay,-16.5,21.4,7
+MEL,LAG,Bilagay,Bilagay,-16.0,21.2,7
+MEL,LAG,Bilagay,Bilagay,-16.6,21.2,7
+MEL,LAG,Perumytilus purpuratus,Pelagic_BL,-14.6,18.0,7
+MEL,LAG,Perumytilus purpuratus,Pelagic_BL,-14.9,18.1,7
+MEL,LAG,Perumytilus purpuratus,Pelagic_BL,-14.3,18.3,7
+MEL,LAG,Perumytilus purpuratus,Pelagic_BL,-13.7,18.7,7
+MEL,LAG,Perumytilus purpuratus,Pelagic_BL,-14.4,18.4,7
+MEL,LAG,Perumytilus purpuratus,Pelagic_BL,-14.3,18.4,7
+MEL,LAG,Perumytilus purpuratus,Pelagic_BL,-14.3,18.7,7
+MEL,LAG,Perumytilus purpuratus,Pelagic_BL,-14.1,18.7,7
+MEL,LAG,Perumytilus purpuratus,Pelagic_BL,-14.1,17.9,7
+MEL,LAG,Perumytilus purpuratus,Pelagic_BL,-13.3,18.1,7
+MEL,LAG,Perumytilus purpuratus,Pelagic_BL,-14.4,18.2,7
+MEL,LAG,Perumytilus purpuratus,Pelagic_BL,-14.2,18.2,7
+MEL,LAG,Perumytilus purpuratus,Pelagic_BL,-16.2,17.3,7
+MEL,LAG,Perumytilus purpuratus,Pelagic_BL,-15.5,18.4,7
+MEL,LAG,Perumytilus purpuratus,Pelagic_BL,-15.5,18.4,7
+MEL,LAG,Perumytilus purpuratus,Pelagic_BL,-15.6,17.2,7
+MEL,LAG,Perumytilus purpuratus,Pelagic_BL,-15.1,17.3,7
+MEL,LAG,Perumytilus purpuratus,Pelagic_BL,-16.6,18.0,7
+MEL,LAG,Perumytilus purpuratus,Pelagic_BL,-16.3,17.2,7
+MEL,LAG,Perumytilus purpuratus,Pelagic_BL,-16.9,17.5,7
+MEL,LAG,Perumytilus purpuratus,Pelagic_BL,-15.6,18.6,7
+MEL,LAG,Perumytilus purpuratus,Pelagic_BL,-15.6,17.5,7
+MEL,LOB,Echinolittorina peruviana,Benthic_BL,-11.6,17.9,8
+MEL,LOB,Echinolittorina peruviana,Benthic_BL,-10.6,18.0,8
+MEL,LOB,Echinolittorina peruviana,Benthic_BL,-11.7,18.5,8
+MEL,LOB,Echinolittorina peruviana,Benthic_BL,-5.7,23.5,8
+MEL,LOB,Echinolittorina peruviana,Benthic_BL,-13.6,17.7,8
+MEL,LOB,Echinolittorina peruviana,Benthic_BL,-11.7,18.4,8
+MEL,LOB,Echinolittorina peruviana,Benthic_BL,-12.0,18.4,8
+MEL,LOB,Echinolittorina peruviana,Benthic_BL,-11.1,18.6,8
+MEL,LOB,Echinolittorina peruviana,Benthic_BL,-12.3,16.3,8
+MEL,LOB,Echinolittorina peruviana,Benthic_BL,-11.1,17.2,8
+MEL,LOB,Echinolittorina peruviana,Benthic_BL,-11.1,17.6,8
+MEL,LOB,Echinolittorina peruviana,Benthic_BL,-11.7,17.7,8
+MEL,LOB,Scurria viridula,Benthic_BL,-5.9,16.2,8
+MEL,LOB,Scurria viridula,Benthic_BL,-6.0,18.1,8
+MEL,LOB,Scurria viridula,Benthic_BL,-11.6,17.2,8
+MEL,LOB,Scurria viridula,Benthic_BL,-9.4,17.4,8
+MEL,LOB,Scurria viridula,Benthic_BL,-10.5,17.5,8
+MEL,LOB,Scurria viridula,Benthic_BL,-9.7,16.6,8
+MEL,LOB,Scurria viridula,Benthic_BL,-7.3,17.3,8
+MEL,LOB,Scurria viridula,Benthic_BL,-4.6,17.3,8
+MEL,LOB,Tegula,Benthic_BL,-14.1,18.0,8
+MEL,LOB,Tegula,Benthic_BL,-14.9,18.1,8
+MEL,LOB,Tegula,Benthic_BL,-15.0,18.2,8
+MEL,LOB,Tegula,Benthic_BL,-14.7,18.2,8
+MEL,LOB,Tegula,Benthic_BL,-13.5,19.6,8
+MEL,LOB,Tegula,Benthic_BL,-14.5,19.8,8
+MEL,LOB,Tegula,Benthic_BL,-12.9,20.1,8
+MEL,LOB,Tegula,Benthic_BL,-14.0,19.2,8
+MEL,LOB,Tegula,Benthic_BL,-13.3,19.6,8
+MEL,LOB,Tegula,Benthic_BL,-15.6,16.9,8
+MEL,LOB,Tegula,Benthic_BL,-14.4,17.6,8
+MEL,LOB,Tegula,Benthic_BL,-15.4,17.3,8
+MEL,LOB,Tegula,Benthic_BL,-14.8,17.9,8
+MEL,LOB,Tegula,Benthic_BL,-13.9,17.9,8
+MEL,LOB,Tegula,Benthic_BL,-15.0,18.1,8
+MEL,LOB,Tegula,Benthic_BL,-13.8,18.3,8
+MEL,LOB,Tegula,Benthic_BL,-14.3,18.4,8
+MEL,LOB,Tegula,Benthic_BL,-15.1,18.3,8
+MEL,LOB,Tegula,Benthic_BL,-15.1,18.1,8
+MEL,LOB,Tegula,Benthic_BL,-14.5,18.4,8
+MEL,LOB,Bilagay,Bilagay,-15.9,22.5,8
+MEL,LOB,Bilagay,Bilagay,-16.3,22.3,8
+MEL,LOB,Bilagay,Bilagay,-15.6,22.6,8
+MEL,LOB,Bilagay,Bilagay,-16.1,22.5,8
+MEL,LOB,Bilagay,Bilagay,-16.1,21.8,8
+MEL,LOB,Bilagay,Bilagay,-16.0,22.5,8
+MEL,LOB,Bilagay,Bilagay,-15.9,22.6,8
+MEL,LOB,Bilagay,Bilagay,-15.5,22.8,8
+MEL,LOB,Bilagay,Bilagay,-15.5,22.2,8
+MEL,LOB,Bilagay,Bilagay,-15.9,22.5,8
+MEL,LOB,Bilagay,Bilagay,-14.7,22.7,8
+MEL,LOB,Bilagay,Bilagay,-15.7,22.8,8
+MEL,LOB,Bilagay,Bilagay,-15.9,21.3,8
+MEL,LOB,Bilagay,Bilagay,-16.3,22.2,8
+MEL,LOB,Bilagay,Bilagay,-15.9,22.2,8
+MEL,LOB,Bilagay,Bilagay,-15.4,22.5,8
+MEL,LOB,Bilagay,Bilagay,-16.7,21.7,8
+MEL,LOB,Bilagay,Bilagay,-16.3,21.9,8
+MEL,LOB,Bilagay,Bilagay,-15.7,22.5,8
+MEL,LOB,Bilagay,Bilagay,-16.1,21.8,8
+MEL,LOB,Bilagay,Bilagay,-15.8,22.4,8
+MEL,LOB,Bilagay,Bilagay,-15.8,21.5,8
+MEL,LOB,Bilagay,Bilagay,-15.5,22.6,8
+MEL,LOB,Bilagay,Bilagay,-15.7,22.9,8
+MEL,LOB,Bilagay,Bilagay,-15.8,22.8,8
+MEL,LOB,Bilagay,Bilagay,-15.5,22.7,8
+MEL,LOB,Bilagay,Bilagay,-16.0,22.4,8
+MEL,LOB,Bilagay,Bilagay,-15.7,22.9,8
+MEL,LOB,Bilagay,Bilagay,-15.7,22.3,8
+MEL,LOB,Bilagay,Bilagay,-15.6,22.6,8
+MEL,LOB,Bilagay,Bilagay,-14.6,23.1,8
+MEL,LOB,Bilagay,Bilagay,-16.0,21.9,8
+MEL,LOB,Bilagay,Bilagay,-15.4,22.8,8
+MEL,LOB,Bilagay,Bilagay,-14.6,23.4,8
+MEL,LOB,Bilagay,Bilagay,-15.2,23.1,8
+MEL,LOB,Bilagay,Bilagay,-15.9,21.8,8
+MEL,LOB,Bilagay,Bilagay,-15.1,22.9,8
+MEL,LOB,Bilagay,Bilagay,-14.7,23.0,8
+MEL,LOB,Bilagay,Bilagay,-15.2,23.1,8
+MEL,LOB,Bilagay,Bilagay,-15.3,23.1,8
+MEL,LOB,Bilagay,Bilagay,-16.2,22.4,8
+MEL,LOB,Bilagay,Bilagay,-14.6,23.2,8
+MEL,LOB,Bilagay,Bilagay,-15.2,23.0,8
+MEL,LOB,Bilagay,Bilagay,-14.9,22.2,8
+MEL,LOB,Bilagay,Bilagay,-15.6,22.1,8
+MEL,LOB,Bilagay,Bilagay,-15.9,21.6,8
+MEL,LOB,Bilagay,Bilagay,-14.8,22.6,8
+MEL,LOB,Bilagay,Bilagay,-15.9,22.1,8
+MEL,LOB,Bilagay,Bilagay,-15.1,22.6,8
+MEL,LOB,Bilagay,Bilagay,-15.7,21.7,8
+MEL,LOB,Bilagay,Bilagay,-15.3,22.6,8
+MEL,LOB,Bilagay,Bilagay,-15.9,21.8,8
+MEL,LOB,Bilagay,Bilagay,-15.3,21.6,8
+MEL,LOB,Bilagay,Bilagay,-15.4,21.6,8
+MEL,LOB,Bilagay,Bilagay,-15.4,22.3,8
+MEL,LOB,Bilagay,Bilagay,-15.5,22.0,8
+MEL,LOB,Bilagay,Bilagay,-15.2,21.7,8
+MEL,LOB,Bilagay,Bilagay,-15.4,21.9,8
+MEL,LOB,Bilagay,Bilagay,-15.3,22.1,8
+MEL,LOB,Bilagay,Bilagay,-15.4,22.4,8
+MEL,LOB,Bilagay,Bilagay,-15.7,22.0,8
+MEL,LOB,Bilagay,Bilagay,-15.3,21.8,8
+MEL,LOB,Bilagay,Bilagay,-15.6,22.0,8
+MEL,LOB,Bilagay,Bilagay,-15.6,22.3,8
+MEL,LOB,Bilagay,Bilagay,-15.2,22.1,8
+MEL,LOB,Bilagay,Bilagay,-15.5,22.3,8
+MEL,LOB,Bilagay,Bilagay,-15.7,22.1,8
+MEL,LOB,Bilagay,Bilagay,-15.7,22.0,8
+MEL,LOB,Bilagay,Bilagay,-14.5,21.9,8
+MEL,LOB,Bilagay,Bilagay,-14.7,22.5,8
+MEL,LOB,Bilagay,Bilagay,-14.8,23.1,8
+MEL,LOB,Bilagay,Bilagay,-15.7,21.7,8
+MEL,LOB,Bilagay,Bilagay,-14.8,22.2,8
+MEL,LOB,Bilagay,Bilagay,-15.6,21.7,8
+MEL,LOB,Perumytilus purpuratus,Pelagic_BL,-14.0,17.9,8
+MEL,LOB,Perumytilus purpuratus,Pelagic_BL,-14.6,18.0,8
+MEL,LOB,Perumytilus purpuratus,Pelagic_BL,-15.3,17.2,8
+MEL,LOB,Perumytilus purpuratus,Pelagic_BL,-15.6,17.5,8
+MEL,LOB,Perumytilus purpuratus,Pelagic_BL,-15.3,17.6,8
+MEL,LOB,Perumytilus purpuratus,Pelagic_BL,-15.0,18.1,8
+MEL,LOB,Perumytilus purpuratus,Pelagic_BL,-15.6,16.8,8
+MEL,LOB,Perumytilus purpuratus,Pelagic_BL,-15.0,17.3,8
+MEL,LOB,Perumytilus purpuratus,Pelagic_BL,-15.3,17.7,8
+MEL,LOB,Perumytilus purpuratus,Pelagic_BL,-15.8,17.8,8
+MEL,MEJ,Echinolittorina peruviana,Benthic_BL,-10.7,18.1,9
+MEL,MEJ,Echinolittorina peruviana,Benthic_BL,-13.4,18.6,9
+MEL,MEJ,Echinolittorina peruviana,Benthic_BL,-7.4,22.7,9
+MEL,MEJ,Echinolittorina peruviana,Benthic_BL,-8.2,22.9,9
+MEL,MEJ,Echinolittorina peruviana,Benthic_BL,-11.9,18.8,9
+MEL,MEJ,Echinolittorina peruviana,Benthic_BL,-12.2,19.4,9
+MEL,MEJ,Echinolittorina peruviana,Benthic_BL,-11.9,20.0,9
+MEL,MEJ,Echinolittorina peruviana,Benthic_BL,-13.0,23.1,9
+MEL,MEJ,Tegula,Benthic_BL,-12.4,17.3,9
+MEL,MEJ,Tegula,Benthic_BL,-11.2,17.6,9
+MEL,MEJ,Tegula,Benthic_BL,-10.5,18.0,9
+MEL,MEJ,Tegula,Benthic_BL,-10.8,18.0,9
+MEL,MEJ,Tegula,Benthic_BL,-13.2,17.8,9
+MEL,MEJ,Tegula,Benthic_BL,-13.8,18.6,9
+MEL,MEJ,Tegula,Benthic_BL,-13.6,18.7,9
+MEL,MEJ,Tegula,Benthic_BL,-13.7,18.7,9
+MEL,MEJ,Tegula,Benthic_BL,-13.5,18.8,9
+MEL,MEJ,Tegula,Benthic_BL,-12.2,18.5,9
+MEL,MEJ,Tegula,Benthic_BL,-11.6,18.0,9
+MEL,MEJ,Tegula,Benthic_BL,-11.9,18.1,9
+MEL,MEJ,Tegula,Benthic_BL,-11.1,18.3,9
+MEL,MEJ,Tegula,Benthic_BL,-12.3,18.4,9
+MEL,MEJ,Tegula,Benthic_BL,-13.0,18.0,9
+MEL,MEJ,Tegula,Benthic_BL,-13.2,18.3,9
+MEL,MEJ,Tegula,Benthic_BL,-13.3,17.9,9
+MEL,MEJ,Tegula,Benthic_BL,-13.2,18.4,9
+MEL,MEJ,Tegula,Benthic_BL,-13.2,18.0,9
+MEL,MEJ,Tegula,Benthic_BL,-15.6,17.4,9
+MEL,MEJ,Tegula,Benthic_BL,-13.4,18.5,9
+MEL,MEJ,Tegula,Benthic_BL,-13.7,18.7,9
+MEL,MEJ,Tegula,Benthic_BL,-14.1,18.8,9
+MEL,MEJ,Tegula,Benthic_BL,-13.3,18.8,9
+MEL,MEJ,Bilagay,Bilagay,-14.3,22.4,9
+MEL,MEJ,Bilagay,Bilagay,-14.6,22.3,9
+MEL,MEJ,Bilagay,Bilagay,-14.8,21.9,9
+MEL,MEJ,Bilagay,Bilagay,-14.6,21.7,9
+MEL,MEJ,Bilagay,Bilagay,-14.9,22.1,9
+MEL,MEJ,Bilagay,Bilagay,-14.5,22.4,9
+MEL,MEJ,Bilagay,Bilagay,-14.7,21.9,9
+MEL,MEJ,Bilagay,Bilagay,-14.7,22.7,9
+MEL,MEJ,Bilagay,Bilagay,-14.7,22.3,9
+MEL,MEJ,Bilagay,Bilagay,-14.6,22.2,9
+MEL,MEJ,Bilagay,Bilagay,-14.7,22.3,9
+MEL,MEJ,Bilagay,Bilagay,-14.5,22.5,9
+MEL,MEJ,Bilagay,Bilagay,-14.5,22.0,9
+MEL,MEJ,Bilagay,Bilagay,-14.8,23.3,9
+MEL,MEJ,Bilagay,Bilagay,-14.6,22.6,9
+MEL,MEJ,Bilagay,Bilagay,-15.0,22.7,9
+MEL,MEJ,Bilagay,Bilagay,-15.4,22.2,9
+MEL,MEJ,Bilagay,Bilagay,-14.8,22.0,9
+MEL,MEJ,Bilagay,Bilagay,-15.5,22.5,9
+MEL,MEJ,Bilagay,Bilagay,-14.9,21.8,9
+MEL,MEJ,Bilagay,Bilagay,-14.6,22.4,9
+MEL,MEJ,Bilagay,Bilagay,-14.7,22.5,9
+MEL,MEJ,Bilagay,Bilagay,-14.9,22.4,9
+MEL,MEJ,Bilagay,Bilagay,-15.0,22.4,9
+MEL,MEJ,Bilagay,Bilagay,-15.1,22.8,9
+MEL,MEJ,Bilagay,Bilagay,-15.6,22.5,9
+MEL,MEJ,Bilagay,Bilagay,-14.9,22.8,9
+MEL,MEJ,Bilagay,Bilagay,-14.9,21.6,9
+MEL,MEJ,Bilagay,Bilagay,-15.2,22.4,9
+MEL,MEJ,Bilagay,Bilagay,-14.4,22.7,9
+MEL,MEJ,Bilagay,Bilagay,-14.4,22.3,9
+MEL,MEJ,Bilagay,Bilagay,-14.5,22.1,9
+MEL,MEJ,Bilagay,Bilagay,-14.4,21.9,9
+MEL,MEJ,Bilagay,Bilagay,-15.0,22.2,9
+MEL,MEJ,Bilagay,Bilagay,-14.0,22.0,9
+MEL,MEJ,Bilagay,Bilagay,-14.6,22.4,9
+MEL,MEJ,Bilagay,Bilagay,-14.4,22.3,9
+MEL,MEJ,Bilagay,Bilagay,-14.6,22.0,9
+MEL,MEJ,Bilagay,Bilagay,-14.6,22.1,9
+MEL,MEJ,Bilagay,Bilagay,-15.3,21.8,9
+MEL,MEJ,Bilagay,Bilagay,-15.1,22.3,9
+MEL,MEJ,Bilagay,Bilagay,-14.8,21.3,9
+MEL,MEJ,Bilagay,Bilagay,-14.9,21.0,9
+MEL,MEJ,Bilagay,Bilagay,-14.7,21.7,9
+MEL,MEJ,Bilagay,Bilagay,-14.4,21.8,9
+MEL,MEJ,Bilagay,Bilagay,-14.8,21.7,9
+MEL,MEJ,Bilagay,Bilagay,-14.6,21.8,9
+MEL,MEJ,Bilagay,Bilagay,-14.6,21.7,9
+MEL,MEJ,Bilagay,Bilagay,-14.8,21.3,9
+MEL,MEJ,Bilagay,Bilagay,-14.9,21.5,9
+MEL,MEJ,Bilagay,Bilagay,-14.6,21.8,9
+MEL,MEJ,Bilagay,Bilagay,-15.2,21.6,9
+MEL,MEJ,Bilagay,Bilagay,-14.8,21.3,9
+MEL,MEJ,Perumytilus purpuratus,Pelagic_BL,-14.9,16.7,9
+MEL,MEJ,Perumytilus purpuratus,Pelagic_BL,-14.6,17.0,9
+MEL,MEJ,Perumytilus purpuratus,Pelagic_BL,-15.0,17.3,9
+MEL,MEJ,Perumytilus purpuratus,Pelagic_BL,-14.9,17.6,9
+MEL,MEJ,Perumytilus purpuratus,Pelagic_BL,-15.9,16.8,9
+MEL,MEJ,Perumytilus purpuratus,Pelagic_BL,-15.7,17.2,9
+MEL,MEJ,Perumytilus purpuratus,Pelagic_BL,-16.0,17.4,9
+MEL,MEJ,Perumytilus purpuratus,Pelagic_BL,-15.7,17.8,9
+MEL,MEJ,Perumytilus purpuratus,Pelagic_BL,-16.3,17.1,9
+MEL,MEJ,Perumytilus purpuratus,Pelagic_BL,-15.8,17.1,9
+MEL,MEJ,Perumytilus purpuratus,Pelagic_BL,-15.5,17.9,9
+MEL,MEJ,Perumytilus purpuratus,Pelagic_BL,-16.0,18.1,9
+MEL,MEJ,Perumytilus purpuratus,Pelagic_BL,-15.4,16.7,9
+MEL,MEJ,Perumytilus purpuratus,Pelagic_BL,-15.9,18.0,9
+MEL,MEJ,Perumytilus purpuratus,Pelagic_BL,-15.9,18.2,9
+MEL,MEJ,Perumytilus purpuratus,Pelagic_BL,-15.8,16.7,9
+MEL,MEJ,Perumytilus purpuratus,Pelagic_BL,-15.4,16.9,9
+MEL,MEJ,Perumytilus purpuratus,Pelagic_BL,-15.8,17.1,9
+MEL,MEJ,Perumytilus purpuratus,Pelagic_BL,-15.3,17.4,9
+MEL,MEJ,Perumytilus purpuratus,Pelagic_BL,-15.3,17.7,9
+MEL,MEJ,Perumytilus purpuratus,Pelagic_BL,-15.7,18.1,9
+MEL,MEJ,Perumytilus purpuratus,Pelagic_BL,-15.3,17.6,9
+MEL,MEJ,Perumytilus purpuratus,Pelagic_BL,-15.6,18.1,9
+MEL,MEJ,Perumytilus purpuratus,Pelagic_BL,-15.6,17.1,9
+MEL,MEJ,Perumytilus purpuratus,Pelagic_BL,-15.9,18.1,9
+MEL,MEJ,Perumytilus purpuratus,Pelagic_BL,-15.6,17.4,9
+MEL,RIN,Scurria viridula,Benthic_BL,-12.6,16.3,5
+MEL,RIN,Scurria viridula,Benthic_BL,-9.4,15.1,5
+MEL,RIN,Scurria viridula,Benthic_BL,-11.2,15.7,5
+MEL,RIN,Scurria viridula,Benthic_BL,-10.5,15.7,5
+MEL,RIN,Scurria viridula,Benthic_BL,-10.6,15.8,5
+MEL,RIN,Scurria viridula,Benthic_BL,-9.8,15.8,5
+MEL,RIN,Scurria viridula,Benthic_BL,-10.8,16.0,5
+MEL,RIN,Scurria viridula,Benthic_BL,-9.0,16.0,5
+MEL,RIN,Tegula,Benthic_BL,-12.7,16.9,5
+MEL,RIN,Tegula,Benthic_BL,-12.5,16.9,5
+MEL,RIN,Tegula,Benthic_BL,-12.6,17.0,5
+MEL,RIN,Tegula,Benthic_BL,-12.9,17.2,5
+MEL,RIN,Tegula,Benthic_BL,-12.5,17.1,5
+MEL,RIN,Tegula,Benthic_BL,-12.7,17.2,5
+MEL,RIN,Tegula,Benthic_BL,-11.8,17.3,5
+MEL,RIN,Tegula,Benthic_BL,-11.6,17.3,5
+MEL,RIN,Tegula,Benthic_BL,-12.7,16.3,5
+MEL,RIN,Tegula,Benthic_BL,-11.8,16.6,5
+MEL,RIN,Tegula,Benthic_BL,-12.1,16.6,5
+MEL,RIN,Tegula,Benthic_BL,-12.4,17.6,5
+MEL,RIN,Tegula,Benthic_BL,-12.5,16.8,5
+MEL,RIN,Tegula,Benthic_BL,-11.2,17.2,5
+MEL,RIN,Tegula,Benthic_BL,-13.0,16.8,5
+MEL,RIN,Tegula,Benthic_BL,-12.1,16.8,5
+MEL,RIN,Tegula,Benthic_BL,-11.2,17.0,5
+MEL,RIN,Tegula,Benthic_BL,-13.7,16.9,5
+MEL,RIN,Tegula,Benthic_BL,-10.9,17.2,5
+MEL,RIN,Tegula,Benthic_BL,-13.4,16.7,5
+MEL,RIN,Tegula,Benthic_BL,-11.1,17.0,5
+MEL,RIN,Tegula,Benthic_BL,-14.1,16.8,5
+MEL,RIN,Tegula,Benthic_BL,-13.0,16.3,5
+MEL,RIN,Tegula,Benthic_BL,-14.1,16.2,5
+MEL,RIN,Tegula,Benthic_BL,-13.3,16.2,5
+MEL,RIN,Tegula,Benthic_BL,-13.1,16.6,5
+MEL,RIN,Tegula,Benthic_BL,-13.8,16.7,5
+MEL,RIN,Bilagay,Bilagay,-16.1,22.2,5
+MEL,RIN,Bilagay,Bilagay,-15.6,21.9,5
+MEL,RIN,Bilagay,Bilagay,-15.1,23.4,5
+MEL,RIN,Bilagay,Bilagay,-16.1,21.6,5
+MEL,RIN,Bilagay,Bilagay,-15.2,22.7,5
+MEL,RIN,Bilagay,Bilagay,-14.5,22.5,5
+MEL,RIN,Bilagay,Bilagay,-15.8,22.3,5
+MEL,RIN,Bilagay,Bilagay,-14.7,22.5,5
+MEL,RIN,Bilagay,Bilagay,-14.5,22.0,5
+MEL,RIN,Bilagay,Bilagay,-15.6,22.4,5
+MEL,RIN,Bilagay,Bilagay,-16.0,22.9,5
+MEL,RIN,Bilagay,Bilagay,-15.8,21.8,5
+MEL,RIN,Bilagay,Bilagay,-15.8,22.0,5
+MEL,RIN,Bilagay,Bilagay,-16.2,21.8,5
+MEL,RIN,Bilagay,Bilagay,-16.0,22.2,5
+MEL,RIN,Bilagay,Bilagay,-15.5,21.5,5
+MEL,RIN,Bilagay,Bilagay,-15.2,21.3,5
+MEL,RIN,Bilagay,Bilagay,-15.1,21.1,5
+MEL,RIN,Bilagay,Bilagay,-15.1,21.1,5
+MEL,RIN,Bilagay,Bilagay,-15.5,21.0,5
+MEL,RIN,Bilagay,Bilagay,-15.8,21.3,5
+MEL,RIN,Bilagay,Bilagay,-15.7,20.9,5
+MEL,RIN,Bilagay,Bilagay,-14.9,21.2,5
+MEL,RIN,Bilagay,Bilagay,-15.3,21.3,5
+MEL,RIN,Bilagay,Bilagay,-15.2,21.5,5
+MEL,RIN,Bilagay,Bilagay,-14.8,21.5,5
+MEL,RIN,Bilagay,Bilagay,-15.6,20.8,5
+MEL,RIN,Bilagay,Bilagay,-15.5,21.1,5
+MEL,RIN,Bilagay,Bilagay,-15.4,20.8,5
+MEL,RIN,Bilagay,Bilagay,-15.0,20.1,5
+MEL,RIN,Bilagay,Bilagay,-13.7,20.5,5
+MEL,RIN,Bilagay,Bilagay,-14.9,20.8,5
+MEL,RIN,Bilagay,Bilagay,-15.6,20.7,5
+MEL,RIN,Bilagay,Bilagay,-15.1,21.0,5
+MEL,RIN,Bilagay,Bilagay,-15.3,20.8,5
+MEL,RIN,Bilagay,Bilagay,-15.6,20.6,5
+MEL,RIN,Bilagay,Bilagay,-14.4,21.0,5
+MEL,RIN,Bilagay,Bilagay,-15.4,21.0,5
+MEL,RIN,Bilagay,Bilagay,-14.8,20.3,5
+MEL,RIN,Bilagay,Bilagay,-14.9,20.7,5
+MEL,RIN,Bilagay,Bilagay,-16.0,21.3,5
+MEL,RIN,Bilagay,Bilagay,-15.4,21.5,5
+MEL,RIN,Bilagay,Bilagay,-15.4,20.7,5
+MEL,RIN,Bilagay,Bilagay,-15.0,21.7,5
+MEL,RIN,Perumytilus purpuratus,Pelagic_BL,-14.8,16.7,5
+MEL,RIN,Perumytilus purpuratus,Pelagic_BL,-14.6,16.8,5
+MEL,RIN,Perumytilus purpuratus,Pelagic_BL,-13.1,17.0,5
+MEL,RIN,Perumytilus purpuratus,Pelagic_BL,-14.5,17.9,5
+MEL,RIN,Perumytilus purpuratus,Pelagic_BL,-16.1,15.6,5
+MEL,RIN,Perumytilus purpuratus,Pelagic_BL,-16.0,16.0,5
+MEL,RIN,Perumytilus purpuratus,Pelagic_BL,-15.2,16.0,5
+MEL,RIN,Perumytilus purpuratus,Pelagic_BL,-15.3,17.3,5
+MEL,RIN,Perumytilus purpuratus,Pelagic_BL,-15.5,15.4,5
+MEL,RIN,Perumytilus purpuratus,Pelagic_BL,-15.0,15.6,5
+MEL,RIN,Perumytilus purpuratus,Pelagic_BL,-15.9,15.7,5
+MEL,RIN,Perumytilus purpuratus,Pelagic_BL,-15.2,16.0,5
+MEL,RIN,Perumytilus purpuratus,Pelagic_BL,-15.5,16.2,5
+MEL,RIN,Perumytilus purpuratus,Pelagic_BL,-15.5,15.9,5
+MEL,RIN,Perumytilus purpuratus,Pelagic_BL,-14.8,16.4,5
+MEL,RIN,Perumytilus purpuratus,Pelagic_BL,-15.7,17.2,5
+MEL,RIN,Perumytilus purpuratus,Pelagic_BL,-14.5,16.5,5
+MEL,RIN,Perumytilus purpuratus,Pelagic_BL,-17.1,15.7,5
+MEL,RIN,Perumytilus purpuratus,Pelagic_BL,-17.1,15.2,5
+MEL,RIN,Perumytilus purpuratus,Pelagic_BL,-16.6,15.2,5
+MEL,RIN,Perumytilus purpuratus,Pelagic_BL,-16.0,15.8,5
+MEL,RIN,Perumytilus purpuratus,Pelagic_BL,-16.3,15.5,5
+MEL,RIN,Perumytilus purpuratus,Pelagic_BL,-16.2,16.0,5
+MEL,RIN,Perumytilus purpuratus,Pelagic_BL,-15.7,16.3,5
+MEL,RIN,Perumytilus purpuratus,Pelagic_BL,-15.2,16.3,5
+MEL,RIN,Perumytilus purpuratus,Pelagic_BL,-15.3,16.0,5
+MEL,RIN,Perumytilus purpuratus,Pelagic_BL,-15.2,15.6,5
+MEC,Taltal,Tegula atra,Benthic_BL,-13.3,16.2,2
+MEC,Taltal,Tegula atra,Benthic_BL,-12.7,17.0,2
+MEC,Taltal,Echinolittorina peruviana,Benthic_BL,-11.9,15.0,2
+MEC,Taltal,Echinolittorina peruviana,Benthic_BL,-11.5,17.2,2
+MEC,Taltal,Echinolittorina peruviana,Benthic_BL,-13.0,17.9,2
+MEC,Taltal,Echinolittorina peruviana,Benthic_BL,-13.3,17.5,2
+MEC,Taltal,Echinolittorina peruviana,Benthic_BL,-11.2,15.6,2
+MEC,Taltal,Tegula atra,Benthic_BL,-12.6,17.1,2
+MEC,Taltal,Tegula atra,Benthic_BL,-12.2,17.0,2
+MEC,Taltal,Tegula atra,Benthic_BL,-13.3,17.4,2
+MEC,Taltal,Echinolittorina peruviana,Benthic_BL,-12.4,14.6,2
+MEC,Taltal,Echinolittorina peruviana,Benthic_BL,-12.5,15.4,2
+MEC,Taltal,Echinolittorina peruviana,Benthic_BL,-12.6,16.0,2
+MEC,Taltal,Echinolittorina peruviana,Benthic_BL,-12.3,15.7,2
+MEC,Taltal,Echinolittorina peruviana,Benthic_BL,-12.9,16.0,2
+MEC,Taltal,Bilagay,Bilagay,-15.7,20.7,2
+MEC,Taltal,Bilagay,Bilagay,-16.1,20.0,2
+MEC,Taltal,Bilagay,Bilagay,-15.7,20.5,2
+MEC,Taltal,Bilagay,Bilagay,-16.0,20.8,2
+MEC,Taltal,Bilagay,Bilagay,-15.2,21.3,2
+MEC,Taltal,Bilagay,Bilagay,-15.6,20.2,2
+MEC,Taltal,Bilagay,Bilagay,-15.5,20.5,2
+MEC,Taltal,Bilagay,Bilagay,-14.9,19.1,2
+MEC,Taltal,Bilagay,Bilagay,-16.0,20.2,2
+MEC,Taltal,Bilagay,Bilagay,-15.6,20.3,2
+MEC,Taltal,Perumytilus purpuratus,Pelagic_BL,-17.3,18.0,2
+MEC,Taltal,Perumytilus purpuratus,Pelagic_BL,-16.0,15.2,2
+MEC,Taltal,Perumytilus purpuratus,Pelagic_BL,-17.3,18.5,2
+MEC,Taltal,Perumytilus purpuratus,Pelagic_BL,-17.6,18.3,2
+MEC,Taltal,Perumytilus purpuratus,Pelagic_BL,-16.5,14.3,2
+MEC,Taltal,Perumytilus purpuratus,Pelagic_BL,-15.8,15.6,2
+MEC,Taltal,Perumytilus purpuratus,Pelagic_BL,-15.6,15.5,2
+MEC,Taltal,Perumytilus purpuratus,Pelagic_BL,-17.0,18.4,2
+MEC,Taltal,Perumytilus purpuratus,Pelagic_BL,-17.3,18.2,2
+MEC,Taltal,Perumytilus purpuratus,Pelagic_BL,-15.2,16.3,2
+MEC,Taltal,Perumytilus purpuratus,Pelagic_BL,-17.0,15.3,2
+MEC,Taltal,Perumytilus purpuratus,Pelagic_BL,-15.4,15.2,2
+MEC,Taltal,Perumytilus purpuratus,Pelagic_BL,-15.1,15.2,2
+MEC,Taltal,Perumytilus purpuratus,Pelagic_BL,-16.4,15.2,2
+MEC,Taltal,Perumytilus purpuratus,Pelagic_BL,-16.1,15.0,2
+MEC,Tocopilla,Echinolittorina peruviana,Benthic_BL,-12.2,18.0,10
+MEC,Tocopilla,Echinolittorina peruviana,Benthic_BL,-14.5,17.8,10
+MEC,Tocopilla,Echinolittorina peruviana,Benthic_BL,-10.3,18.1,10
+MEC,Tocopilla,Echinolittorina peruviana,Benthic_BL,-11.5,17.3,10
+MEC,Tocopilla,Prisogaster niger,Benthic_BL,-13.1,18.6,10
+MEC,Tocopilla,Prisogaster niger,Benthic_BL,-13.6,18.9,10
+MEC,Tocopilla,Prisogaster niger,Benthic_BL,-13.3,18.5,10
+MEC,Tocopilla,Prisogaster niger,Benthic_BL,-13.8,18.3,10
+MEC,Tocopilla,Prisogaster niger,Benthic_BL,-12.6,18.7,10
+MEC,Tocopilla,Echinolittorina peruviana,Benthic_BL,-12.2,16.6,10
+MEC,Tocopilla,Echinolittorina peruviana,Benthic_BL,-12.6,17.0,10
+MEC,Tocopilla,Echinolittorina peruviana,Benthic_BL,-13.3,15.7,10
+MEC,Tocopilla,Echinolittorina peruviana,Benthic_BL,-11.6,17.0,10
+MEC,Tocopilla,Echinolittorina peruviana,Benthic_BL,-11.9,16.6,10
+MEC,Tocopilla,Bilagay,Bilagay,-15.7,22.7,10
+MEC,Tocopilla,Bilagay,Bilagay,-15.5,23.4,10
+MEC,Tocopilla,Bilagay,Bilagay,-15.8,23.0,10
+MEC,Tocopilla,Bilagay,Bilagay,-15.5,23.6,10
+MEC,Tocopilla,Bilagay,Bilagay,-15.4,23.5,10
+MEC,Tocopilla,Bilagay,Bilagay,-15.3,22.5,10
+MEC,Tocopilla,Bilagay,Bilagay,-15.6,22.2,10
+MEC,Tocopilla,Bilagay,Bilagay,-15.3,21.7,10
+MEC,Tocopilla,Bilagay,Bilagay,-15.7,22.3,10
+MEC,Tocopilla,Bilagay,Bilagay,-15.3,22.4,10
+MEC,Tocopilla,Perumytilus purpuratus,Pelagic_BL,-17.0,16.7,10
+MEC,Tocopilla,Perumytilus purpuratus,Pelagic_BL,-17.5,15.9,10
+MEC,Tocopilla,Perumytilus purpuratus,Pelagic_BL,-16.5,16.7,10
+MEC,Tocopilla,Perumytilus purpuratus,Pelagic_BL,-15.8,16.5,10
+MEC,Tocopilla,Perumytilus purpuratus,Pelagic_BL,-16.7,17.6,10
+MEC,Tocopilla,Perumytilus purpuratus,Pelagic_BL,-17.2,16.6,10
+MEC,Tocopilla,Perumytilus purpuratus,Pelagic_BL,-17.0,16.7,10
+MEC,Tocopilla,Perumytilus purpuratus,Pelagic_BL,-16.8,16.2,10
+MEC,Tocopilla,Perumytilus purpuratus,Pelagic_BL,-17.3,15.9,10
+MEC,Tocopilla,Perumytilus purpuratus,Pelagic_BL,-17.5,16.8,10

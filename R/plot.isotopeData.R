@@ -1,6 +1,6 @@
-#' Title
+#' Plot stable isotope data (2 elements) with one or two baselines
 #'
-#' @param isoData
+#' @param isotopeData
 #' @param consumer
 #' @param b1
 #' @param b2
@@ -19,13 +19,13 @@ plot.isotopeData <- function (isotopeData, consumer = NULL,
   if (is.null(b1) & is.null(attributes(isotopeData)$baseline1))
     b1 = "Pelagic baseline"
   else
-    if(!is.null(attributes(isotopeData)$baseline1))
+    if(is.null(b1) & !is.null(attributes(isotopeData)$baseline1))
       b1 = attributes(isotopeData)$baseline1
 
   if (is.null(b2) & is.null(attributes(isotopeData)$baseline2))
     b2 = "Benthic baseline"
   else
-    if(!is.null(attributes(isotopeData)$baseline2))
+    if(is.null(b2) & !is.null(attributes(isotopeData)$baseline2))
       b2 = attributes(isotopeData)$baseline2
 
   if (is.null(consumer) & is.null(attributes(isotopeData)$consumer))

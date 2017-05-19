@@ -5,7 +5,6 @@
 #' @param df data frame containing the data to be ordered.
 #'
 #' @return
-#' @export
 #'
 #' @examples
 

@@ -2,16 +2,16 @@
 % Please edit documentation in R/credibilityIntervals.R
 \name{credibilityIntervals}
 \alias{credibilityIntervals}
-\title{Title}
+\title{Plot credibility intervals and median from posterior distributions}
 \usage{
 credibilityIntervals(df, x = "species", plotAlpha = TRUE, y1 = "median",
   y1min = "lower", y1max = "upper", y1lim = NULL, y2 = "alpha.median",
   y2min = "alpha.lower", y2max = "alpha.upper", xlab = "Bayesian models",
-  ylab1 = "Posterior Trophic Position", ylab2 = "Posterior alpha")
+  ylab1 = "Posterior Trophic Position", ylab2 = "Posterior alpha", ...)
 }
 \arguments{
-\item{df}{}
+\item{...}{}
 }
 \description{
-Title
+Plot credibility intervals and median from posterior distributions
 }

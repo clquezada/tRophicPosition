@@ -5,7 +5,7 @@
 \title{Function to create a JAGS-based Bayesian model to calculate trophic position}
 \usage{
 TPmodel(data = NULL, model.string = NULL, n.chains = 2, n.adapt = 10000,
-  inits = NULL, ...)
+  inits = NULL, quiet = FALSE, ...)
 }
 \arguments{
 \item{data}{a list containing the data}
@@ -15,6 +15,8 @@ TPmodel(data = NULL, model.string = NULL, n.chains = 2, n.adapt = 10000,
 \item{n.chains}{number of parallel chains for the model}
 
 \item{n.adapt}{number of iterations for adaptation (initial sampling phase)}
+
+\item{...}{}
 }
 \value{
 \code{TPmodel} returns an object inheriting from class jags which

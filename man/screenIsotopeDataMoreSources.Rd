@@ -18,6 +18,9 @@ dCc, dNc, deltaN and deltaC.}
 
 \item{...}{}
 }
+\value{
+
+}
 \description{
 This function is intended to be used within the package. For details refer to
 \code{\link{screenIsotopeData}}.

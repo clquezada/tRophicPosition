@@ -2,7 +2,7 @@
 % Please edit documentation in R/screenIsotopeData.R
 \name{screenIsotopeData}
 \alias{screenIsotopeData}
-\title{Function to plot and screen isotope data with one or more baselines.}
+\title{Function to plot and screen stable isotope data with one or more baselines.}
 \usage{
 screenIsotopeData(isotopeData = NULL, density = "both",
   consumer = "Consumer", b1 = "Pelagic baseline", b2 = "Benthic baseline",

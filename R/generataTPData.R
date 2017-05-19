@@ -1,20 +1,21 @@
-#' A function to generate random isotope data for trophic position calculation
+#' A function to generate random stable isotope data for trophic position
+#' calculation
 #'
-#' This function generates random isotope (d13C and d15N) data for using the
+#' This function generates random stable isotope (d13C and d15N) data for using
 #' basic functions of tRophicPosition package.
 #'
 #' @param n.baselines Number of baselines (could be 1 or 2), by default is 2.
 #' @param dNb1 mean value for delta Nitrogen of baseline 1. Default is a random
 #' number between -5 and 5
 #' @param dNc mean value for delta Nitrogen of secondary consumer. Default value
-#' is dNb1 multiplied 2 times the trophic enrichment factor.
+#' is dNb1 multiplied 2 times the trophic discrimination factor.
 #' @param n.obsB Number of observations for baselines. Default is 25.
 #' @param n.obsC Number of observations for consumer. Default is 25.
-#' @param DeltaN mean value for trophic enrichment factor. Default value is 3.4
-#' @param n.obsDeltaN Number of observations of deltaN (trophic enrichment
+#' @param DeltaN mean value for trophic discrimination factor. Default value is 3.4
+#' @param n.obsDeltaN Number of observations of deltaN (trophic discrimination
 #' factor). Default is 56
-#' @param DeltaC mean value for trophic enrichment factor. Default value is 0.39
-#' @param n.obsDeltaC Number of observations of DeltaC (trophic enrichment
+#' @param DeltaC mean value for trophic discrimination factor. Default value is 0.39
+#' @param n.obsDeltaC Number of observations of DeltaC (trophic discrimination
 #' factor). Default is 107
 #' @param sd.dNb1
 #' @param dNb2
@@ -30,9 +31,9 @@
 #' @param sd.DeltaC
 #' @param consumer
 #'
-#' @return A named list with dNb1, dNc and deltaN randomly generated
-#' observations. If n.baselines = 2, then dCb1, dNb2, dCb2, dCc and deltaC are
-#' also returned.
+#' @return An isotopeData class object (named list) with dNb1, dNc and deltaN
+#' randomly generated observations. If n.baselines = 2, then dCb1, dNb2, dCb2,
+#' dCc and deltaC are also returned.
 #' @export
 #'
 #' @examples
@@ -80,11 +81,11 @@ generateTPData <- function (n.baselines = 2,
   #from a normal distribution with mean dNc and standard deviation sd.dNc
   else dNc <- rnorm(n.obsC, dNc, sd.dNc)
 
-  # Finally we simulate some data for the trophic enrichment factor (deltaN)
+  # Finally we simulate some data for the trophic discrimination factor (deltaN)
   # By default we generate 56 values randomly drawn from a normal distribution
   # with a mean 3.4 with sd 0.98 (defined in the arguments of this function)
   # deltaN <- rnorm (n.obsDeltaN, DeltaN, sd.DeltaN)
-  deltaN <- simulateTEF(nN = n.obsDeltaN, meanN = DeltaN, sdN = sd.DeltaN)
+  deltaN <- simulateTDF(nN = n.obsDeltaN, meanN = DeltaN, sdN = sd.DeltaN)
 
   # We simulate then values for the dC of baseline 1 (with the same sd of dNb1)
   if (is.null(dCb1)) dCb1 <- rnorm(n.obsB, runif(1, -25, -10), sd.dNb1)
@@ -106,7 +107,7 @@ generateTPData <- function (n.baselines = 2,
     else
       dCb2 <- rnorm(n.obsB, dCb2, sd.dCb2)
 
-    deltaC <- simulateTEF(nC = n.obsDeltaC, meanC = DeltaC, sdC = sd.DeltaC)
+    deltaC <- simulateTDF(nC = n.obsDeltaC, meanC = DeltaC, sdC = sd.DeltaC)
 
     a <- list(dNb1 = dNb1, dCb1 = dCb1,
               dNb2 = dNb2, dCb2 = dCb2,

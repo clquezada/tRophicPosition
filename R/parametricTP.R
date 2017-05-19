@@ -12,7 +12,8 @@
 #' @examples
 parametricTP <- function (siData, lambda = 2, print = TRUE) {
 
-  if (class(siData) != "isotopeData") stop ("We need an isotopeData class object")
+  if (class(siData) != "isotopeData")
+    stop ("We need an isotopeData class object")
   cat("Beta version! check the values with your calculations")
   sm <- summary(siData, print = FALSE, round_dec = 4)
 
@@ -39,7 +40,8 @@ parametricTP <- function (siData, lambda = 2, print = TRUE) {
 
   alpha <- (dCc - dCb2) / (dCb1 - dCb2)
   TPTwoBaselines <- TP(dNc, dNb1, dNb2, deltaN, alpha)
-  if (isTRUE(print)) print(paste("Two baselines TP: ", round(TPTwoBaselines,2), round(alpha,3)))
+  if (isTRUE(print)) print(paste("Two baselines TP: ", round(TPTwoBaselines,2),
+                                 round(alpha,3)))
 
   i = 0
   TP_p1 <- TPTwoBaselines
@@ -47,7 +49,8 @@ parametricTP <- function (siData, lambda = 2, print = TRUE) {
   alpha_p2 <- alpha_p1
   TP_p2 <- TP(dNc, dNb1, dNb2, deltaN, alpha_p1)
 
-  if (isTRUE(print)) print(paste("Full model TP. At the beginning: ", round(TP_p1,2),
+  if (isTRUE(print)) print(paste("Full model TP. At the beginning: ",
+                                 round(TP_p1,2),
                                  round(alpha_p1,3)))
   while (TP_p1 != TP_p2) {
     TP_p1 <- TP_p2
@@ -60,8 +63,9 @@ parametricTP <- function (siData, lambda = 2, print = TRUE) {
 
   if(isTRUE(print)) {
     if (i == 50)
-      print(paste("Convergence not reached after ", i, " iterations.", "TP: ", round(TP_p2,2),
-            " alpha: ", round(alpha_p2,3)))
+      print(paste("Convergence not reached after ", i, " iterations.", "TP: ",
+                  round(TP_p2,2),
+                  " alpha: ", round(alpha_p2,3)))
     else
       print(paste("Convergence after ", i, " iterations. TP: ", round(TP_p2,2),
                 " alpha: ", round(alpha_p2,3)))
@@ -69,7 +73,7 @@ parametricTP <- function (siData, lambda = 2, print = TRUE) {
   return(list(TPoneBaseline, TPTwoBaselines, alpha, TP_p2, alpha_p2))
   }
 
-  #Post's version // REMOVE AFTER UPLOADING TO GITHUB
+  #Post's version // REMOVE BEFORE UPLOADING TO GITHUB
   # i = 0
   # TP_p1 <- TPTwoBaselines
   # alpha_p1 <- alphaPost(dCc, dCb1, dCb2, TP_p1)
