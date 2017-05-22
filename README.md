@@ -3,7 +3,7 @@ A package to estimate trophic position using stable isotopes.
 
 If you are reading this, then you are on the GitHub site and/or have download the version from there. 
 
-As of 21th of May 2017, we are releasing the version 0.6.8-7 of the package, the first release version. If you find any error, please send them to trophicposition-support@googlegroups.com or raise an issue in the GitHub page.
+As of 21th of May 2017, we are releasing the version 0.6.8-8 of the package, the first release version. If you find any error, please send them to trophicposition-support@googlegroups.com or raise an issue in the GitHub page.
 
 If you are interested in joining the tRophicPosition support group, do it at https://groups.google.com/d/forum/trophicposition-support
 
