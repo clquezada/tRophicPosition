@@ -4,11 +4,11 @@
 \alias{plot.isotopeData}
 \title{Plot stable isotope data (2 elements) with one or two baselines}
 \usage{
-\method{plot}{isotopeData}(isotopeData, consumer = NULL, b1 = NULL,
-  b2 = NULL, legend = c(1.15, 1.15), density = "both", ...)
+\method{plot}{isotopeData}(x, consumer = NULL, b1 = NULL, b2 = NULL,
+  legend = c(1.15, 1.15), density = "both", ...)
 }
 \arguments{
-\item{isotopeData}{an isotopeData class object.}
+\item{x}{an isotopeData class object.}
 
 \item{consumer}{string representing the consumer.}
 

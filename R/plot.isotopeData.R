@@ -1,6 +1,6 @@
 #' Plot stable isotope data (2 elements) with one or two baselines
 #'
-#' @param isotopeData an isotopeData class object.
+#' @param x an isotopeData class object.
 #' @param consistency NULL.
 #' @param consumer string representing the consumer.
 #' @param b1 string representing baseline 1.
@@ -18,14 +18,15 @@
 #' a <- generateTPData()
 #' plot(a)
 #'
-plot <- function (isotopeData, consistency = NULL, consumer = NULL,
-                              b1 = NULL, b2 = NULL,
-                              legend = c(1.15, 1.15), density = "both", ...)
-  UseMethod("plot")
+plot <- function (x, consistency = NULL,
+                  consumer = NULL,
+                  b1 = NULL, b2 = NULL,
+                  legend = c(1.15, 1.15), density = "both", ...)
+  UseMethod("plot", x)
 
 #' Plot stable isotope data (2 elements) with one or two baselines
 #'
-#' @param isotopeData an isotopeData class object.
+#' @param x an isotopeData class object.
 #' @param consumer string representing the consumer.
 #' @param b1 string representing baseline 1.
 #' @param b2 string representing baseline 2.
@@ -42,42 +43,42 @@ plot <- function (isotopeData, consistency = NULL, consumer = NULL,
 #' a <- generateTPData()
 #' plot(a)
 #'
-plot.isotopeData <- function (isotopeData, consumer = NULL,
+plot.isotopeData <- function (x, consumer = NULL,
                               b1 = NULL, b2 = NULL,
                               legend = c(1.15, 1.15), density = "both", ...) {
 
-  if (is.null(b1) & is.null(attributes(isotopeData)$baseline1))
+  if (is.null(b1) & is.null(attributes(x)$baseline1))
     b1 = "Pelagic baseline"
   else
-    if(is.null(b1) & !is.null(attributes(isotopeData)$baseline1))
-      b1 = attributes(isotopeData)$baseline1
+    if(is.null(b1) & !is.null(attributes(x)$baseline1))
+      b1 = attributes(x)$baseline1
 
-  if (is.null(b2) & is.null(attributes(isotopeData)$baseline2))
+  if (is.null(b2) & is.null(attributes(x)$baseline2))
     b2 = "Benthic baseline"
   else
-    if(is.null(b2) & !is.null(attributes(isotopeData)$baseline2))
-      b2 = attributes(isotopeData)$baseline2
+    if(is.null(b2) & !is.null(attributes(x)$baseline2))
+      b2 = attributes(x)$baseline2
 
-  if (is.null(consumer) & is.null(attributes(isotopeData)$consumer))
+  if (is.null(consumer) & is.null(attributes(x)$consumer))
     consumer = "Consumer"
   else
-    if(!is.null(attributes(isotopeData)$consumer))
-      consumer = attributes(isotopeData)$consumer
+    if(!is.null(attributes(x)$consumer))
+      consumer = attributes(x)$consumer
 
 
-  if(is.null(attributes(isotopeData)$community))
-    invisible(utils::capture.output(screenIsotopeData(isotopeData = isotopeData,
+  if(is.null(attributes(x)$community))
+    invisible(utils::capture.output(screenIsotopeData(isotopeData = x,
                       consumer = consumer,
                       b1 = b1,
                       b2 = b2,
                       legend = legend,
                       density = density)))
     else
-      invisible(utils::capture.output(screenIsotopeData(isotopeData = isotopeData,
+      invisible(utils::capture.output(screenIsotopeData(isotopeData = x,
                         consumer = consumer,
                         b1 = b1,
                         b2 = b2,
                         legend = legend,
                         density = density,
-                        title = attributes(isotopeData)$community)))
+                        title = attributes(x)$community)))
 }
