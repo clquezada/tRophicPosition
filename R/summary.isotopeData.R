@@ -1,8 +1,9 @@
 #' Summary for stable isotope data
 #'
-#' @param siData an isotopeData class object.
+#' @param isotopeData an isotopeData class object.
 #' @param print a logical value to indicate whether the summary is printed.
 #' @param round_dec number of decimals keeped.
+#' @param ... additional arguments passed to this function.
 #'
 #' @return a list with number of observations, mean, standard deviation,
 #' standard error, minimum, maximum and median for each element of an
@@ -14,15 +15,16 @@
 #' a <- generateTPData()
 #' summary(a)
 #'
-summary <- function (siData, print = TRUE, round_dec = 1) {
+summary <- function (isotopeData, print = TRUE, round_dec = 1, ...) {
   UseMethod("summary")
 }
 
 #' Summary for stable isotope data
 #'
-#' @param siData an isotopeData class object.
+#' @param isotopeData an isotopeData class object.
 #' @param print a logical value to indicate whether the summary is printed.
 #' @param round_dec number of decimals keeped.
+#' @param ... additional arguments passed to this function.
 #'
 #' @return a list with number of observations, mean, standard deviation,
 #' standard error, minimum, maximum and median for each element of an
@@ -33,9 +35,9 @@ summary <- function (siData, print = TRUE, round_dec = 1) {
 #' a <- generateTPData()
 #' summary(a)
 #'
-summary.isotopeData <- function (siData, print = TRUE, round_dec = 1) {
+summary.isotopeData <- function (isotopeData, print = TRUE, round_dec = 1, ...) {
 
-  if (class(siData) != "isotopeData") stop("The object don't have a class isotopeData")
+  if (class(isotopeData) != "isotopeData") stop("The object don't have a class isotopeData")
 
   #class(isotopeData) <- "list"
 
@@ -43,28 +45,28 @@ summary.isotopeData <- function (siData, print = TRUE, round_dec = 1) {
   #
   sef <- function(x) sd(x)/sqrt(length(x))
 
-  n <- lapply(siData, length)
-  min <- lapply(lapply(siData, min), round, round_dec)
-  mean <- lapply(lapply(siData, mean), round, round_dec)
-  median <- lapply(lapply(siData, median), round, round_dec)
-  max <- lapply(lapply(siData, max), round, round_dec)
-  sd <- lapply(lapply(siData, sd), round, round_dec)
+  n <- lapply(isotopeData, length)
+  min <- lapply(lapply(isotopeData, min), round, round_dec)
+  mean <- lapply(lapply(isotopeData, mean), round, round_dec)
+  median <- lapply(lapply(isotopeData, median), round, round_dec)
+  max <- lapply(lapply(isotopeData, max), round, round_dec)
+  sd <- lapply(lapply(isotopeData, sd), round, round_dec)
   #sqrt <- lapply(lapply(n, sqrt), round, round_dec)
-  se  <- lapply(lapply(siData,sef), round, round_dec)
+  se  <- lapply(lapply(isotopeData,sef), round, round_dec)
   #se  <- lapply(as.list(mapply("/",sqrt,sd)), round, round_dec)
 
   if (isTRUE(print)) {
 
     cat("\nSummary for stable isotope data object", "\n\n")
 
-    if (!is.null(attributes(siData)$consumer))
-      cat("Community ", attributes(siData)$community, "\n")
-    if (!is.null(attributes(siData)$consumer))
-      cat("Consumer ", attributes(siData)$consumer, "\n")
-    if (!is.null(attributes(siData)$baseline1))
-      cat("Baseline 1 ", attributes(siData)$baseline1, "\n")
-    if (!is.null(attributes(siData)$baseline2))
-      cat("Baseline 2 ", attributes(siData)$baseline2, "\n")
+    if (!is.null(attributes(isotopeData)$consumer))
+      cat("Community ", attributes(isotopeData)$community, "\n")
+    if (!is.null(attributes(isotopeData)$consumer))
+      cat("Consumer ", attributes(isotopeData)$consumer, "\n")
+    if (!is.null(attributes(isotopeData)$baseline1))
+      cat("Baseline 1 ", attributes(isotopeData)$baseline1, "\n")
+    if (!is.null(attributes(isotopeData)$baseline2))
+      cat("Baseline 2 ", attributes(isotopeData)$baseline2, "\n")
     cat("\n")
   }
 
