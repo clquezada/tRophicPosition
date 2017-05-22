@@ -4,10 +4,10 @@
 \alias{summary.isotopeData}
 \title{Summary for stable isotope data}
 \usage{
-\method{summary}{isotopeData}(isotopeData, print = TRUE, round_dec = 1, ...)
+\method{summary}{isotopeData}(object, print = TRUE, round_dec = 1, ...)
 }
 \arguments{
-\item{isotopeData}{an isotopeData class object.}
+\item{object}{an isotopeData class object.}
 
 \item{print}{a logical value to indicate whether the summary is printed.}
 

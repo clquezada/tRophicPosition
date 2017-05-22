@@ -29,6 +29,8 @@
 #' samples named gg.
 #' @export
 #'
+#' @import coda
+#'
 #' @examples
 #' isotopeData <- generateTPData()
 #' models <- multiModelTP(isotopeData, n.adapt = 500, n.iter = 500,
@@ -153,7 +155,7 @@ multiModelTP <- function (siData = siData, lambda = 2,
       if (!is.null(attributes(siData)$community) &
           !is.null(attributes(siData)$consumer))
 
-        plot(samples, sub = paste(model,
+        plotMCMC(samples, sub = paste(model,
                                   attributes(siData)$community,
                                   attributes(siData)$consumer))
 
@@ -161,11 +163,11 @@ multiModelTP <- function (siData = siData, lambda = 2,
 
           if(!is.null(attributes(siData)$consumer))
 
-            plot(samples, sub = paste(model,
+            plotMCMC(samples, sub = paste(model,
                                       attributes(siData)$consumer))
 
           else
-            plot(samples, sub = model)
+            plotMCMC(samples, sub = model)
 
       print(summary(samples))
       print(coda::gelman.diag(samples))
