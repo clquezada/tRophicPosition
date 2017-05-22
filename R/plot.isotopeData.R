@@ -1,20 +1,50 @@
 #' Plot stable isotope data (2 elements) with one or two baselines
 #'
-#' @param isotopeData
-#' @param consumer
-#' @param b1
-#' @param b2
-#' @param legend
-#' @param density
+#' @param isotopeData an isotopeData class object.
+#' @param consistency NULL.
+#' @param consumer string representing the consumer.
+#' @param b1 string representing baseline 1.
+#' @param b2 string representing baseline 2.
+#' @param legend coordinates representing where to locate the legend.
+#' @param density string representing whether the density function is plotted.
+#' Accepted characters are "both" in which case will plot the density function
+#' above and to the right, "right", "above" or "none".
+#' @param ... additional arguments passed to this function.
 #'
-#' @return
+#' @return a ggplot2 object with the biplot of isotopes.
 #' @export
 #'
 #' @examples
+#' a <- generateTPData()
+#' plot(a)
+#'
+plot <- function (isotopeData, consistency = NULL, consumer = NULL,
+                              b1 = NULL, b2 = NULL,
+                              legend = c(1.15, 1.15), density = "both", ...)
+  UseMethod("plot")
+
+#' Plot stable isotope data (2 elements) with one or two baselines
+#'
+#' @param isotopeData an isotopeData class object.
+#' @param consumer string representing the consumer.
+#' @param b1 string representing baseline 1.
+#' @param b2 string representing baseline 2.
+#' @param legend coordinates representing where to locate the legend.
+#' @param density string representing whether the density function is plotted.
+#' Accepted characters are "both" in which case will plot the density function
+#' above and to the right, "right", "above" or "none".
+#' @param ... additional arguments passed to this function.
+#'
+#' @return a ggplot2 object with the biplot of isotopes.
+#' @export
+#'
+#' @examples
+#' a <- generateTPData()
+#' plot(a)
 #'
 plot.isotopeData <- function (isotopeData, consumer = NULL,
                               b1 = NULL, b2 = NULL,
-                              legend = c(1.15, 1.15), density = "both") {
+                              legend = c(1.15, 1.15), density = "both", ...) {
 
   if (is.null(b1) & is.null(attributes(isotopeData)$baseline1))
     b1 = "Pelagic baseline"
@@ -36,14 +66,14 @@ plot.isotopeData <- function (isotopeData, consumer = NULL,
 
 
   if(is.null(attributes(isotopeData)$community))
-    invisible(capture.output(screenIsotopeData(isotopeData = isotopeData,
+    invisible(utils::capture.output(screenIsotopeData(isotopeData = isotopeData,
                       consumer = consumer,
                       b1 = b1,
                       b2 = b2,
                       legend = legend,
                       density = density)))
     else
-      invisible(capture.output(screenIsotopeData(isotopeData = isotopeData,
+      invisible(utils::capture.output(screenIsotopeData(isotopeData = isotopeData,
                         consumer = consumer,
                         b1 = b1,
                         b2 = b2,

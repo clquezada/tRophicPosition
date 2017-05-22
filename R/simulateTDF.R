@@ -11,10 +11,16 @@
 #' @param meanC mean for deltaC
 #' @param sdC standard deviation for deltaC
 #'
-#' @return
+#' @return a named list with TDF values for nitrogen and/or carbon
 #' @export
 #'
 #' @examples
+#' # 25 values of TDF for nitrogen, mean 3, sd, 1
+#' simulateTDF(nN = 25, meanN = 3, sdN = 1)
+#'
+#' # 18 values of TDF for carbon, mean 0.6, sd, 0.7
+#' simulateTDF(nC = 18, meanC = 0.6, sdC = 0.7)
+#'
 #'
 simulateTDF <- function (nN = 56,
                          meanN = NULL,

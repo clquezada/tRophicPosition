@@ -5,18 +5,21 @@
 \title{Function to create a JAGS-based Bayesian model to calculate trophic position}
 \usage{
 TPmodel(data = NULL, model.string = NULL, n.chains = 2, n.adapt = 10000,
-  inits = NULL, quiet = FALSE, ...)
+  quiet = FALSE, ...)
 }
 \arguments{
-\item{data}{a list containing the data}
+\item{data}{a list containing the data.}
 
-\item{model.string}{model string containing a description of the model}
+\item{model.string}{model string containing a description of the model.}
 
-\item{n.chains}{number of parallel chains for the model}
+\item{n.chains}{number of parallel chains for the model.}
 
 \item{n.adapt}{number of iterations for adaptation (initial sampling phase)}
 
-\item{...}{}
+\item{quiet}{logical value to indicate wheter messages generated during
+compilation will be suppressed, as well as the progress bar during adaptation.}
+
+\item{...}{aditional arguments passed to \code{\link[rjags]{jags.model}}.}
 }
 \value{
 \code{TPmodel} returns an object inheriting from class jags which
@@ -28,4 +31,10 @@ This function is a wrapper of \code{\link[rjags]{jags.model}}. It receives a
 named list containing the data, a model string returned by either
 \code{\link{jagsOneBaseline}}, \code{\link{jagsTwoBaselines}} or
 \code{\link{jagsTwoBaselinesFull}}, and creates a JAGS model object.
+}
+\examples{
+isotopeData <- generateTPData()
+model.string <- jagsBayesianModel()
+model <- TPmodel(data = isotopeData, model.string = model.string,
+n.adapt = 500)
 }

@@ -1,21 +1,29 @@
 #' Extracts stable isotope data from a data frame
 #'
+#' @param df data.frame containing raw isotope data, with one or more grouping
+#' variables.
+#' @param d13C string of the column with d13C isotope values.
+#' @param d15N string of the column with d15N isotope values.
+#' @param b1 string or vector with the text for baseline 1.
+#' @param b2 string or vector with the text for baseline 2.
+#' @param baselineColumn string of the column where baselines are grouped.
+#' @param speciesColumn string of the column where species/consumers are grouped.
+#' @param communityColumn string of the column where communities are grouped.
+#' @param deltaC vector of values with trophic discrimination factor for carbon.
+#' If NULL it will use Post's assumptions (56 values with 3.4 mean +- 0.98 sd).
+#' @param deltaN vector of values with trophic discrimination factor for nitrogen.
+#' If NULL it will use Post's assumptions (107 values with 0.39 mean +- 1.3 sd).
+#' @param seed integer to get reproducible results
 #'
-#' @param df
-#' @param d13C
-#' @param d15N
-#' @param b1
-#' @param b2
-#' @param baselineColumn
-#' @param speciesColumn
-#' @param communityColumn
-#' @param deltaC
-#' @param deltaN
-#'
-#' @return
+#' @return a list with isotopeData class objects
 #' @export
 #'
 #' @examples
+#' data("Bilagay")
+#' head(Bilagay)
+#' isotopeList <- extractIsotopeData(Bilagay, b1 = "Benthic_BL",
+#' b2 = "Pelagic_BL", baselineColumn = "FG", speciesColumn = "Spp",
+#' communityColumn = "Location", d13C = "d13C", d15N = "d15N")
 
 extractIsotopeData <- function(df = NULL,
                                b1 = "Baseline 1", b2 = NULL,
@@ -25,6 +33,11 @@ extractIsotopeData <- function(df = NULL,
                                deltaC = NULL, deltaN = NULL,
                                d13C = "d13C", d15N = "d15N",
                                seed = 666) {
+
+  # extractIsotopeData: no visible binding for global variable ‘species’ fix
+  # Check this
+  species = NULL
+
 
   getValues <- function(df, item, column, isotope)
     df[df[,column] %in% item, isotope]
@@ -65,7 +78,8 @@ extractIsotopeData <- function(df = NULL,
       dNc <- getValues(df, species, speciesColumn, d15N)
       dCc <- getValues(df, species, speciesColumn, d13C)
 
-      if (!is.null(community)) species_community <- paste(community, species, sep = "-")
+      if (!is.null(community)) species_community <- paste(community,
+                                                          species, sep = "-")
       else species_community <- species
 
 
@@ -90,16 +104,16 @@ extractIsotopeData <- function(df = NULL,
   if (is.null(deltaN)) {
     deltaN <- suppressMessages(tRophicPosition::TDF(author = "Post",
                                                     type = "muscle",
-                                                    element = "N"))
-      #simulateTEF(meanN = 3.4, sdN = 0.98)
+                                                    element = "N",
+                                                    seed = seed))
     }
 
   if (is.null(deltaC)) {
     set.seed(seed)
     deltaC <- suppressMessages(tRophicPosition::TDF(author = "Post",
                                                     type = "muscle",
-                                                    element = "C"))
-      #simulateTEF(meanC = 0.39, sdC = 1.3)
+                                                    element = "C",
+                                                    seed = seed))
     }
 
   siDataList <- list()
@@ -107,8 +121,6 @@ extractIsotopeData <- function(df = NULL,
   if (!is.null(communityColumn)) {
 
     for (community in unique(df[[communityColumn]])) {
-
-      # extracted <- list()
 
       subset_df <- subset(df, df[,communityColumn] %in% community)
 
@@ -126,7 +138,6 @@ extractIsotopeData <- function(df = NULL,
                                                     speciesColumn, species))
 
   }
-
 
   return(siDataList)
 

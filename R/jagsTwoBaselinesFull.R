@@ -38,6 +38,7 @@
 #' deltaC. deltaC stands for trophic enrichment factor of Carbon
 #' @param sigmaDeltaC a value defining sigma (std dev) for the mean (mu) of
 #' deltaC.
+#' @param ... additional arguments passed to this function.
 #'
 #' @return A jags model as a character string
 #'

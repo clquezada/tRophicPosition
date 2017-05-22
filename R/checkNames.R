@@ -6,9 +6,6 @@
 #' @param flag integer (stating the number of baselines) or a list of names
 #' (stating the names expected).
 #'
-#' @return
-#' @examples
-
 checkNames <- function (df = NULL, flag = NULL) {
 
   if (typeof(flag) == "double") {

@@ -2,27 +2,35 @@
 % Please edit documentation in R/compareTwoDistributions.R
 \name{compareTwoDistributions}
 \alias{compareTwoDistributions}
-\title{Function to compare two TP posterior distributions and test an hypothesis,
-in a Bayesian context}
+\title{Function to compare two distributions and test an hypothesis, in a Bayesian
+context}
 \usage{
 compareTwoDistributions(dist1 = NULL, dist2 = NULL, test = "<=",
   sample = NULL, ...)
 }
 \arguments{
-\item{dist1}{A collection of Trophic Position data (posterior distribution)}
+\item{dist1}{A collection of numerical values (posterior distribution).}
 
-\item{dist2}{A collection of Trophic Position data (posterior distribution)}
+\item{dist2}{A collection of numerical values (posterior distribution).}
 
 \item{test}{A logical operator which states what to test for. Might be "<",
 "<=", ">" or ">=".}
 
 \item{sample}{If sample is numeric, it will take 'sample' elements of each of
-the distributions of posterior trophic position.}
+the distributions.}
+
+\item{...}{extra arguments are passed to compareTwoDistributions().}
+}
+\value{
+probability given sum(dist1 >= dist2) / length(dist1)
 }
 \description{
-Function to compare two TP posterior distributions and test an hypothesis,
-in a Bayesian context
+Function to compare two distributions and test an hypothesis, in a Bayesian
+context
 }
 \examples{
+a <- rnorm(100, 2, 0.1)
+b <- rnorm(100, 1.8, 0.1)
+compareTwoDistributions(a, b)
 
 }

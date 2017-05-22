@@ -42,6 +42,8 @@ deltaN. deltaN stands for trophic enrichment factor of Nitrogen.}
 deltaN.}
 
 \item{lambda}{an integer indicating the trophic position of the baseline.}
+
+\item{...}{additional arguments passed to this function.}
 }
 \value{
 A jags model as a character string

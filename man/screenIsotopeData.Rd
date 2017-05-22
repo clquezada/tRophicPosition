@@ -6,14 +6,26 @@
 \usage{
 screenIsotopeData(isotopeData = NULL, density = "both",
   consumer = "Consumer", b1 = "Pelagic baseline", b2 = "Benthic baseline",
-  legend = c(0.85, 0.85), title = NULL, ...)
+  legend = c(1.15, 1.15), title = NULL, ...)
 }
 \arguments{
-\item{density}{a character that might plot the density function. Accepted
-characters are "both" in which case will plot the density function above and
-to the right, "right", "above" or "none".}
+\item{isotopeData}{an isotopeData class object.}
 
-\item{...}{}
+\item{density}{string representing whether the density function is plotted.
+Accepted characters are "both" in which case will plot the density function
+above and to the right, "right", "above" or "none".}
+
+\item{consumer}{string representing the consumer.}
+
+\item{b1}{string representing baseline 1.}
+
+\item{b2}{string representing baseline 2.}
+
+\item{legend}{coordinates representing where to locate the legend.}
+
+\item{title}{string representing title.}
+
+\item{...}{additional arguments passed to this function.}
 }
 \value{
 none
@@ -23,5 +35,9 @@ This function receives a named list of vectors, and plots a scatterplot with
  2 sources and a consumer. Depending on the length of the named list, this
  function plots one (length = 6), or two (length = 8) baselines. Also the
  user can states whether he/she wants a density function ploted above, to the
- right, both or does not want it to be ploted.
+ right, at both sides or does not want it to be ploted.
+}
+\examples{
+a <- generateTPData()
+screenIsotopeData(a)
 }

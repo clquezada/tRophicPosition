@@ -8,11 +8,6 @@
 #' dCc, dNc, deltaN and deltaC.
 #' @param density a character that might plot the density function.
 #'
-#' @return
-#'
-#' @examples
-#'
-#' @note
 #'
 
 screenIsotopeData3sources <- function (isotopeData = NULL, density = "both" ) {
@@ -36,28 +31,28 @@ screenIsotopeData3sources <- function (isotopeData = NULL, density = "both" ) {
     df.b1 <- df[which(df$Factor=="Baseline 1"),c("d13C","d15N")]
     a <- lapply(df.b1, mean)
     names(a) <- c("mean_d13C", "mean_d15N")
-    b <- lapply(df.b1, sd)
+    b <- lapply(df.b1, stats::sd)
     names(b) <- c("sd_d13C", "sd_d15N")
     b1.meansSDs <- data.frame(a, b, Factor="Baseline 1")
 
     df.b2 <- df[which(df$Factor=="Baseline 2"),c("d13C","d15N")]
     a <- lapply(df.b2, mean)
     names(a) <- c("mean_d13C", "mean_d15N")
-    b <- lapply(df.b2, sd)
+    b <- lapply(df.b2, stats::sd)
     names(b) <- c("sd_d13C", "sd_d15N")
     b2.meansSDs <- data.frame(a, b, Factor="Baseline 2")
 
     df.b3 <- df[which(df$Factor=="Baseline 3"),c("d13C","d15N")]
     a <- lapply(df.b3, mean)
     names(a) <- c("mean_d13C", "mean_d15N")
-    b <- lapply(df.b3, sd)
+    b <- lapply(df.b3, stats::sd)
     names(b) <- c("sd_d13C", "sd_d15N")
     b3.meansSDs <- data.frame(a, b, Factor="Baseline 3")
 
     df.sc <- df[which(df$Factor=="Secondary consumer"),c("d13C","d15N")]
     a <- lapply(df.sc, mean)
     names(a) <- c("mean_d13C", "mean_d15N")
-    b <- lapply(df.sc, sd)
+    b <- lapply(df.sc, stats::sd)
     names(b) <- c("sd_d13C", "sd_d15N")
     sc.meansSDs <- data.frame(a, b, Factor="Secondary consumer")
 

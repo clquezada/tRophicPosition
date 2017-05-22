@@ -11,11 +11,17 @@ TDF(author = "Post", element = "both", type = "all", seed = 3)
 
 \item{element}{can be "both", "N" or "C"}
 
-\item{type}{thys argument only works for "McCutchan" author (their Table 3).
+\item{type}{this argument only works for "McCutchan" author (their Table 3).
 "all" returns all TDF data; "whole" and "muscle" returns TDF separated per
 type analysis; "acidified" and "unacidified" returns TDF separated per
 acidification; and "Rainbow Trout" and "Brook Trout" returns TDF separated
 per fish species (according to their Table 1).}
+
+\item{seed}{integer to have replicated results}
+}
+\value{
+a list (if element = "both") or a vector (if element ="N" or
+ element = "C") containing TDF values
 }
 \description{
 \code{TDF} return trophic discrimination factors (TDF), given an author, element
@@ -24,5 +30,6 @@ on the author. At the moment it includes TDF data from Post (2002) and from
 McCutchan et al (2003).
 }
 \examples{
+TDF(author = "McCutchan", element = "N")
 
 }

@@ -29,3 +29,8 @@ a data frame with the summary of the data frame.
 \description{
 A wrapper of plyr:ddply to summarise a data frame.
 }
+\examples{
+data("Bilagay")
+subset_CHI <- Bilagay[Bilagay[,"Location"] \%in\% "CHI",]
+summariseIsotopeData(subset_CHI, grouping = c("Spp", "FG"))
+}

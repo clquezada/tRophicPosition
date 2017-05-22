@@ -2,13 +2,9 @@
 #'
 #' Not intended to be used by the user.
 #'
-#' @param df data frame containing the data to be ordered.
+#' @param isotopeData data frame containing the data to be ordered.
 #'
-#' @return
-#'
-#' @examples
-
-reOrder <- function (df = NULL){
+reOrder <- function (isotopeData = NULL){
 
   df <- data.frame(d13C = isotopeData$dCc,
                    d15N =isotopeData$dNc,

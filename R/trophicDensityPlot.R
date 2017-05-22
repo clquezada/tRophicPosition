@@ -7,18 +7,29 @@
 #' visualization purposes, if quantiles are added, density functions look better
 #' if they are not grouped.
 #'
-#' @param df data frame with 2 variables: "TP" and "Species". TP must be posterior
-#' samples of trophic position and Species must be a factor.
+#' @param df data frame with 2 variables: "TP" and "Species". TP can be
+#' posterior samples of trophic position and Species must be a factor.
 #' @param quantiles logical variable. If TRUE 95% and 50% central of the
 #' distribution, plus mean and median are added to the plot.
 #' @param grouped logical variable. If TRUE trophic position are grouped.
 #'
-#' @return
+#' @return a ggplot2::ggplot object
 #' @export
 #'
 #' @examples
+#'species1 <- stats::rnorm(1000, 4, 0.1)
+#'species2 <- stats::rnorm(1000, 3, 0.8)
+#'TP <- c(species1, species2)
+#'Species <- c(rep("Species 1", length(species1)),
+#'rep("Species 2", length(species2)))
+#'df <- data.frame(TP, Species)
+#'trophicDensityPlot(df)
 
 trophicDensityPlot <- function (df = NULL, quantiles = FALSE, grouped = TRUE) {
+
+  # Stupid CRAN fix for variables - see here http://stackoverflow.com/questions/9439256/how-can-i-handle-r-cmd-check-no-visible-binding-for-global-variable-notes-when
+  # As seen in https://github.com/andrewcparnell/simmr/blob/master/R/plot.simmr_output.R
+  TP = TP.median = TP.025 = TP.975 = TP.25 = TP.75 = Species =  NULL
 
   if (!grouped) {
 

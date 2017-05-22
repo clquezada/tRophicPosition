@@ -5,14 +5,56 @@
 \title{Multiple species calculation of trophic position}
 \usage{
 multiSpeciesTP(siDataList = siDataList, lambda = 2, n.chains = 2,
-  n.adapt = 10000, n.iter = 10000, burnin = 10000, thin = 10,
-  model = "oneBaseline", print = FALSE, ...)
+  n.adapt = 20000, n.iter = 20000, burnin = 20000, thin = 10,
+  model = "oneBaseline", print = FALSE, quiet = FALSE, ...)
 }
 \arguments{
-\item{burnin}{only used in parallel - check that}
+\item{siDataList}{a named list of isotopeClass objects.}
 
-\item{...}{}
+\item{lambda}{numerical value, represents the trophic level for baseline(s).}
+
+\item{n.chains}{number of parallel chains for the model. If convergence
+diagnostics (such as Gelman-Rubin) are ploted, n.chains needs to be > 1.}
+
+\item{n.adapt}{number of adaptive iterations, before the actual sampling.}
+
+\item{n.iter}{number of iterations for Bayesian modelling.}
+
+\item{burnin}{number of iterations discarded.}
+
+\item{thin}{number of samples discarded while performing posterior sampling.}
+
+\item{model}{string or list representing Bayesian models. At the moment they
+can be "oneBaseline", "twoBaselines" and/or "twoBaselinesFull".}
+
+\item{print}{logical value to indicate wheter Gelman and Rubin's convergence
+diagnostic and summary of samples are printed.}
+
+\item{quiet}{logical value to indicate wheter messages generated during
+compilation will be suppressed, as well as the progress bar during
+adaptation.}
+
+\item{...}{additional arguments passed to this function.}
+}
+\value{
+A list of 4 elements. The output is organised as lists nested.
+The first element (multiSpeciesTP) has the gg data frame returned by
+multiModelTP, the second element (df) is a data frame with summary
+information for all consumers and models, the third element (TP's) has the
+raw posterior trophic position for all consumers and models, and the last
+element (Alpha's) has raw posterior of muDeltaN (if one baseline model was
+chosen) or alpha (if a two baselines model was chosen) for all consumers and
+models.
 }
 \description{
-Multiple species calculation of trophic position
+This function takes a named list of isotopeClass objects and calculates one
+or more Bayesian models of trophic position for each element of the list.
+}
+\examples{
+siDataList <- list("consumer1" = generateTPData(consumer = "consumer1"),
+"consumer2" = generateTPData(consumer = "consumer2"))
+models <- multiSpeciesTP(siDataList, model = "twoBaselines", n.adapt = 500,
+n.iter = 500, burnin = 500)
+credibilityIntervals(models$df, x = "species")
+
 }

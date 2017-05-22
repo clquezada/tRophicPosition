@@ -2,11 +2,8 @@
 #'
 #' This function is intended to be used within the package
 #'
-#' @param ...
 #'
-#' @return
-#'
-#' @examples
+#' @param ... additional arguments passed to this function
 #'
 theme0 <- function(...) {
   ggplot2::theme( legend.position = "none",

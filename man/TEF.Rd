@@ -2,7 +2,7 @@
 % Please edit documentation in R/TEF.R
 \name{TEF}
 \alias{TEF}
-\title{Trophic discrimination factors from bibliography}
+\title{Trophic enrichment factors from bibliography}
 \usage{
 TEF(author = "Post", element = "both", type = "all", seed = 3)
 }
@@ -11,19 +11,27 @@ TEF(author = "Post", element = "both", type = "all", seed = 3)
 
 \item{element}{can be "both", "N" or "C"}
 
-\item{type}{thys argument only works for "McCutchan" author (their Table 3).
+\item{type}{this argument only works for "McCutchan" author (their Table 3).
 "all" returns all TEF data; "whole" and "muscle" returns TEF separated per
 type analysis; "acidified" and "unacidified" returns TEF separated per
 acidification; and "Rainbow Trout" and "Brook Trout" returns TEF separated
 per fish species (according to their Table 1).}
+
+\item{seed}{integer to have replicated results}
+}
+\value{
+a list (if element = "both") or a vector (if element ="N" or
+ element = "C") containing TDF values
 }
 \description{
-\code{TDF} return trophic discrimination factors (TDF), given an author, element
+\code{TEF} return trophic enrichment factors (TEF), given an author, element
 and a type. For convenience 'type' includes a number of categories depending
 on the author. At the moment it includes TEF data from Post (2002) and from
-McCutchan et al (2003). This function is maintained for compatibility backwards of
-version 0.6.8.
+McCutchan et al (2003). This function is maintained for compatibility
+backwards of version 0.6.8.
 }
 \examples{
+# TEF() is deprecated, use TDF() instead:
+TDF(author = "McCutchan", element = "N")
 
 }

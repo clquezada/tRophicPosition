@@ -17,14 +17,21 @@ each species.}
 \item{grouping}{a vector with the name of the columns (variables) that will
 be used to summarize, and plot the data frame.}
 
-\item{printSummary}{}
+\item{printSummary}{a logical value to indicate whehter the summary is
+printed}
 
 \item{...}{optional arguments that are passed to the function for later use.}
 }
 \value{
 a ggplot2 object with the biplot of the dataframe. Also prints the
-summary of the data frame.
+summary of the data frame as needed.
 }
 \description{
-Description
+Function that creates a biplot of food web with stable isotope values (d13C
+and d15N)
+}
+\examples{
+data("Bilagay")
+subset_CHI <- Bilagay[Bilagay[,"Location"] \%in\% "CHI",]
+screenFoodWeb(subset_CHI, grouping = c("Spp", "FG"))
 }

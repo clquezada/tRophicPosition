@@ -34,6 +34,7 @@
 #' @param sigmaDeltaN a value defining sigma (std dev) for the mean (mu) of
 #' deltaN.
 #' @param lambda an integer indicating the trophic position of the baseline.
+#' @param ... additional arguments passed to this function.
 #'
 #' @return A jags model as a character string
 #'

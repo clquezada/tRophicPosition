@@ -11,7 +11,10 @@ plotTP(TPdist = NULL, ...)
 In case of wanting to plot two or more posterior distributions, needs to be
 passed as a {\link[base]{data.frame}} object.}
 
-\item{...}{}
+\item{...}{additional arguments passed to this function.}
+}
+\value{
+A new figure window
 }
 \description{
 Wrapper of {\link[SIBER]{siberDensityPlot}}.

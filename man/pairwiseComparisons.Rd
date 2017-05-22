@@ -2,16 +2,33 @@
 % Please edit documentation in R/pairwiseComparisons.R
 \name{pairwiseComparisons}
 \alias{pairwiseComparisons}
-\title{Function to perform pairwise comparisons between several posterior distributions}
+\title{Function to perform pairwise comparisons between several posterior
+distributions}
 \usage{
 pairwiseComparisons(df, test = "<=", print = FALSE)
 }
 \arguments{
-\item{test}{}
+\item{df}{a data frame with a collection of numerical values (posterior
+samples) to be compared.}
+
+\item{test}{string with the logical test to be used in comparisons. Can be <,
+<=, > or >=.}
+
+\item{print}{logical value to indicate wheter the output should be printed or
+not.}
+}
+\value{
+a symmetrical matrix with probabilities given sum(dist1 >= dist2) /
+length(dist1) for each comparison.
 }
 \description{
-Function to perform pairwise comparisons between several posterior distributions
+Function to compare two or more distributions and test an hypothesis,
+in a Bayesian context
 }
 \examples{
+a <- rnorm(100, 2, 0.1)
+b <- rnorm(100, 1.8, 0.1)
+c <- rnorm(100, 2.2, 0.1)
+pairwiseComparisons(list("a" = a, "b" = b, "c" = c))
 
 }

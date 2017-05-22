@@ -3,22 +3,15 @@
 #' This function is intended to be used within the package. For details refer to
 #' \code{\link{screenIsotopeData}}.
 #'
-#' @param isotopeData a named list composed at least of 6 vectors, dNb1, dCb1,
-#' dCc, dNc, deltaN and deltaC.
-#' @param density a string character that might plot the density function.
-#' @param baselines integer defining the number of baselines (1, 2 or 3).
-#' @param consumer
-#' @param b1
-#' @param b2
-#' @param legend
-#' @param ...
-#'
-#' @return
-#'
-#' @examples
-#'
-#' @note
-#'
+#' @param isotopeData an isotopeData class object.
+#' @param density string. Can be "both", "above", "right" or "none".
+#' @param baselines number of baselines plotted.
+#' @param consumer string representing consumer
+#' @param b1 string representing baseline 1
+#' @param b2 string representing baseline 2
+#' @param legend string representing legend
+#' @param title string representing title
+#' @param ... additional arguments passed to this function
 
 screenIsotopeDataMoreSources <- function (isotopeData = NULL,
                                           density = "both",
@@ -52,7 +45,7 @@ screenIsotopeDataMoreSources <- function (isotopeData = NULL,
       df.b1 <- df[which(df$Factor == b1), c("d13C","d15N")]
       a <- lapply(df.b1, mean)
       names(a) <- c("mean_d13C", "mean_d15N")
-      b <- lapply(df.b1, sd)
+      b <- lapply(df.b1, stats::sd)
       names(b) <- c("sd_d13C", "sd_d15N")
       b1.meansSDs <- data.frame(a, b, Factor = b1)
 
@@ -61,7 +54,7 @@ screenIsotopeDataMoreSources <- function (isotopeData = NULL,
 
       a <- lapply(df.sc, mean)
       names(a) <- c("mean_d13C", "mean_d15N")
-      b <- lapply(df.sc, sd)
+      b <- lapply(df.sc, stats::sd)
       names(b) <- c("sd_d13C", "sd_d15N")
 
       if (!is.null(consumer)) sc.meansSDs <- data.frame(a, b, Factor = consumer)
@@ -82,14 +75,14 @@ screenIsotopeDataMoreSources <- function (isotopeData = NULL,
       df.b1 <- df[which(df$Factor == b1), c("d13C","d15N")]
       a <- lapply(df.b1, mean)
       names(a) <- c("mean_d13C", "mean_d15N")
-      b <- lapply(df.b1, sd)
+      b <- lapply(df.b1, stats::sd)
       names(b) <- c("sd_d13C", "sd_d15N")
       b1.meansSDs <- data.frame(a, b, Factor = b1)
 
       df.b2 <- df[which(df$Factor == b2), c("d13C","d15N")]
       a <- lapply(df.b2, mean)
       names(a) <- c("mean_d13C", "mean_d15N")
-      b <- lapply(df.b2, sd)
+      b <- lapply(df.b2, stats::sd)
       names(b) <- c("sd_d13C", "sd_d15N")
       b2.meansSDs <- data.frame(a, b, Factor = b2)
 
@@ -99,7 +92,7 @@ screenIsotopeDataMoreSources <- function (isotopeData = NULL,
 
       a <- lapply(df.sc, mean)
       names(a) <- c("mean_d13C", "mean_d15N")
-      b <- lapply(df.sc, sd)
+      b <- lapply(df.sc, stats::sd)
       names(b) <- c("sd_d13C", "sd_d15N")
 
       if (!is.null(consumer)) sc.meansSDs <- data.frame(a, b, Factor=consumer)
@@ -110,37 +103,40 @@ screenIsotopeDataMoreSources <- function (isotopeData = NULL,
     } else if (baselines == 3) {
 
 
-      if (!is.null(consumer)) df <- toStacked(isotopeData, baselines = 3, consumer = consumer)
+      if (!is.null(consumer)) df <- toStacked(isotopeData, baselines = 3,
+                                              consumer = consumer)
       else df <- toStacked(isotopeData, baselines = 3)
 
-      #And now we calculate mean and standard deviation for baselines and consumer
+      # And now we calculate mean and standard deviation for baselines and
+      # consumer
       df.b1 <- df[which(df$Factor==b1),c("d13C","d15N")]
       a <- lapply(df.b1, mean)
       names(a) <- c("mean_d13C", "mean_d15N")
-      b <- lapply(df.b1, sd)
+      b <- lapply(df.b1, stats::sd)
       names(b) <- c("sd_d13C", "sd_d15N")
       b1.meansSDs <- data.frame(a, b, Factor = b1)
 
       df.b2 <- df[which(df$Factor == b2), c("d13C","d15N")]
       a <- lapply(df.b2, mean)
       names(a) <- c("mean_d13C", "mean_d15N")
-      b <- lapply(df.b2, sd)
+      b <- lapply(df.b2, stats::sd)
       names(b) <- c("sd_d13C", "sd_d15N")
       b2.meansSDs <- data.frame(a, b, Factor = b2)
 
       df.b3 <- df[which(df$Factor=="Baseline 3"), c("d13C","d15N")]
       a <- lapply(df.b3, mean)
       names(a) <- c("mean_d13C", "mean_d15N")
-      b <- lapply(df.b3, sd)
+      b <- lapply(df.b3, stats::sd)
       names(b) <- c("sd_d13C", "sd_d15N")
       b3.meansSDs <- data.frame(a, b, Factor="Baseline 3")
 
-      if (!is.null(consumer)) df.sc <- df[which(df$Factor == consumer), c("d13C","d15N")]
+      if (!is.null(consumer)) df.sc <- df[which(df$Factor == consumer),
+                                          c("d13C","d15N")]
       else df.sc <- df[which(df$Factor==consumer), c("d13C","d15N")]
 
       a <- lapply(df.sc, mean)
       names(a) <- c("mean_d13C", "mean_d15N")
-      b <- lapply(df.sc, sd)
+      b <- lapply(df.sc, stats::sd)
       names(b) <- c("sd_d13C", "sd_d15N")
 
       if (!is.null(consumer)) sc.meansSDs <- data.frame(a, b, Factor=consumer)
@@ -180,10 +176,11 @@ screenIsotopeDataMoreSources <- function (isotopeData = NULL,
 
     } else if (density == "both") {
 
-      capture.output(temp <- gridExtra::grid.arrange(gridExtra::arrangeGrob(p2, ncol = 2, widths=c(3,1)),
-                                      gridExtra::arrangeGrob(p1, p3, ncol=2, widths=c(3,1)),
-                                      heights=c(1,3), top = title))
-      print(temp)
+      gridExtra::grid.arrange(gridExtra::arrangeGrob(p2, ncol = 2,
+                                                     widths=c(3,1)),
+                              gridExtra::arrangeGrob(p1, p3, ncol=2,
+                                                     widths=c(3,1)),
+                              heights=c(1,3), top = title)
 
       } else if (density == "above") {
 

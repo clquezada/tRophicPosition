@@ -22,6 +22,8 @@ deltaN. deltaN stands for trophic enrichment factor of Nitrogen.}
 \item{TP}{a distribution defining prior of trophic position.}
 
 \item{lambda}{an integer indicating the trophic position of the baseline.}
+
+\item{...}{additional arguments passed to jagsOneBaseline.}
 }
 \value{
 A jags model as a character string

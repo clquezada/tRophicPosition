@@ -9,11 +9,12 @@
 #' @param type character that states if an "histogram" or a "density" will be
 #' ploted.
 #'
-#' @return
-#'
-#' @examples
 #'
 screenIsotopeData1source <- function (isotopeData = NULL, type = "histogram") {
+
+  # Stupid CRAN fix for variables - see here http://stackoverflow.com/questions/9439256/how-can-i-handle-r-cmd-check-no-visible-binding-for-global-variable-notes-when
+  # As seen in https://github.com/andrewcparnell/simmr/blob/master/R/plot.simmr_output.R
+  d15N = Factor = NULL
 
   if (!is.null(isotopeData)){
 
@@ -41,19 +42,21 @@ screenIsotopeData1source <- function (isotopeData = NULL, type = "histogram") {
 
       if (length(isotopeData$dNb1) >= length(isotopeData$dNc)) {
 
-        hist(isotopeData$dNb1, xlim = c(xlimMin - extra, xlimMax + extra),
-             col=rgb(0, 1, 0,0.5), xlab = "isotopic value of nitrogen",
+        graphics::hist(isotopeData$dNb1, xlim = c(xlimMin - extra, xlimMax + extra),
+             col = grDevices::rgb(0, 1, 0,0.5), xlab = "isotopic value of nitrogen",
              main = "Basic histogram of baseline (green)\n and consumer (red)")
 
-        hist(isotopeData$dNc, col=rgb(1, 0, 0,0.5), add = T)
+        graphics::hist(isotopeData$dNc, col = grDevices::rgb(1, 0, 0,0.5),
+                       add = TRUE)
 
       } else {
 
-        hist(isotopeData$dNc, xlim = c(xlimMin - extra, xlimMax + extra),
-             col=rgb(1, 0, 0,0.5), xlab = "isotopic value of nitrogen",
+        graphics::hist(isotopeData$dNc, xlim = c(xlimMin - extra, xlimMax + extra),
+             col = grDevices::rgb(1, 0, 0,0.5), xlab = "isotopic value of nitrogen",
              main = "Basic histogram of baseline (green)\n and consumer (red)")
 
-        hist(isotopeData$dNb1, col=rgb(0, 1, 0,0.5), add = T)
+        graphics::hist(isotopeData$dNb1, col = grDevices::rgb(0, 1, 0,0.5),
+                       add = TRUE)
 
         }
 
@@ -61,7 +64,7 @@ screenIsotopeData1source <- function (isotopeData = NULL, type = "histogram") {
 
       df <- toStacked(isotopeData)
 
-      ggplot2::ggplot(df, aes(x = d15N, colour = Factor, fill = Factor)) +
+      ggplot2::ggplot(df, ggplot2::aes(x = d15N, colour = Factor, fill = Factor)) +
         ggplot2::geom_density(alpha=0.7) +
         ggplot2::theme_bw() +
         ggplot2::xlab(expression(paste(delta^{15}, "N (\u2030)"))) +
