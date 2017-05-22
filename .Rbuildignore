@@ -4,3 +4,4 @@
 ^\.Rprofile$
 ^README-.*\.png$
 ^README\.Rmd$
+cran-comments.md

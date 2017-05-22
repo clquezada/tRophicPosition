@@ -4,14 +4,16 @@
 \alias{summary}
 \title{Summary for stable isotope data}
 \usage{
-summary(siData, print = TRUE, round_dec = 1)
+summary(isotopeData, print = TRUE, round_dec = 1, ...)
 }
 \arguments{
-\item{siData}{an isotopeData class object.}
+\item{isotopeData}{an isotopeData class object.}
 
 \item{print}{a logical value to indicate whether the summary is printed.}
 
 \item{round_dec}{number of decimals keeped.}
+
+\item{...}{additional arguments passed to this function.}
 }
 \value{
 a list with number of observations, mean, standard deviation,
