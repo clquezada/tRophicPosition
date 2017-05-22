@@ -1,13 +1,25 @@
-#' Function to perform pairwise comparisons between several posterior distributions
+#' Function to perform pairwise comparisons between several posterior
+#' distributions
 #'
-#' @param df
-#' @param print
-#' @param test
+#' Function to compare two or more distributions and test an hypothesis,
+#' in a Bayesian context
 #'
-#' @return
+#' @param df a data frame with a collection of numerical values (posterior
+#' samples) to be compared.
+#' @param test string with the logical test to be used in comparisons. Can be <,
+#' <=, > or >=.
+#' @param print logical value to indicate wheter the output should be printed or
+#' not.
+#'
+#' @return a symmetrical matrix with probabilities given sum(dist1 >= dist2) /
+#' length(dist1) for each comparison.
 #' @export
 #'
 #' @examples
+#' a <- rnorm(100, 2, 0.1)
+#' b <- rnorm(100, 1.8, 0.1)
+#' c <- rnorm(100, 2.2, 0.1)
+#' pairwiseComparisons(list("a" = a, "b" = b, "c" = c))
 #'
 pairwiseComparisons <- function (df, test = "<=", print = FALSE) {
 

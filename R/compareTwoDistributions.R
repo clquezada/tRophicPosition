@@ -1,18 +1,21 @@
-#' Function to compare two TP posterior distributions and test an hypothesis,
-#' in a Bayesian context
+#' Function to compare two distributions and test an hypothesis, in a Bayesian
+#' context
 #'
-#' @param dist1 A collection of Trophic Position data (posterior distribution)
-#' @param dist2 A collection of Trophic Position data (posterior distribution)
+#' @param dist1 A collection of numerical values (posterior distribution).
+#' @param dist2 A collection of numerical values (posterior distribution).
 #' @param test A logical operator which states what to test for. Might be "<",
 #' "<=", ">" or ">=".
 #' @param sample If sample is numeric, it will take 'sample' elements of each of
-#' the distributions of posterior trophic position.
-#' @param ... extra arguments are passed to \code{\link{sample}
+#' the distributions.
+#' @param ... extra arguments are passed to compareTwoDistributions().
 #'
-#' @return
+#' @return probability given sum(dist1 >= dist2) / length(dist1)
 #' @export
 #'
 #' @examples
+#'a <- rnorm(100, 2, 0.1)
+#'b <- rnorm(100, 1.8, 0.1)
+#'compareTwoDistributions(a, b)
 #'
 compareTwoDistributions <- function (dist1 = NULL,
                                      dist2 = NULL,

@@ -7,8 +7,22 @@
 parametricTP(siData, lambda = 2, print = TRUE)
 }
 \arguments{
-\item{print}{}
+\item{siData}{an isotopeData class object.}
+
+\item{lambda}{numerical value representing trophic level of baseline(s).}
+
+\item{print}{a logical value to indicate whether the output is printed or
+not.}
+}
+\value{
+a list with parametric trophic position calculated with a one
+baseline model, a two baselines model and its alpha value, and a two
+baselines full model and its alpha value.
 }
 \description{
 Calculation of old school trophic position
+}
+\examples{
+consumer <- generateTPData()
+parametricTP(consumer)
 }

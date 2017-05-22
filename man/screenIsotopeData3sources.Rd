@@ -12,17 +12,8 @@ dCc, dNc, deltaN and deltaC.}
 
 \item{density}{a character that might plot the density function.}
 }
-\value{
-
-}
 \description{
 This function is intended to be used within the package. For details refer to
 \code{\link{screenIsotopeData}}. This function plots 3 baselines coupled with
 the siar version of tRophicPosition.
-}
-\note{
-
-}
-\examples{
-
 }

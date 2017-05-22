@@ -7,13 +7,16 @@
 trophicDensityPlot(df = NULL, quantiles = FALSE, grouped = TRUE)
 }
 \arguments{
-\item{df}{data frame with 2 variables: "TP" and "Species". TP must be posterior
-samples of trophic position and Species must be a factor.}
+\item{df}{data frame with 2 variables: "TP" and "Species". TP can be
+posterior samples of trophic position and Species must be a factor.}
 
 \item{quantiles}{logical variable. If TRUE 95% and 50% central of the
 distribution, plus mean and median are added to the plot.}
 
 \item{grouped}{logical variable. If TRUE trophic position are grouped.}
+}
+\value{
+a ggplot2::ggplot object
 }
 \description{
 This function receives a data frame with sampled posterior trophic position
@@ -22,4 +25,13 @@ case the 95% central, 50% central, mean and median are plotted. Also the user
 can states whether he/she wants the density plots are grouped or not. For
 visualization purposes, if quantiles are added, density functions look better
 if they are not grouped.
+}
+\examples{
+species1 <- stats::rnorm(1000, 4, 0.1)
+species2 <- stats::rnorm(1000, 3, 0.8)
+TP <- c(species1, species2)
+Species <- c(rep("Species 1", length(species1)),
+rep("Species 2", length(species2)))
+df <- data.frame(TP, Species)
+trophicDensityPlot(df)
 }

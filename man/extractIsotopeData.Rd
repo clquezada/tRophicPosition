@@ -10,8 +10,41 @@ extractIsotopeData(df = NULL, b1 = "Baseline 1", b2 = NULL,
   seed = 666)
 }
 \arguments{
-\item{deltaN}{}
+\item{df}{data.frame containing raw isotope data, with one or more grouping
+variables.}
+
+\item{b1}{string or vector with the text for baseline 1.}
+
+\item{b2}{string or vector with the text for baseline 2.}
+
+\item{baselineColumn}{string of the column where baselines are grouped.}
+
+\item{speciesColumn}{string of the column where species/consumers are grouped.}
+
+\item{communityColumn}{string of the column where communities are grouped.}
+
+\item{deltaC}{vector of values with trophic discrimination factor for carbon.
+If NULL it will use Post's assumptions (56 values with 3.4 mean +- 0.98 sd).}
+
+\item{deltaN}{vector of values with trophic discrimination factor for nitrogen.
+If NULL it will use Post's assumptions (107 values with 0.39 mean +- 1.3 sd).}
+
+\item{d13C}{string of the column with d13C isotope values.}
+
+\item{d15N}{string of the column with d15N isotope values.}
+
+\item{seed}{integer to get reproducible results}
+}
+\value{
+a list with isotopeData class objects
 }
 \description{
 Extracts stable isotope data from a data frame
+}
+\examples{
+data("Bilagay")
+head(Bilagay)
+isotopeList <- extractIsotopeData(Bilagay, b1 = "Benthic_BL",
+b2 = "Pelagic_BL", baselineColumn = "FG", speciesColumn = "Spp",
+communityColumn = "Location", d13C = "d13C", d15N = "d15N")
 }

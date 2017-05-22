@@ -20,6 +20,9 @@ simulateTEF(nN = 56, meanN = NULL, sdN = 0.98, nC = 107, meanC = NULL,
 
 \item{sdC}{standard deviation for deltaC}
 }
+\value{
+a named list with TEF values for nitrogen and/or carbon
+}
 \description{
 \code{simulateTEF} return trophic enrichment factors (TEF), given a number of
 observations, a mean and a standard deviation for DeltaN and/or DeltaC. This
@@ -28,5 +31,12 @@ trophic discrimination factors (TDF) instead of trophic enrichment factors
 (TEF).
 }
 \examples{
+#simulateTEF() is deprecated, use simulateTDF() instead:
+
+# 25 values of TEF for nitrogen, mean 3, sd, 1
+simulateTDF(nN = 25, meanN = 3, sdN = 1)
+
+# 18 values of TEF for carbon, mean 0.6, sd, 0.7
+simulateTDF(nC = 18, meanC = 0.6, sdC = 0.7)
 
 }

@@ -20,10 +20,19 @@ simulateTDF(nN = 56, meanN = NULL, sdN = 0.98, nC = 107, meanC = NULL,
 
 \item{sdC}{standard deviation for deltaC}
 }
+\value{
+a named list with TDF values for nitrogen and/or carbon
+}
 \description{
 \code{simulateTDF} return trophic discrimination factors (TDF), given a number of
 observations, a mean and a standard deviation for DeltaN and/or DeltaC.
 }
 \examples{
+# 25 values of TDF for nitrogen, mean 3, sd, 1
+simulateTDF(nN = 25, meanN = 3, sdN = 1)
+
+# 18 values of TDF for carbon, mean 0.6, sd, 0.7
+simulateTDF(nC = 18, meanC = 0.6, sdC = 0.7)
+
 
 }

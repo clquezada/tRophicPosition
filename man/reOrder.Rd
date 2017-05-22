@@ -4,13 +4,10 @@
 \alias{reOrder}
 \title{Internal function that re-order variables from a data frame.}
 \usage{
-reOrder(df = NULL)
+reOrder(isotopeData = NULL)
 }
 \arguments{
-\item{df}{data frame containing the data to be ordered.}
-}
-\value{
-
+\item{isotopeData}{data frame containing the data to be ordered.}
 }
 \description{
 Not intended to be used by the user.

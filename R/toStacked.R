@@ -12,8 +12,6 @@
 #'
 #' @return a dataframe with 3 columns: d13C, d15N and Factor. Factor is a factor
 #' with "Consumer", "Pelagic baseline" and "Benthic baseline" as levels.
-#'
-#' @examples
 
 toStacked <- function (isotopeData = NULL, baselines = 1, consumer = consumer,
                        b1 = b1, b2 = b2){

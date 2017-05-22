@@ -7,14 +7,8 @@
 theme0(...)
 }
 \arguments{
-\item{...}{}
-}
-\value{
-
+\item{...}{additional arguments passed to this function}
 }
 \description{
 This function is intended to be used within the package
-}
-\examples{
-
 }

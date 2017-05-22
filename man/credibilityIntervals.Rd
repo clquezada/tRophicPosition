@@ -2,16 +2,62 @@
 % Please edit documentation in R/credibilityIntervals.R
 \name{credibilityIntervals}
 \alias{credibilityIntervals}
-\title{Plot credibility intervals and median from posterior distributions}
+\title{Plot credibility intervals and central tendency descriptor from posterior
+distributions of trophic position and/or alpha}
 \usage{
-credibilityIntervals(df, x = "species", plotAlpha = TRUE, y1 = "median",
+credibilityIntervals(df, x = "species", plotAlpha = TRUE, y1 = "mode",
   y1min = "lower", y1max = "upper", y1lim = NULL, y2 = "alpha.median",
   y2min = "alpha.lower", y2max = "alpha.upper", xlab = "Bayesian models",
-  ylab1 = "Posterior Trophic Position", ylab2 = "Posterior alpha", ...)
+  ylab1 = "Posterior trophic position", ylab2 = "Posterior alpha", ...)
 }
 \arguments{
-\item{...}{}
+\item{df}{data.frame at least with 4 columns, a grouping variable, maximum,
+minimum and a central tendency descriptor (median, mode).}
+
+\item{x}{string defining the grouping variable.}
+
+\item{plotAlpha}{logical. If TRUE it expects that the data.frame has at least
+7 columns, another descriptor of central tendency, its maximum and minimum.}
+
+\item{y1}{string of the column with the central tendency descriptor of
+trophic position. By default is the mode.}
+
+\item{y1min}{lower value plotted for trophic position. For the credibility
+interval, this value would be 0.025 percentil.}
+
+\item{y1max}{higher value plotted for trophic position. For the credibility
+interval, this value would be 0.975 percentil.}
+
+\item{y1lim}{vector of length 2, with limits of the y axis of trophic
+position.}
+
+\item{y2}{string of the column with the central tendency descriptor of alpha.}
+
+\item{y2min}{lower value plotted for alpha. For the credibility interval,
+this value would be percentil 0.025.}
+
+\item{y2max}{higher value plotted for alpha. For the credibility interval,
+this value would be percentil 0.0975.}
+
+\item{xlab}{string of the label of the X axis.}
+
+\item{ylab1}{string of the label of Y1 axis (trophic position).}
+
+\item{ylab2}{string of the label of Y2 axis (alpha).}
+
+\item{...}{additional parameters passed to credibilityIntervals().}
+}
+\value{
+a gtable (if alpha is plotted) with two ggplot objects
+a ggplot object (if alpha is not plotted)
 }
 \description{
-Plot credibility intervals and median from posterior distributions
+Plot credibility intervals and central tendency descriptor from posterior
+distributions of trophic position and/or alpha
+}
+\examples{
+isotopeData <- generateTPData()
+models <- multiModelTP(isotopeData, n.adapt = 500, n.iter = 500,
+burnin = 500)
+credibilityIntervals(models$gg, x = "model")
 }

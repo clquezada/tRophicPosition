@@ -2,14 +2,19 @@
 #'
 #' Calculation of old school trophic position
 #'
-#' @param siData
-#' @param lambda
-#' @param print
+#' @param siData an isotopeData class object.
+#' @param lambda numerical value representing trophic level of baseline(s).
+#' @param print a logical value to indicate whether the output is printed or
+#' not.
 #'
-#' @return
+#' @return a list with parametric trophic position calculated with a one
+#' baseline model, a two baselines model and its alpha value, and a two
+#' baselines full model and its alpha value.
 #' @export
 #'
 #' @examples
+#' consumer <- generateTPData()
+#' parametricTP(consumer)
 parametricTP <- function (siData, lambda = 2, print = TRUE) {
 
   if (class(siData) != "isotopeData")

@@ -5,26 +5,29 @@
 #' \code{\link{jagsOneBaseline}}, \code{\link{jagsTwoBaselines}} or
 #' \code{\link{jagsTwoBaselinesFull}}, and creates a JAGS model object.
 #'
-#' @param data a list containing the data
-#' @param n.chains number of parallel chains for the model
-#' @param model.string model string containing a description of the model
+#' @param data a list containing the data.
+#' @param n.chains number of parallel chains for the model.
+#' @param model.string model string containing a description of the model.
 #' @param n.adapt number of iterations for adaptation (initial sampling phase)
-#' @param inits
-#' @param quiet
-#' @param ...
+#' @param quiet logical value to indicate wheter messages generated during
+#' compilation will be suppressed, as well as the progress bar during adaptation.
+#' @param ... aditional arguments passed to \code{\link[rjags]{jags.model}}.
 #'
 #' @return \code{TPmodel} returns an object inheriting from class jags which
 #' can be used to generate dependent samples from the posterior distribution of
 #' the parameters
 #' @export
 #'
-#' @examples
+#' @examples isotopeData <- generateTPData()
+#' model.string <- jagsBayesianModel()
+#' model <- TPmodel(data = isotopeData, model.string = model.string,
+#' n.adapt = 500)
 
 TPmodel <- function (data = NULL,
                      model.string = NULL,
                      n.chains = 2,
                      n.adapt = 10000,
-                     inits = NULL,
+                     #inits = NULL,
                      quiet = FALSE,
                      ...)
                      {
@@ -33,7 +36,7 @@ TPmodel <- function (data = NULL,
                              data = data,
                              n.chains = n.chains,
                              n.adapt = n.adapt,
-                             inits = inits,
+                             #inits = inits,
                              quiet = quiet))
 
   #Here we check if the model has the class required

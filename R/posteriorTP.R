@@ -5,18 +5,24 @@
 #'  the posterior distribution of the parameters of a jags model.
 #'
 #' @param model a JAGS model object returned by any of the models returned by
-#' jagsBayesianModel
+#' jagsBayesianModel.
 #' @param variable.names vector of characters giving the names of variables to
-#' be monitored
+#' be monitored.
 #' @param n.iter integer defining the number of iterations. By default is 10000
-#' @param thin
-#' @param quiet
-#' @param ...
+#' @param thin thinning interval to get posterior samples.
+#' @param quiet logical value to indicate wheter messages generated during
+#' posterior sampling will be suppressed, as well as the progress bar.
+#' @param ... additional arguments passed to \code{\link[rjags]{coda.samples}}.
 #'
-#' @return
+#' @return mcmc.list object containing posterior samples of the Bayesian model.
 #' @export
 #'
 #' @examples
+#' isotopeData <- generateTPData()
+#' model.string <- jagsBayesianModel()
+#' model <- TPmodel(data = isotopeData, model.string = model.string,
+#' n.adapt = 500)
+#' posterior.samples <- posteriorTP(model, n.iter = 500)
 
 posteriorTP <- function (model,
                      variable.names = c("TP", "muDeltaN"),

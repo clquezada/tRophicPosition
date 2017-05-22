@@ -9,17 +9,32 @@ posteriorTP(model, variable.names = c("TP", "muDeltaN"), n.iter = 10000,
 }
 \arguments{
 \item{model}{a JAGS model object returned by any of the models returned by
-jagsBayesianModel}
+jagsBayesianModel.}
 
 \item{variable.names}{vector of characters giving the names of variables to
-be monitored}
+be monitored.}
 
 \item{n.iter}{integer defining the number of iterations. By default is 10000}
 
-\item{...}{}
+\item{thin}{thinning interval to get posterior samples.}
+
+\item{quiet}{logical value to indicate wheter messages generated during
+posterior sampling will be suppressed, as well as the progress bar.}
+
+\item{...}{additional arguments passed to \code{\link[rjags]{coda.samples}}.}
+}
+\value{
+mcmc.list object containing posterior samples of the Bayesian model.
 }
 \description{
 This is a wrapper of \code{\link[rjags]{coda.samples}} which in turn, is a
 wrapper of \code{\link[rjags]{jags.samples}}. It extracts random samples from
  the posterior distribution of the parameters of a jags model.
+}
+\examples{
+isotopeData <- generateTPData()
+model.string <- jagsBayesianModel()
+model <- TPmodel(data = isotopeData, model.string = model.string,
+n.adapt = 500)
+posterior.samples <- posteriorTP(model, n.iter = 500)
 }

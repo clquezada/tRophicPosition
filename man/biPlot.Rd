@@ -8,7 +8,21 @@ biPlot(df = NULL, df2 = NULL, ylab = NULL, xlab = NULL, p = "p1",
   legend = legend, limits = limits, ...)
 }
 \arguments{
-\item{...}{Multiple parameters.}
+\item{df}{dataframe 1}
+
+\item{df2}{dataframe 2}
+
+\item{ylab}{ylab}
+
+\item{xlab}{xlab}
+
+\item{p}{p}
+
+\item{legend}{legend}
+
+\item{limits}{limits}
+
+\item{...}{additional arguments passed to this function.}
 }
 \value{
 Multiple objects returned

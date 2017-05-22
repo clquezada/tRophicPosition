@@ -19,9 +19,16 @@
 #' @export
 #'
 #' @examples
+#' data("Bilagay")
+#' subset_CHI <- Bilagay[Bilagay[,"Location"] %in% "CHI",]
+#' summariseIsotopeData(subset_CHI, grouping = c("Spp", "FG"))
 
 summariseIsotopeData <- function (df = NULL, grouping = c("Species", "FG"),
                                   printSummary = FALSE, ...){
+
+  # Stupid CRAN fix for variables - see here http://stackoverflow.com/questions/9439256/how-can-i-handle-r-cmd-check-no-visible-binding-for-global-variable-notes-when
+  # As seen in https://github.com/andrewcparnell/simmr/blob/master/R/plot.simmr_output.R
+  d13C = d15N = NULL
 
   if (is.null(checkNames(df, c("d13C", "d15N", grouping))))
     stop("Check the grouping variable or the names in your dataframe")
@@ -29,10 +36,10 @@ summariseIsotopeData <- function (df = NULL, grouping = c("Species", "FG"),
   summary <- plyr::ddply(df, grouping, plyr::summarise,
                          NC = length(d13C),
                          meanC = mean(d13C),
-                         sdC = sd(d13C),
+                         sdC = stats::sd(d13C),
                          NN = length(d15N),
                          meanN = mean(d15N),
-                         sdN = sd(d15N))
+                         sdN = stats::sd(d15N))
 
   if (printSummary)  print(summary)
 

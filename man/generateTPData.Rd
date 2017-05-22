@@ -5,37 +5,65 @@
 \title{A function to generate random stable isotope data for trophic position
 calculation}
 \usage{
-generateTPData(n.baselines = 2, n.obsB = 25, n.obsC = 25, dNb1 = NULL,
-  sd.dNb1 = 0.5, dNb2 = NULL, sd.dNb2 = 0.5, dCb1 = NULL,
-  sd.dCb1 = 0.5, dCb2 = NULL, sd.dCb2 = 0.5, dNc = NULL, sd.dNc = 0.5,
-  dCc = NULL, sd.dCc = 0.5, n.obsDeltaN = 56, DeltaN = 3.4,
-  sd.DeltaN = 0.98, n.obsDeltaC = 107, DeltaC = 0.39, sd.DeltaC = 1.3,
-  consumer = NULL)
+generateTPData(n.baselines = 2, n.obsB = 25, dNb1 = NULL, sd.dNb1 = 0.5,
+  dCb1 = NULL, sd.dCb1 = 0.5, dNb2 = NULL, sd.dNb2 = 0.5, dCb2 = NULL,
+  sd.dCb2 = 0.5, n.obsC = 25, consumer = NULL, dNc = NULL,
+  sd.dNc = 0.5, dCc = NULL, sd.dCc = 0.5, DeltaN = 3.4,
+  sd.DeltaN = 0.98, n.obsDeltaN = 56, DeltaC = 0.39, sd.DeltaC = 1.3,
+  n.obsDeltaC = 107)
 }
 \arguments{
-\item{n.baselines}{Number of baselines (could be 1 or 2), by default is 2.}
+\item{n.baselines}{number of baselines (could be 1 or 2), default is 2.}
 
-\item{n.obsB}{Number of observations for baselines. Default is 25.}
+\item{n.obsB}{number of observations for baselines. Default is 25.}
 
-\item{n.obsC}{Number of observations for consumer. Default is 25.}
+\item{dNb1}{mean value for d15N of baseline 1. Default is a random number
+between -5 and 5.}
 
-\item{dNb1}{mean value for delta Nitrogen of baseline 1. Default is a random
-number between -5 and 5}
+\item{sd.dNb1}{standard deviation for d15N of baseline 1.}
 
-\item{dNc}{mean value for delta Nitrogen of secondary consumer. Default value
-is dNb1 multiplied 2 times the trophic discrimination factor.}
+\item{dCb1}{mean value for d13C of baseline 1.}
 
-\item{n.obsDeltaN}{Number of observations of deltaN (trophic discrimination
-factor). Default is 56}
+\item{sd.dCb1}{standard deviation for d13C of baseline 1.}
 
-\item{DeltaN}{mean value for trophic discrimination factor. Default value is 3.4}
+\item{dNb2}{mean value for d15N of baseline 2.}
 
-\item{n.obsDeltaC}{Number of observations of DeltaC (trophic discrimination
-factor). Default is 107}
+\item{sd.dNb2}{standard deviation for d15N of baseline 2.}
 
-\item{DeltaC}{mean value for trophic discrimination factor. Default value is 0.39}
+\item{dCb2}{mean value for d13C of baseline 2.}
 
-\item{consumer}{}
+\item{sd.dCb2}{standard deviation for d13C of baseline 2.}
+
+\item{n.obsC}{number of observations for consumer. Default is 25.}
+
+\item{consumer}{string for consumer.}
+
+\item{dNc}{mean value for d15N of consumer. Default value is dNb1 multiplied
+2 times the trophic discrimination factor.}
+
+\item{sd.dNc}{standard deviation for d15N of consumer.}
+
+\item{dCc}{mean value for d13C of consumer.}
+
+\item{sd.dCc}{standard deviation for d13C of consumer.}
+
+\item{DeltaN}{mean value for trophic discrimination factor of nitrogen.
+Default value is 3.4.}
+
+\item{sd.DeltaN}{standard deviation for trophic discrimination factor of
+nitrogen. Default value is 0.98.}
+
+\item{n.obsDeltaN}{number of observations of deltaN (trophic discrimination
+factor). Default value is 56.}
+
+\item{DeltaC}{mean value for trophic discrimination factor of carbon. Default
+value is 0.39.}
+
+\item{sd.DeltaC}{standard deviation for trophic discrimination factor for
+carbon. Default value is 1.3.}
+
+\item{n.obsDeltaC}{number of observations of DeltaC (trophic discrimination
+factor). Default is 107.}
 }
 \value{
 An isotopeData class object (named list) with dNb1, dNc and deltaN
@@ -45,4 +73,19 @@ dCc and deltaC are also returned.
 \description{
 This function generates random stable isotope (d13C and d15N) data for using
 basic functions of tRophicPosition package.
+}
+\examples{
+## Good data
+a <-generateTPData(dCb1 = -10, dNb1 = -10,
+dCc = -4, dNc = 4,
+dCb2 = 2, dNb2 = 0)
+plot(a)
+
+## Consumer more enriched in carbon
+b <-generateTPData(dCb1 = -10, dCc = 0, dCb2 = -2)
+plot(b)
+
+## Consumer much more enriched
+c <-generateTPData(dCb1 = -10, dCc = 3, dCb2 = -2)
+plot(c)
 }

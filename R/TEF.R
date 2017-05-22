@@ -1,24 +1,28 @@
-#' Trophic discrimination factors from bibliography
+#' Trophic enrichment factors from bibliography
 #'
-#' \code{TDF} return trophic discrimination factors (TDF), given an author, element
+#' \code{TEF} return trophic enrichment factors (TEF), given an author, element
 #' and a type. For convenience 'type' includes a number of categories depending
 #' on the author. At the moment it includes TEF data from Post (2002) and from
-#' McCutchan et al (2003). This function is maintained for compatibility backwards of
-#' version 0.6.8.
+#' McCutchan et al (2003). This function is maintained for compatibility
+#' backwards of version 0.6.8.
 #'
 #'
 #' @param author could be either "Post" or "McCutchan" at the moment.
 #' @param element can be "both", "N" or "C"
-#' @param type thys argument only works for "McCutchan" author (their Table 3).
+#' @param type this argument only works for "McCutchan" author (their Table 3).
 #' "all" returns all TEF data; "whole" and "muscle" returns TEF separated per
 #' type analysis; "acidified" and "unacidified" returns TEF separated per
 #' acidification; and "Rainbow Trout" and "Brook Trout" returns TEF separated
 #' per fish species (according to their Table 1).
+#' @param seed integer to have replicated results
 #'
-#' @return
+#' @return a list (if element = "both") or a vector (if element ="N" or
+#'  element = "C") containing TDF values
 #' @export
 #'
 #' @examples
+#' # TEF() is deprecated, use TDF() instead:
+#' TDF(author = "McCutchan", element = "N")
 #'
 TEF <- function (author = "Post", element = "both", type = "all", seed = 3) {
 

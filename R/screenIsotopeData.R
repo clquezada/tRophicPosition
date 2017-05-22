@@ -4,27 +4,30 @@
 #'  2 sources and a consumer. Depending on the length of the named list, this
 #'  function plots one (length = 6), or two (length = 8) baselines. Also the
 #'  user can states whether he/she wants a density function ploted above, to the
-#'  right, both or does not want it to be ploted.
+#'  right, at both sides or does not want it to be ploted.
 #'
-#' @param isotopeData
-#' @param density a character that might plot the density function. Accepted
-#' characters are "both" in which case will plot the density function above and
-#' to the right, "right", "above" or "none".
-#' @param consumer
-#' @param b1
-#' @param b2
-#' @param legend
-#' @param ...
+#' @param isotopeData an isotopeData class object.
+#' @param density string representing whether the density function is plotted.
+#' Accepted characters are "both" in which case will plot the density function
+#' above and to the right, "right", "above" or "none".
+#' @param consumer string representing the consumer.
+#' @param b1 string representing baseline 1.
+#' @param b2 string representing baseline 2.
+#' @param legend coordinates representing where to locate the legend.
+#' @param title string representing title.
+#' @param ... additional arguments passed to this function.
 #'
 #' @return none
 #'
 #' @export
 #'
 #' @examples
+#' a <- generateTPData()
+#' screenIsotopeData(a)
 
 screenIsotopeData <- function (isotopeData = NULL, density = "both",
                                consumer = "Consumer", b1 = "Pelagic baseline",
-                               b2 = "Benthic baseline", legend = c(0.85, 0.85),
+                               b2 = "Benthic baseline", legend = c(1.15, 1.15),
                                title = NULL,
                                ...) {
 
@@ -44,7 +47,7 @@ screenIsotopeData <- function (isotopeData = NULL, density = "both",
     #stable isotopes R pkg. #Partially done in Nov 26 2016 (see above)
     #So, instead of checking the length of the list, we will check first if the
     #object has the required class. Maybe, the class will inform the length
-    #(dimension) of the list and some other nice information.
+    #(dimension) of the list and some other nice information. #Done in 0.6.8
 
     if (length(isotopeData) == 5) {
 

@@ -9,25 +9,25 @@ screenIsotopeDataMoreSources(isotopeData = NULL, density = "both",
   legend = legend, title = NULL, ...)
 }
 \arguments{
-\item{isotopeData}{a named list composed at least of 6 vectors, dNb1, dCb1,
-dCc, dNc, deltaN and deltaC.}
+\item{isotopeData}{an isotopeData class object.}
 
-\item{density}{a string character that might plot the density function.}
+\item{density}{string. Can be "both", "above", "right" or "none".}
 
-\item{baselines}{integer defining the number of baselines (1, 2 or 3).}
+\item{baselines}{number of baselines plotted.}
 
-\item{...}{}
-}
-\value{
+\item{consumer}{string representing consumer}
 
+\item{b1}{string representing baseline 1}
+
+\item{b2}{string representing baseline 2}
+
+\item{legend}{string representing legend}
+
+\item{title}{string representing title}
+
+\item{...}{additional arguments passed to this function}
 }
 \description{
 This function is intended to be used within the package. For details refer to
 \code{\link{screenIsotopeData}}.
-}
-\note{
-
-}
-\examples{
-
 }

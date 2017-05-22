@@ -1,11 +1,38 @@
 #' Summary for stable isotope data
 #'
-#' @param siData
+#' @param siData an isotopeData class object.
+#' @param print a logical value to indicate whether the summary is printed.
+#' @param round_dec number of decimals keeped.
 #'
-#' @return
+#' @return a list with number of observations, mean, standard deviation,
+#' standard error, minimum, maximum and median for each element of an
+#' isotopeData class object.
 #' @export
 #'
 #' @examples
+#' ## S3 method for class 'isotopeData'
+#' a <- generateTPData()
+#' summary(a)
+#'
+summary <- function (siData, print = TRUE, round_dec = 1) {
+  UseMethod("summary")
+}
+
+#' Summary for stable isotope data
+#'
+#' @param siData an isotopeData class object.
+#' @param print a logical value to indicate whether the summary is printed.
+#' @param round_dec number of decimals keeped.
+#'
+#' @return a list with number of observations, mean, standard deviation,
+#' standard error, minimum, maximum and median for each element of an
+#' isotopeData class object.
+#' @export
+#'
+#' @examples
+#' a <- generateTPData()
+#' summary(a)
+#'
 summary.isotopeData <- function (siData, print = TRUE, round_dec = 1) {
 
   if (class(siData) != "isotopeData") stop("The object don't have a class isotopeData")

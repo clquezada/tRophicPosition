@@ -25,6 +25,7 @@
 #' @param sigmaDeltaN a distribution defining sigma (std dev) of deltaN.
 #' @param TP a distribution defining prior of trophic position.
 #' @param sigma a value defining sigma (std dev) of baseline.
+#' @param ... additional arguments passed to jagsOneBaseline.
 #'
 #' @return A jags model as a character string
 #'

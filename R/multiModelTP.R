@@ -1,22 +1,39 @@
-#' Multiple models calculation of trophic position
+#' Multiple model calculation of trophic position
+#'
+#' This function takes an isotopeData class object and calculates by default
+#' three Bayesian models: one and two baselines without carbon fractionation and
+#' two baselines with carbon fractionation.
 #'
 #'
-#' @param siData
-#' @param lambda
-#' @param n.chains
-#' @param n.adapt
-#' @param n.iter
-#' @param burnin
-#' @param thin
-#' @param models
-#' @param print
-#' @param quiet
-#' @param ...
+#' @param siData an isotopeData class object.
+#' @param lambda numerical value, represents the trophic level for baseline(s).
+#' @param n.chains number of parallel chains for the model. If convergence
+#' diagnostics (such as Gelman-Rubin) are ploted, n.chains needs to be > 1.
+#' @param n.adapt number of adaptive iterations, before the actual sampling.
+#' @param n.iter number of iterations for Bayesian modelling.
+#' @param burnin number of iterations discarded.
+#' @param thin number of samples discarded while performing posterior sampling.
+#' @param models string or list representing Bayesian models. At the moment they
+#' can be "oneBaseline", "twoBaselines" and/or "twoBaselinesFull".
+#' @param print logical value to indicate wheter Gelman and Rubin's convergence
+#' diagnostic and summary of samples are printed.
+#' @param quiet logical value to indicate wheter messages generated during
+#' compilation will be suppressed, as well as the progress bar during
+#' adaptation.
+#' @param ... additional arguments passed to this function.
 #'
-#' @return
+#' @return For each model calculated, returns a data frame of 4 elements with
+#' raw posterior samples, a list with posterior TP samples, a list with
+#' posterior muDeltaN (if one baseline model was chosen) or alpha (if a two
+#' baselines model was chosen) and a data frame with a summary of posterior
+#' samples named gg.
 #' @export
 #'
 #' @examples
+#' isotopeData <- generateTPData()
+#' models <- multiModelTP(isotopeData, n.adapt = 500, n.iter = 500,
+#' burnin = 500)
+#' credibilityIntervals(models$gg, x = "model")
 
 multiModelTP <- function (siData = siData, lambda = 2,
                           n.chains = 2,
@@ -103,7 +120,7 @@ multiModelTP <- function (siData = siData, lambda = 2,
                                       summarise = summarise, plots = plots)
 
       if (isTRUE(print)) {
-        plot(runJagsOut)
+        #plot(runJagsOut)
         print(runJagsOut)
       }
 
@@ -126,14 +143,15 @@ multiModelTP <- function (siData = siData, lambda = 2,
                              n.iter = n.iter + burnin,
                              thin = thin, quiet = quiet, ...)
 
-      samples <- window(samples, start = n.adapt + burnin,
-                        end = n.adapt + burnin + n.iter)
+      samples <- stats::window(samples, start = n.adapt + burnin,
+                               end = n.adapt + burnin + n.iter)
 
       }
 
     if (isTRUE(print)) {
 
-      if (!is.null(attributes(siData)$community) & !is.null(attributes(siData)$consumer))
+      if (!is.null(attributes(siData)$community) &
+          !is.null(attributes(siData)$consumer))
 
         plot(samples, sub = paste(model,
                                   attributes(siData)$community,
@@ -176,10 +194,12 @@ multiModelTP <- function (siData = siData, lambda = 2,
         alpha.mode <- hdrcde::hdr(TP.combined[,2])$mode
         }
 
-    if (!is.null(attributes(siData)$community)) community =  attributes(siData)$community
+    if (!is.null(attributes(siData)$community))
+      community =  attributes(siData)$community
     else community = NA
 
-    if (!is.null(attributes(siData)$consumer)) species = attributes(siData)$consumer
+    if (!is.null(attributes(siData)$consumer))
+      species = attributes(siData)$consumer
     else species = NA
 
     df <- data.frame("model" = model_txt,
