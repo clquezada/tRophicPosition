@@ -1,0 +1,254 @@
+---
+title: "tRophicPosition: calculating trophic position for multiple species"
+author: "Claudio Quezada-Romegialli, Andrew L Jackson & Chris Harrod"
+date: "May 22 2017"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Multiple species tRophicPosition}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+# tRophicPosition
+
+`tRophicPosition`, is an R package incorporating a Bayesian model for the calculation of trophic position using stable isotopes with one or two baselines. As of 2017-05-14, the current version of the package is 0.6.8-9. `tRophicPosition` uses the powerful approach of Markov Chain Monte Carlo simulations provided by [JAGS](http://mcmc-jags.sourceforge.net) and the statistical language [R](https://www.r-project.org). A vignette with basics of the model and a guide to the use of `tRophicPosition` can be found [here](https://github.com/clquezada/tRophicPosition/raw/master/A_guide_to_the_use_of_tRophicPosition_2016-06-12.pdf). Other vignettes can be browsed with `browseVignettes("tRophicPosition")`.
+
+# Introduction
+
+In this vignette, we will introduce the new functions we have developed for `tRophicPosition` in its current version (0.6.8-9). These functions are `extractIsotopeData()`, `jagsBayesianModel()` and `multiSpeciesTP()`. Aditionally, we provide an example to run these calculations in parallel (maximizing efficient use of computing power). Each of these functions accomplish different tasks within the Bayesian estimation of trophic position with stable isotopes, extracting stable isotope data for multiple species and/or communities, and  facilitating the calculation of trophic position for multiple consumers within one or more ecosystems. We have also included a parallel calculation of trophic position, to make full use of the multiple processor cores typical in modern computers.
+
+## Installing and loading the package
+
+### Stable version - CRAN
+Coming soon.
+
+### Development version - GitHub
+If you want to install the development version of `tRophicPosition`, you must install it from GitHub. For this, we use the function `install_github()` from the package `devtools` (installation instructions [here](https://github.com/hadley/devtools#updating-to-the-latest-version-of-devtools)), which needs to be installed previously (either from [CRAN](https://cran.r-project.org/web/packages/devtools/index.html) or [GitHub](https://github.com/hadley/devtools)):
+
+```{r eval = FALSE}
+install.packages("devtools")
+library(devtools)
+```
+
+If you are working in Windows, `devtools` also requires [Rtools](http://cran.r-project.org/bin/windows/Rtools/), or if you are working on a Mac, [Xcode](https://developer.apple.com/xcode/) (from Apple Store). In Linux you will need to install a compiler and various development libraries. 
+
+Besides installing `devtools`, you must also install [JAGS](http://mcmc-jags.sourceforge.net/) (Just Another Gibbs Sampler), which is at the core of the Bayesian model analysis supporting `tRophicPosition`.
+
+```{r eval = FALSE}
+install_github("clquezada/tRophicPosition")
+```
+
+After installing `tRophicPosition`, it should be loaded into memory, which automatically reports the version of the software (we need at least 0.6.8-8 to use the routines described in this vignette).
+
+```{r}
+library(tRophicPosition)
+```
+
+## Future releases and how to get support
+
+You are encouraged to use `tRophicPosition` with your own data, test the package and see if there are any issues or problems. You can send your questions or commentaries to the google group [tRophicPosition-support](https://groups.google.com/d/forum/trophicposition-support) or directly to the email trophicposition-support@googlegroups.com. You can send your questions to http://stackexchange.com/ http://stackoverflow.com/ or even [Facebook (stable isotope ecology group)](https://www.facebook.com/groups/stableisotopes/).
+
+We are constantly working on future releases of `tRophicPosition`, so feedback is very much appreciated.
+
+# Multiple species calculation of trophic position (TP)
+
+## Before we start
+
+If you have been using R prior to starting your analysis of trophic Position, it is possible that the environment contains unwanted data. Try to be as organized as possible with the data generated within R/RStudio, as this will make things a lot clearer.
+
+When working on your analysis, a good first thing to do is to set the working directory to a convenient location. This is accomplished using `setwd()`. In RStudio you can use the menu "Session/Set Working Directory" to make things easier.
+
+The next thing is to clear the environment. With RStudio you can click on the little broom icon in the environment tab, or use the command `rm(list = ls())`. Also, it is a good idea to clear the plots using the same broom icon in the plots tab, or the command `graphics.off()`. This is only needed if you have been working with some data before.
+
+## And now, an initial analysis - Bilagay TP from multiple coastal kelp forests in N Chile
+
+We will start with some data from a fish common to the coastal kelp forests of N Chile, the bilagay *Cheilodactylus variegatus* (http://www.fishbase.se/summary/Cheilodactylus-variegatus.html). We have data from a number of populations (and associated filter feeding and grazing molluscs representing pelagic and benthic baselines respectively) from a series of different locations along the N Chilean coast. We know from the literature that bilagay diet is extremely variable and reflects what is locally available. We also know that there is a marked $\delta^{15}$N-enrichment at the base of the food chain reflecting increased upwelling intensity as you move northwards up the coast. As such, we need to account for variation in baseline $\delta^{15}$N variation before calculating TP at each site.
+
+So, our question is, given the potential influences of local differences in diet stomach contents and upwelling intensity, are there measurable differences in bilagay TP between the different locations along the S-N latitudinal gradient?
+
+We will use a data set included within `tRophicPosition`. The structure of the file has 7 columns, where species (`Spp`) are grouped into functional groups (`FG`) to describe its role in each of the ecosystems: "Bilagay" (our fish of interest), "Benthic_BL" (benthic baseline) and "Pelagic_BL" (pelagic baseline). We have samples from locations along the N Chilean coast (`NS` stands for the N-S ordering) and from multiple studies (`Study`) and locations (`Location`). We also have stable isotope values in two columns: "d13C" and "d15N".
+
+```{r, echo = FALSE, results = 'asis'}
+data("Bilagay")
+knitr::kable(Bilagay[c(1:3,130:133,660:661),], caption = "Structure of the file Bilagay_for_tRophicPosition.csv")
+```
+
+If you want to edit the raw data or modify it, open the following file with your favourite application, save it to your working directory and then load it with `read.csv()` or `read.table()`.
+
+```{r}
+system.file("extdata", "Bilagay_for_tRophicPosition.csv", package = "tRophicPosition")
+```
+
+To load the `Bilagay` data set into R, use `data()`:
+
+```{r eval = FALSE}
+data("Bilagay")
+```
+
+As shown above, in this data set we have a combination of Study and Location variables, which need to be concatenated. Here we introduce `mutate` and `arrange` functions from the package dplyr and the pipe operator `%>%` (from magrittr but loaded through dplyr).
+
+```{r message = FALSE}
+# install.packages(dplyr) if you haven't installed it before
+library(dplyr)
+Bilagay <- Bilagay %>% mutate(Community = paste(Study,"-", Location, sep = ""))
+```
+
+Also, this spreadsheet has information from the latitudinal arrangement of sampling sites, which is the variable `NS` (North to South order), ranging from 1 (most southern site) to 10 (most northern site). Below we order the whole data frame considering those values.
+
+```{r}
+Bilagay <- Bilagay %>% arrange(NS)
+```
+
+Now, we are ready to proceed with the calculation of trophic position. This follows the same general process you have already encountered in the previous vignette ([A guide to the use of tRophicPosition](https://github.com/clquezada/tRophicPosition-release-and-vignettes/blob/master/A_guide_to_the_use_of_tRophicPosition_2016-06-12.pdf)). First we must consecutively subset the data frame considering each of the communities we have samples of. We could use the subset command, repeating the same command each time for each community.
+
+If we only have 2 sampling sites, this can be done by hand. However, here we have different 10 sampling sites, so this task can be prone to errors and time-consuming, as we have to repeat the same code 10 times, but with changes in the Location, selecting the baseline, etc.
+
+To deal with this issue, we have developed a convenient function `extractIsotopeData()` where you can indicate the text for each of the baselines and the respective column where they are coded, the species column, and the community column. This function iterates through the data frame selecting unique values from the community column, extracting all the values that belong to each community and then iterate through them. Then it will extract all stable isotope values from the columns "d13C" and "d15N" (if their values haven't changed) for each baseline. Finally, it will select each unique value from the species column and it generates an `isotopeData` class object for each consumer combining their baselines isotope values. See `help(extractIsotopeData)` for other options.
+
+```{r}
+BilagayList <- extractIsotopeData(Bilagay, b1 = "Pelagic_BL", b2 = "Benthic_BL",
+                                  baselineColumn = "FG", speciesColumn = "Spp",
+                                  communityColumn = "Community",
+                                  d13C = "d13C", d15N = "d15N")
+```
+
+If no $\Delta$N and/or $\Delta$C values are included as arguments, by default this function will use assumptions from Post (2002), i.e. 3.4 $\pm$ 0.98 sd for nitrogen and 0.39 $\pm$ 1.3 sd for carbon). You can change either TDF values using the function `TDF()` or a list of values, as explained in the short guide to the use of tRophicPosition vignette.
+
+The next step is use the `str` function to check that all went well during the use of the `extractIsotopeData()` function:
+
+```{r eval = FALSE}
+str(BilagayList)
+```
+
+```{r echo = FALSE}
+str(BilagayList[1:1])
+```
+
+If you execute the code above you will see a lot of information, but for this vignette, we have shortened the output to make it readable. In your console, you will note that there is a list of 10 elements, followed by the sign $ and the concatenated name of each of our communities with the name of our species (Bilagay). Each of these objects (MEC-Coquimbo-Bilagay, MEC-Taltal-Bilagay, etc.) is a list of 8 elements that relate to a particular sampling location, in a structure that is ready to use with `tRophicPosition`: they are objects of the class `isotopeData`.
+
+The class `isotopeData` is a special object recognized within the package. It also has other information embedded within it: consumer, baseline 1, baseline 2, and community labels, besides a list of isotope values with the convention introduced before (dNb1 is d15N of  baseline 1, dCb1 is d13C of  baseline 1, dNb2 and dCb2 respectively for the baseline 2, dNc and dCc respectively for the consumer, and deltaN and deltaC are trophic discrimination factors).
+
+Now, as we have extracted each community from the original data frame, we can iterate through them, prepare a summary and plot them. Here we introduce the `for` command, which is one of the basic control-flow elements of programming. Again, if you execute the following code you will have a summary and a plot for each community, but in this vignette, you will see only one example.
+
+```{r eval = FALSE}
+for (community in BilagayList) {
+  print(summary(community))
+  plot(community)
+  }
+```
+
+```{r echo = FALSE}
+for (community in BilagayList[1]) {
+  print(summary(community))
+  plot(community)
+  }
+```
+
+Now we have to model each community within the Bayesian framework of `tRophicPosition` (as introduced previously in other vignettes, e.g. [a guide to the use of tRophicPosition](https://github.com/clquezada/tRophicPosition/raw/master/A_guide_to_the_use_of_tRophicPosition_2016-06-12.pdf)).
+
+For this, we have developed a function that automatically i) defines a Bayesian model, ii) initializes the model and iii) samples the posterior distribution of trophic position. This is accomplished using the function `multiSpeciesTP()`, similar to the function `multiModelsTP()` explained in the vignette multiple models calculation with tRophicPosition.
+
+```{r, eval = FALSE}
+Bilagay_models <- multiSpeciesTP(BilagayList, model = "twoBaselinesFull",
+                                             n.adapt = 10000, n.iter = 10000,
+                                             burnin = 10000, n.chains = 2, print = FALSE)
+```
+
+```{r, echo=FALSE}
+a <- multiSpeciesTP(BilagayList[1], model = "twoBaselinesFull",
+                    n.adapt = 100, n.iter = 100,
+                    burnin = 100, n.chains = 2, print = FALSE)
+```
+
+By default, the function `multiSpeciesTP()` uses `lambda = 2` (trophic level of baselines), `n.chains = 2` (number of parallel MCMC simulations), and set n.adapt, n.iter and burnin as 10000 iterations. The model calculated by default is `oneBaseline`, so in this case we have changed it to `model = "twoBaselinesFull"` as we have two separate potential sources of N and C. In this particularly case, there was no need to explicitly state the number of adaptive iterations, iterations and burnin, but we decided to make them clear. Also, here we calculate 5 chains instead of the default (i.e. `n.chains = 2`).
+
+The function `multiSpeciesTP()` returns 4 objects:
+1. a list named `multiSpeciesTP`, which includes the raw data returned by `posteriorTP()` for each species per community/sampling location;
+2. a data frame named `df` with the mode, median and credibility confidence interval for trophic position and alpha (if a two baselines model was chosen), grouped by model, species and community/sampling location;
+3. a list named `TPs` with the posterior samples of trophic position for each community/location and species; and
+4. a list named `Alphas` which includes the posterior samples of alpha (relative contribution of baseline 1) for each species by community/location.
+
+More advanced users will likely directly access this object for subsequent analysis. For now, we will concentrate on plotting the mode or median and 95% credibility interval for Bilagay from each location, using the joint values of trophic position and alpha by community/location, allowing an easy visual comparison between them:
+
+```{r eval = FALSE}
+# By default the mode is used in both trophic position and alpha plots
+credibilityIntervals(Bilagay_models$df, x = "community", xlab ="Community")
+
+# If you want to use the median instead of the mode,
+# just add y1 and y2 as arguments
+credibilityIntervals(Bilagay_models$df, x = "community", xlab ="Community", 
+                     y1 = "median", y2 = "alpha.median")
+```
+
+```{r echo = FALSE}
+credibilityIntervals(tRophicPosition:::Bilagay_models$df, x = "community", xlab ="Community")
+```
+
+To get a numerical summary of posterior estimates (median and 95% credibility interval) of trophic position, we can write the following:
+
+```{r eval = FALSE}
+# To get a numerical summary
+sapply(Bilagay_models$"TPs", quantile, probs = c(0.025, 0.5, 0.975)) %>% round(3)
+
+# To get the mode
+getPosteriorMode(Bilagay_models$"TPs")
+```
+
+```{r echo = FALSE}
+# To get a numerical summary
+sapply(tRophicPosition:::Bilagay_models$"TPs", quantile, probs = c(0.025, 0.5, 0.975)) %>% round(3)
+
+# To get the mode
+getPosteriorMode(tRophicPosition:::Bilagay_models$"TPs")
+```
+
+Finally, we can statistically compare whether either the posterior samples of trophic position and/or alpha alpha differ between communities/locations. In this example we compare both posterior estimates accross communities/locations with the function `pairwiseComparisons()`. Remember that this output must to be read as: what is the probability that consumer in row Y has a posterior trophic position/alpha less than or equal to consumer in column X. To make readable the output, we will compare only the first 8 communities/locations. If you want to compare all the communities/locations, just remove `[1:8]` below:
+
+```{r eval = FALSE}
+# First, we compare bilagay posterior trophic position estimates
+pairwiseTP <- pairwiseComparisons(Bilagay_models$TPs[1:8], print = TRUE)
+
+# And then, we compare their posterior alpha estimates
+pairwiseAlpha <- pairwiseComparisons(Bilagay_models$Alphas[1:8], print = TRUE)
+```
+
+
+```{r echo = FALSE}
+# First, we compare bilagay posterior trophic position estimates
+pairwiseTP <- pairwiseComparisons(tRophicPosition:::Bilagay_models$TPs[1:8], print = TRUE)
+
+# And then, we compare their posterior alpha estimates
+pairwiseAlpha <- pairwiseComparisons(tRophicPosition:::Bilagay_models$Alphas[1:8], print = TRUE)
+```
+
+## Parallel trophic position
+As an appendix, we will estimate trophic position using parallel calculations. We will use the library `parallel` that comes with base R. First we have to create a parallel socket cluster, i.e. to create a set of copies of R running in parallel. This is done with the function `makePSOCKcluster()` and detecting the number of cores with `detectCores()`.
+
+```{r eval = FALSE}
+cl <- parallel::makePSOCKcluster(parallel::detectCores())
+```
+
+Then we will use the function `parLapply()`. This function is a parallel version of `lapply()` a function that applies a function over a list. As we coded `tRophicPosition` specifically to use lists, we can calculate the trophic position for a number of species in parallel rather in series. As we are just comparing the performance of the serial vs parallel version of multiModelTP, we will use just 500 adaptive iterations and 500 actual iterations after discarding 500 iterations as burnin:
+
+```{r eval = FALSE}
+# First we calculate the time elapsed with system.time() with parallel
+time_parallel <- system.time(a <- parallel::parLapply(cl, BilagayList, multiModelTP, 
+                                               adapt = 500, n.iter = 500,
+                                               burnin = 500))
+
+# Then we calculate the elapsed time with the normal version
+time_serial <- system.time(b <- lapply(BilagayList, multiModelTP, quiet = TRUE, 
+                                               adapt = 500, n.iter = 500,
+                                               burnin = 500))
+
+# We have to stop the cluster after each set of calculations
+parallel::stopCluster(cl)
+
+# And print the elapsed time
+print(rbind(time_parallel, time_serial))
+```
+
+```{r echo = FALSE}
+print(tRophicPosition:::Bilagay_models$time)
+```
+
+Above you will see that in a modest MacBook Air (Intel Core i5, 1.6 GHz, 4 cores) the elapsed time with the serial version of `multiModelTP()` is roughly 92 seconds, while using the parallel version, the analysis time is reduced by almost 50 % (44 seconds), a not trivial difference. However, on desktop pc running Windows 10 (i7 3930-K, 3.2 GHz, 12 cores), the serial version took 73 seconds, while the parallel version took only 14 seconds.

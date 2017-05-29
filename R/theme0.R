@@ -1,10 +1,10 @@
-#' Internal function that plots the data
-#'
-#' This function is intended to be used within the package
-#'
-#'
-#' @param ... additional arguments passed to this function
-#'
+# Internal function that plots the data
+#
+# This function is intended to be used within the package
+#
+#
+# @param ... additional arguments passed to this function
+#
 theme0 <- function(...) {
   ggplot2::theme( legend.position = "none",
          panel.background = ggplot2::element_blank(),

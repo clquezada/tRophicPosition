@@ -32,6 +32,10 @@ TPmodel <- function (data = NULL,
                      ...)
                      {
 
+  if (length(class(model.string)) == 2)
+    if (class(model.string)[[2]] == "oneBaseline")
+      data[names(data) %in% c("dCb1", "dNb2", "dCb2", "deltaC", "dCc")] <- NULL
+
   model <- invisible(rjags::jags.model(textConnection(model.string),
                              data = data,
                              n.chains = n.chains,

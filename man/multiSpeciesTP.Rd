@@ -9,18 +9,18 @@ multiSpeciesTP(siDataList = siDataList, lambda = 2, n.chains = 2,
   model = "oneBaseline", print = FALSE, quiet = FALSE, ...)
 }
 \arguments{
-\item{siDataList}{a named list of isotopeClass objects.}
+\item{siDataList}{a named list of isotopeData class objects.}
 
 \item{lambda}{numerical value, represents the trophic level for baseline(s).}
 
 \item{n.chains}{number of parallel chains for the model. If convergence
-diagnostics (such as Gelman-Rubin) are ploted, n.chains needs to be > 1.}
+diagnostics (such as Gelman-Rubin) are printed, n.chains needs to be >= 2.}
 
 \item{n.adapt}{number of adaptive iterations, before the actual sampling.}
 
 \item{n.iter}{number of iterations for Bayesian modelling.}
 
-\item{burnin}{number of iterations discarded.}
+\item{burnin}{number of iterations discarded as burn in.}
 
 \item{thin}{number of samples discarded while performing posterior sampling.}
 
@@ -40,9 +40,9 @@ adaptation.}
 A list of 4 elements. The output is organised as lists nested.
 The first element (multiSpeciesTP) has the gg data frame returned by
 multiModelTP, the second element (df) is a data frame with summary
-information for all consumers and models, the third element (TP's) has the
+information for all consumers and models, the third element (TPs) has the
 raw posterior trophic position for all consumers and models, and the last
-element (Alpha's) has raw posterior of muDeltaN (if one baseline model was
+element (Alphas) has raw posterior of muDeltaN (if one baseline model was
 chosen) or alpha (if a two baselines model was chosen) for all consumers and
 models.
 }

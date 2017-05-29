@@ -8,8 +8,9 @@
 #' @param sample If sample is numeric, it will take 'sample' elements of each of
 #' the distributions.
 #' @param ... extra arguments are passed to compareTwoDistributions().
+#' @param round integer to indicate number of decimals kept.
 #'
-#' @return probability given sum(dist1 >= dist2) / length(dist1)
+#' @return probability given sum(dist1 "test" dist2) / length(dist1)
 #' @export
 #'
 #' @examples
@@ -21,10 +22,14 @@ compareTwoDistributions <- function (dist1 = NULL,
                                      dist2 = NULL,
                                      test = "<=",
                                      sample = NULL,
+                                     round = 3,
                                      ...) {
 
   # To do
   # implement ordered = TRUE within arguments
+  #
+  # sum_over_total <- function(dist1, dist2, test, round)
+  #   round((sum(dist1 <= dist2) / length(dist1)), 3)
 
   if (is.null(dist1) | is.null(dist2)) {
 
@@ -57,19 +62,19 @@ distributions you are comparing are those you actually want to
   # if (class(dist1) == "")
 
   if (test == "<=") {
-    return(sum(dist1 <= dist2) / length(dist1))
+    return(round(sum(dist1 <= dist2) / length(dist1), round))
   }
 
   if (test == "<") {
-    return(sum(dist1 < dist2) / length(dist1))
+    return(round(sum(dist1 < dist2) / length(dist1), round))
   }
 
   if (test == ">") {
-    return(sum(dist1 > dist2) / length(dist1))
+    return(round(sum(dist1 > dist2) / length(dist1), round))
   }
 
   if (test == ">=") {
-    return(sum(dist1 >= dist2) / length(dist1))
+    return(round(sum(dist1 >= dist2) / length(dist1), round))
   }
 
   warning('

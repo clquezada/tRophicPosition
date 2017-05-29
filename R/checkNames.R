@@ -1,11 +1,11 @@
-#' Internal function that check the names of a list.
-#'
-#' Not intended to be used by the user.
-#'
-#' @param df named list with the variables to be checked for.
-#' @param flag integer (stating the number of baselines) or a list of names
-#' (stating the names expected).
-#'
+# Internal function that check the names of a list.
+#
+# Not intended to be used by the user.
+#
+# @param df named list with the variables to be checked for.
+# @param flag integer (stating the number of baselines) or a list of names
+# (stating the names expected).
+#
 checkNames <- function (df = NULL, flag = NULL) {
 
   if (typeof(flag) == "double") {

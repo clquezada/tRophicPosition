@@ -3,13 +3,13 @@
 #' This function takes a named list of isotopeClass objects and calculates one
 #' or more Bayesian models of trophic position for each element of the list.
 #'
-#' @param siDataList a named list of isotopeClass objects.
+#' @param siDataList a named list of isotopeData class objects.
 #' @param lambda numerical value, represents the trophic level for baseline(s).
 #' @param n.chains number of parallel chains for the model. If convergence
-#' diagnostics (such as Gelman-Rubin) are ploted, n.chains needs to be > 1.
+#' diagnostics (such as Gelman-Rubin) are printed, n.chains needs to be >= 2.
 #' @param n.adapt number of adaptive iterations, before the actual sampling.
 #' @param n.iter number of iterations for Bayesian modelling.
-#' @param burnin number of iterations discarded.
+#' @param burnin number of iterations discarded as burn in.
 #' @param thin number of samples discarded while performing posterior sampling.
 #' @param model string or list representing Bayesian models. At the moment they
 #' can be "oneBaseline", "twoBaselines" and/or "twoBaselinesFull".
@@ -23,9 +23,9 @@
 #' @return A list of 4 elements. The output is organised as lists nested.
 #' The first element (multiSpeciesTP) has the gg data frame returned by
 #' multiModelTP, the second element (df) is a data frame with summary
-#' information for all consumers and models, the third element (TP's) has the
+#' information for all consumers and models, the third element (TPs) has the
 #' raw posterior trophic position for all consumers and models, and the last
-#' element (Alpha's) has raw posterior of muDeltaN (if one baseline model was
+#' element (Alphas) has raw posterior of muDeltaN (if one baseline model was
 #' chosen) or alpha (if a two baselines model was chosen) for all consumers and
 #' models.
 #' @export
@@ -114,18 +114,18 @@ multiSpeciesTP <- function (siDataList = siDataList, lambda = 2,
   if (model != "oneBaseline") {
     object <- list("multiSpeciesTP" = multiSpeciesTP_list,
                    "df" = multiSpeciesTP_df,
-                   "TP's" = multiSpecies_TP,
-                   "Alpha's" = multiSpecies_alpha)
+                   "TPs" = multiSpecies_TP,
+                   "Alphas" = multiSpecies_alpha)
 
-    class(object[["Alpha's"]]) <- "posteriorAlpha"
+    class(object[["Alphas"]]) <- "posteriorAlpha"
 
   } else {
     object <- list("multiSpeciesTP" = multiSpeciesTP_list,
                    "df" = multiSpeciesTP_df,
-                   "TP's" = multiSpecies_TP)
+                   "TPs" = multiSpecies_TP)
     }
 
-  class(object[["TP's"]]) <- "posteriorTP"
+  class(object[["TPs"]]) <- "posteriorTP"
 
   return(object)
 

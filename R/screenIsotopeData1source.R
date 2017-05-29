@@ -1,15 +1,15 @@
-#' Internal function that plots the data
-#'
-#' This function is intended to be used within the package. For details refer to
-#' \code{\link{screenIsotopeData}}. Is planned to deprecate it in the near
-#' future.
-#'
-#' @param isotopeData a named list composed at least of 6 vectors, dNb1, dCb1,
-#' dCc, dNc, deltaN and deltaC
-#' @param type character that states if an "histogram" or a "density" will be
-#' ploted.
-#'
-#'
+# Internal function that plots the data
+#
+# This function is intended to be used within the package. For details refer to
+# \code{\link{screenIsotopeData}}. Is planned to deprecate it in the near
+# future.
+#
+# @param isotopeData a named list composed at least of 6 vectors, dNb1, dCb1,
+# dCc, dNc, deltaN and deltaC
+# @param type character that states if an "histogram" or a "density" will be
+# ploted.
+#
+#
 screenIsotopeData1source <- function (isotopeData = NULL, type = "histogram") {
 
   # Stupid CRAN fix for variables - see here http://stackoverflow.com/questions/9439256/how-can-i-handle-r-cmd-check-no-visible-binding-for-global-variable-notes-when

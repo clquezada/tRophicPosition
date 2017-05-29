@@ -6,7 +6,7 @@
 context}
 \usage{
 compareTwoDistributions(dist1 = NULL, dist2 = NULL, test = "<=",
-  sample = NULL, ...)
+  sample = NULL, round = 3, ...)
 }
 \arguments{
 \item{dist1}{A collection of numerical values (posterior distribution).}
@@ -19,10 +19,12 @@ compareTwoDistributions(dist1 = NULL, dist2 = NULL, test = "<=",
 \item{sample}{If sample is numeric, it will take 'sample' elements of each of
 the distributions.}
 
+\item{round}{integer to indicate number of decimals kept.}
+
 \item{...}{extra arguments are passed to compareTwoDistributions().}
 }
 \value{
-probability given sum(dist1 >= dist2) / length(dist1)
+probability given sum(dist1 "test" dist2) / length(dist1)
 }
 \description{
 Function to compare two distributions and test an hypothesis, in a Bayesian

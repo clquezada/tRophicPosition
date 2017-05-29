@@ -34,9 +34,9 @@ extractIsotopeData <- function(df = NULL,
                                d13C = "d13C", d15N = "d15N",
                                seed = 666) {
 
-  # extractIsotopeData: no visible binding for global variable ‘species’ fix
+  # extractIsotopeData: no visible binding for global variable species fix
   # Check this
-  species = NULL
+  # species = NULL
 
 
   getValues <- function(df, item, column, isotope)
@@ -58,7 +58,7 @@ extractIsotopeData <- function(df = NULL,
       return(list("dNb1" = dNb1, "dCb1" = dCb1))
     }
 
-  getIsotopeData <- function(df, deltaN, deltaC, speciesColumn, species,
+  getIsotopeData <- function(df, deltaN, deltaC, speciesColumn,
                              community = NULL) {
 
     siDataList <- list()
@@ -126,7 +126,7 @@ extractIsotopeData <- function(df = NULL,
 
       siDataList <- append(siDataList, getIsotopeData(subset_df,
                                                       deltaN, deltaC,
-                                                      speciesColumn, species,
+                                                      speciesColumn,
                                                       community))
 
       }
@@ -135,7 +135,7 @@ extractIsotopeData <- function(df = NULL,
 
     siDataList <- append(siDataList, getIsotopeData(df,
                                                     deltaN, deltaC,
-                                                    speciesColumn, species))
+                                                    speciesColumn))
 
   }
 

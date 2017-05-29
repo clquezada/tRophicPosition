@@ -37,7 +37,7 @@
 credibilityIntervals <- function (df, x = "species", plotAlpha = TRUE,
                                   y1 = "mode", y1min = "lower", y1max = "upper",
                                   y1lim = NULL,
-                                  y2 = "alpha.median", y2min = "alpha.lower",
+                                  y2 = "alpha.mode", y2min = "alpha.lower",
                                   y2max = "alpha.upper",
                                   xlab = "Bayesian models",
                                   ylab1 = "Posterior trophic position",
@@ -54,6 +54,11 @@ credibilityIntervals <- function (df, x = "species", plotAlpha = TRUE,
           class(df[1]) == "posteriorTP" &
           class(df[2]) == "posteriorAlpha")
     stop("Not implemented yet (posteriorTP & posteriorAlpha")
+
+  levels(df$model) <- sub("^1b$", "one baseline", levels(df$model))
+  levels(df$model) <- sub("^2b$", "two baselines", levels(df$model))
+  levels(df$model) <- sub("^2bf$", "two baselines full", levels(df$model))
+
 
   p1 <- ggplot2::ggplot(df, ggplot2::aes_string(x = x, y = y1, ymin = y1min,
                        ymax = y1max)) +

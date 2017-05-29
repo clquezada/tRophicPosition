@@ -1,18 +1,18 @@
-#' Internal functions within tRophicPosition
-#'
-#' These functions are intended to be used within the package, and not directly by the users
-#'
-#' @param df dataframe 1
-#' @param df2 dataframe 2
-#' @param ylab ylab
-#' @param xlab xlab
-#' @param p p
-#' @param legend legend
-#' @param limits limits
-#' @param ... additional arguments passed to this function.
-#'
-#' @return Multiple objects returned
-#'
+# Internal functions within tRophicPosition
+#
+# These functions are intended to be used within the package, and not directly by the users
+#
+# @param df dataframe 1
+# @param df2 dataframe 2
+# @param ylab ylab
+# @param xlab xlab
+# @param p p
+# @param legend legend
+# @param limits limits
+# @param ... additional arguments passed to this function.
+#
+# @return Multiple objects returned
+#
 biPlot <- function (df = NULL, df2 = NULL, ylab = NULL, xlab = NULL, p = "p1",
                     legend = legend, limits = limits, ...){
 

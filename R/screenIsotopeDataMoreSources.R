@@ -1,17 +1,17 @@
-#' Internal function that plots the data
-#'
-#' This function is intended to be used within the package. For details refer to
-#' \code{\link{screenIsotopeData}}.
-#'
-#' @param isotopeData an isotopeData class object.
-#' @param density string. Can be "both", "above", "right" or "none".
-#' @param baselines number of baselines plotted.
-#' @param consumer string representing consumer
-#' @param b1 string representing baseline 1
-#' @param b2 string representing baseline 2
-#' @param legend string representing legend
-#' @param title string representing title
-#' @param ... additional arguments passed to this function
+# Internal function that plots the data
+#
+# This function is intended to be used within the package. For details refer to
+# \code{\link{screenIsotopeData}}.
+#
+# @param isotopeData an isotopeData class object.
+# @param density string. Can be "both", "above", "right" or "none".
+# @param baselines number of baselines plotted.
+# @param consumer string representing consumer
+# @param b1 string representing baseline 1
+# @param b2 string representing baseline 2
+# @param legend string representing legend
+# @param title string representing title
+# @param ... additional arguments passed to this function
 
 screenIsotopeDataMoreSources <- function (isotopeData = NULL,
                                           density = "both",
