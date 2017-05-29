@@ -1,9 +1,9 @@
-#' Internal function that re-order variables from a data frame.
-#'
-#' Not intended to be used by the user.
-#'
-#' @param isotopeData data frame containing the data to be ordered.
-#'
+# Internal function that re-order variables from a data frame.
+#
+# Not intended to be used by the user.
+#
+# @param isotopeData data frame containing the data to be ordered.
+#
 reOrder <- function (isotopeData = NULL){
 
   df <- data.frame(d13C = isotopeData$dCc,

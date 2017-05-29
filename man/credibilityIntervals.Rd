@@ -6,7 +6,7 @@
 distributions of trophic position and/or alpha}
 \usage{
 credibilityIntervals(df, x = "species", plotAlpha = TRUE, y1 = "mode",
-  y1min = "lower", y1max = "upper", y1lim = NULL, y2 = "alpha.median",
+  y1min = "lower", y1max = "upper", y1lim = NULL, y2 = "alpha.mode",
   y2min = "alpha.lower", y2max = "alpha.upper", xlab = "Bayesian models",
   ylab1 = "Posterior trophic position", ylab2 = "Posterior alpha", ...)
 }

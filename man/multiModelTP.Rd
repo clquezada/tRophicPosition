@@ -14,13 +14,13 @@ multiModelTP(siData = siData, lambda = 2, n.chains = 2, n.adapt = 20000,
 \item{lambda}{numerical value, represents the trophic level for baseline(s).}
 
 \item{n.chains}{number of parallel chains for the model. If convergence
-diagnostics (such as Gelman-Rubin) are ploted, n.chains needs to be > 1.}
+diagnostics (such as Gelman-Rubin) are printed, n.chains needs to be >= 2.}
 
 \item{n.adapt}{number of adaptive iterations, before the actual sampling.}
 
 \item{n.iter}{number of iterations for Bayesian modelling.}
 
-\item{burnin}{number of iterations discarded.}
+\item{burnin}{number of iterations discarded as burn in.}
 
 \item{thin}{number of samples discarded while performing posterior sampling.}
 

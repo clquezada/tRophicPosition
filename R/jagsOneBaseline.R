@@ -158,6 +158,8 @@ jagsOneBaseline <- function (muB = NULL,
   newString <- "}" # end of jags model script
   modelString <- paste (modelString, newString, sep = "\n")
 
+  class(modelString) <- append(class(modelString), "oneBaseline")
+
   return(modelString)
 
 } # end of function

@@ -20,7 +20,7 @@ baseline model, a two baselines model and its alpha value, and a two
 baselines full model and its alpha value.
 }
 \description{
-Calculation of old school trophic position
+Calculation of parametric trophic position partially based on Post (2002).
 }
 \examples{
 consumer <- generateTPData()

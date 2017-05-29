@@ -25,8 +25,8 @@ pairwiseComparisons <- function (df, test = "<=", print = FALSE) {
 
   pairwise <- matrix(nrow = length(names(df)), ncol = length(names(df)))
 
-  rownames(pairwise) <- names(df)
-  colnames(pairwise) <- names(df)
+  rownames(pairwise) <- paste0("[",seq_along(names(df)),"]", " ", names(df))
+  colnames(pairwise) <- paste0("[",seq_along(names(df)),"]")
 
   counter.i <- 1
   for (i in names(df)) {

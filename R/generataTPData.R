@@ -34,6 +34,7 @@
 #' carbon. Default value is 1.3.
 #' @param n.obsDeltaC number of observations of DeltaC (trophic discrimination
 #' factor). Default is 107.
+#' @param seed numerical value to get reproducible results.
 #'
 #' @return An isotopeData class object (named list) with dNb1, dNc and deltaN
 #' randomly generated observations. If n.baselines = 2, then dCb1, dNb2, dCb2,
@@ -58,71 +59,83 @@
 generateTPData <- function (n.baselines = 2,
                             n.obsB = 25,
                             dNb1 = NULL,
-                            sd.dNb1 = 0.5,
+                            sd.dNb1 = 1,
                             dCb1 = NULL,
-                            sd.dCb1 = 0.5,
+                            sd.dCb1 = 1,
                             dNb2 = NULL,
-                            sd.dNb2 = 0.5,
+                            sd.dNb2 = 1,
                             dCb2 = NULL,
-                            sd.dCb2 = 0.5,
+                            sd.dCb2 = 1,
                             n.obsC = 25,
                             consumer = NULL,
                             dNc = NULL,
-                            sd.dNc = 0.5,
+                            sd.dNc = 1,
                             dCc = NULL,
-                            sd.dCc = 0.5,
+                            sd.dCc = 1,
                             DeltaN = 3.4,
                             sd.DeltaN = 0.98,
                             n.obsDeltaN = 56,
                             DeltaC = 0.39,
                             sd.DeltaC = 1.3,
-                            n.obsDeltaC = 107) {
+                            n.obsDeltaC = 107,
+                            seed = 3) {
+  set.seed(seed)
+
+  meanSD <- function(x, mean, sd) {
+
+    x <- stats::rnorm(x, mean, sd)
+    X <- x
+    MEAN <- mean
+    SD <- sd
+    Z <- (((X - mean(X, na.rm = TRUE))/sd(X, na.rm = TRUE))) * SD
+    MEAN + Z
+  }
 
   # Here we simulate some data for the first baseline
   # If dNb1 (dN of the baseline 1) is NULL, n.obsB random numbers are generated
   # within -5 and 5, with a standard deviation sd.dNb1
-  if (is.null(dNb1)) dNb1 <- stats::rnorm(n.obsB, stats::runif(1, -5, 5), sd.dNb1)
+  if (is.null(dNb1)) dNb1 <- meanSD(n.obsB, stats::runif(1, -5, 5), sd.dNb1)
 
   # If the user supply dNb1, then n.obsB numbers are randomly generated
   # from a normal distribution with mean dNb1 and standard deviation sd.dNb1
-  else dNb1 <- stats::rnorm(n.obsB, dNb1, sd.dNb1)
+  else dNb1 <- meanSD(n.obsB, dNb1, sd.dNb1)
 
   # Now we simulate some data for the [secondary] consumer we want
   # to calculate trophic position of
 
   # If no dN of secondary consumer (dNc) is supplied, some data is
   # simulated two trophic positions over mean dN of baseline1
-  if (is.null(dNc)) dNc <- stats::rnorm(n.obsC, mean(dNb1) + (2 * DeltaN), sd.dNc)
+  if (is.null(dNc)) dNc <- meanSD(n.obsC, mean(dNb1) + (2 * DeltaN), sd.dNc)
 
   #If the user supply dNc, then n.obsC observations are randomly generated
   #from a normal distribution with mean dNc and standard deviation sd.dNc
-  else dNc <- stats::rnorm(n.obsC, dNc, sd.dNc)
+  else dNc <- meanSD(n.obsC, dNc, sd.dNc)
 
   # Finally we simulate some data for the trophic discrimination factor (deltaN)
   # By default we generate 56 values randomly drawn from a normal distribution
   # with a mean 3.4 with sd 0.98 (defined in the arguments of this function)
-  # deltaN <- stats::rnorm (n.obsDeltaN, DeltaN, sd.DeltaN)
+  # deltaN <- meanSD (n.obsDeltaN, DeltaN, sd.DeltaN)
   deltaN <- simulateTDF(nN = n.obsDeltaN, meanN = DeltaN, sdN = sd.DeltaN)
 
   # We simulate then values for the dC of baseline 1 (with sd.Cb1)
-  if (is.null(dCb1)) dCb1 <- stats::rnorm(n.obsB, stats::runif(1, -25, -10), sd.dCb1)
-  else dCb1 <- stats::rnorm(n.obsB, dCb1, sd.dCb1)
+  if (is.null(dCb1)) dCb1 <- meanSD(n.obsB, stats::runif(1, -25, -10), sd.dCb1)
+  else dCb1 <- meanSD(n.obsB, dCb1, sd.dCb1)
 
   # And values for dC of secondary consumer
-  if (is.null(dCc)) dCc <- stats::rnorm(n.obsC, stats::runif(1, dCb1+2, 5), sd.dCc)
-  else dCc <- stats::rnorm(n.obsC, dCc, sd.dCc)
+  if (is.null(dCc)) dCc <- meanSD(n.obsC, stats::runif(1, dCb1+2, 5), sd.dCc)
+  else dCc <- meanSD(n.obsC, dCc, sd.dCc)
 
   if (n.baselines == 2){
 
     if (is.null(dNb2))
-      dNb2 <- stats::rnorm(n.obsB, stats::runif(1, mean(dNb1)-DeltaN, mean(dNb1)+5), sd.dNb2)
+      dNb2 <- meanSD(n.obsB, stats::runif(1, mean(dNb1)-DeltaN, mean(dNb1)+5), sd.dNb2)
     else
-      dNb2 <- stats::rnorm(n.obsB, dNb2, sd.dNb2)
+      dNb2 <- meanSD(n.obsB, dNb2, sd.dNb2)
 
     if (is.null(dCb2))
-      dCb2 <- stats::rnorm(n.obsB, stats::runif(1, mean(dCc)+2, mean(dCc)+15), sd.dCb2)
+      dCb2 <- meanSD(n.obsB, stats::runif(1, mean(dCc)+2, mean(dCc)+15), sd.dCb2)
     else
-      dCb2 <- stats::rnorm(n.obsB, dCb2, sd.dCb2)
+      dCb2 <- meanSD(n.obsB, dCb2, sd.dCb2)
 
     deltaC <- simulateTDF(nC = n.obsDeltaC, meanC = DeltaC, sdC = sd.DeltaC)
 

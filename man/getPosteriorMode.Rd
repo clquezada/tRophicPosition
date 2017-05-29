@@ -4,19 +4,22 @@
 \alias{getPosteriorMode}
 \title{Function to get mode from posterior distribution}
 \usage{
-getPosteriorMode(df = NULL)
+getPosteriorMode(df = NULL, round = 3)
 }
 \arguments{
-\item{df}{data.frame with posterior distributions}
+\item{df}{data.frame, list or vector with posterior distribution(s).}
+
+\item{round}{numeric, number of decimals rounded.}
 }
 \value{
-a list with modes
-
-#@importFrom magrittr "%>%"
+a vector or a list of modes
 }
 \description{
-This function is a wrapper of \code{\link[hdrcde]{hdr}}, it returns one
-mode (if receives a vector), otherwise returns a lists of modes
+This function is a wrapper of \code{\link[hdrcde]{hdr}}, it returns
+one mode (if receives a vector), otherwise returns a lists of modes (if
+receives a list). If receives an mcmc object it returns the marginal
+parameter modes using Kernel density estimation
+(\code{\link[MCMCglmm]{posterior.mode}}).
 }
 \examples{
 # List example
@@ -24,5 +27,5 @@ a <- list("First" = rnorm(100,1), "Second" = rnorm(100,2))
 getPosteriorMode(a)
 
 # vector example
-getPosteriorMode(rnorm(100,5))
+getPosteriorMode(rnorm(100,5), round = 2)
 }

@@ -3,3 +3,4 @@
 .RData
 packrat/lib*/
 inst/doc
+/revdep/*

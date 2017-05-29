@@ -1,6 +1,6 @@
 #' Parametric trophic position
 #'
-#' Calculation of old school trophic position
+#' Calculation of parametric trophic position partially based on Post (2002).
 #'
 #' @param siData an isotopeData class object.
 #' @param lambda numerical value representing trophic level of baseline(s).
@@ -19,17 +19,21 @@ parametricTP <- function (siData, lambda = 2, print = TRUE) {
 
   if (class(siData) != "isotopeData")
     stop ("We need an isotopeData class object")
-  cat("Beta version! check the values with your calculations")
-  sm <- summary(siData, print = FALSE, round_dec = 4)
 
-  dNb1 <- sm[[1,2]]
-  dCb1 <- sm[[2,2]]
-  dNb2 <- sm[[3,2]]
-  dCb2 <- sm[[4,2]]
-  dNc <- sm[[7,2]]
-  dCc <- sm[[8,2]]
-  deltaN <- sm[[5,2]]
-  deltaC <- sm[[6,2]]
+  cat("")
+  print("***************************************")
+  print("Parametric version of trophic position")
+  print(paste("For consumer: ", attributes(siData)$consumer))
+  sm <- lapply(siData, mean)
+
+  dNb1 <- sm$dNb1
+  dCb1 <- sm$dCb1
+  dNb2 <- sm$dNb2
+  dCb2 <- sm$dCb2
+  dNc <- sm$dNc
+  dCc <- sm$dCc
+  deltaN <- sm$deltaN
+  deltaC <- sm$deltaC
 
   TP <- function(dNc, dNb1, dNb2, deltaN, alpha)
     lambda + ((dNc - ((dNb1 * alpha) + (dNb2 * (1 - alpha))))/deltaN)
@@ -40,7 +44,7 @@ parametricTP <- function (siData, lambda = 2, print = TRUE) {
   alphaPost <- function (dCc, dCb1, dCb2, tp)
     (dCb2 - (dCc + (deltaC*tp) ) ) / (dCb2 - dCb1)
 
-  TPoneBaseline <- lambda + (dNc - dNb1)/deltaN
+  TPoneBaseline <- lambda + ((dNc - dNb1)/deltaN)
   if (isTRUE(print)) print(paste("One baseline TP: ", round(TPoneBaseline,2)))
 
   alpha <- (dCc - dCb2) / (dCb1 - dCb2)

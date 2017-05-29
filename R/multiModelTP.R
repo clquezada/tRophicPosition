@@ -8,10 +8,10 @@
 #' @param siData an isotopeData class object.
 #' @param lambda numerical value, represents the trophic level for baseline(s).
 #' @param n.chains number of parallel chains for the model. If convergence
-#' diagnostics (such as Gelman-Rubin) are ploted, n.chains needs to be > 1.
+#' diagnostics (such as Gelman-Rubin) are printed, n.chains needs to be >= 2.
 #' @param n.adapt number of adaptive iterations, before the actual sampling.
 #' @param n.iter number of iterations for Bayesian modelling.
-#' @param burnin number of iterations discarded.
+#' @param burnin number of iterations discarded as burn in.
 #' @param thin number of samples discarded while performing posterior sampling.
 #' @param models string or list representing Bayesian models. At the moment they
 #' can be "oneBaseline", "twoBaselines" and/or "twoBaselinesFull".
@@ -155,10 +155,10 @@ multiModelTP <- function (siData = siData, lambda = 2,
       if (!is.null(attributes(siData)$community) &
           !is.null(attributes(siData)$consumer))
 
-        plotMCMC(samples, sub = paste(model,
-                                  attributes(siData)$community,
-                                  attributes(siData)$consumer))
-
+        plotMCMC(samples, #coda:::plot.mcmc.list()
+                 sub = paste(model,
+                             attributes(siData)$community,
+                             attributes(siData)$consumer))
       else
 
           if(!is.null(attributes(siData)$consumer))
