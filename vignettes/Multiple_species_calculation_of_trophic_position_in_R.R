@@ -44,7 +44,7 @@ str(BilagayList[1:1])
 #    plot(community)
 #    }
 
-## ----echo = FALSE--------------------------------------------------------
+## ----echo = FALSE, fig.width =  7, fig.height = 5------------------------
 for (community in BilagayList[1]) {
   print(summary(community))
   plot(community)
@@ -69,7 +69,7 @@ a <- multiSpeciesTP(BilagayList[1], model = "twoBaselinesFull",
 #  credibilityIntervals(Bilagay_models$df, x = "community", xlab ="Community",
 #                       y1 = "median", y2 = "alpha.median")
 
-## ----echo = FALSE--------------------------------------------------------
+## ----echo = FALSE, fig.width = 7, fig.height = 5-------------------------
 credibilityIntervals(tRophicPosition:::Bilagay_models$df, x = "community", xlab ="Community")
 
 ## ----eval = FALSE--------------------------------------------------------

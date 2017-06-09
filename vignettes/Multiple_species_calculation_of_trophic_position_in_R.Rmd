@@ -10,7 +10,7 @@ vignette: >
 ---
 # tRophicPosition
 
-`tRophicPosition`, is an R package incorporating a Bayesian model for the calculation of trophic position using stable isotopes with one or two baselines. As of 2017-05-14, the current version of the package is 0.6.8-9. `tRophicPosition` uses the powerful approach of Markov Chain Monte Carlo simulations provided by [JAGS](http://mcmc-jags.sourceforge.net) and the statistical language [R](https://www.r-project.org). A vignette with basics of the model and a guide to the use of `tRophicPosition` can be found [here](https://github.com/clquezada/tRophicPosition/raw/master/A_guide_to_the_use_of_tRophicPosition_2016-06-12.pdf). Other vignettes can be browsed with `browseVignettes("tRophicPosition")`.
+`tRophicPosition`, is an R package incorporating a Bayesian model for the calculation of trophic position using stable isotopes with one or two baselines. As of 2017-05-14, the current version of the package is 0.6.8-9. `tRophicPosition` uses the powerful approach of Markov Chain Monte Carlo simulations provided by [JAGS](http://mcmc-jags.sourceforge.net) and the statistical language [R](https://www.r-project.org). A vignette with basics of the model and a guide to the use of `tRophicPosition` can be found [here](https://github.com/clquezada/tRophicPosition-release-and-vignettes/blob/master/A_guide_to_the_use_of_tRophicPosition_2016-06-12.pdf). Other vignettes can be browsed with `browseVignettes("tRophicPosition")`.
 
 # Introduction
 
@@ -22,14 +22,14 @@ In this vignette, we will introduce the new functions we have developed for `tRo
 Coming soon.
 
 ### Development version - GitHub
-If you want to install the development version of `tRophicPosition`, you must install it from GitHub. For this, we use the function `install_github()` from the package `devtools` (installation instructions [here](https://github.com/hadley/devtools#updating-to-the-latest-version-of-devtools)), which needs to be installed previously (either from [CRAN](https://cran.r-project.org/web/packages/devtools/index.html) or [GitHub](https://github.com/hadley/devtools)):
+If you want to install the development version of `tRophicPosition`, you must install it from GitHub. For this, we use the function `install_github()` from the package `devtools` (installation instructions [here](https://github.com/hadley/devtools#updating-to-the-latest-version-of-devtools)), which needs to be installed previously (either from [CRAN](https://CRAN.R-project.org/package=devtools) or [GitHub](https://github.com/hadley/devtools)):
 
 ```{r eval = FALSE}
 install.packages("devtools")
 library(devtools)
 ```
 
-If you are working in Windows, `devtools` also requires [Rtools](http://cran.r-project.org/bin/windows/Rtools/), or if you are working on a Mac, [Xcode](https://developer.apple.com/xcode/) (from Apple Store). In Linux you will need to install a compiler and various development libraries. 
+If you are working in Windows, `devtools` also requires [Rtools](http://bit.ly/2smGeVQ), or if you are working on a Mac, [Xcode](https://developer.apple.com/xcode/) (from Apple Store). In Linux you will need to install a compiler and various development libraries. 
 
 Besides installing `devtools`, you must also install [JAGS](http://mcmc-jags.sourceforge.net/) (Just Another Gibbs Sampler), which is at the core of the Bayesian model analysis supporting `tRophicPosition`.
 
@@ -98,7 +98,7 @@ Also, this spreadsheet has information from the latitudinal arrangement of sampl
 Bilagay <- Bilagay %>% arrange(NS)
 ```
 
-Now, we are ready to proceed with the calculation of trophic position. This follows the same general process you have already encountered in the previous vignette ([A guide to the use of tRophicPosition](https://github.com/clquezada/tRophicPosition-release-and-vignettes/blob/master/A_guide_to_the_use_of_tRophicPosition_2016-06-12.pdf)). First we must consecutively subset the data frame considering each of the communities we have samples of. We could use the subset command, repeating the same command each time for each community.
+Now, we are ready to proceed with the calculation of trophic position. This follows the same general process you have already encountered in the previous vignette ([A guide to the use of tRophicPosition](https://github.com/clquezada/tRophicPosition-release-and-vignettes/blob/master/A_guide_to_the_use_of_tRophicPosition_2016-06-12.pdf). First we must consecutively subset the data frame considering each of the communities we have samples of. We could use the subset command, repeating the same command each time for each community.
 
 If we only have 2 sampling sites, this can be done by hand. However, here we have different 10 sampling sites, so this task can be prone to errors and time-consuming, as we have to repeat the same code 10 times, but with changes in the Location, selecting the baseline, etc.
 
@@ -136,14 +136,14 @@ for (community in BilagayList) {
   }
 ```
 
-```{r echo = FALSE}
+```{r echo = FALSE, fig.width =  7, fig.height = 5}
 for (community in BilagayList[1]) {
   print(summary(community))
   plot(community)
   }
 ```
 
-Now we have to model each community within the Bayesian framework of `tRophicPosition` (as introduced previously in other vignettes, e.g. [a guide to the use of tRophicPosition](https://github.com/clquezada/tRophicPosition/raw/master/A_guide_to_the_use_of_tRophicPosition_2016-06-12.pdf)).
+Now we have to model each community within the Bayesian framework of `tRophicPosition` (as introduced previously in other vignettes, e.g. [a guide to the use of tRophicPosition](https://github.com/clquezada/tRophicPosition-release-and-vignettes/blob/master/A_guide_to_the_use_of_tRophicPosition_2016-06-12.pdf).
 
 For this, we have developed a function that automatically i) defines a Bayesian model, ii) initializes the model and iii) samples the posterior distribution of trophic position. This is accomplished using the function `multiSpeciesTP()`, similar to the function `multiModelsTP()` explained in the vignette multiple models calculation with tRophicPosition.
 
@@ -179,7 +179,7 @@ credibilityIntervals(Bilagay_models$df, x = "community", xlab ="Community",
                      y1 = "median", y2 = "alpha.median")
 ```
 
-```{r echo = FALSE}
+```{r echo = FALSE, fig.width = 7, fig.height = 5}
 credibilityIntervals(tRophicPosition:::Bilagay_models$df, x = "community", xlab ="Community")
 ```
 
