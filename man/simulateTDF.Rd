@@ -5,27 +5,30 @@
 \title{Simulate trophic discrimination factors}
 \usage{
 simulateTDF(nN = 56, meanN = NULL, sdN = 0.98, nC = 107, meanC = NULL,
-  sdC = 1.3)
+  sdC = 1.3, seed = 3)
 }
 \arguments{
-\item{nN}{number of observations for deltaN}
+\item{nN}{number of observations for deltaN.}
 
-\item{meanN}{mean for deltaN}
+\item{meanN}{mean for deltaN.}
 
-\item{sdN}{standard deviation for deltaN}
+\item{sdN}{standard deviation for deltaN.}
 
-\item{nC}{number of observations for deltaC}
+\item{nC}{number of observations for deltaC.}
 
-\item{meanC}{mean for deltaC}
+\item{meanC}{mean for deltaC.}
 
-\item{sdC}{standard deviation for deltaC}
+\item{sdC}{standard deviation for deltaC.}
+
+\item{seed}{numerical value to indicate reproducible results.}
 }
 \value{
 a named list with TDF values for nitrogen and/or carbon
 }
 \description{
-\code{simulateTDF} return trophic discrimination factors (TDF), given a number of
-observations, a mean and a standard deviation for DeltaN and/or DeltaC.
+This function returns trophic discrimination factors (TDF), given a
+number of observations, a mean and/or a standard deviation for deltaN and/or
+deltaC.
 }
 \examples{
 # 25 values of TDF for nitrogen, mean 3, sd, 1

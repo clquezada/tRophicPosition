@@ -34,7 +34,7 @@ If you are working in Windows, `devtools` also requires [Rtools](http://bit.ly/2
 Besides installing `devtools`, you must also install [JAGS](http://mcmc-jags.sourceforge.net/) (Just Another Gibbs Sampler), which is at the core of the Bayesian model analysis supporting `tRophicPosition`.
 
 ```{r eval = FALSE}
-install_github("clquezada/tRophicPosition")
+install_github("clquezada/tRophicPosition", build_vignettes = TRUE)
 ```
 
 After installing `tRophicPosition`, it should be loaded into memory, which automatically reports the version of the software (we need at least 0.6.8-8 to use the routines described in this vignette).

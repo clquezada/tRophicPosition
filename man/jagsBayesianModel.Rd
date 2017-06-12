@@ -2,7 +2,7 @@
 % Please edit documentation in R/jagsBayesianModel.R
 \name{jagsBayesianModel}
 \alias{jagsBayesianModel}
-\title{Returns a JAGS Bayesian model to use with tRophicPosition.}
+\title{Returns a JAGS-based Bayesian model to use within tRophicPosition.}
 \usage{
 jagsBayesianModel(model = NULL, ...)
 }
@@ -18,7 +18,7 @@ a jags model as a character string
 }
 \description{
 This function returns a string with a Bayesian model to be used with trophic
-position calculation
+position calculations
 }
 \examples{
 # Example with priors for TP.

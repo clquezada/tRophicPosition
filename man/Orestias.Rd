@@ -25,6 +25,6 @@ A dataset containing stable isotope values (d13C and d15N) for the killifish
 *Orestias chungarensis*
 (http://www.fishbase.se/summary/Orestias-chungarensis.html), an endemic fish
 found in the Chungara Lake at 4,500 meters above sea level, Chilean
-Altiplano.
+Altiplano. Harrod, C. & I. Vila unpublished results.
 }
 \keyword{datasets}

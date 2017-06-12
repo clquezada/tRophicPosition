@@ -2,7 +2,7 @@
 % Please edit documentation in R/summariseIsotopeData.R
 \name{summariseIsotopeData}
 \alias{summariseIsotopeData}
-\title{Function that summarise a data frame containing a stable isotope values (d13C
+\title{Function that summarises a data frame containing stable isotope values (d13C
 and d15N) grouping by Species and FG columns}
 \usage{
 summariseIsotopeData(df = NULL, grouping = c("Species", "FG"),
@@ -11,15 +11,15 @@ summariseIsotopeData(df = NULL, grouping = c("Species", "FG"),
 \arguments{
 \item{df}{a data frame that contains the isotope values. It needs to have the
 following columns: d13C, d15N, Species and FG. Species stands for the
-scientific name (or common name), and FG stands for the functional group for
-each species. If the data frame do not have Species and FG columns, it will
-raise an error. If the columns change their names, they need to be stated
-as well in the grouping variable.}
+scientific name (or common name), and FG stands for the functional group
+for each species. If the data frame does not have Species and FG columns,
+it will raise an error. If the columns change their names, they need to be
+stated as well in the grouping variable.}
 
 \item{grouping}{a vector with the name of the columns (variables) that will
 be used to summarize, and plot the data frame.}
 
-\item{printSummary}{a boolean flag indicating whether the summary is printed.}
+\item{printSummary}{logical value indicating whether the summary is printed.}
 
 \item{...}{optional arguments that are passed to the function for later use.}
 }

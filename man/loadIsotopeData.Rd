@@ -10,7 +10,7 @@ loadIsotopeData(df = NULL, species = NULL, community = NULL,
   d15N = "d15N", deltaC = NULL, deltaN = NULL, seed = 666)
 }
 \arguments{
-\item{df}{data.frame containing raw isotope data with at least one grouping
+\item{df}{data frame containing raw isotope data with at least one grouping
 column.}
 
 \item{species}{string or character vector indicating which consumer/species
@@ -27,7 +27,8 @@ extracted as baseline 2.}
 
 \item{baselineColumn}{string of the column where baselines are grouped.}
 
-\item{speciesColumn}{string of the column where species/consumers are grouped.}
+\item{speciesColumn}{string of the column where species/consumers are
+grouped.}
 
 \item{communityColumn}{string of the column where communities are grouped.}
 
@@ -36,26 +37,27 @@ extracted as baseline 2.}
 \item{d15N}{string indicating from which column extract d15N isotope values.}
 
 \item{deltaC}{vector of values with trophic discrimination factor for carbon.
-If NULL it will use Post's assumptions (56 values with 3.4 mean +- 0.98 sd).}
+If NULL it will use Post's assumptions (56 values with 3.4 mean +- 0.98
+sd).}
 
-\item{deltaN}{vector of values with trophic discrimination factor for nitrogen.
-If NULL it will use Post's assumptions (107 values with 0.39 mean +- 1.3 sd).}
+\item{deltaN}{vector of values with trophic discrimination factor for
+nitrogen. If NULL it will use Post's assumptions (107 values with 0.39 mean
++- 1.3 sd).}
 
 \item{seed}{numerical value to get reproducible results with trophic
-discrimination factors (because they are simulated each time this function is
-called).}
+discrimination factors (because they are simulated each time this function
+is called). By default, is 3.}
 }
 \value{
 an isotopeData class object if one consumer and one community are
-selected.
-a list of isotopeData class objects if more than one consumer or more than
-one community are selected.
+  selected. A list of isotopeData class objects if more than one consumer or
+  more than one community are selected.
 }
 \description{
 This function extracts only selected consumers/species with their respective
-baseline and returns an isotopeData class object. It is useful when there are
-a lot of information in a data frame and you want to calculate trophic
-position only for selected consumers in one or more communities.
+baseline(s) and returns an isotopeData class object (or list). It is useful
+when there are a lot of information in a data frame and you want to calculate
+trophic position only for selected consumers in one or more communities.
 }
 \examples{
 data("Bilagay")

@@ -3,7 +3,7 @@
 #  library(devtools)
 
 ## ---- eval = FALSE-------------------------------------------------------
-#  install_github("clquezada/tRophicPosition")
+#  install_github("clquezada/tRophicPosition", build_vignettes = TRUE)
 
 ## ------------------------------------------------------------------------
 library(tRophicPosition)
@@ -30,7 +30,7 @@ plot(consumer1)
 #  devtools::use_data(Bilagay_models, internal = TRUE, overwrite = TRUE)
 
 ## ---- echo = FALSE-------------------------------------------------------
-consumer1_models <- multiModelTP(consumer1, n.adapt = 500, n.iter = 500, burnin = 500)
+consumer1_models <- multiModelTP(consumer1, n.adapt = 200, n.iter = 200, burnin = 200)
 consumer1_models <- tRophicPosition:::Bilagay_models$consumer1_models
 
 ## ------------------------------------------------------------------------
@@ -53,7 +53,7 @@ consumer2$deltaC <- TDF(author = "McCutchan", element = "C")
 #  devtools::use_data(Bilagay_models, internal = TRUE, overwrite = TRUE)
 
 ## ---- echo = FALSE-------------------------------------------------------
-consumer2_models <- multiModelTP(consumer2, n.adapt = 500, n.iter = 500, burnin = 500)
+consumer2_models <- multiModelTP(consumer2, n.adapt = 200, n.iter = 200, burnin = 200)
 consumer2_models <- tRophicPosition:::Bilagay_models$consumer2_models
 
 ## ---- eval = FALSE-------------------------------------------------------

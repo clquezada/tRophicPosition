@@ -1,15 +1,16 @@
 #' Simulate trophic discrimination factors
 #'
-#' \code{simulateTDF} return trophic discrimination factors (TDF), given a number of
-#' observations, a mean and a standard deviation for DeltaN and/or DeltaC.
+#' This function returns trophic discrimination factors (TDF), given a
+#' number of observations, a mean and/or a standard deviation for deltaN and/or
+#' deltaC.
 #'
-#'
-#' @param nN number of observations for deltaN
-#' @param meanN mean for deltaN
-#' @param sdN standard deviation for deltaN
-#' @param nC number of observations for deltaC
-#' @param meanC mean for deltaC
-#' @param sdC standard deviation for deltaC
+#' @param nN number of observations for deltaN.
+#' @param meanN mean for deltaN.
+#' @param sdN standard deviation for deltaN.
+#' @param nC number of observations for deltaC.
+#' @param meanC mean for deltaC.
+#' @param sdC standard deviation for deltaC.
+#' @param seed numerical value to indicate reproducible results.
 #'
 #' @return a named list with TDF values for nitrogen and/or carbon
 #' @export
@@ -27,7 +28,8 @@ simulateTDF <- function (nN = 56,
                          sdN = 0.98,
                          nC = 107,
                          meanC = NULL,
-                         sdC = 1.3) {
+                         sdC = 1.3,
+                         seed = 3) {
 
   meanSD <- function(x, mean, sd) {
 
@@ -38,6 +40,7 @@ simulateTDF <- function (nN = 56,
     Z <- (((X - mean(X, na.rm = TRUE))/sd(X, na.rm = TRUE))) * SD
     MEAN + Z
   }
+  set.seed(seed = seed)
 
   deltaN = NULL
   deltaC = NULL

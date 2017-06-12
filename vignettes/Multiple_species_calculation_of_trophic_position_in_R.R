@@ -3,7 +3,7 @@
 #  library(devtools)
 
 ## ----eval = FALSE--------------------------------------------------------
-#  install_github("clquezada/tRophicPosition")
+#  install_github("clquezada/tRophicPosition", build_vignettes = TRUE)
 
 ## ------------------------------------------------------------------------
 library(tRophicPosition)

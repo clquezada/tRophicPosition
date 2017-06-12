@@ -19,8 +19,8 @@
 \item{legend}{coordinates representing where to locate the legend.}
 
 \item{density}{string representing whether the density function is plotted.
-Accepted characters are "both" in which case will plot the density function
-above and to the right, "right", "above" or "none".}
+Accepted characters are "both" in which case this function will plot the
+density function above and to the right, "right", "above" or "none".}
 
 \item{...}{additional arguments passed to this function.}
 }

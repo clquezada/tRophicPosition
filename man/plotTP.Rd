@@ -7,7 +7,7 @@
 plotTP(TPdist = NULL, ...)
 }
 \arguments{
-\item{TPdist}{One posterior distribution (or a collection) of trophic position.
+\item{TPdist}{vector. One posterior distribution (or a collection) of trophic position.
 In case of wanting to plot two or more posterior distributions, needs to be
 passed as a {\link[base]{data.frame}} object.}
 

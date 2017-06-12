@@ -20,14 +20,14 @@ per fish species (according to their Table 1).}
 \item{seed}{integer to have replicated results}
 }
 \value{
-a list (if element = "both") or a vector (if element ="N" or
- element = "C") containing TDF values
+a list (if element = "both") or a vector (if element ="N" or element
+  = "C") containing TDF values
 }
 \description{
-\code{TDF} return trophic discrimination factors (TDF), given an author, element
-and a type. For convenience 'type' includes a number of categories depending
-on the author. At the moment it includes TDF data from Post (2002) and from
-McCutchan et al (2003).
+This function returns trophic discrimination factors (TDF), given an author,
+element and a type. For convenience 'type' includes a number of categories
+depending on the author. At the moment it includes TDF data from Post (2002)
+and from McCutchan et al (2003).
 }
 \examples{
 TDF(author = "McCutchan", element = "N")

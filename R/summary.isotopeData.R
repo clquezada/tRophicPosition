@@ -2,7 +2,7 @@
 #'
 #' @param object an isotopeData class object.
 #' @param print a logical value to indicate whether the summary is printed.
-#' @param round_dec number of decimals keeped.
+#' @param round_dec number of decimals kept.
 #' @param ... additional arguments passed to this function.
 #'
 #' @return a list with number of observations, mean, standard deviation,

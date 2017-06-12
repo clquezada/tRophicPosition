@@ -17,20 +17,22 @@ TPmodel(data = NULL, model.string = NULL, n.chains = 2, n.adapt = 10000,
 \item{n.adapt}{number of iterations for adaptation (initial sampling phase)}
 
 \item{quiet}{logical value to indicate wheter messages generated during
-compilation will be suppressed, as well as the progress bar during adaptation.}
+compilation will be suppressed, as well as the progress bar during
+adaptation.}
 
 \item{...}{aditional arguments passed to \code{\link[rjags]{jags.model}}.}
 }
 \value{
-\code{TPmodel} returns an object inheriting from class jags which
-can be used to generate dependent samples from the posterior distribution of
-the parameters
+\code{TPmodel} returns an object inheriting from class jags which can
+  be used to generate dependent samples from the posterior distribution of
+  the parameters
 }
 \description{
-This function is a wrapper of \code{\link[rjags]{jags.model}}. It receives a
-named list containing the data, a model string returned by either
-\code{\link{jagsOneBaseline}}, \code{\link{jagsTwoBaselines}} or
-\code{\link{jagsTwoBaselinesFull}}, and creates a JAGS model object.
+This function is a wrapper of \code{\link[rjags]{jags.model}}. It receives an
+isotopeData class object containing the data, a model string returned by
+either \code{\link{jagsOneBaseline}}, \code{\link{jagsTwoBaselines}},
+\code{\link{jagsTwoBaselinesFull}} or \code{\link{jagsBayesianModel}}, and
+creates a JAGS model object.
 }
 \examples{
 isotopeData <- generateTPData()

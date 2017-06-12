@@ -1,45 +1,45 @@
-#' A function to generate random stable isotope data for trophic position
-#' calculation
+#'A function to generate random stable isotope data for trophic position
+#'calculation
 #'
-#' This function generates random stable isotope (d13C and d15N) data for using
-#' basic functions of tRophicPosition package.
+#'This function generates random stable isotope (d13C and d15N) data to use
+#'basic functions and calculations coded within the package.
 #'
-#' @param n.baselines number of baselines (could be 1 or 2), default is 2.
-#' @param n.obsB number of observations for baselines. Default is 25.
-#' @param dNb1 mean value for d15N of baseline 1. Default is a random number
-#' between -5 and 5.
-#' @param sd.dNb1 standard deviation for d15N of baseline 1.
-#' @param dCb1 mean value for d13C of baseline 1.
-#' @param sd.dCb1 standard deviation for d13C of baseline 1.
-#' @param dNb2 mean value for d15N of baseline 2.
-#' @param sd.dNb2 standard deviation for d15N of baseline 2.
-#' @param dCb2 mean value for d13C of baseline 2.
-#' @param sd.dCb2 standard deviation for d13C of baseline 2.
-#' @param consumer string for consumer.
-#' @param n.obsC number of observations for consumer. Default is 25.
-#' @param dNc mean value for d15N of consumer. Default value is dNb1 multiplied
-#' 2 times the trophic discrimination factor.
-#' @param sd.dNc standard deviation for d15N of consumer.
-#' @param dCc mean value for d13C of consumer.
-#' @param sd.dCc standard deviation for d13C of consumer.
-#' @param DeltaN mean value for trophic discrimination factor of nitrogen.
-#' Default value is 3.4.
-#' @param sd.DeltaN standard deviation for trophic discrimination factor of
-#' nitrogen. Default value is 0.98.
-#' @param n.obsDeltaN number of observations of deltaN (trophic discrimination
-#' factor). Default value is 56.
-#' @param DeltaC mean value for trophic discrimination factor of carbon. Default
-#' value is 0.39.
-#' @param sd.DeltaC standard deviation for trophic discrimination factor for
-#' carbon. Default value is 1.3.
-#' @param n.obsDeltaC number of observations of DeltaC (trophic discrimination
-#' factor). Default is 107.
-#' @param seed numerical value to get reproducible results.
+#'@param n.baselines number of baselines (could be 1 or 2), default is 2.
+#'@param n.obsB number of observations for baselines. Default is 25.
+#'@param dNb1 mean value for d15N of baseline 1. Default is a random number
+#'  between -5 and 5.
+#'@param sd.dNb1 standard deviation for d15N of baseline 1.
+#'@param dCb1 mean value for d13C of baseline 1.
+#'@param sd.dCb1 standard deviation for d13C of baseline 1.
+#'@param dNb2 mean value for d15N of baseline 2.
+#'@param sd.dNb2 standard deviation for d15N of baseline 2.
+#'@param dCb2 mean value for d13C of baseline 2.
+#'@param sd.dCb2 standard deviation for d13C of baseline 2.
+#'@param consumer string for consumer.
+#'@param n.obsC number of observations for consumer. Default is 25.
+#'@param dNc mean value for d15N of consumer. Default value is dNb1 multiplied 2
+#'  times the trophic discrimination factor.
+#'@param sd.dNc standard deviation for d15N of consumer.
+#'@param dCc mean value for d13C of consumer.
+#'@param sd.dCc standard deviation for d13C of consumer.
+#'@param DeltaN mean value for trophic discrimination factor of nitrogen.
+#'  Default value is 3.4.
+#'@param sd.DeltaN standard deviation for trophic discrimination factor of
+#'  nitrogen. Default value is 0.98.
+#'@param n.obsDeltaN number of observations of deltaN (trophic discrimination
+#'  factor). Default value is 56.
+#'@param DeltaC mean value for trophic discrimination factor of carbon. Default
+#'  value is 0.39.
+#'@param sd.DeltaC standard deviation for trophic discrimination factor for
+#'  carbon. Default value is 1.3.
+#'@param n.obsDeltaC number of observations of DeltaC (trophic discrimination
+#'  factor). Default is 107.
+#'@param seed numerical value to get reproducible results.
 #'
-#' @return An isotopeData class object (named list) with dNb1, dNc and deltaN
-#' randomly generated observations. If n.baselines = 2, then dCb1, dNb2, dCb2,
-#' dCc and deltaC are also returned.
-#' @export
+#'@return An isotopeData class object (named list) with dNb1, dNc and deltaN
+#'  randomly generated observations. If n.baselines = 2, then dCb1, dNb2, dCb2,
+#'  dCc and deltaC are also returned.
+#'@export
 #'
 #' @examples
 #' ## Good data

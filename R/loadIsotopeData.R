@@ -1,37 +1,39 @@
 #' Extract and load stable isotope data for selected consumers from a data frame
 #'
 #' This function extracts only selected consumers/species with their respective
-#' baseline and returns an isotopeData class object. It is useful when there are
-#' a lot of information in a data frame and you want to calculate trophic
-#' position only for selected consumers in one or more communities.
+#' baseline(s) and returns an isotopeData class object (or list). It is useful
+#' when there are a lot of information in a data frame and you want to calculate
+#' trophic position only for selected consumers in one or more communities.
 #'
-#' @param df data.frame containing raw isotope data with at least one grouping
-#' column.
+#' @param df data frame containing raw isotope data with at least one grouping
+#'   column.
 #' @param species string or character vector indicating which consumer/species
-#' will be extracted.
-#' @param speciesColumn string of the column where species/consumers are grouped.
+#'   will be extracted.
+#' @param speciesColumn string of the column where species/consumers are
+#'   grouped.
 #' @param community string or character vector indicating which community(ies)
-#' will be extracted.
+#'   will be extracted.
 #' @param communityColumn string of the column where communities are grouped.
 #' @param b1 string or character vector indicating which baseline(s) will be
-#' extracted as baseline 1.
-#' @param b2  string or character vector indicating which baseline(s) will be
-#' extracted as baseline 2.
+#'   extracted as baseline 1.
+#' @param b2 string or character vector indicating which baseline(s) will be
+#'   extracted as baseline 2.
 #' @param baselineColumn string of the column where baselines are grouped.
 #' @param d13C string indicating from which column extract d13C isotope values.
 #' @param d15N string indicating from which column extract d15N isotope values.
 #' @param deltaC vector of values with trophic discrimination factor for carbon.
-#' If NULL it will use Post's assumptions (56 values with 3.4 mean +- 0.98 sd).
-#' @param deltaN vector of values with trophic discrimination factor for nitrogen.
-#' If NULL it will use Post's assumptions (107 values with 0.39 mean +- 1.3 sd).
+#'   If NULL it will use Post's assumptions (56 values with 3.4 mean +- 0.98
+#'   sd).
+#' @param deltaN vector of values with trophic discrimination factor for
+#'   nitrogen. If NULL it will use Post's assumptions (107 values with 0.39 mean
+#'   +- 1.3 sd).
 #' @param seed numerical value to get reproducible results with trophic
-#' discrimination factors (because they are simulated each time this function is
-#' called).
+#'   discrimination factors (because they are simulated each time this function
+#'   is called). By default, is 3.
 #'
 #' @return an isotopeData class object if one consumer and one community are
-#' selected.
-#' a list of isotopeData class objects if more than one consumer or more than
-#' one community are selected.
+#'   selected. A list of isotopeData class objects if more than one consumer or
+#'   more than one community are selected.
 #' @export
 #'
 #' @examples

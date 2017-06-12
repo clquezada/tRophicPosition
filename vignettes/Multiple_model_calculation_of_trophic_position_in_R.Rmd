@@ -34,7 +34,7 @@ If you are working in Windows, `devtools` also requires [Rtools](http://bit.ly/2
 Besides installing `devtools`, you must also install [JAGS](http://mcmc-jags.sourceforge.net/) (Just Another Gibbs Sampler), which is at the core of the Bayesian model analysis supporting `tRophicPosition`.
 
 ```{r, eval = FALSE}
-install_github("clquezada/tRophicPosition")
+install_github("clquezada/tRophicPosition", build_vignettes = TRUE)
 ```
 
 After installing `tRophicPosition`, it should be loaded into memory, which automatically reports the version of the software (we need at least 0.6.8-8 to use the routines described in this vignette).
@@ -85,7 +85,7 @@ devtools::use_data(Bilagay_models, internal = TRUE, overwrite = TRUE)
 ```
 
 ```{r, echo = FALSE}
-consumer1_models <- multiModelTP(consumer1, n.adapt = 500, n.iter = 500, burnin = 500)
+consumer1_models <- multiModelTP(consumer1, n.adapt = 200, n.iter = 200, burnin = 200)
 consumer1_models <- tRophicPosition:::Bilagay_models$consumer1_models
 ```
 
@@ -122,7 +122,7 @@ devtools::use_data(Bilagay_models, internal = TRUE, overwrite = TRUE)
 ```
 
 ```{r, echo = FALSE}
-consumer2_models <- multiModelTP(consumer2, n.adapt = 500, n.iter = 500, burnin = 500)
+consumer2_models <- multiModelTP(consumer2, n.adapt = 200, n.iter = 200, burnin = 200)
 consumer2_models <- tRophicPosition:::Bilagay_models$consumer2_models
 ```
 

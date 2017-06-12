@@ -3,7 +3,7 @@
 \name{credibilityIntervals}
 \alias{credibilityIntervals}
 \title{Plot credibility intervals and central tendency descriptor from posterior
-distributions of trophic position and/or alpha}
+distributions of trophic position and/or alpha parameter}
 \usage{
 credibilityIntervals(df, x = "species", plotAlpha = TRUE, y1 = "mode",
   y1min = "lower", y1max = "upper", y1lim = NULL, y2 = "alpha.mode",
@@ -11,33 +11,33 @@ credibilityIntervals(df, x = "species", plotAlpha = TRUE, y1 = "mode",
   ylab1 = "Posterior trophic position", ylab2 = "Posterior alpha", ...)
 }
 \arguments{
-\item{df}{data.frame at least with 4 columns, a grouping variable, maximum,
-minimum and a central tendency descriptor (median, mode).}
+\item{df}{data frame with at least 4 columns, a grouping variable, maximum,
+minimum and a central tendency descriptor (median, mode, etc.).}
 
 \item{x}{string defining the grouping variable.}
 
-\item{plotAlpha}{logical. If TRUE it expects that the data.frame has at least
+\item{plotAlpha}{logical. If TRUE it expects that the data frame has at least
 7 columns, another descriptor of central tendency, its maximum and minimum.}
 
 \item{y1}{string of the column with the central tendency descriptor of
-trophic position. By default is the mode.}
+trophic position. By default, is the mode.}
 
-\item{y1min}{lower value plotted for trophic position. For the credibility
-interval, this value would be 0.025 percentil.}
+\item{y1min}{lower value plotted for trophic position. For the 95%
+credibility interval, this value would be 0.025 percentile.}
 
-\item{y1max}{higher value plotted for trophic position. For the credibility
-interval, this value would be 0.975 percentil.}
+\item{y1max}{higher value plotted for trophic position. For the 95%
+credibility interval, this value would be 0.975 percentile.}
 
 \item{y1lim}{vector of length 2, with limits of the y axis of trophic
 position.}
 
 \item{y2}{string of the column with the central tendency descriptor of alpha.}
 
-\item{y2min}{lower value plotted for alpha. For the credibility interval,
-this value would be percentil 0.025.}
+\item{y2min}{lower value plotted for alpha. For the 95% credibility interval,
+this value would be percentile 0.025.}
 
-\item{y2max}{higher value plotted for alpha. For the credibility interval,
-this value would be percentil 0.0975.}
+\item{y2max}{higher value plotted for alpha. For the 95% credibility
+interval, this value would be percentile 0.0975.}
 
 \item{xlab}{string of the label of the X axis.}
 
@@ -48,16 +48,19 @@ this value would be percentil 0.0975.}
 \item{...}{additional parameters passed to credibilityIntervals().}
 }
 \value{
-a gtable (if alpha is plotted) with two ggplot objects
-a ggplot object (if alpha is not plotted)
+a gtable (if alpha is plotted) with two ggplot2 objects or a ggplot2
+  object (if alpha is not plotted)
 }
 \description{
-Plot credibility intervals and central tendency descriptor from posterior
-distributions of trophic position and/or alpha
+This function plots a data frame in ggplot2 format (variables in columns,
+observations in rows), likely returned by the functions
+\code{\link{multiModelTP}} and \code{\link{multiSpeciesTP}}. This is
+especially useful when there are several species or communities to compare,
+and a combined plot is preferred.
 }
 \examples{
 isotopeData <- generateTPData()
-models <- multiModelTP(isotopeData, n.adapt = 500, n.iter = 500,
-burnin = 500)
+models <- multiModelTP(isotopeData, n.adapt = 200, n.iter = 200,
+burnin = 200)
 credibilityIntervals(models$gg, x = "model")
 }

@@ -8,8 +8,9 @@ posteriorTP(model, variable.names = c("TP", "muDeltaN"), n.iter = 10000,
   thin = 10, quiet = FALSE, ...)
 }
 \arguments{
-\item{model}{a JAGS model object returned by any of the models returned by
-jagsBayesianModel.}
+\item{model}{a JAGS model object returned by any of functions
+\code{\link{jagsOneBaseline}}, \code{\link{jagsTwoBaselines}},
+\code{\link{jagsTwoBaselinesFull}} or \code{\link{jagsBayesianModel}}}
 
 \item{variable.names}{vector of characters giving the names of variables to
 be monitored.}
@@ -18,7 +19,7 @@ be monitored.}
 
 \item{thin}{thinning interval to get posterior samples.}
 
-\item{quiet}{logical value to indicate wheter messages generated during
+\item{quiet}{logical value to indicate whether messages generated during
 posterior sampling will be suppressed, as well as the progress bar.}
 
 \item{...}{additional arguments passed to \code{\link[rjags]{coda.samples}}.}
@@ -29,7 +30,7 @@ mcmc.list object containing posterior samples of the Bayesian model.
 \description{
 This is a wrapper of \code{\link[rjags]{coda.samples}} which in turn, is a
 wrapper of \code{\link[rjags]{jags.samples}}. It extracts random samples from
- the posterior distribution of the parameters of a jags model.
+the posterior distribution of the parameters of a jags model.
 }
 \examples{
 isotopeData <- generateTPData()

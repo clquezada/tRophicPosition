@@ -11,26 +11,28 @@ multiModelTP(siData = siData, lambda = 2, n.chains = 2, n.adapt = 20000,
 \arguments{
 \item{siData}{an isotopeData class object.}
 
-\item{lambda}{numerical value, represents the trophic level for baseline(s).}
+\item{lambda}{numerical value, represents the trophic level of baseline(s).}
 
 \item{n.chains}{number of parallel chains for the model. If convergence
 diagnostics (such as Gelman-Rubin) are printed, n.chains needs to be >= 2.}
 
 \item{n.adapt}{number of adaptive iterations, before the actual sampling.}
 
-\item{n.iter}{number of iterations for Bayesian modelling.}
+\item{n.iter}{number of iterations for Bayesian modelling (posterior
+sampling).}
 
 \item{burnin}{number of iterations discarded as burn in.}
 
-\item{thin}{number of samples discarded while performing posterior sampling.}
+\item{thin}{thinning. Number of samples discarded while performing posterior
+sampling.}
 
 \item{models}{string or list representing Bayesian models. At the moment they
 can be "oneBaseline", "twoBaselines" and/or "twoBaselinesFull".}
 
-\item{print}{logical value to indicate wheter Gelman and Rubin's convergence
+\item{print}{logical value to indicate whether Gelman and Rubin's convergence
 diagnostic and summary of samples are printed.}
 
-\item{quiet}{logical value to indicate wheter messages generated during
+\item{quiet}{logical value to indicate whether messages generated during
 compilation will be suppressed, as well as the progress bar during
 adaptation.}
 
@@ -38,10 +40,10 @@ adaptation.}
 }
 \value{
 For each model calculated, returns a data frame of 4 elements with
-raw posterior samples, a list with posterior TP samples, a list with
-posterior muDeltaN (if one baseline model was chosen) or alpha (if a two
-baselines model was chosen) and a data frame with a summary of posterior
-samples named gg.
+  raw posterior samples, a list with posterior TP samples, a list with
+  posterior muDeltaN (if one baseline model was chosen) or alpha (if a two
+  baselines model was chosen) and a data frame with a summary of posterior
+  samples named gg.
 }
 \description{
 This function takes an isotopeData class object and calculates by default

@@ -18,33 +18,35 @@ diagnostics (such as Gelman-Rubin) are printed, n.chains needs to be >= 2.}
 
 \item{n.adapt}{number of adaptive iterations, before the actual sampling.}
 
-\item{n.iter}{number of iterations for Bayesian modelling.}
+\item{n.iter}{number of iterations for Bayesian modelling (posterior
+sampling).}
 
 \item{burnin}{number of iterations discarded as burn in.}
 
-\item{thin}{number of samples discarded while performing posterior sampling.}
+\item{thin}{thinning. Number of samples discarded while performing posterior
+sampling.}
 
 \item{model}{string or list representing Bayesian models. At the moment they
 can be "oneBaseline", "twoBaselines" and/or "twoBaselinesFull".}
 
-\item{print}{logical value to indicate wheter Gelman and Rubin's convergence
+\item{print}{logical value to indicate whether Gelman and Rubin's convergence
 diagnostic and summary of samples are printed.}
 
-\item{quiet}{logical value to indicate wheter messages generated during
+\item{quiet}{logical value to indicate whether messages generated during
 compilation will be suppressed, as well as the progress bar during
 adaptation.}
 
 \item{...}{additional arguments passed to this function.}
 }
 \value{
-A list of 4 elements. The output is organised as lists nested.
-The first element (multiSpeciesTP) has the gg data frame returned by
-multiModelTP, the second element (df) is a data frame with summary
-information for all consumers and models, the third element (TPs) has the
-raw posterior trophic position for all consumers and models, and the last
-element (Alphas) has raw posterior of muDeltaN (if one baseline model was
-chosen) or alpha (if a two baselines model was chosen) for all consumers and
-models.
+A list of 4 elements. The output is organised as lists nested. The
+  first element (multiSpeciesTP) has the gg data frame returned by
+  multiModelTP, the second element (df) is a data frame with summary
+  information for all consumers and models, the third element (TPs) has the
+  raw posterior trophic position for all consumers and models, and the last
+  element (Alphas) has raw posterior of muDeltaN (if one baseline model was
+  chosen) or alpha (if a two baselines model was chosen) for all consumers
+  and models.
 }
 \description{
 This function takes a named list of isotopeClass objects and calculates one
