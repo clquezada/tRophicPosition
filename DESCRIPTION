@@ -22,7 +22,7 @@ Author: Claudio Quezada-Romegialli, Andrew L Jackson, Chris Harrod
 URL: https://github.com/AndrewLJackson/tRophicPosition
 BugReports: https://groups.google.com/d/forum/trophicposition-support
 Maintainer: Claudio Quezada-Romegialli <clquezada@harrodlab.net>
-Description: This package estimates the trophic position of a consumer relative 
+Description: Estimates the trophic position of a consumer relative 
     to a baseline species. It implements a Bayesian approach which combines an 
     interface to the JAGS MCMC library of rjags and stable isotopes. This is the
     version 0.7, so users are encouraged to test the  package and send bugs and 
