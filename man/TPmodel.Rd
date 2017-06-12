@@ -16,11 +16,11 @@ TPmodel(data = NULL, model.string = NULL, n.chains = 2, n.adapt = 10000,
 
 \item{n.adapt}{number of iterations for adaptation (initial sampling phase)}
 
-\item{quiet}{logical value to indicate wheter messages generated during
+\item{quiet}{logical value to indicate whether messages generated during
 compilation will be suppressed, as well as the progress bar during
 adaptation.}
 
-\item{...}{aditional arguments passed to \code{\link[rjags]{jags.model}}.}
+\item{...}{additional arguments passed to \code{\link[rjags]{jags.model}}.}
 }
 \value{
 \code{TPmodel} returns an object inheriting from class jags which can
