@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/49386535.svg)](https://zenodo.org/badge/latestdoi/49386535)
 # tRophicPosition
 `tRophicPosition`, is an R package incorporating a Bayesian model for the calculation of consumer trophic position using stable isotopes with one or two baselines. It uses the powerful approach of Markov Chain Monte Carlo simulations provided by [JAGS](http://mcmc-jags.sourceforge.net) and the statistical language [R](https://www.r-project.org).
 
