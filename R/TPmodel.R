@@ -10,10 +10,10 @@
 #' @param n.chains number of parallel chains for the model.
 #' @param model.string model string containing a description of the model.
 #' @param n.adapt number of iterations for adaptation (initial sampling phase)
-#' @param quiet logical value to indicate wheter messages generated during
+#' @param quiet logical value to indicate whether messages generated during
 #'   compilation will be suppressed, as well as the progress bar during
 #'   adaptation.
-#' @param ... aditional arguments passed to \code{\link[rjags]{jags.model}}.
+#' @param ... additional arguments passed to \code{\link[rjags]{jags.model}}.
 #'
 #' @return \code{TPmodel} returns an object inheriting from class jags which can
 #'   be used to generate dependent samples from the posterior distribution of
