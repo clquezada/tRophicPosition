@@ -11,7 +11,7 @@
 
 \item{print}{a logical value to indicate whether the summary is printed.}
 
-\item{round_dec}{number of decimals keeped.}
+\item{round_dec}{number of decimals kept.}
 
 \item{...}{additional arguments passed to this function.}
 }

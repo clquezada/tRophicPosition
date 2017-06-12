@@ -1,33 +1,57 @@
-#' Defines the jags model to fit the single baseline trophic position model
+#' Defines a jags Bayesian model to fit a single baseline trophic position model
 #'
-#' Takes some parameters and returns a jags model object as a
-#' character string for passing to \code{\link[rjags]{jags.model}}. Although
-#' it is possible to use a number of predefined or customized
-#' distributions (see
-#' \href{https://sourceforge.net/projects/mcmc-jags/files/Manuals/}{JAGS documentation}),
-#'  it is likelly that most of the time
-#' you will be using a normal distribution. This is the default option (i.e.
-#' when the function is called without arguments) and it is like this:
-#' "mu ~ dnorm(0, 0.0001)". In this case, a prior of normally distributed mu is
-#' defined, with a mean 0, and a standard deviation of 0.0001. This is a normal
-#' distributed prior, although uninformative. You might want to change the mean
-#' and/or the standard deviation according to your previously knowledge of the
-#' system you are working on. As well as the prior for mu, JAGS uses "tau",
-#' which is the precision. Precision is a deterministic function (instead of the
+#' This function takes some parameters and returns a jags model object as a
+#' character string for passing to \code{\link[rjags]{jags.model}}.
+#'
+#' The single baseline trophic position model is defined as:
+#'
+#' \deqn{dNc = dNb + deltaN * (TP - lambda)}
+#'
+#' where dNc are d15N values of consumer, dNb1 are d15N values of baseline,
+#' deltaN is the trophic discrimination factor for N, TP is trophic position of
+#' the consumer and lamba is the trophic level of baseline. Furthermore, as a
+#' Bayesian approach, dNb, deltaN and dNc are defined as random parameters with
+#' a normal distribution with mean mu_i and precision tau_i, TP is a random
+#' parameter with a uniform distribution and lambda is a constant. All these
+#' distributions can be changed modifying them as priors, while defining lambda
+#' within the call to the function.
+#'
+#' Although it is possible to use a number of predefined or customized
+#' distributions (see distribution aliases in
+#' \href{https://sourceforge.net/projects/mcmc-jags/files/Manuals/}{JAGS
+#' documentation}), it is likely that most of the time you will be using a
+#' normal distribution as prior for most parameters. This is the default option
+#' (i.e. when the function is called without arguments). To change it, you need
+#' to indicate a mean and standard deviation for the parameter of interest, for
+#' example "dnorm(0, 0.0001)". Here, a prior of normally distributed mu is
+#' defined, with a mean 0, and a standard deviation of 0.0001. This constitutes
+#' a normally distributed prior, although uninformative. You might want to
+#' change the mean and/or the standard deviation according to your prior
+#' knowledge of the system/consumer you are working on. As well as the priors
+#' for mu, JAGS uses "tau", which is the precision for defining the standard
+#' deviation of mu. Precision is a deterministic function (instead of the
 #' distributional "~"), and it is calculated as "tau <- power(sigma, -2)", thus
-#' you have to define as well sigma, which stands for the standard deviation.
+#' you could define as well sigma_i, which stands for the standard deviation of
+#' the parameter of interest.
 #'
-#' @param lambda an integer indicating the trophic position of the baseline.
-#' @param muB a distribution defining prior for mean (mu) of baseline.
-#' @param sigmaB a distribution defining sigma (std dev) of baseline.
-#' @param muDeltaN a distribution defining prior for the mean (mu) of
-#' deltaN. deltaN stands for trophic enrichment factor of Nitrogen.
-#' @param sigmaDeltaN a distribution defining sigma (std dev) of deltaN.
-#' @param TP a distribution defining prior of trophic position.
-#' @param sigma a value defining sigma (std dev) of baseline.
+#' @param lambda an integer indicating the trophic level of the baseline.
+#'   Default is 2.
+#' @param muB a distribution defining prior for mean (mu) of baseline. By
+#'   default is dnorm(0, 0.0001).
+#' @param sigmaB a distribution defining sigma (standard deviation) of baseline.
+#'   By default is dunif(0, 100).
+#' @param muDeltaN a distribution defining prior for the mean (mu) of deltaN.
+#'   deltaN stands for trophic discrimination factor of Nitrogen. By default is
+#'   dnorm(0, 0.0001).
+#' @param sigmaDeltaN a distribution defining sigma (standard deviation) of
+#'   deltaN. By default is dunif(0, 100).
+#' @param TP a distribution defining prior of trophic position. By default is
+#'   dunif(lambda, 10), with lambda = 2 if no defined before.
+#' @param sigma a value defining sigma (standard deviation) of baseline. By
+#'   default is dunif(0, 100).
 #' @param ... additional arguments passed to jagsOneBaseline.
 #'
-#' @return A jags model as a character string
+#' @return A jags model (BUGS-language) as a character string
 #'
 #' @export
 

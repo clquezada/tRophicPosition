@@ -1,22 +1,21 @@
 #' Trophic discrimination factors from bibliography
 #'
-#' \code{TDF} return trophic discrimination factors (TDF), given an author, element
-#' and a type. For convenience 'type' includes a number of categories depending
-#' on the author. At the moment it includes TDF data from Post (2002) and from
-#' McCutchan et al (2003).
-#'
+#' This function returns trophic discrimination factors (TDF), given an author,
+#' element and a type. For convenience 'type' includes a number of categories
+#' depending on the author. At the moment it includes TDF data from Post (2002)
+#' and from McCutchan et al (2003).
 #'
 #' @param author could be either "Post" or "McCutchan" at the moment.
 #' @param element can be "both", "N" or "C"
 #' @param type this argument only works for "McCutchan" author (their Table 3).
-#' "all" returns all TDF data; "whole" and "muscle" returns TDF separated per
-#' type analysis; "acidified" and "unacidified" returns TDF separated per
-#' acidification; and "Rainbow Trout" and "Brook Trout" returns TDF separated
-#' per fish species (according to their Table 1).
+#'   "all" returns all TDF data; "whole" and "muscle" returns TDF separated per
+#'   type analysis; "acidified" and "unacidified" returns TDF separated per
+#'   acidification; and "Rainbow Trout" and "Brook Trout" returns TDF separated
+#'   per fish species (according to their Table 1).
 #' @param seed integer to have replicated results
 #'
-#' @return a list (if element = "both") or a vector (if element ="N" or
-#'  element = "C") containing TDF values
+#' @return a list (if element = "both") or a vector (if element ="N" or element
+#'   = "C") containing TDF values
 #' @export
 #'
 #' @examples TDF(author = "McCutchan", element = "N")

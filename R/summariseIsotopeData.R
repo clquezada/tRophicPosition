@@ -1,17 +1,17 @@
-#' Function that summarise a data frame containing a stable isotope values (d13C
+#' Function that summarises a data frame containing stable isotope values (d13C
 #' and d15N) grouping by Species and FG columns
 #'
 #' A wrapper of plyr:ddply to summarise a data frame.
 #'
 #' @param df a data frame that contains the isotope values. It needs to have the
-#'  following columns: d13C, d15N, Species and FG. Species stands for the
-#'  scientific name (or common name), and FG stands for the functional group for
-#'  each species. If the data frame do not have Species and FG columns, it will
-#'  raise an error. If the columns change their names, they need to be stated
-#'  as well in the grouping variable.
+#'   following columns: d13C, d15N, Species and FG. Species stands for the
+#'   scientific name (or common name), and FG stands for the functional group
+#'   for each species. If the data frame does not have Species and FG columns,
+#'   it will raise an error. If the columns change their names, they need to be
+#'   stated as well in the grouping variable.
 #' @param grouping a vector with the name of the columns (variables) that will
-#' be used to summarize, and plot the data frame.
-#' @param printSummary a boolean flag indicating whether the summary is printed.
+#'   be used to summarize, and plot the data frame.
+#' @param printSummary logical value indicating whether the summary is printed.
 #' @param ... optional arguments that are passed to the function for later use.
 #'
 #' @return a data frame with the summary of the data frame.

@@ -2,12 +2,12 @@
 % Please edit documentation in R/getMode.R
 \name{getPosteriorMode}
 \alias{getPosteriorMode}
-\title{Function to get mode from posterior distribution}
+\title{Function to get mode from a posterior distribution}
 \usage{
 getPosteriorMode(df = NULL, round = 3)
 }
 \arguments{
-\item{df}{data.frame, list or vector with posterior distribution(s).}
+\item{df}{data frame, list or vector with posterior distribution(s).}
 
 \item{round}{numeric, number of decimals rounded.}
 }
@@ -15,10 +15,10 @@ getPosteriorMode(df = NULL, round = 3)
 a vector or a list of modes
 }
 \description{
-This function is a wrapper of \code{\link[hdrcde]{hdr}}, it returns
-one mode (if receives a vector), otherwise returns a lists of modes (if
-receives a list). If receives an mcmc object it returns the marginal
-parameter modes using Kernel density estimation
+This function is a wrapper of \code{\link[hdrcde]{hdr}}, it returns one mode
+(if receives a vector), otherwise it returns a list of modes (if receives a
+list of vectors). If receives an mcmc object it returns the marginal
+parameter mode using Kernel density estimation
 (\code{\link[MCMCglmm]{posterior.mode}}).
 }
 \examples{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/compareTwoDistributions.R
 \name{compareTwoDistributions}
 \alias{compareTwoDistributions}
-\title{Function to compare two distributions and test an hypothesis, in a Bayesian
+\title{Function to compare two distributions and test a hypothesis, in a Bayesian
 context}
 \usage{
 compareTwoDistributions(dist1 = NULL, dist2 = NULL, test = "<=",
@@ -27,7 +27,7 @@ the distributions.}
 probability given sum(dist1 "test" dist2) / length(dist1)
 }
 \description{
-Function to compare two distributions and test an hypothesis, in a Bayesian
+Function to compare two distributions and test a hypothesis, in a Bayesian
 context
 }
 \examples{

@@ -38,8 +38,8 @@ between -5 and 5.}
 
 \item{consumer}{string for consumer.}
 
-\item{dNc}{mean value for d15N of consumer. Default value is dNb1 multiplied
-2 times the trophic discrimination factor.}
+\item{dNc}{mean value for d15N of consumer. Default value is dNb1 multiplied 2
+times the trophic discrimination factor.}
 
 \item{sd.dNc}{standard deviation for d15N of consumer.}
 
@@ -69,12 +69,12 @@ factor). Default is 107.}
 }
 \value{
 An isotopeData class object (named list) with dNb1, dNc and deltaN
-randomly generated observations. If n.baselines = 2, then dCb1, dNb2, dCb2,
-dCc and deltaC are also returned.
+ randomly generated observations. If n.baselines = 2, then dCb1, dNb2, dCb2,
+ dCc and deltaC are also returned.
 }
 \description{
-This function generates random stable isotope (d13C and d15N) data for using
-basic functions of tRophicPosition package.
+This function generates random stable isotope (d13C and d15N) data to use
+basic functions and calculations coded within the package.
 }
 \examples{
 ## Good data

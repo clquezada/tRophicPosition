@@ -1,8 +1,13 @@
 ^.*\.Rproj$
-^\.Rproj\.user$
+^\.Rproj\.user\*$
 ^packrat/
+^\.git$
 ^\.Rprofile$
 ^README-.*\.png$
 ^README\.Rmd$
-cran-comments.md
+cran-comments\.md
 ^revdep$
+\.gitignore$
+\.Rhistory
+
+^\.Rproj\.user$

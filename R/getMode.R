@@ -1,12 +1,12 @@
-#' Function to get mode from posterior distribution
+#' Function to get mode from a posterior distribution
 #'
-#' This function is a wrapper of \code{\link[hdrcde]{hdr}}, it returns
-#' one mode (if receives a vector), otherwise returns a lists of modes (if
-#' receives a list). If receives an mcmc object it returns the marginal
-#' parameter modes using Kernel density estimation
+#' This function is a wrapper of \code{\link[hdrcde]{hdr}}, it returns one mode
+#' (if receives a vector), otherwise it returns a list of modes (if receives a
+#' list of vectors). If receives an mcmc object it returns the marginal
+#' parameter mode using Kernel density estimation
 #' (\code{\link[MCMCglmm]{posterior.mode}}).
 #'
-#' @param df data.frame, list or vector with posterior distribution(s).
+#' @param df data frame, list or vector with posterior distribution(s).
 #' @param round numeric, number of decimals rounded.
 #'
 #' @return a vector or a list of modes

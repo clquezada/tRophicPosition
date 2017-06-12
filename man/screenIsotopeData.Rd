@@ -31,11 +31,10 @@ above and to the right, "right", "above" or "none".}
 none
 }
 \description{
-This function receives a named list of vectors, and plots a scatterplot with
- 2 sources and a consumer. Depending on the length of the named list, this
- function plots one (length = 6), or two (length = 8) baselines. Also the
- user can states whether he/she wants a density function ploted above, to the
- right, at both sides or does not want it to be ploted.
+This function receives a named list of vectors (isotopeData class object),
+and plots a biplot with 2 sources and a consumer. The user can states whether
+he/she wants a density function plotted above, to the right, at both sides or
+does not want it to be plotted.
 }
 \examples{
 a <- generateTPData()

@@ -1,4 +1,4 @@
-#' Function to compare two distributions and test an hypothesis, in a Bayesian
+#' Function to compare two distributions and test a hypothesis, in a Bayesian
 #' context
 #'
 #' @param dist1 A collection of numerical values (posterior distribution).
@@ -7,8 +7,8 @@
 #' "<=", ">" or ">=".
 #' @param sample If sample is numeric, it will take 'sample' elements of each of
 #' the distributions.
-#' @param ... extra arguments are passed to compareTwoDistributions().
 #' @param round integer to indicate number of decimals kept.
+#' @param ... extra arguments are passed to compareTwoDistributions().
 #'
 #' @return probability given sum(dist1 "test" dist2) / length(dist1)
 #' @export

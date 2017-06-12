@@ -1,12 +1,12 @@
-#' Returns a JAGS Bayesian model to use with tRophicPosition.
+#' Returns a JAGS-based Bayesian model to use within tRophicPosition.
 #'
 #' This function returns a string with a Bayesian model to be used with trophic
-#' position calculation
+#' position calculations
 #'
 #' @param model string. Can be "oneBaseline", "twoBaselines" or
-#' "twoBaselinesFull" at the moment.
+#'   "twoBaselinesFull" at the moment.
 #' @param ... additional arguments passed to \code{\link{jagsOneBaseline}},
-#' \code{\link{jagsTwoBaselines}} or \code{\link{jagsTwoBaselinesFull}}.
+#'   \code{\link{jagsTwoBaselines}} or \code{\link{jagsTwoBaselinesFull}}.
 #'
 #' @return a jags model as a character string
 #' @export

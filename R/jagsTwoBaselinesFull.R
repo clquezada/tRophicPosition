@@ -1,67 +1,113 @@
-#' Defines the jags model to fit the two baselines trophic position full model
+#' Defines a jags Bayesian model to fit a two baselines trophic position full
+#' model (with fractionation for C)
 #'
-#' Takes some parameters and returns a jags model object as a
-#' character string for passing to \code{\link[rjags]{jags.model}}. Although
-#' it is possible to use a number of predefined or customized
-#' distributions (see
-#' \href{https://sourceforge.net/projects/mcmc-jags/files/Manuals/}{JAGS documentation}),
-#'  it is likelly that most of the time
-#' you will be using a normal distribution. This is the default option (i.e.
-#' when the function is called without arguments) and it is like this:
-#' "mu ~ dnorm(0, 0.0001)". In this case, a prior of normally distributed mu is
-#' defined, with a mean 0, and a standard deviation of 0.0001. This is a normal
-#' distributed prior, although uninformative. You might want to change the mean
-#' and/or the standard deviation according to your previously knowledge of the
-#' system you are working on. As well as the prior for mu, JAGS uses "tau",
-#' which is the precision. Precision is a deterministic function (instead of the
-#' distributional "~"), and it is calculated as "tau <- power(sigma, -2)", thus
-#' you have to define as well sigma, which stands for the standard deviation.
+#' Takes some parameters and returns a jags model object as a character string
+#' for passing to \code{\link[rjags]{jags.model}}.
 #'
+#' The two baselines trophic position full model is defined as:
+#'
+#' \deqn{dNc ~ dnorm(deltaN * (TP - lambda) + dNb1*alpha + dNb2 * (1 - alpha),
+#' tauNc)} and \deqn{dCc ~ dnorm(dCb2 + (deltaC * (TP-lambda)) + (alpha * (dCb1
+#' - dCb2)), tauCc))}
+#'
+#' where dNc and dCc are d15N and d13C values of consumer, dNb1 and dCb1 are
+#' d15N and d13C values of baseline 1, dNb2 and dCb2 are d15N and d13C values of
+#' baseline 2, alpha is the relative proportion of N derived from baseline 1,
+#' deltaN is the trophic discrimination factor for N, deltaC is the trophic
+#' discrimination factor for C, TP is trophic position of the consumer and
+#' lambda is the trophic level of baselines.
+#'
+#' In this Bayesian model, both dNc and dCc are modelled as having a normal
+#' distribution with means calculated with above equations and precision (tauNc
+#' and tauCc) calculated as standard deviation ^-2. Furthermore, dNb1, dCb1,
+#' dNb2, dCb2, deltaN and deltaC are defined as random parameters with a normal
+#' distribution with mean mu_i and precision tau_i, TP is a random parameter
+#' with a uniform distribution, alpha is a random parameter with a beta
+#' distribution and lambda is a constant. All these distributions can be changed
+#' modifying them as priors, while defining lambda within the call to the
+#' function.
+#'
+#' You might want to change the mean, standard deviation or other parameters of
+#' the distributions according to your prior knowledge of the system/consumer
+#' you are working on. Although it is possible to use a number of predefined or
+#' customized distributions (see distribution aliases in
+#' \href{https://sourceforge.net/projects/mcmc-jags/files/Manuals/}{JAGS
+#' documentation}), it is likely that most of the time you will be using a
+#' normal distribution as prior for most parameters. This is the default option
+#' (i.e. when the function is called without arguments). To change it, you need
+#' to indicate a mean and standard deviation for the i-est parameter of
+#' interest, for example "dnorm(0, 0.0001)". Here, a prior of normally
+#' distributed mu_i is defined, with a mean 0, and a standard deviation of
+#' 0.0001. This constitutes an uninformative and normally distributed prior, for
+#' the mean of the i-est parameter.  As well as the priors for mu_i, JAGS uses
+#' "tau", which is the precision for defining the standard deviation of mu_i.
+#' Precision is a deterministic function (instead of the distributional "~"),
+#' and it is calculated as "tau_i <- power(sigma_i, -2)", thus you could define
+#' as well sigma_i, which stands for the standard deviation of the i-est
+#' parameter of interest. In the case of alpha, the default is a beta
+#' distribution with parameters a = 1 and b = 1.
+
+#'
+#' @param sigmaNc a distribution defining sigma (standard deviation) for N of
+#'   consumer. Default is dunif(0, 100).
+#' @param sigmaCc a distribution defining sigma (standard deviation) for C of
+#'   consumer. Default is dunif(0, 100).
 #' @param muCb1 a distribution defining prior for mean (mu) for C of baseline 1.
-#' @param sigmaCb1 a distribution defining sigma (std dev) for C of baseline 1.
+#'   Default is dnorm(0, 0.0001).
+#' @param sigmaCb1 a distribution defining sigma (standard deviation) for C of
+#'   baseline 1. Default is dunif(0, 100).
 #' @param muNb1 a distribution defining prior for mean (mu) for N of baseline 1.
-#' @param sigmaNb1  a distribution defining sigma (std dev) for N of baseline 1.
+#'   dnorm(0, 0.0001)
+#' @param sigmaNb1 a distribution defining sigma (standard deviation) for N of
+#'   baseline 1. Default is dunif(0, 100).
 #' @param muCb2 a distribution defining prior for mean (mu) for C of baseline 2.
-#' @param sigmaCb2  a distribution defining sigma (std dev) for C of baseline 2.
+#'   dnorm(0, 0.0001)
+#' @param sigmaCb2  a distribution defining sigma (standard deviation) for C of
+#'   baseline 2. Default is dunif(0, 100).
 #' @param muNb2 a distribution defining prior for mean (mu) for N of baseline 2.
-#' @param sigmaNb2 a distribution defining sigma (std dev) for N of baseline 2.
-#' @param alpha  a distribution defining alpha (mixing model between 2 sources).
-#' @param sigmaCc a distribution defining sigma (std dev) for C of consumer.
-#' @param TP a distribution defining prior of trophic position.
-#' @param sigmaNc a distribution defining sigma (std dev) for N of consumer.
-#' @param muDeltaN a distribution defining prior for the mean (mu) of
-#' deltaN. deltaN stands for trophic enrichment factor of Nitrogen.
-#' @param sigmaDeltaN a value defining sigma (std dev) for the mean (mu) of
-#' deltaN.
+#'   dnorm(0, 0.0001)
+#' @param sigmaNb2 a distribution defining sigma (standard deviation) for N of
+#'   baseline 2. Default is dunif(0, 100).
+#' @param alpha a distribution defining alpha (mixing model between 2 sources).
+#'   Default is dbeta(1,1).
 #' @param lambda an integer indicating the trophic position of the baseline.
-#' @param muDeltaC a distribution defining prior for the mean (mu) of
-#' deltaC. deltaC stands for trophic enrichment factor of Carbon
-#' @param sigmaDeltaC a value defining sigma (std dev) for the mean (mu) of
-#' deltaC.
+#'   Default is 2.
+#' @param TP a distribution defining prior of trophic position. Default is
+#'   dunif(lambda, 10), with lambda defined above.
+#' @param muDeltaN a distribution defining prior for the mean (mu) of deltaN,
+#'   which stands for trophic discrimination factor of Nitrogen. Default is
+#'   dnorm(0, 0.0001).
+#' @param sigmaDeltaN a value defining sigma (standard deviation) for the mean
+#'   (mu) of deltaN. Default is dunif(0, 100).
+#' @param muDeltaC a distribution defining prior for the mean (mu) of deltaC,
+#'   which stands for trophic discrimination factor of Carbon
+#' @param sigmaDeltaC a value defining sigma (standard deviation) for the mean
+#'   (mu) of deltaC.
 #' @param ... additional arguments passed to this function.
 #'
 #' @return A jags model as a character string
 #'
 #' @export
 
-jagsTwoBaselinesFull <- function (muCb1 = NULL,
-                              sigmaCb1 = NULL,
-                              muNb1 = NULL,
-                              sigmaNb1 = NULL,
-                              muCb2 = NULL,
-                              sigmaCb2 = NULL,
-                              muNb2 = NULL,
-                              sigmaNb2 = NULL,
-                              alpha = NULL,
-                              sigmaCc = NULL,
-                              TP = NULL,
-                              sigmaNc = NULL,
-                              muDeltaN = NULL,
-                              sigmaDeltaN = NULL,
-                              muDeltaC = NULL,
-                              sigmaDeltaC = NULL,
-                              lambda = NULL,
-                              ...)
+
+jagsTwoBaselinesFull <- function (sigmaNc = NULL,
+                                  sigmaCc = NULL,
+                                  muCb1 = NULL,
+                                  sigmaCb1 = NULL,
+                                  muNb1 = NULL,
+                                  sigmaNb1 = NULL,
+                                  muCb2 = NULL,
+                                  sigmaCb2 = NULL,
+                                  muNb2 = NULL,
+                                  sigmaNb2 = NULL,
+                                  lambda = NULL,
+                                  TP = NULL,
+                                  alpha = NULL,
+                                  muDeltaN = NULL,
+                                  sigmaDeltaN = NULL,
+                                  muDeltaC = NULL,
+                                  sigmaDeltaC = NULL,
+                                  ...)
 {
 
   # ----------------------------------------------------------------------------

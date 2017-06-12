@@ -4,7 +4,7 @@
 #' *Orestias chungarensis*
 #' (http://www.fishbase.se/summary/Orestias-chungarensis.html), an endemic fish
 #' found in the Chungara Lake at 4,500 meters above sea level, Chilean
-#' Altiplano.
+#' Altiplano. Harrod, C. & I. Vila unpublished results.
 #'
 #' @format A named list with 8 elements:
 #' \describe{
@@ -22,3 +22,4 @@
 #'
 #' @usage data("Orestias")
 "Orestias"
+

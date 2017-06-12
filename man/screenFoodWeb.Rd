@@ -2,32 +2,32 @@
 % Please edit documentation in R/screenFoodWeb.R
 \name{screenFoodWeb}
 \alias{screenFoodWeb}
-\title{Function that creates a biplot of food web with stable isotope values (d13C
+\title{Function that creates a biplot of a food web with stable isotope values (d13C
 and d15N)}
 \usage{
 screenFoodWeb(df = NULL, grouping = c("Species", "FG"),
   printSummary = FALSE, ...)
 }
 \arguments{
-\item{df}{a data frame that contains the isotope values. It needs to have the
-following columns: d13C, d15N, Species and FG. Species stands for the
-scientific name (or common name), and FG stands for the functional group for
-each species.}
+\item{df}{a data frame that contains the isotope values. By defaults, the
+data frame needs to have the following columns: d13C, d15N, Species and
+FG. Species stands for the scientific name (or common name), and FG stands
+for the functional group for each species.}
 
 \item{grouping}{a vector with the name of the columns (variables) that will
 be used to summarize, and plot the data frame.}
 
-\item{printSummary}{a logical value to indicate whehter the summary is
+\item{printSummary}{a logical value to indicate whether the summary is
 printed}
 
 \item{...}{optional arguments that are passed to the function for later use.}
 }
 \value{
-a ggplot2 object with the biplot of the dataframe. Also prints the
-summary of the data frame as needed.
+a ggplot2 object with the biplot of the data frame. Also prints the
+  summary of the data frame as needed.
 }
 \description{
-Function that creates a biplot of food web with stable isotope values (d13C
+Function that creates a biplot of a food web with stable isotope values (d13C
 and d15N)
 }
 \examples{

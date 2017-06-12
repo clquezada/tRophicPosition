@@ -20,15 +20,15 @@ per fish species (according to their Table 1).}
 \item{seed}{integer to have replicated results}
 }
 \value{
-a list (if element = "both") or a vector (if element ="N" or
- element = "C") containing TDF values
+a list (if element = "both") or a vector (if element ="N" or element
+  = "C") containing TDF values
 }
 \description{
-\code{TEF} return trophic enrichment factors (TEF), given an author, element
-and a type. For convenience 'type' includes a number of categories depending
-on the author. At the moment it includes TEF data from Post (2002) and from
-McCutchan et al (2003). This function is maintained for compatibility
-backwards of version 0.6.8.
+This function returns trophic enrichment factors (TEF), given an author,
+element and a type. For convenience 'type' includes a number of categories
+depending on the author. At the moment it includes TEF data from Post (2002)
+and from McCutchan et al (2003). This function is maintained for
+compatibility backwards of version 0.6.8.
 }
 \examples{
 # TEF() is deprecated, use TDF() instead:
