@@ -1,7 +1,7 @@
 Package: tRophicPosition
 Type: Package
 Title: Bayesian Trophic Position Calculation with Stable Isotopes
-Version: 0.7
+Version: 0.7.0
 Date: 2017-06-11
 Depends:
     R (>= 3.4.0)
@@ -25,7 +25,7 @@ Maintainer: Claudio Quezada-Romegialli <clquezada@harrodlab.net>
 Description: Estimates the trophic position of a consumer relative 
     to a baseline species. It implements a Bayesian approach which combines an 
     interface to the JAGS MCMC library of rjags and stable isotopes. This is the
-    version 0.7, so users are encouraged to test the  package and send bugs and 
+    version 0.7.0, so users are encouraged to test the  package and send bugs and 
     trophicposition-support@googlegroups.com.
 License: GPL (>= 2)
 LazyData: TRUE
