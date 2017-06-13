@@ -1,17 +1,22 @@
-[![DOI](https://zenodo.org/badge/49386535.svg)](https://zenodo.org/badge/latestdoi/49386535)
+[![](https://www.r-pkg.org/badges/version-ago/tRophicPosition?color=blue)](http://cran.rstudio.com/web/packages/tRophicPosition/index.html) [![](http://cranlogs.r-pkg.org/badges/tRophicPosition)](http://cran.rstudio.com/web/packages/tRophicPosition/index.html) [![DOI](https://zenodo.org/badge/49386535.svg)](https://zenodo.org/badge/latestdoi/49386535)
+
 # tRophicPosition
 `tRophicPosition`, is an R package incorporating a Bayesian model for the calculation of consumer trophic position using stable isotopes with one or two baselines. It uses the powerful approach of Markov Chain Monte Carlo simulations provided by [JAGS](http://mcmc-jags.sourceforge.net) and the statistical language [R](https://www.r-project.org).
 
-As of 11th of June 2017, we are releasing the version 0.7.0 of the package, the first release version. If you find any error, please send it to trophicposition-support@googlegroups.com and/or raise an issue in the GitHub page.
+As of 11th of June 2017, we are releasing the version 0.7.0 of the package, the first release version. If you find any error, please send it to trophicposition-support@googlegroups.com and/or raise an issue in the GitHub page. Also you can also send a direct email to clquezada at harrodlab.net.
 
 If you are interested in joining the tRophicPosition support group, do it at https://groups.google.com/d/forum/trophicposition-support
 
-In the following weeks, we will be sending this package to CRAN, and will put here more news on how to cite properly this package.
-
-If you want to make enquiries to the page, you can also send a direct email to clquezada at harrodlab.net
-
 ## Installation
-The development version of `tRophicPosition` must be installed from GitHub (where we are now). For this, install the package devtools, and then use the function `install_github()`:
+
+The stable version of `tRophicPosition` is hosted on [CRAN](https://cran.r-project.org/package=tRophicPosition), and is installed like any other package:
+```{r}
+install.packages("tRophicPosition")
+```
+
+Remember to install [JAGS](http://mcmc-jags.sourceforge.net) for your platform as well.
+
+The development version of `tRophicPosition` must be installed from GitHub. For this, install the package devtools, and then use the function `install_github()`:
 
 ```{r}
 install.packages("devtools")
