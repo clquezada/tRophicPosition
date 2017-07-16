@@ -1,7 +1,7 @@
 [![](https://www.r-pkg.org/badges/version-ago/tRophicPosition?color=blue)](http://cran.rstudio.com/web/packages/tRophicPosition/index.html) [![](http://cranlogs.r-pkg.org/badges/tRophicPosition)](http://cran.rstudio.com/web/packages/tRophicPosition/index.html) [![DOI](https://zenodo.org/badge/49386535.svg)](https://zenodo.org/badge/latestdoi/49386535)
 
 # tRophicPosition
-`tRophicPosition`, is an R package incorporating a Bayesian model for the calculation of consumer trophic position using stable isotopes with one or two baselines. It uses the powerful approach of Markov Chain Monte Carlo simulations provided by [JAGS](http://mcmc-jags.sourceforge.net) and the statistical language [R](https://www.r-project.org).
+`tRophicPosition`, is a colaborative project of [Chris Harrod](http://harrodlab.net), [Andrew L. Jackson](https://github.com/AndrewLJackson) and [Claudio Quezada-Romegialli](https://github.com/clquezada). It consists of an R package incorporating a Bayesian model for the calculation of consumer trophic position using stable isotopes with one or two baselines. It uses the powerful approach of Markov Chain Monte Carlo simulations provided by [JAGS](http://mcmc-jags.sourceforge.net) and the statistical language [R](https://www.r-project.org).
 
 As of 11th of June 2017, we are releasing the version 0.7.0 of the package, the first release version. If you find any error, please send it to trophicposition-support@googlegroups.com and/or raise an issue in the GitHub page. Also you can also send a direct email to clquezada at harrodlab.net.
 
