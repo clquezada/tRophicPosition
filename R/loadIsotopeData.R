@@ -75,6 +75,17 @@ loadIsotopeData <- function(df = NULL,
                                                           baselineColumn))
     }
 
+  } else {
+    for (sp in species) {
+      species_subset <- getValues(df, sp, speciesColumn)
+
+      if (nrow(species_subset) == 0) next
+      else new_df <- rbind(new_df, species_subset)
+      new_df <- rbind(new_df, getValues(df, b1, baselineColumn))
+
+      if (!is.null(b2)) new_df <- rbind(new_df, getValues(df, b2,
+                                                          baselineColumn))
+    }
   }
 
   isotopes <- extractIsotopeData(new_df, b1 = b1, b2 = b2,
