@@ -1,3 +1,8 @@
+tRophicPosition v0.7.3 (Release date: 2017-10-12)
+==============
+
+* Minor details to fulfil CRAN checks
+
 tRophicPosition v0.7.2 (Release date: 2017-10-12)
 ==============
 
