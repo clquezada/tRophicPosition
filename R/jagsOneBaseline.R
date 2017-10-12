@@ -9,7 +9,7 @@
 #'
 #' where dNc are d15N values of consumer, dNb1 are d15N values of baseline,
 #' deltaN is the trophic discrimination factor for N, TP is trophic position of
-#' the consumer and lamba is the trophic level of baseline. Furthermore, as a
+#' the consumer and lambda is the trophic level of baseline. Furthermore, as a
 #' Bayesian approach, dNb, deltaN and dNc are defined as random parameters with
 #' a normal distribution with mean mu_i and precision tau_i, TP is a random
 #' parameter with a uniform distribution and lambda is a constant. All these
