@@ -21,7 +21,7 @@ BugReports: https://groups.google.com/d/forum/trophicposition-support
 Maintainer: Claudio Quezada-Romegialli <clquezada@harrodlab.net>
 Description: Estimates the trophic position of a consumer relative 
     to a baseline species. It implements a Bayesian approach which combines an 
-    interface to the JAGS MCMC library of rjags and stable isotopes. Users are
+    interface to the 'JAGS' MCMC library of 'rjags' and stable isotopes. Users are
     encouraged to test the package and send bugs and/or errors to
     trophicposition-support@googlegroups.com.
 License: GPL (>= 2)
