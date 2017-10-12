@@ -7,6 +7,7 @@ vignette: >
   %\VignetteIndexEntry{Short guide to the use of tRophicPosition}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteDepends{MCMCvis}
 ---
 
 # tRophicPosition

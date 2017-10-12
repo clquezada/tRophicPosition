@@ -116,19 +116,19 @@ multiModelTP <- function (siData = siData, lambda = 2,
         plots = FALSE
       }
 
-      runJagsOut <- runjags::run.jags(method = "parallel", model = model,
-                                      monitor = c("TP", "muDeltaN"),
-                                      data = siData_mod, n.chains = n.chains,
-                                      adapt = n.adapt, burnin = burnin,
-                                      sample = n.iter, thin = 5,
-                                      summarise = summarise, plots = plots)
+      # runJagsOut <- runjags::run.jags(method = "parallel", model = model,
+      #                                 monitor = c("TP", "muDeltaN"),
+      #                                 data = siData_mod, n.chains = n.chains,
+      #                                 adapt = n.adapt, burnin = burnin,
+      #                                 sample = n.iter, thin = 5,
+      #                                 summarise = summarise, plots = plots)
 
-      if (isTRUE(print)) {
-        #plot(runJagsOut)
-        print(runJagsOut)
-      }
+      # if (isTRUE(print)) {
+      #   #plot(runJagsOut)
+      #   # print(runJagsOut)
+      # }
 
-      easySamples_list[[model]] <- runJagsOut
+      # easySamples_list[[model]] <- runJagsOut
 
       break
 

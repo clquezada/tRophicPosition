@@ -7,6 +7,8 @@ vignette: >
   %\VignetteIndexEntry{Multiple species tRophicPosition}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteDepends{dplyr}
+  %\VignetteDepends{knitr}
 ---
 # tRophicPosition
 
