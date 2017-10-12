@@ -26,10 +26,8 @@ Description: Estimates the trophic position of a consumer relative
     trophicposition-support@googlegroups.com.
 License: GPL (>= 2)
 LazyData: TRUE
-Remotes: url::https://github.com/TGuillerme/dispRity/archive/master.zip
 RoxygenNote: 6.0.1
 Suggests:
-    dispRity,
     dplyr,
     knitr,
     MCMCvis,
