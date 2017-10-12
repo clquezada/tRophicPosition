@@ -36,11 +36,11 @@ And then see the vignettes we have prepared to describe how to use the package:
 browseVignettes("tRophicPosition")
 ```
 
-## Dependences
-`tRophicPosition` relies on some code from [coda](https://cran.r-project.org/package=coda) and [dispRity](https://github.com/TGuillerme/dispRity). As [dispRity](https://github.com/TGuillerme/dispRity) is only available through GitHub, please install it from there. In any case, if not installed, `tRophicPosition` included the Bhattacharrya Coefficient (bhatt.coeff function) for convenience.
+## Credits
+`tRophicPosition` relies on some code from [coda](https://cran.r-project.org/package=coda) and [dispRity](https://github.com/TGuillerme/dispRity). At the moment [dispRity](https://github.com/TGuillerme/dispRity) is only available through GitHub, so it is not included in Suggests. `tRophicPosition` included the Bhattacharrya Coefficient (bhatt.coeff function from dispRity](https://github.com/TGuillerme/dispRity)) and plotMCMC (from [coda](https://cran.r-project.org/package=coda)) for convenience.
 
 ## Citation
-While the paper describing the package is not published (currently under revision), to cite package `tRophicPosition` in publications please use:
+While the paper describing `tRophicPosition` is not published (currently under revision at MEE), to cite the package in publications please use:
   
 Claudio Quezada-Romegialli, Andrew L Jackson and Chris Harrod (2017).
 tRophicPosition: Bayesian Trophic Position Calculation with Stable Isotopes. R package version 0.7.3. [https://cran.r-project.org/package=tRophicPosition](https://cran.r-project.org/package=tRophicPosition) doi:[10.5281/zenodo.1009571](https://doi.org/10.5281/zenodo.1009571)
