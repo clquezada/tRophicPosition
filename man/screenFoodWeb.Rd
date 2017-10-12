@@ -5,8 +5,8 @@
 \title{Function that creates a biplot of a food web with stable isotope values (d13C
 and d15N)}
 \usage{
-screenFoodWeb(df = NULL, grouping = c("Species", "FG"),
-  printSummary = FALSE, ...)
+screenFoodWeb(df = NULL, grouping = c("Species", "FG"), title = NULL,
+  order = FALSE, printSummary = FALSE, ...)
 }
 \arguments{
 \item{df}{a data frame that contains the isotope values. By defaults, the
@@ -16,6 +16,10 @@ for the functional group for each species.}
 
 \item{grouping}{a vector with the name of the columns (variables) that will
 be used to summarize, and plot the data frame.}
+
+\item{title}{string representing the title of the plot.}
+
+\item{order}{logical, if true it orders the legend.}
 
 \item{printSummary}{a logical value to indicate whether the summary is
 printed}

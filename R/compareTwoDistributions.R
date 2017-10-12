@@ -16,7 +16,8 @@
 #' @examples
 #'a <- rnorm(100, 2, 0.1)
 #'b <- rnorm(100, 1.8, 0.1)
-#'compareTwoDistributions(a, b)
+#'compareTwoDistributions(a, b, test = ">=")
+#'compareTwoDistributions(a, b, test = "bhatt")
 #'
 compareTwoDistributions <- function (dist1 = NULL,
                                      dist2 = NULL,
@@ -30,6 +31,130 @@ compareTwoDistributions <- function (dist1 = NULL,
   #
   # sum_over_total <- function(dist1, dist2, test, round)
   #   round((sum(dist1 <= dist2) / length(dist1)), 3)
+  #
+
+  # #' Internal function that calculates the Bhattacharrya Coefficient.
+  # #'
+  # #' Not intended to be used by the user.
+  bhatt.coeff <- function(x, y, bw = stats::bw.nrd0, ...) {
+    ## Check data
+    ## x and y
+    check.class(x, "numeric")
+    check.class(y, "numeric")
+
+    ## bw (bandwidth)
+    if(class(bw) == "numeric") {
+      check.length(bw, 1, " must be either a single numeric value or a function.")
+      bw <- round(bw)
+    } else {
+      check.class(bw, "function", " must be either a single numeric value or a function.")
+    }
+
+    ## BHATTACHARYYA COEFFICIENT
+    ## sum(sqrt(x relative counts in bin_i * y relative counts in bin_i))
+
+    ## Setting the right number of bins (i)
+    if(class(bw) == 'function') {
+      ## Bin width
+      band.width <- bw(c(x, y), ...)
+      ## Bin breaks
+      ## adding an extra bandwith to the max to be sure to include all the data
+      bin.breaks <- seq(from = min(c(x, y)), to = max(c(x, y) + band.width), by = band.width)
+      ## Number of bins
+      bin.n <- length(bin.breaks) - 1
+    } else {
+      ## Bin breaks
+      bin.breaks <- graphics::hist(c(x, y), breaks = bw, plot = FALSE)$breaks
+      ## Bin width
+      band.width <- diff(bin.breaks)[1]
+      ## Number of bins
+      bin.n <- bw
+    }
+
+    ## Counting the number of elements per bin
+    histx <- graphics::hist(x, breaks = bin.breaks, plot = FALSE)[[2]]
+    histy <- graphics::hist(y, breaks = bin.breaks, plot = FALSE)[[2]]
+    ## Relative counts
+    rel.histx <- histx / sum(histx)
+    rel.histy <- histy / sum(histy)
+
+    ## Calculating the Bhattacharyya Coefficient (sum of the square root of the multiple of the relative counts of both distributions)
+    bhatt.coeff <- sum(sqrt(rel.histx * rel.histy))
+    return(bhatt.coeff)
+  }
+
+  check.class <- function (object, class, msg, errorif = FALSE) {
+    match_call <- match.call()
+    class_object <- class(object)
+    length_class <- length(class)
+    if (missing(msg)) {
+      if (length_class != 1) {
+        msg <- paste(" must be of class ", paste(class, collapse = " or "),
+                     ".", sep = "")
+      }
+      else {
+        msg <- paste(" must be of class ", class, ".", sep = "")
+      }
+    }
+    if (length_class != 1) {
+      error <- NULL
+      for (counter in 1:length_class) {
+        if (errorif != TRUE) {
+          if (class_object != class[counter]) {
+            error <- c(error, TRUE)
+          }
+          else {
+            error <- c(error, FALSE)
+          }
+        }
+        else {
+          if (class_object == class[counter]) {
+            error <- c(error, TRUE)
+          }
+          else {
+            error <- c(error, FALSE)
+          }
+        }
+      }
+      if (!any(!error)) {
+        stop(match_call$object, msg, call. = FALSE)
+      }
+      else {
+        return(class_object)
+      }
+    }
+    else {
+      if (errorif != TRUE) {
+        if (class_object != class) {
+          stop(match_call$object, msg, call. = FALSE)
+        }
+      }
+      else {
+        if (class_object == class) {
+          stop(match_call$object, msg, call. = FALSE)
+        }
+      }
+    }
+  }
+
+  check.length <- function (object, length, msg, errorif = FALSE) {
+    match_call <- match.call()
+    if (errorif != TRUE) {
+      if (length(object) != length) {
+        stop(match_call$object, msg, call. = FALSE)
+      }
+    }
+    else {
+      if (length(object) == length) {
+        stop(match_call$object, msg, call. = FALSE)
+      }
+    }
+  }
+
+  #
+  #
+  #
+  #
 
   if (is.null(dist1) | is.null(dist2)) {
 
@@ -63,21 +188,20 @@ distributions you are comparing are those you actually want to
 
   if (test == "<=") {
     return(round(sum(dist1 <= dist2) / length(dist1), round))
-  }
-
-  if (test == "<") {
+  } else if (test == "<") {
     return(round(sum(dist1 < dist2) / length(dist1), round))
-  }
-
-  if (test == ">") {
+  } else if (test == ">") {
     return(round(sum(dist1 > dist2) / length(dist1), round))
-  }
-
-  if (test == ">=") {
+  } else if (test == ">=") {
     return(round(sum(dist1 >= dist2) / length(dist1), round))
+  } else if (test == "bhatt") {
+    if (is.element("dispRity", utils::installed.packages()[,1]))
+      return(round(dispRity::bhatt.coeff(dist1, dist2), round))
+    else return(round(bhatt.coeff(dist1, dist2), round))
   }
 
   warning('
-Have you checked that the logical operator is "<", "<=", ">"" or ">="?
+Have you checked that the logical operator is "bhatt", "<", "<=", ">"" or ">="?
           Otherwise the function will not work properly.')
+  return(NULL)
 }

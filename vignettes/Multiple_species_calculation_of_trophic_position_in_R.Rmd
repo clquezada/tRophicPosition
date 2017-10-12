@@ -1,7 +1,7 @@
 ---
 title: "tRophicPosition: calculating trophic position for multiple species"
 author: "Claudio Quezada-Romegialli, Andrew L Jackson & Chris Harrod"
-date: "May 22 2017"
+date: "October 05 2017"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Multiple species tRophicPosition}
@@ -10,16 +10,26 @@ vignette: >
 ---
 # tRophicPosition
 
-`tRophicPosition`, is an R package incorporating a Bayesian model for the calculation of trophic position using stable isotopes with one or two baselines. As of 2017-05-14, the current version of the package is 0.6.8-9. `tRophicPosition` uses the powerful approach of Markov Chain Monte Carlo simulations provided by [JAGS](http://mcmc-jags.sourceforge.net) and the statistical language [R](https://www.r-project.org). A vignette with basics of the model and a guide to the use of `tRophicPosition` can be found [here](https://github.com/clquezada/tRophicPosition-release-and-vignettes/blob/master/A_guide_to_the_use_of_tRophicPosition_2016-06-12.pdf). Other vignettes can be browsed with `browseVignettes("tRophicPosition")`.
+`tRophicPosition`, is an R package incorporating a Bayesian model for the calculation of trophic position using stable isotopes with one or two baselines. As of 2017-10-05, the current version of the package is 0.7.2. `tRophicPosition` uses the powerful approach of Markov Chain Monte Carlo simulations provided by [JAGS](http://mcmc-jags.sourceforge.net) and the statistical language [R](https://www.r-project.org). Vignettes can be browsed with `browseVignettes("tRophicPosition")`.
 
 # Introduction
 
-In this vignette, we will introduce the new functions we have developed for `tRophicPosition` in its current version (0.6.8-9). These functions are `extractIsotopeData()`, `jagsBayesianModel()` and `multiSpeciesTP()`. Aditionally, we provide an example to run these calculations in parallel (maximizing efficient use of computing power). Each of these functions accomplish different tasks within the Bayesian estimation of trophic position with stable isotopes, extracting stable isotope data for multiple species and/or communities, and  facilitating the calculation of trophic position for multiple consumers within one or more ecosystems. We have also included a parallel calculation of trophic position, to make full use of the multiple processor cores typical in modern computers.
+In this vignette, we will introduce the new functions we have developed for `tRophicPosition` in the version 0.6.8-9. These functions are `extractIsotopeData()`, `jagsBayesianModel()` and `multiSpeciesTP()`. Aditionally, we provide an example to run these calculations in parallel (maximizing efficient use of computing power). Each of these functions accomplish different tasks within the Bayesian estimation of trophic position with stable isotopes, extracting stable isotope data for multiple species and/or communities, and  facilitating the calculation of trophic position for multiple consumers within one or more ecosystems. We have also included a parallel calculation of trophic position, to make full use of the multiple processor cores typical in modern computers.
 
 ## Installing and loading the package
 
 ### Stable version - CRAN
-Coming soon.
+First of all, you need to install [JAGS](http://mcmc-jags.sourceforge.net/) for your platform, and then install the stable version of `tRophicPosition` from [CRAN](https://CRAN.R-project.org/package=tRophicPosition):
+
+```{r eval = FALSE}
+install.packages("tRophicPosition")
+```
+
+After that, you have to load the package with:
+
+```{r, eval = FALSE}
+library(tRophicPosition)
+```
 
 ### Development version - GitHub
 If you want to install the development version of `tRophicPosition`, you must install it from GitHub. For this, we use the function `install_github()` from the package `devtools` (installation instructions [here](https://github.com/hadley/devtools#updating-to-the-latest-version-of-devtools)), which needs to be installed previously (either from [CRAN](https://CRAN.R-project.org/package=devtools) or [GitHub](https://github.com/hadley/devtools)):

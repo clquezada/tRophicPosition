@@ -9,5 +9,6 @@ cran-comments\.md
 ^revdep$
 \.gitignore$
 \.Rhistory
+\.Rproj\.user*
 
 ^\.Rproj\.user$

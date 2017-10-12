@@ -28,10 +28,13 @@ checkNames <- function (df = NULL, flag = NULL) {
 
     namesDF <- flag
 
-  } else {
+  } else if (is.null(flag)) {
+    message("Flag is NULL")
+
+    } else {
 
     stop("Flag must be either 1, 2, 3 or a list of names. Check the argument 'flag'.")
-    }
+  }
 
   for (name in namesDF) {
     counter <- 0
@@ -42,9 +45,9 @@ checkNames <- function (df = NULL, flag = NULL) {
   }
 
   if (counter > 0) {
-    message("Names of your dataframe: ", names(df), "\n")
-    message("Names expected: ", namesDF, "\n")
-    message("Flag: ", flag, "\n")
+    message("Names of your dataframe: ", paste0(names(df), sep = " "), "\n")
+    message("Names expected: ", paste0(unlist(namesDF), sep = " "), "\n")
+    message("Flag: ", paste0(unlist(flag), sep = " "), "\n")
     message("You have at least one variable in your dataframe that does not
 match the names expected.")
     return(NULL)
