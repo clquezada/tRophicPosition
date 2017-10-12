@@ -37,7 +37,7 @@ browseVignettes("tRophicPosition")
 ```
 
 ## Dependences
-`tRophicPosition` relies on code from [coda](https://cran.r-project.org/package=coda) and [dispRity](https://github.com/TGuillerme/dispRity).
+`tRophicPosition` relies on some code from [coda](https://cran.r-project.org/package=coda) and [dispRity](https://github.com/TGuillerme/dispRity). As [dispRity](https://github.com/TGuillerme/dispRity) is only available through GitHub, please install it from there. In any case, if not installed, `tRophicPosition` included the Bhattacharrya Coefficient (bhatt.coeff function) for convenience.
 
 ## Future releases and how to get support
 
