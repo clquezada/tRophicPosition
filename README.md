@@ -7,7 +7,7 @@ As of 12th of October 2017, we are releasing the version 0.7.2 of the package, t
 
 If you are interested in joining the tRophicPosition support group, do it at https://groups.google.com/d/forum/trophicposition-support
 
-## NEWS
+## NEWS (12 October 2017)
 
 * Added the function fromParallelTP() to extract the data from parallel calculations (see the examples).
 * Implemented the Bhattacharrya Coefficient (from the package [dispRity](https://github.com/TGuillerme/dispRity)) when comparing two or more posterior distributions. As [dispRity](https://github.com/TGuillerme/dispRity) is only available through GitHub, when users have not installed the package we use the internal function bhat.coeff based on [dispRity](https://github.com/TGuillerme/dispRity) package.
