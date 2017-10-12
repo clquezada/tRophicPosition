@@ -1,4 +1,10 @@
 ## ----eval = FALSE--------------------------------------------------------
+#  install.packages("tRophicPosition")
+
+## ---- eval = FALSE-------------------------------------------------------
+#  library(tRophicPosition)
+
+## ----eval = FALSE--------------------------------------------------------
 #  install.packages("devtools")
 #  library(devtools)
 

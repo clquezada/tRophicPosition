@@ -1,4 +1,5 @@
 .Rproj.user
+.Rproj.user-backup
 .Rhistory
 .RData
 packrat/lib*/

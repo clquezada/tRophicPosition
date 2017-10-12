@@ -33,6 +33,7 @@ context
 \examples{
 a <- rnorm(100, 2, 0.1)
 b <- rnorm(100, 1.8, 0.1)
-compareTwoDistributions(a, b)
+compareTwoDistributions(a, b, test = ">=")
+compareTwoDistributions(a, b, test = "bhatt")
 
 }

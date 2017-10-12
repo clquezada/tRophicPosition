@@ -37,14 +37,14 @@ plotMCMC <- function (x, trace = TRUE, density = TRUE, smooth = TRUE, bwf,
     }
   }
 
-#' Internal function that set.mfrow.
-#'
-#' Not intended to be used by the user.
-#'
-#' @param Nchains null
-#' @param Nparms null
-#' @param nplots null
-#' @param sepplot null
+## Internal function that set.mfrow.
+##
+## Not intended to be used by the user.
+##
+## @param Nchains null
+## @param Nparms null
+## @param nplots null
+## @param sepplot null
 
 set.mfrow <-
   function (Nchains = 1, Nparms = 1, nplots = 1, sepplot = FALSE)

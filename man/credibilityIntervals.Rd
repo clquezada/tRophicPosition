@@ -5,10 +5,13 @@
 \title{Plot credibility intervals and central tendency descriptor from posterior
 distributions of trophic position and/or alpha parameter}
 \usage{
-credibilityIntervals(df, x = "species", plotAlpha = TRUE, y1 = "mode",
-  y1min = "lower", y1max = "upper", y1lim = NULL, y2 = "alpha.mode",
-  y2min = "alpha.lower", y2max = "alpha.upper", xlab = "Bayesian models",
-  ylab1 = "Posterior trophic position", ylab2 = "Posterior alpha", ...)
+credibilityIntervals(df, x = "species", plotAlpha = TRUE, legend = NULL,
+  legendAlpha = NULL, y1 = "mode", y1min = "lower", y1max = "upper",
+  y1lim = NULL, y2 = "alpha.mode", y2min = "alpha.lower",
+  y2max = "alpha.upper", xlab = "Bayesian models",
+  ylab1 = "Posterior trophic position", ylab2 = "Posterior alpha",
+  group_by = NULL, scale_colour_manual = NULL, labels = NULL,
+  plot = TRUE, ...)
 }
 \arguments{
 \item{df}{data frame with at least 4 columns, a grouping variable, maximum,
@@ -18,6 +21,11 @@ minimum and a central tendency descriptor (median, mode, etc.).}
 
 \item{plotAlpha}{logical. If TRUE it expects that the data frame has at least
 7 columns, another descriptor of central tendency, its maximum and minimum.}
+
+\item{legend}{list, position of the legend if not NULL, e.g. c(0.8, 0.8).}
+
+\item{legendAlpha}{list, position of the legend for the alpha plot, if not
+NULL, e.g. c(0.8, 0.8).}
 
 \item{y1}{string of the column with the central tendency descriptor of
 trophic position. By default, is the mode.}
@@ -44,6 +52,16 @@ interval, this value would be percentile 0.0975.}
 \item{ylab1}{string of the label of Y1 axis (trophic position).}
 
 \item{ylab2}{string of the label of Y2 axis (alpha).}
+
+\item{group_by}{grouping variable (factor) in case of using colours.}
+
+\item{scale_colour_manual}{a list of colours (ggplot2 syntaxis) to use with
+group_by.}
+
+\item{labels}{string, manual labels for the x axis.}
+
+\item{plot}{logical, by default TRUE. In case of saving the output as a
+variable, the user can decide not to plot the output.}
 
 \item{...}{additional parameters passed to credibilityIntervals().}
 }
