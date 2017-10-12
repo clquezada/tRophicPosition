@@ -195,9 +195,10 @@ distributions you are comparing are those you actually want to
   } else if (test == ">=") {
     return(round(sum(dist1 >= dist2) / length(dist1), round))
   } else if (test == "bhatt") {
-    if (is.element("dispRity", utils::installed.packages()[,1]))
-      return(round(dispRity::bhatt.coeff(dist1, dist2), round))
-    else return(round(bhatt.coeff(dist1, dist2), round))
+    return(round(bhatt.coeff(dist1, dist2), round))
+    # if (is.element("dispRity", utils::installed.packages()[,1]))
+    #   return(round(dispRity::bhatt.coeff(dist1, dist2), round))
+    # else return(round(bhatt.coeff(dist1, dist2), round))
   }
 
   warning('
