@@ -36,6 +36,9 @@ And then see the vignettes we have prepared to describe how to use the package:
 browseVignettes("tRophicPosition")
 ```
 
+## Dependences
+`tRophicPosition` relies on code from [coda](https://cran.r-project.org/package=coda) and [dispRity](https://github.com/TGuillerme/dispRity).
+
 ## Future releases and how to get support
 
 You are encouraged to use `tRophicPosition` with your own data, test the package and see if there are any issues or problems. You can send your questions or commentaries to the google group [tRophicPosition-support](https://groups.google.com/d/forum/trophicposition-support) or directly to the email trophicposition-support at googlegroups.com. You can send your questions to http://stackexchange.com/ http://stackoverflow.com/ or even [Facebook (stable isotope ecology group)](https://www.facebook.com/groups/stableisotopes/).
