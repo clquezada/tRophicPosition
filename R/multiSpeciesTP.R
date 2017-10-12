@@ -1,6 +1,6 @@
 #' Multiple species calculation of trophic position
 #'
-#' This function takes a named list of isotopeClass objects and calculates one
+#' This function takes a named list of isotopeData class objects and calculates one
 #' or more Bayesian models of trophic position for each element of the list.
 #'
 #' @param siDataList a named list of isotopeData class objects.
