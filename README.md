@@ -39,6 +39,17 @@ browseVignettes("tRophicPosition")
 ## Dependences
 `tRophicPosition` relies on some code from [coda](https://cran.r-project.org/package=coda) and [dispRity](https://github.com/TGuillerme/dispRity). As [dispRity](https://github.com/TGuillerme/dispRity) is only available through GitHub, please install it from there. In any case, if not installed, `tRophicPosition` included the Bhattacharrya Coefficient (bhatt.coeff function) for convenience.
 
+## Citation
+While the paper describing the package is not published (currently under revision), to cite package `tRophicPosition` in publications please use:
+  
+Claudio Quezada-Romegialli, Andrew L Jackson and Chris Harrod (2017).
+tRophicPosition: Bayesian Trophic Position Calculation with Stable Isotopes. R package version 0.7.3. [https://cran.r-project.org/package=tRophicPosition](https://cran.r-project.org/package=tRophicPosition) doi:[10.5281/zenodo.1009571](https://doi.org/10.5281/zenodo.1009571)
+  
+The doi [10.5281/zenodo.598370](https://doi.org/10.5281/zenodo.598370) will always resolve to the last release (currently v0.7.3). For previous releases use the corresponding version and doi when citing:
+  
+v0.7.3 (12 October 2017) [10.5281/zenodo.1009571](https://doi.org/10.5281/zenodo.1009571)
+v0.7.0 (12 June 2017) 10.5281/zenodo.806048](https://doi.org/10.5281/zenodo.806048)
+
 ## Future releases and how to get support
 
 You are encouraged to use `tRophicPosition` with your own data, test the package and see if there are any issues or problems. You can send your questions or commentaries to the google group [tRophicPosition-support](https://groups.google.com/d/forum/trophicposition-support) or directly to the email trophicposition-support at googlegroups.com. You can send your questions to http://stackexchange.com/ http://stackoverflow.com/ or even [Facebook (stable isotope ecology group)](https://www.facebook.com/groups/stableisotopes/).
