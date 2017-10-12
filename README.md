@@ -47,9 +47,9 @@ tRophicPosition: Bayesian Trophic Position Calculation with Stable Isotopes. R p
   
 The doi [10.5281/zenodo.598370](https://doi.org/10.5281/zenodo.598370) will always resolve to the last release (currently v0.7.3). For previous releases use the corresponding version and doi when citing:
   
-v0.7.3 (12 October 2017) [10.5281/zenodo.1009571](https://doi.org/10.5281/zenodo.1009571)
+* v0.7.3 (12 October 2017) [10.5281/zenodo.1009571](https://doi.org/10.5281/zenodo.1009571)
 
-v0.7.0 (12 June 2017) 10.5281/zenodo.806048](https://doi.org/10.5281/zenodo.806048)
+* v0.7.0 (12 June 2017) 10.5281/zenodo.806048](https://doi.org/10.5281/zenodo.806048)
 
 ## Future releases and how to get support
 
