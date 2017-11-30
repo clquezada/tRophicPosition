@@ -13,3 +13,4 @@ before_install:
   
 r_packages:
   - rjags
+  - SIBER
