@@ -6,7 +6,7 @@
 and d15N) grouping by Species and FG columns}
 \usage{
 summariseIsotopeData(df = NULL, grouping = c("Species", "FG"),
-  order = FALSE, printSummary = FALSE, ...)
+  printSummary = FALSE, ...)
 }
 \arguments{
 \item{df}{a data frame that contains the isotope values. It needs to have the
@@ -19,14 +19,12 @@ stated as well in the grouping variable.}
 \item{grouping}{a vector with the name of the columns (variables) that will
 be used to summarize, and plot the data frame.}
 
-\item{order}{logical, if true it orders the levels of the grouping variable.}
-
 \item{printSummary}{logical value indicating whether the summary is printed.}
 
 \item{...}{optional arguments that are passed to the function for later use.}
 }
 \value{
-a data frame with a numerical summary of the data frame.
+a data frame with the summary of the data frame.
 }
 \description{
 A wrapper of plyr:ddply to summarise a data frame.
