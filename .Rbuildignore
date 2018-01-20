@@ -13,3 +13,4 @@ cran-comments\.md
 
 ^\.Rproj\.user$
 ^\.travis\.yml$
+^codecov\.yml$
