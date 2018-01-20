@@ -18,7 +18,7 @@ biPlot <- function (df = NULL, df2 = NULL, ylab = NULL, xlab = NULL, p = "p1",
 
   # Stupid CRAN fix for variables - see here http://stackoverflow.com/questions/9439256/how-can-i-handle-r-cmd-check-no-visible-binding-for-global-variable-notes-when
   # As seen in https://github.com/andrewcparnell/simmr/blob/master/R/plot.simmr_output.R
-  mean_d13C = mean_d15N = Factor = sd_d15N = sd_d13C = d13C = d15N = NULL
+  mean_d13C <- mean_d15N <- Factor <- sd_d15N <- sd_d13C <- d13C <- d15N <- NULL
 
   if (p == "p1") {
 
