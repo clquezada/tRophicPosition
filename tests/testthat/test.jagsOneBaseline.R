@@ -1,7 +1,7 @@
 context("jagsOneBaseline")
 
 test_that("function return a character class", {
-  expect_equal(class(jagsOneBaseline())[1], "character")
+  expect_equal(typeof(jagsOneBaseline()), "character")
 })
 
 test_that("function return a ihnerited oneBaseline class", {

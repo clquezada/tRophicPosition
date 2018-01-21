@@ -327,6 +327,8 @@ jagsTwoBaselines <- function (sigmaNc = NULL,
   newString <- "}" # end of jags model script
   modelString <- paste (modelString, newString, sep = "\n")
 
+  class(modelString) <- append(class(modelString), "twoBaselines")
+
   return(modelString)
 
 } # end of function
