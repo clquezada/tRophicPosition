@@ -10,11 +10,10 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install jags
   - sudo apt-get install r-cran-rjags
-  
+
 r_packages:
-  - rjags
-  - SIBER
   - covr
+  - rjags
 
 after_success:
   - Rscript -e 'library(covr); codecov()'
