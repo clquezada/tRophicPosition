@@ -1,15 +1,15 @@
 #' Function to perform pairwise comparisons between two or more posterior
 #' distributions
 #'
-#' Function to compare two or more posterior distributions and test a hypothesis,
-#' in a Bayesian context
+#' Function to compare two or more posterior distributions and test a
+#' hypothesis, in a Bayesian context
 #'
 #' @param df data frame with a collection of numerical values (posterior
 #' samples) to be compared.
 #' @param test string with the logical test to be used in comparisons. Can be <,
 #' <=, > or >=.
-#' @param print logical value to indicate whether the output should be printed or
-#' not.
+#' @param print logical value to indicate whether the output should be printed
+#' or not.
 #'
 #' @return a symmetrical matrix with probabilities given sum(dist1 >= dist2) /
 #' length(dist1) for each comparison.

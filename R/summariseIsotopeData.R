@@ -26,9 +26,12 @@
 summariseIsotopeData <- function (df = NULL, grouping = c("Species", "FG"),
                                   printSummary = FALSE, ...){
 
-  # Stupid CRAN fix for variables - see here http://stackoverflow.com/questions/9439256/how-can-i-handle-r-cmd-check-no-visible-binding-for-global-variable-notes-when
-  # As seen in https://github.com/andrewcparnell/simmr/blob/master/R/plot.simmr_output.R
-  d13C = d15N = NULL
+  # Stupid CRAN fix for variables - see here http://stackoverflow.com/questions/
+  # 9439256/how-can-i-handle-r-cmd-check-no-visible-binding-for-global-variable-
+  # notes-when
+  # As seen in https://github.com/andrewcparnell/simmr/blob/master/R/plot.simmr_
+  # output.R
+  d13C <- d15N <- NULL
 
   if (is.null(checkNames(df, c("d13C", "d15N", grouping))))
     stop("Check the grouping variable or the names in your dataframe")

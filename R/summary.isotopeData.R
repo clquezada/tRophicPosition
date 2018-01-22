@@ -16,7 +16,8 @@
 #'
 summary.isotopeData <- function (object, print = TRUE, round_dec = 1, ...) {
 
-  if (class(object) != "isotopeData") stop("The object don't have a class isotopeData")
+  if (class(object) != "isotopeData")
+    stop("The object don't have a class isotopeData")
 
   #class(isotopeData) <- "list"
 

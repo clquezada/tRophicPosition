@@ -82,7 +82,8 @@ screenIsotopeData <- function (isotopeData = NULL, density = "both",
 
   } else {
     cat("You should call this function using isotopeData as argument.\n")
-    cat("If you don't have your own dataset, call first generateData() function.")
+    cat(
+      "If you don't have your own dataset, call first generateData() function.")
   }
 
 }

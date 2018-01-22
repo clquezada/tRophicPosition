@@ -131,11 +131,14 @@ parametricTP <- function (siData, lambda = 2, print = TRUE) {
   #
   # if(isTRUE(print)) {
   #   if (i == 50)
-  #     print(paste("Convergence not reached after ", i, " iterations.", "TP: ", round(TP_p2,2),
+  #     print(paste("Convergence not reached after ", i, " iterations.", "TP: ",
+  #      round(TP_p2,2),
   #           " alpha: ", round(alpha_p2,3)))
   #   else
-  #     print(paste("Convergence after ", i, " iterations.", "TP: ", round(TP_p2,2),
-  #               " alpha: ", round(alpha_p2,3), " difference in alpha: ", alpha_p1-alpha_p2))
+  #     print(paste("Convergence after ", i, " iterations.", "TP: ",
+  #     round(TP_p2,2),
+  #               " alpha: ", round(alpha_p2,3), " difference in alpha: ",
+  #                alpha_p1-alpha_p2))
   # }
 
 }

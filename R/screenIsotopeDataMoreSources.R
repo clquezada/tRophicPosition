@@ -38,10 +38,12 @@ screenIsotopeDataMoreSources <- function (isotopeData = NULL,
     #if (class(isotopeData) == "isotopeData")
     if (baselines == 1){
 
-      if (!is.null(consumer)) df <- toStacked(isotopeData, baselines = 1, consumer)
+      if (!is.null(consumer)) df <- toStacked(isotopeData, baselines = 1,
+                                              consumer)
       else  df <- toStacked(isotopeData, baselines = 1)
 
-      #And now we calculate mean and standard deviation for baselines and consumer
+      #And now we calculate mean and standard deviation for baselines
+      #and consumer
       df.b1 <- df[which(df$Factor == b1), c("d13C","d15N")]
       a <- lapply(df.b1, mean)
       names(a) <- c("mean_d13C", "mean_d15N")
@@ -49,7 +51,8 @@ screenIsotopeDataMoreSources <- function (isotopeData = NULL,
       names(b) <- c("sd_d13C", "sd_d15N")
       b1.meansSDs <- data.frame(a, b, Factor = b1)
 
-      if (!is.null(consumer)) df.sc <- df[which(df$Factor == consumer),c("d13C","d15N")]
+      if (!is.null(consumer)) df.sc <- df[which(df$Factor == consumer),
+                                          c("d13C","d15N")]
       else df.sc <- df[which(df$Factor == consumer),c("d13C","d15N")]
 
       a <- lapply(df.sc, mean)
@@ -71,7 +74,8 @@ screenIsotopeDataMoreSources <- function (isotopeData = NULL,
                            b1 = b1,
                            b2 = b2)
 
-      #And now we calculate mean and standard deviation for baselines and consumer
+      #And now we calculate mean and standard deviation for baselines and
+      # consumer
       df.b1 <- df[which(df$Factor == b1), c("d13C","d15N")]
       a <- lapply(df.b1, mean)
       names(a) <- c("mean_d13C", "mean_d15N")

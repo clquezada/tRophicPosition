@@ -42,9 +42,9 @@ TDF <- function (author = "Post", element = "both", type = "all", seed = 3) {
   if (author == "Post") {
 
     set.seed(seed = seed)
-    deltaN = meanSD(56, 3.4, 0.98)
+    deltaN <- meanSD(56, 3.4, 0.98)
     set.seed(seed = seed)
-    deltaC = meanSD(107, 0.39, 1.3)
+    deltaC <- meanSD(107, 0.39, 1.3)
 
     if (element == "N") {
       message("You selected Post's (2002)
@@ -67,37 +67,37 @@ TDF <- function (author = "Post", element = "both", type = "all", seed = 3) {
     } } else if (author == "McCutchan") {
 
       set.seed(seed = seed)
-      allN = meanSE(73, 2.3, 0.18)
+      allN <- meanSE(73, 2.3, 0.18)
       set.seed(seed = seed)
-      wholeN = meanSE(58, 2.1, 0.21)
+      wholeN <- meanSE(58, 2.1, 0.21)
       set.seed(seed = seed)
-      muscleN = meanSE(15, 2.9, 0.32)
+      muscleN <- meanSE(15, 2.9, 0.32)
       set.seed(seed = seed)
-      unacidifiedN = meanSE(15, 1.1, 0.29)
+      unacidifiedN <- meanSE(15, 1.1, 0.29)
       set.seed(seed = seed)
-      acidifiedN = meanSE(36, 2.4, 0.24)
+      acidifiedN <- meanSE(36, 2.4, 0.24)
       #raisedInvN = meanSE(25, 1.4, 0.21)
       #highProtN = meanSE(25, 3.3, 0.26)
       #plantAlgaeN = meanSE(25, 2.2, 0.3)
       set.seed(seed = seed)
-      rainbowTroutN = meanSE(4, 3.2, 0.2)
+      rainbowTroutN <- meanSE(4, 3.2, 0.2)
       set.seed(seed = seed)
-      brookTroutN = meanSE(8, 3.8, 0.17)
+      brookTroutN <- meanSE(8, 3.8, 0.17)
 
       set.seed(seed = seed)
-      allC = meanSE(102, 0.5, 0.13)
+      allC <- meanSE(102, 0.5, 0.13)
       set.seed(seed = seed)
-      wholeC = meanSE(84, 0.3, 0.14)
+      wholeC <- meanSE(84, 0.3, 0.14)
       set.seed(seed = seed)
-      muscleC = meanSE(18, 1.3, 0.3)
+      muscleC <- meanSE(18, 1.3, 0.3)
       set.seed(seed = seed)
-      unacidifiedC = meanSE(62, 0.5, 0.17)
+      unacidifiedC <- meanSE(62, 0.5, 0.17)
       set.seed(seed = seed)
-      acidifiedC = meanSE(22, -0.2, 0.21)
+      acidifiedC <- meanSE(22, -0.2, 0.21)
       set.seed(seed = seed)
-      rainbowTroutC = meanSE(4, 1.9, 0.51)
+      rainbowTroutC <- meanSE(4, 1.9, 0.51)
       set.seed(seed = seed)
-      brookTroutC = meanSE(8, 3.3, 0.29)
+      brookTroutC <- meanSE(8, 3.3, 0.29)
 
       if (type == "all") {
 
@@ -227,7 +227,8 @@ TDF <- function (author = "Post", element = "both", type = "all", seed = 3) {
 
           message("You selected McCutchan's et al (2003)
                   Rainbow Trout tissue d15N: 4 values with 3.2 mean +- 0.2 se")
-          message("Rainbow Trout muscle tissue d13C: 4 values with 1.9 mean +- 0.51 se")
+          message("Rainbow Trout muscle tissue d13C: 4 values with 1.9 mean +-
+                  0.51 se")
           return(list(deltaN = rainbowTroutN, deltaC = rainbowTroutC))
         }
 
