@@ -44,10 +44,12 @@ compareTwoDistributions <- function (dist1 = NULL,
 
     ## bw (bandwidth)
     if(class(bw) == "numeric") {
-      check.length(bw, 1, " must be either a single numeric value or a function.")
+      check.length(bw, 1,
+                   " must be either a single numeric value or a function.")
       bw <- round(bw)
     } else {
-      check.class(bw, "function", " must be either a single numeric value or a function.")
+      check.class(bw, "function",
+                  " must be either a single numeric value or a function.")
     }
 
     ## BHATTACHARYYA COEFFICIENT
@@ -59,7 +61,8 @@ compareTwoDistributions <- function (dist1 = NULL,
       band.width <- bw(c(x, y), ...)
       ## Bin breaks
       ## adding an extra bandwith to the max to be sure to include all the data
-      bin.breaks <- seq(from = min(c(x, y)), to = max(c(x, y) + band.width), by = band.width)
+      bin.breaks <- seq(from = min(c(x, y)), to = max(c(x, y) + band.width),
+                        by = band.width)
       ## Number of bins
       bin.n <- length(bin.breaks) - 1
     } else {
@@ -78,7 +81,8 @@ compareTwoDistributions <- function (dist1 = NULL,
     rel.histx <- histx / sum(histx)
     rel.histy <- histy / sum(histy)
 
-    ## Calculating the Bhattacharyya Coefficient (sum of the square root of the multiple of the relative counts of both distributions)
+    ## Calculating the Bhattacharyya Coefficient (sum of the square root of the
+    ##  multiple of the relative counts of both distributions)
     bhatt.coeff <- sum(sqrt(rel.histx * rel.histy))
     return(bhatt.coeff)
   }

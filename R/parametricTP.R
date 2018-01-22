@@ -80,7 +80,7 @@ parametricTP <- function (siData, lambda = 2, print = TRUE) {
   if (isTRUE(print)) print(paste("Two baselines TP: ", round(TPTwoBaselines,2),
                                  round(alpha,3)))
 
-  i = 0
+  i <- 0
   TP_p1 <- TPTwoBaselines
   alpha_p1 <- alphaCQR(dCc, dCb1, dCb2, TP_p1)
   alpha_p2 <- alpha_p1

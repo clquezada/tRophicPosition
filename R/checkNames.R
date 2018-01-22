@@ -33,7 +33,8 @@ checkNames <- function (df = NULL, flag = NULL) {
 
     } else {
 
-    stop("Flag must be either 1, 2, 3 or a list of names. Check the argument 'flag'.")
+    stop("Flag must be either 1, 2, 3 or a list of names. Check the argument
+         'flag'.")
   }
 
   for (name in namesDF) {

@@ -26,22 +26,22 @@ plot.isotopeData <- function (x,
                               ...) {
 
   if (is.null(b1) & is.null(attributes(x)$baseline1))
-    b1 = "Pelagic baseline"
+    b1 <- "Pelagic baseline"
   else
     if(is.null(b1) & !is.null(attributes(x)$baseline1))
-      b1 = attributes(x)$baseline1
+      b1 <- attributes(x)$baseline1
 
   if (is.null(b2) & is.null(attributes(x)$baseline2))
-    b2 = "Benthic baseline"
+    b2 <- "Benthic baseline"
   else
     if(is.null(b2) & !is.null(attributes(x)$baseline2))
-      b2 = attributes(x)$baseline2
+      b2 <- attributes(x)$baseline2
 
   if (is.null(consumer) & is.null(attributes(x)$consumer))
-    consumer = "Consumer"
+    consumer <- "Consumer"
   else
     if(!is.null(attributes(x)$consumer))
-      consumer = attributes(x)$consumer
+      consumer <- attributes(x)$consumer
 
 
   if(is.null(attributes(x)$community))
