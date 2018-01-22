@@ -125,11 +125,13 @@ credibilityIntervals <- function (df,
   if (is.numeric(legend) & length(legend) == 2 & !is.null(legend))
     p1 <- p1 + ggplot2::theme(legend.position = legend,
                               legend.title = ggplot2::element_blank(),
-                              #legend.background = ggplot2::element_rect(fill="transparent"))
-                              legend.background = ggplot2::element_rect(fill = "white",
-                                                                        size = 0.5,
-                                                                        linetype = "solid",
-                                                                        colour = "black"))
+                              #legend.background = ggplot2::element_rect(
+                              #fill="transparent"))
+                              legend.background =
+                                ggplot2::element_rect(fill = "white",
+                                                      size = 0.5,
+                                                      linetype = "solid",
+                                                      colour = "black"))
   else p1 <- p1 + ggplot2::theme(legend.position = "none")
 
   if (isTRUE(!plotAlpha)) {
@@ -142,7 +144,8 @@ credibilityIntervals <- function (df,
       ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45, vjust = 1,
                                                          hjust=1, size = 8),
                      axis.text.y = ggplot2::element_text(size = 8,
-                                                         margin = ggplot2::margin(
+                                                         margin =
+                                                           ggplot2::margin(
                                                            5,2.5,10,5,"pt")
                      ),
                      axis.title = ggplot2::element_text(size = 10))
@@ -152,17 +155,20 @@ credibilityIntervals <- function (df,
 
     # if (is.numeric(legend) & length(legend) == 2 & !is.null(legend))
     #   p1 <- p1 + ggplot2::theme(legend.position = legend,
-    #                             legend.title = ggplot2::element_blank(),
-    #                             #legend.background = ggplot2::element_rect(fill="transparent"))
-    #                             legend.background = ggplot2::element_rect(fill = "white",
-    #                                                                       size = 0.5,
-    #                                                                       linetype = "solid",
-    #                                                                       colour = "black"))
+    #       legend.title = ggplot2::element_blank(),
+    #   #legend.background = ggplot2::element_rect(fill="transparent"))
+    #                             legend.background =
+    #                             ggplot2::element_rect(fill = "white",
+    #                      size = 0.5,
+    #                                linetype = "solid",
+    #                                colour = "black"))
 
     } else p1 <- p1 + ggplot2::theme(axis.text.x = ggplot2::element_blank(),
-                               axis.text.y = ggplot2::element_text(size = 8,
-                                                                   margin = ggplot2::margin(
-                                                                     5,2.5,10,5,"pt")
+                               axis.text.y =
+                                 ggplot2::element_text(size = 8,
+                                                       margin =
+                                                         ggplot2::margin(
+                                                           5,2.5,10,5,"pt")
                                ),
                                axis.title = ggplot2::element_text(size = 10),
                                axis.title.x = ggplot2::element_blank())
@@ -208,14 +214,17 @@ credibilityIntervals <- function (df,
   if (!is.null(scale_colour_manual))
     p2 <- p2 + ggplot2::scale_colour_manual(values = scale_colour_manual)
 
-  if (is.numeric(legendAlpha) & length(legendAlpha) == 2 & !is.null(legendAlpha))
+  if (is.numeric(legendAlpha) & length(legendAlpha) == 2 &
+      !is.null(legendAlpha))
     p2 <- p2 + ggplot2::theme(legend.position = legend,
                               legend.title = ggplot2::element_blank(),
-                              #legend.background = ggplot2::element_rect(fill="transparent"))
-                              legend.background = ggplot2::element_rect(fill = "white",
-                                                                        size = 0.5,
-                                                                        linetype = "solid",
-                                                                        colour = "black"))
+                              #legend.background =
+                              #ggplot2::element_rect(fill="transparent"))
+                              legend.background =
+                                ggplot2::element_rect(fill = "white",
+                                                      size = 0.5,
+                                                      linetype = "solid",
+                                                      colour = "black"))
   else p2 <- p2 + ggplot2::theme(legend.position = "none")
 
   if (!is.null(labels)) p2 <- p2 +
@@ -248,7 +257,8 @@ credibilityIntervals <- function (df,
 #   for (x in dots) print( x)
 #
 #   ggplot(df, aes(x = x, y = y, ymin = lower, ymax = upper)) +
-#     geom_pointrange(size = 1, shape = 21, fill = "grey50", colour = "grey50") +
+#     geom_pointrange(size = 1, shape = 21,
+#     fill = "grey50", colour = "grey50") +
 #     theme_bw() +
 #     ylab("Posterior Trophic Position") + xlab("Site") +
 #     theme(axis.text.x = element_blank(),

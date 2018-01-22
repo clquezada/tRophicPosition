@@ -27,7 +27,7 @@ screenFoodWeb <- function (df = NULL, grouping = c("Species", "FG"),
 
   # Stupid CRAN fix for variables - see here http://stackoverflow.com/questions/9439256/how-can-i-handle-r-cmd-check-no-visible-binding-for-global-variable-notes-when
   # As seen in https://github.com/andrewcparnell/simmr/blob/master/R/plot.simmr_output.R
-  meanC = meanN = sdN = sdC = NULL
+  meanC <- meanN <- sdN <- sdC <- NULL
 
   summary <- tRophicPosition::summariseIsotopeData(df, grouping, printSummary)
 
