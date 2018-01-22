@@ -44,12 +44,12 @@ simulateTEF <- function (nN = 56,
     MEAN + Z
   }
 
-  deltaN = NULL
-  deltaC = NULL
+  deltaN <- NULL
+  deltaC <- NULL
 
-  if (!is.null(meanN)) deltaN = meanSD(nN, meanN, sdN)
+  if (!is.null(meanN)) deltaN <- meanSD(nN, meanN, sdN)
 
-  if (!is.null(meanC)) deltaC = meanSD(nC, meanC, sdC)
+  if (!is.null(meanC)) deltaC <- meanSD(nC, meanC, sdC)
 
   if (!is.null(deltaN) & !is.null(deltaC))
     return (list("deltaC" = deltaC, "deltaN" = deltaN))
@@ -62,6 +62,7 @@ simulateTEF <- function (nN = 56,
       return(deltaC)
   }
 
-  return(list("deltaN" = meanSD(nN, 3.4, sdN), "deltaC" = meanSD(nC, 0.39, sdN)))
+  return(list("deltaN" = meanSD(nN, 3.4, sdN), "deltaC" = meanSD(nC, 0.39,
+                                                                 sdN)))
 
 }

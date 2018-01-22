@@ -1,7 +1,7 @@
 #' Multiple species calculation of trophic position
 #'
-#' This function takes a named list of isotopeData class objects and calculates one
-#' or more Bayesian models of trophic position for each element of the list.
+#' This function takes a named list of isotopeData class objects and calculates
+#' one or more Bayesian models of trophic position for each element of the list.
 #'
 #' @param siDataList a named list of isotopeData class objects.
 #' @param lambda numerical value, represents the trophic level for baseline(s).
@@ -67,7 +67,8 @@ multiSpeciesTP <- function (siDataList = siDataList, lambda = 2,
 
   for (i in seq_along(species)) {
 
-    if (isTRUE(print)) message(paste("################### Species: ", names(siDataList[i])))
+    if (isTRUE(print)) message(paste("################### Species: ",
+                                     names(siDataList[i])))
 
     TP_results <- multiModelTP(siData = siDataList[[i]],
                                lambda = lambda,
@@ -81,26 +82,31 @@ multiSpeciesTP <- function (siDataList = siDataList, lambda = 2,
                                print = print,
                                quiet = quiet)
 
-    if (is.null(attributes(siDataList[[i]])$consumer)) TP_results$gg$species <- names(siDataList[i])
+    if (is.null(attributes(siDataList[[i]])$consumer))
+      TP_results$gg$species <- names(siDataList[i])
 
     #TP_results$gg$combined <- names(siDataList[i])
 
     multiSpeciesTP_list[[names(siDataList[i])]] <- TP_results
 
-    names(TP_results[["TP"]]) <- paste(names(siDataList[i]), names(TP_results[["TP"]]))
+    names(TP_results[["TP"]]) <- paste(names(siDataList[i]),
+                                       names(TP_results[["TP"]]))
     if (ncol(multiSpecies_TP) == 0)
       multiSpecies_TP <- as.data.frame(TP_results[["TP"]])
     else
-      multiSpecies_TP <- cbind(multiSpecies_TP, as.data.frame(TP_results[["TP"]]))
+      multiSpecies_TP <- cbind(multiSpecies_TP,
+                               as.data.frame(TP_results[["TP"]]))
 
     if (model != "oneBaseline"){
 
-      names(TP_results[["alpha"]]) <- paste(names(siDataList[i]), names(TP_results[["alpha"]]))
+      names(TP_results[["alpha"]]) <- paste(names(siDataList[i]),
+                                            names(TP_results[["alpha"]]))
 
       if (ncol(multiSpecies_alpha) == 0)
         multiSpecies_alpha <- as.data.frame(TP_results[["alpha"]])
       else
-        multiSpecies_alpha <- cbind(multiSpecies_alpha, as.data.frame(TP_results[["alpha"]]))
+        multiSpecies_alpha <- cbind(multiSpecies_alpha,
+                                    as.data.frame(TP_results[["alpha"]]))
     }
 
     #multiSpecies_TP[[names(siDataList[i])]] <- TP_results[["TP"]]

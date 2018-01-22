@@ -159,14 +159,16 @@ jagsTwoBaselinesFull <- function (sigmaNc = NULL,
   # dCc is modelled as having a normal distribution
   # with mean calculated with the two baselines weighted by alpha
   for (i in 1:length(dCc)) {
-  dCc[i] ~ dnorm(muCb2 + (muDeltaC * (TP-lambda)) + (alpha * (muCb1 - muCb2)), tauCc)
+  dCc[i] ~ dnorm(muCb2 + (muDeltaC * (TP-lambda)) + (alpha * (muCb1 - muCb2)),
+   tauCc)
   }
 
   # ----------------------------------------------------------------------------
   # Likelihood for the nitrogen data in the consumer uses the estimated
   # proportion of baseline 1 and 2 in the consumer to inform trophic position.
   for (i in 1:length(dNc)){
-  dNc[i] ~ dnorm(muDeltaN * (TP - lambda) + muNb1*alpha + muNb2 * (1 - alpha), tauNc)
+  dNc[i] ~ dnorm(muDeltaN * (TP - lambda) + muNb1*alpha + muNb2 * (1 - alpha),
+   tauNc)
   }"
 
   # ----------------------------------------------------------------------------

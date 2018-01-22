@@ -128,12 +128,14 @@ generateTPData <- function (n.baselines = 2,
   if (n.baselines == 2){
 
     if (is.null(dNb2))
-      dNb2 <- meanSD(n.obsB, stats::runif(1, mean(dNb1)-DeltaN, mean(dNb1)+5), sd.dNb2)
+      dNb2 <- meanSD(n.obsB, stats::runif(1, mean(dNb1)-DeltaN, mean(dNb1)+5),
+                     sd.dNb2)
     else
       dNb2 <- meanSD(n.obsB, dNb2, sd.dNb2)
 
     if (is.null(dCb2))
-      dCb2 <- meanSD(n.obsB, stats::runif(1, mean(dCc)+2, mean(dCc)+15), sd.dCb2)
+      dCb2 <- meanSD(n.obsB, stats::runif(1, mean(dCc)+2, mean(dCc)+15),
+                     sd.dCb2)
     else
       dCb2 <- meanSD(n.obsB, dCb2, sd.dCb2)
 

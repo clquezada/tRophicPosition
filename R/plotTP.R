@@ -2,7 +2,8 @@
 #'
 #' Wrapper of {\link[SIBER]{siberDensityPlot}}.
 #'
-#' @param TPdist vector. One posterior distribution (or a collection) of trophic position.
+#' @param TPdist vector. One posterior distribution (or a collection) of trophic
+#'  position.
 #' In case of wanting to plot two or more posterior distributions, needs to be
 #' passed as a {\link[base]{data.frame}} object.
 #' @param ... additional arguments passed to this function.
@@ -78,10 +79,12 @@ plotTP <- function (TPdist = NULL, ...) {
                            pch = 19)
         }
         if (prn == TRUE) {
-          cat(paste("\t", probs[k], "% lower =", format(max(min(temp2[!is.na(temp2)]),
-                                                            lbound), digits = 3, scientific = FALSE),
+          cat(paste("\t", probs[k], "% lower =",
+                    format(max(min(temp2[!is.na(temp2)]),
+                               lbound), digits = 3, scientific = FALSE),
                     "upper =", format(min(max(temp2[!is.na(temp2)]),
-                                          ubound), digits = 3, scientific = FALSE),
+                                          ubound), digits = 3,
+                                      scientific = FALSE),
                     "\n"))
         }
       }

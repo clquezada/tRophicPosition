@@ -4,7 +4,8 @@
 # character string for passing to \code{\link[rjags]{jags.model}}. Although
 # it is possible to use a number of predefined or customized
 # distributions (see
-# \href{https://sourceforge.net/projects/mcmc-jags/files/Manuals/}{JAGS documentation}),
+# \href{https://sourceforge.net/projects/mcmc-jags/files/Manuals/}
+# {JAGS documentation}),
 #  it is likelly that most of the time
 # you will be using a normal distribution. This is the default option (i.e.
 # when the function is called without arguments) and it is like this:
@@ -117,7 +118,8 @@ jagsTwoBaselinesPost <- function (muCb1 = NULL,
   # Likelihood for the nitrogen data in the consumer uses the estimated
   # proportion of baseline 1 and 2 in the consumer to inform trophic position.
   for (i in 1:length(dNc)){
-  dNc[i] ~ dnorm(muDeltaN * (TP - lambda) + muNb1*alpha + muNb2 * (1 - alpha), tauNc)
+  dNc[i] ~ dnorm(muDeltaN * (TP - lambda) + muNb1*alpha + muNb2 * (1 - alpha),
+   tauNc)
   }"
 
   # ----------------------------------------------------------------------------

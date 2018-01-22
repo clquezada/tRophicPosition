@@ -25,8 +25,11 @@ screenFoodWeb <- function (df = NULL, grouping = c("Species", "FG"),
                                 printSummary = FALSE, ...){
   #require(ggplot2)
 
-  # Stupid CRAN fix for variables - see here http://stackoverflow.com/questions/9439256/how-can-i-handle-r-cmd-check-no-visible-binding-for-global-variable-notes-when
-  # As seen in https://github.com/andrewcparnell/simmr/blob/master/R/plot.simmr_output.R
+  # Stupid CRAN fix for variables - see here http://stackoverflow.com/questions/
+  # 9439256/how-can-i-handle-r-cmd-check-no-visible-binding-for-global-variable-
+  # notes-when
+  # As seen in https://github.com/andrewcparnell/simmr/blob/master/R/plot.simmr_
+  # output.R
   meanC <- meanN <- sdN <- sdC <- NULL
 
   summary <- tRophicPosition::summariseIsotopeData(df, grouping, printSummary)
@@ -48,9 +51,11 @@ screenFoodWeb <- function (df = NULL, grouping = c("Species", "FG"),
     ggplot2::ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
     ggplot2::xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
     ggplot2::labs(fill = grouping[1])+
-    #scale_colour_brewer(RColorBrewer::brewer.pal(length(Strangford.summary$Species_name),"Set1"))+
+    #scale_colour_brewer(RColorBrewer::brewer.pal(
+    #length(Strangford.summary$Species_name),"Set1"))+
     #title = "Strangford Lough (mean +- sd)") +
-    #geom_point(data=Strangford.summary, size=3, shape = Strangford.summary$FG) +
+    #geom_point(data=Strangford.summary, size=3,
+    #shape = Strangford.summary$FG) +
     #scale_shape_discrete(solid = T) +
     ggplot2::theme_bw()
 
