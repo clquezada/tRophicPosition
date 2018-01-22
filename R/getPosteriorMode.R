@@ -35,6 +35,6 @@ getPosteriorMode <- function(df = NULL, round = 3) {
   else
     a <- lapply(df, hdrcde::hdr)
     a <- lapply(a, function(x) as.numeric(x[[2]]))
-    return(sapply(a, round, round))
+    return(data.frame(lapply(a, round, round), row.names = "Posterior mode"))
 
   }
