@@ -33,8 +33,8 @@ posteriorTP <- function (model,
                      ...)
                      {
 
-  if (isTRUE(quiet)) progress.bar = "none"
-  else progress.bar = "text"
+  if (isTRUE(quiet)) progress.bar <- "none"
+  else progress.bar <- "text"
 
   posterior <- rjags::coda.samples(model,
                                    variable.names = variable.names,
