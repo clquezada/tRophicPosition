@@ -77,7 +77,7 @@ extractIsotopeData <- function(df = NULL,
 
     attrb1 <- b1[b1 %in% unique(df[[baselineColumn]])]
     if (!is.null(b2)) attrb2 <- b2[b2 %in% unique(df[[baselineColumn]])]
-    else attrb2 = NULL
+    else attrb2 <- NULL
 
     df <- df[!df[,baselineColumn] %in% c(b1, b2),]
 

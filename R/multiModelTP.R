@@ -79,8 +79,8 @@ multiModelTP <- function (siData = siData, lambda = 2,
 
     siData_mod <- siData
     # Check this...
-    # variable.names = c("TP", "alpha", "muDeltaC")
-    variable.names = c("TP", "alpha")
+    # variable.names <- c("TP", "alpha", "muDeltaC")
+    variable.names <- c("TP", "alpha")
 
 
     if (model == "oneBaseline") {
@@ -88,7 +88,7 @@ multiModelTP <- function (siData = siData, lambda = 2,
       model_txt <- "1b"
       myvars <- names(siData) %in% c("dCb1", "dNb2", "dCb2", "dCc", "deltaC")
       siData_mod <- siData[!myvars]
-      variable.names = c("TP", "muDeltaN")
+      variable.names <- c("TP", "muDeltaN")
       }
 
     else if (model == "twoBaselines") {
@@ -108,12 +108,12 @@ multiModelTP <- function (siData = siData, lambda = 2,
       class(siData_mod) <- "list"
 
       if (isTRUE(print)) {
-        summarise = TRUE
-        plots = TRUE
+        summarise <- TRUE
+        plots <- TRUE
       }
       else {
-        summarise = FALSE
-        plots = FALSE
+        summarise <- FALSE
+        plots <- FALSE
       }
 
       # runJagsOut <- runjags::run.jags(method = "parallel", model = model,
@@ -199,12 +199,12 @@ multiModelTP <- function (siData = siData, lambda = 2,
         }
 
     if (!is.null(attributes(siData)$community))
-      community =  attributes(siData)$community
-    else community = NA
+      community <-  attributes(siData)$community
+    else community <- NA
 
     if (!is.null(attributes(siData)$consumer))
-      species = attributes(siData)$consumer
-    else species = NA
+      species <- attributes(siData)$consumer
+    else species <- NA
 
     df <- data.frame("model" = model_txt,
                      "community" = community,

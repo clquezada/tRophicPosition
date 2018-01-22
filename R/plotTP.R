@@ -18,10 +18,14 @@
 #'
 
 plotTP <- function (TPdist = NULL, ...) {
-  siberDensityPlot <- function (dat, probs = c(95, 75, 50), xlab = "Group", ylab = "Value",
-                                xticklabels = NULL, yticklabels = NULL, clr = grDevices::gray((9:1)/10),
-                                scl = 1, xspc = 0.5, prn = F, ct = "mode", ylims = NULL,
-                                lbound = -Inf, ubound = Inf, main = "", ylab.line = 2, ...)
+  siberDensityPlot <- function (dat, probs = c(95, 75, 50), xlab = "Group",
+                                ylab = "Value",
+                                xticklabels = NULL, yticklabels = NULL,
+                                clr = grDevices::gray((9:1)/10),
+                                scl = 1, xspc = 0.5, prn = FALSE,
+                                ct = "mode", ylims = NULL,
+                                lbound = -Inf, ubound = Inf, main = "",
+                                ylab.line = 2, ...)
   {
     n <- ncol(dat)
     if (is.null(ylims)) {
@@ -48,17 +52,21 @@ plotTP <- function (TPdist = NULL, ...) {
       if (prn == TRUE) {
         cat(paste("Probability values for Column", j, "\n"))
         cat(paste("\t", "Mode", format(temp$mode, digits = 3,
-                                       scientific = F), "Mean", format(mean(dat[, j]),
-                                                                       digits = 3, scientific = F), "Median", format(stats::median(dat[,
-                                                                                                                                       j]), digits = 3, scientific = F), "\n"))
+                                       scientific = FALSE), "Mean",
+                  format(mean(dat[, j]),
+                         digits = 3, scientific = FALSE), "Median",
+                  format(stats::median(dat[,j]), digits = 3,
+                         scientific = FALSE), "\n"))
       }
-      for (k in 1:length(probs)) {
+      for (k in seq_along(probs)) {
         temp2 <- temp$hdr[k, ]
         graphics::polygon(c(j - bwd[k], j - bwd[k], j +
-                              bwd[k], j + bwd[k]), c(max(c(min(temp2[!is.na(temp2)]),
-                                                           lbound)), min(c(max(temp2[!is.na(temp2)]), ubound)),
-                                                     min(c(max(temp2[!is.na(temp2)]), ubound)), max(c(min(temp2[!is.na(temp2)]),
-                                                                                                      lbound))), col = clrs[k])
+                              bwd[k], j + bwd[k]),
+                          c(max(c(min(temp2[!is.na(temp2)]), lbound)),
+                            min(c(max(temp2[!is.na(temp2)]), ubound)),
+                            min(c(max(temp2[!is.na(temp2)]), ubound)),
+                            max(c(min(temp2[!is.na(temp2)]),
+                                  lbound))), col = clrs[k])
         if (ct == "mode") {
           graphics::points(j, temp$mode, pch = 19)
         }
