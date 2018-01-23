@@ -14,16 +14,16 @@ samples) to be compared.}
 \item{test}{string with the logical test to be used in comparisons. Can be <,
 <=, > or >=.}
 
-\item{print}{logical value to indicate whether the output should be printed or
-not.}
+\item{print}{logical value to indicate whether the output should be printed
+or not.}
 }
 \value{
 a symmetrical matrix with probabilities given sum(dist1 >= dist2) /
 length(dist1) for each comparison.
 }
 \description{
-Function to compare two or more posterior distributions and test a hypothesis,
-in a Bayesian context
+Function to compare two or more posterior distributions and test a
+hypothesis, in a Bayesian context
 }
 \examples{
 a <- rnorm(100, 2, 0.1)
