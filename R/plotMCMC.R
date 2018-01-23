@@ -18,19 +18,19 @@ plotMCMC <- function (x, trace = TRUE, density = TRUE, smooth = TRUE, bwf,
     oldpar <- NULL
     on.exit(graphics::par(oldpar))
     if (auto.layout) {
-      mfrow <- set.mfrow(Nchains = nchain(x), Nparms = nvar(x),
+      mfrow <- set.mfrow(Nchains = coda::nchain(x), Nparms = coda::nvar(x),
                          nplots = trace + density)
       oldpar <- graphics::par(mfrow = mfrow)
     }
-    for (i in 1:nvar(x)) {
+    for (i in 1:coda::nvar(x)) {
       if (trace)
         ## RGA fixed to propagate ... argument.
-        traceplot(x[, i, drop = FALSE], smooth = smooth, ...)
+        coda::traceplot(x[, i, drop = FALSE], smooth = smooth, ...)
       if (density) {
         if (missing(bwf))
           ## RGA fixed to propagate ... argument.
-          densplot(x[, i, drop = FALSE], ...)
-        else densplot(x[, i, drop = FALSE], bwf = bwf, ...)
+          coda::densplot(x[, i, drop = FALSE], ...)
+        else coda::densplot(x[, i, drop = FALSE], bwf = bwf, ...)
       }
       if (i==1)
         oldpar <- c(oldpar, graphics::par(ask = ask))

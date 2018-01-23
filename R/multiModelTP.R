@@ -180,7 +180,7 @@ multiModelTP <- function (siData = siData, lambda = 2,
     HPD <- coda::HPDinterval(TP.combined)
     lower <- HPD[1]
     upper <- HPD[3]
-    median <- median(TP.combined[,1])
+    median <- stats::median(TP.combined[,1])
     mode <- hdrcde::hdr(TP.combined[,1])$mode
 
     if (model == "oneBaseline") alpha.lower <- NA
