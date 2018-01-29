@@ -129,7 +129,8 @@ TDF <- function (author = "Post", element = "both", type = NULL, seed = 3) {
           return(list(deltaN = allN, deltaC = allC))
         }
         else
-          stop("Please check the argument 'element', as could be either 'C' or 'N'.")
+          stop("Please check the argument 'element', as could be either 'C'
+               or 'N'.")
 
       }
       else if (type == "whole") {
@@ -154,7 +155,8 @@ TDF <- function (author = "Post", element = "both", type = NULL, seed = 3) {
           return(list(deltaN = wholeN, deltaC = wholeC))
         }
         else
-          stop("Please check the argument 'element', as could be either 'C' or 'N'.")
+          stop("Please check the argument 'element', as could be either 'C'
+               or 'N'.")
       }
       else if (type == "muscle") {
 
@@ -178,7 +180,8 @@ TDF <- function (author = "Post", element = "both", type = NULL, seed = 3) {
           return(list(deltaN = muscleN, deltaC = muscleC))
         }
         else
-          stop("Please check the argument 'element', as could be either 'C' or 'N'.")
+          stop("Please check the argument 'element', as could be either 'C'
+               or 'N'.")
 
       }
       else if (type == "unacidified") {
@@ -205,7 +208,8 @@ TDF <- function (author = "Post", element = "both", type = NULL, seed = 3) {
           return(list(deltaN = unacidifiedN, deltaC = unacidifiedC))
         }
         else
-          stop("Please check the argument 'element', as could be either 'C' or 'N'.")
+          stop("Please check the argument 'element', as could be either 'C'
+               or 'N'.")
 
       }
       else if (type == "acidified") {
@@ -230,7 +234,8 @@ TDF <- function (author = "Post", element = "both", type = NULL, seed = 3) {
           return(list(deltaN = acidifiedN, deltaC = acidifiedC))
         }
         else
-          stop("Please check the argument 'element', as could be either 'C' or 'N'.")
+          stop("Please check the argument 'element', as could be either 'C'
+               or 'N'.")
 
       }
       else if (type == "rainbowTrout") {
@@ -256,7 +261,8 @@ TDF <- function (author = "Post", element = "both", type = NULL, seed = 3) {
           return(list(deltaN = rainbowTroutN, deltaC = rainbowTroutC))
         }
         else
-          stop("Please check the argument 'element', as could be either 'C' or 'N'.")
+          stop("Please check the argument 'element', as could be either 'C' or
+               'N'.")
 
       }
       else if (type == "brookTrout") {
@@ -281,12 +287,16 @@ TDF <- function (author = "Post", element = "both", type = NULL, seed = 3) {
           return(list(deltaN = brookTroutN, deltaC = brookTroutC))
         }
         else
-          stop("Please check the argument 'element', as could be either 'C' or 'N'.")
+          stop("Please check the argument 'element', as could be either 'C' or
+               'N'.")
       }
       else
-        stop("Please check the argument 'type', as could be either 'all', 'whole', 'muscle', 'acidified', 'unacidified', 'rainbowTrout' or 'brookTrout'.")
+        stop("Please check the argument 'type', as could be either 'all',
+             'whole', 'muscle', 'acidified', 'unacidified', 'rainbowTrout' or
+             'brookTrout'.")
   }
   else
-    stop("author could be either 'Post' or 'McCutchan'. Please check the argument.")
+    stop("author could be either 'Post' or 'McCutchan'. Please check the
+         argument.")
 
 }
