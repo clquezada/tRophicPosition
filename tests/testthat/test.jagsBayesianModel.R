@@ -74,7 +74,8 @@ test_that("function send a warning/error when priors are not correctly written",
 ########################
 
 test_that("function return a character class", {
-  expect_equal(typeof(jagsBayesianModel(model = "twoBaselinesFull")), "character")
+  expect_equal(typeof(jagsBayesianModel(model = "twoBaselinesFull")),
+               "character")
 })
 
 test_that("function return a ihnerited twoBaselinesFull class", {
