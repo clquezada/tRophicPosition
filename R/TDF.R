@@ -67,7 +67,8 @@ TDF <- function (author = "Post", element = "both", type = NULL, seed = 3) {
       return(list(deltaN = deltaN, deltaC = deltaC))
 
     }
-    else stop("Please check the argument 'element', as could be 'C', 'N' or 'both'.")
+    else stop("Please check the argument 'element', as could be 'C',
+              'N' or 'both'.")
     }
   else if (author == "McCutchan") {
 

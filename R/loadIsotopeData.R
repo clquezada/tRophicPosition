@@ -74,9 +74,9 @@ loadIsotopeData <- function(df = NULL,
 
   if("communityColumn" %in% names(arguments)){
     groupsColumn <- list(...)$communityColumn
-    message("The Argument 'communityColumn' was maintained for compatibility with
-            tRophicPosition =< 0.7.5. Avoid to use it in the future and use
-            'groupsColumn' instead. Check the help for more details.")
+    message("The Argument 'communityColumn' was maintained for compatibility
+            with tRophicPosition =< 0.7.5. Avoid to use it in the future and
+            use 'groupsColumn' instead. Check the help for more details.")
   }
 
   for (column in c(baselineColumn, consumersColumn, groupsColumn,

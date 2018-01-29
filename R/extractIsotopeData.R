@@ -14,7 +14,8 @@
 #' @param baselineColumn string of the column where baselines are grouped.
 #' @param consumersColumn string of the column where consumers/species are
 #'   grouped.
-#' @param groupsColumn string of the column where groups/communities are grouped.
+#' @param groupsColumn string of the column where groups/communities are
+#' grouped.
 #' @param deltaC vector of values with trophic discrimination factor for carbon.
 #'   If NULL it will use Post's assumptions (56 values with 3.4 mean +- 0.98
 #'   sd).
@@ -100,7 +101,7 @@ extractIsotopeData <- function(df = NULL,
 
     attrb1 <- b1[b1 %in% unique(df[[baselineColumn]])]
     if (!is.null(b2)) attrb2 <- b2[b2 %in% unique(df[[baselineColumn]])]
-    else attrb2 = NULL
+    else attrb2 <- NULL
 
     df <- df[!df[,baselineColumn] %in% c(b1, b2),]
 
