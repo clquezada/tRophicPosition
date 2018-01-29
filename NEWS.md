@@ -1,3 +1,13 @@
+tRophicPosition v0.7.5 (Release date: 2018-01-29)
+==============
+
+* Added the function extractPredictiveData() to perform a posterior predictive model-checking procedure.
+* Implemented code coverage and unit test.
+* Improved the code (to make it clearer, considering width and the assignment operator).
+* Changed some arguments (consumer instead of species, group instead of community and others) in loadIsotopeData(), extractIsotopeData() and other functions (while maintaining old arguments as compatibility)
+* Added a a procedure for checking errors on priors arguments in jagsBayesianModel and related functions
+* Removed MCMCvis from the Short guide to tRophicPosition vignette, as that package is no longer in CRAN.
+
 tRophicPosition v0.7.3 (Release date: 2017-10-12)
 ==============
 
