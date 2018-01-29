@@ -1,14 +1,14 @@
-[![](https://www.r-pkg.org/badges/version-ago/tRophicPosition?color=blue)](https://cran.r-project.org/package=tRophicPosition) [![](http://cranlogs.r-pkg.org/badges/tRophicPosition)](https://cran.r-project.org/package=tRophicPosition) [![](http://cranlogs.r-pkg.org/badges/grand-total/tRophicPosition)](https://cran.r-project.org/package=tRophicPosition) [![](https://zenodo.org/badge/doi/10.5281/zenodo.1009571.svg)](https://zenodo.org/badge/latestdoi/49386535) [![](https://travis-ci.org/clquezada/tRophicPosition.svg?branch=master)](https://travis-ci.org/clquezada/tRophicPosition) [![Coverage Status](https://img.shields.io/codecov/c/github/clquezada/tRophicPosition/master.svg)](https://codecov.io/github/clquezada/tRophicPosition?branch=master)
+[![](https://www.r-pkg.org/badges/version-ago/tRophicPosition?color=blue)](https://cran.r-project.org/package=tRophicPosition) [![](http://cranlogs.r-pkg.org/badges/tRophicPosition)](https://cran.r-project.org/package=tRophicPosition) [![](http://cranlogs.r-pkg.org/badges/grand-total/tRophicPosition)](https://cran.r-project.org/package=tRophicPosition) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1161826.svg)](https://doi.org/10.5281/zenodo.1161826) [![](https://travis-ci.org/clquezada/tRophicPosition.svg?branch=master)](https://travis-ci.org/clquezada/tRophicPosition) [![Coverage Status](https://img.shields.io/codecov/c/github/clquezada/tRophicPosition/master.svg)](https://codecov.io/github/clquezada/tRophicPosition?branch=master)
 
 # tRophicPosition
 `tRophicPosition` is a colaborative project of [Chris Harrod](http://harrodlab.net), [Andrew L. Jackson](https://github.com/AndrewLJackson), [Claudio Quezada-Romegialli](https://github.com/clquezada) and others. It consists of an R package incorporating a Bayesian model for the calculation of consumer trophic position using stable isotopes with one or two baselines. It uses the powerful approach of Markov Chain Monte Carlo simulations provided by [JAGS](http://mcmc-jags.sourceforge.net) and the statistical language [R](https://www.r-project.org).
 
-As of 26th of January 2018, we are releasing the version 0.7.5 of the package, the fourth release version. If you find any error, please send it to trophicposition-support@googlegroups.com and/or raise an issue in the GitHub page. Also you can also send a direct email to clquezada at harrodlab.net.
+As of 29th of January 2018, we are releasing the version 0.7.5 of the package, the fourth release version. If you find any error, please send it to trophicposition-support@googlegroups.com and/or raise an issue in the GitHub page. Also you can also send a direct email to clquezada at harrodlab.net.
 
 If you are interested in joining the tRophicPosition support group, do it at https://groups.google.com/d/forum/trophicposition-support
 
 
-## NEWS (26 January 2018)
+## NEWS (29 January 2018)
 
 * Added the function extractPredictiveData() to perform a posterior predictive model-checking procedure.
 * Implemented code coverage and unit test.
@@ -53,14 +53,14 @@ Can be found in GitHub [here](https://github.com/clquezada/tRophicPosition/wiki/
 `tRophicPosition` relies on some code from [coda](https://cran.r-project.org/package=coda) and [dispRity](https://github.com/TGuillerme/dispRity). At the moment [dispRity](https://github.com/TGuillerme/dispRity) is only available through GitHub, so it is not included in Suggests. `tRophicPosition` included the Bhattacharrya Coefficient (bhatt.coeff function from [dispRity](https://github.com/TGuillerme/dispRity)) and plotMCMC (from [coda](https://cran.r-project.org/package=coda)) for convenience.
 
 ## Citation
-While the paper describing `tRophicPosition` is not published (currently under revision at MEE), to cite the package in publications please use (doi for v 0.7.5 is upcoming):
+While the paper describing `tRophicPosition` is not published (currently under revision at MEE), to cite the package in publications please use:
   
 Claudio Quezada-Romegialli, Andrew L Jackson and Chris Harrod (2018).
-tRophicPosition: Bayesian Trophic Position Calculation with Stable Isotopes. R package version 0.7.5. [https://cran.r-project.org/package=tRophicPosition](https://cran.r-project.org/package=tRophicPosition) doi:[pending](http://)
+tRophicPosition: Bayesian Trophic Position Calculation with Stable Isotopes. R package version 0.7.5. [https://cran.r-project.org/package=tRophicPosition](https://cran.r-project.org/package=tRophicPosition) doi:[10.5281/zenodo.1161826](https://doi.org/10.5281/zenodo.1161826)
   
 For previous releases please use the corresponding version and doi when citing:
 
-* v0.7.5 (25 January 2018) [doi pending]
+* v0.7.5 (29 January 2018) [10.5281/zenodo.1161826](https://doi.org/10.5281/zenodo.1161826)
   
 * v0.7.3 (12 October 2017) [10.5281/zenodo.1009571](https://doi.org/10.5281/zenodo.1009571)
 
