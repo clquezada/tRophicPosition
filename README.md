@@ -3,9 +3,19 @@
 # tRophicPosition
 `tRophicPosition` is a colaborative project of [Chris Harrod](http://harrodlab.net), [Andrew L. Jackson](https://github.com/AndrewLJackson), [Claudio Quezada-Romegialli](https://github.com/clquezada) and others. It consists of an R package incorporating a Bayesian model for the calculation of consumer trophic position using stable isotopes with one or two baselines. It uses the powerful approach of Markov Chain Monte Carlo simulations provided by [JAGS](http://mcmc-jags.sourceforge.net) and the statistical language [R](https://www.r-project.org).
 
-As of 12th of October 2017, we are releasing the version 0.7.3 of the package, the third release version. If you find any error, please send it to trophicposition-support@googlegroups.com and/or raise an issue in the GitHub page. Also you can also send a direct email to clquezada at harrodlab.net.
+As of 26th of January 2018, we are releasing the version 0.7.5 of the package, the fourth release version. If you find any error, please send it to trophicposition-support@googlegroups.com and/or raise an issue in the GitHub page. Also you can also send a direct email to clquezada at harrodlab.net.
 
 If you are interested in joining the tRophicPosition support group, do it at https://groups.google.com/d/forum/trophicposition-support
+
+
+## NEWS (26 January 2018)
+
+* Added the function extractPredictiveData() to perform a posterior predictive model-checking procedure.
+* Implemented code coverage and unit test.
+* Improved the code (to make it clearer, considering width and the assignment operator).
+* Changed some arguments (consumer instead of species, group instead of community and others) in loadIsotopeData(), extractIsotopeData() and other functions (while maintaining old arguments as compatibility)
+* Added a a procedure for checking errors on priors arguments in jagsBayesianModel and related functions
+* Removed MCMCvis from the Short guide to tRophicPosition vignette, as that package is no longer in CRAN.
 
 ## NEWS (12 October 2017)
 
@@ -36,16 +46,21 @@ And then see the vignettes we have prepared to describe how to use the package:
 browseVignettes("tRophicPosition")
 ```
 
+## Online vignettes
+Can be found in GitHub [here](https://github.com/clquezada/tRophicPosition/wiki/tRophicPosition-vignettes).
+
 ## Credits
 `tRophicPosition` relies on some code from [coda](https://cran.r-project.org/package=coda) and [dispRity](https://github.com/TGuillerme/dispRity). At the moment [dispRity](https://github.com/TGuillerme/dispRity) is only available through GitHub, so it is not included in Suggests. `tRophicPosition` included the Bhattacharrya Coefficient (bhatt.coeff function from [dispRity](https://github.com/TGuillerme/dispRity)) and plotMCMC (from [coda](https://cran.r-project.org/package=coda)) for convenience.
 
 ## Citation
-While the paper describing `tRophicPosition` is not published (currently under revision at MEE), to cite the package in publications please use:
+While the paper describing `tRophicPosition` is not published (currently under revision at MEE), to cite the package in publications please use (doi for v 0.7.5 is upcoming):
   
-Claudio Quezada-Romegialli, Andrew L Jackson and Chris Harrod (2017).
-tRophicPosition: Bayesian Trophic Position Calculation with Stable Isotopes. R package version 0.7.3. [https://cran.r-project.org/package=tRophicPosition](https://cran.r-project.org/package=tRophicPosition) doi:[10.5281/zenodo.1009571](https://doi.org/10.5281/zenodo.1009571)
+Claudio Quezada-Romegialli, Andrew L Jackson and Chris Harrod (2018).
+tRophicPosition: Bayesian Trophic Position Calculation with Stable Isotopes. R package version 0.7.5. [https://cran.r-project.org/package=tRophicPosition](https://cran.r-project.org/package=tRophicPosition) doi:[pending](http://)
   
 For previous releases please use the corresponding version and doi when citing:
+
+* v0.7.5 (25 January 2018) [doi pending]
   
 * v0.7.3 (12 October 2017) [10.5281/zenodo.1009571](https://doi.org/10.5281/zenodo.1009571)
 
