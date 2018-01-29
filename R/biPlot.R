@@ -37,6 +37,7 @@ biPlot <- function (df = NULL, df2 = NULL, ylab = NULL, xlab = NULL, p = "p1",
                                                        sd_d13C,
                                            xmax=mean_d13C + sd_d13C,
                                            height=0.15)) +
+      ggplot2::scale_colour_manual(values = c("#2b83ba", "#abdda4", "#d7191c")) +
       ggplot2::theme_bw()  +
       ggplot2::geom_point(data=df, ggplot2::aes(d13C,d15N), size=2) +
       ggplot2::ylab(ylab) +
@@ -65,6 +66,8 @@ biPlot <- function (df = NULL, df2 = NULL, ylab = NULL, xlab = NULL, p = "p1",
       ggplot2::scale_x_continuous(breaks=NULL, expand = c(0.015,0),
                                   limits = limits) +
       ggplot2::scale_y_continuous(breaks=NULL) +
+      ggplot2::scale_colour_manual(values = c("#2b83ba", "#abdda4", "#d7191c")) +
+      ggplot2::scale_fill_manual(values = c("#2b83ba", "#abdda4", "#d7191c")) +
       ggplot2::theme_bw() +
       #ggplot2::scale_colour_brewer(type = "qual", palette = "Set1") +
       theme0(plot.margin =
@@ -79,6 +82,8 @@ biPlot <- function (df = NULL, df2 = NULL, ylab = NULL, xlab = NULL, p = "p1",
       ggplot2::coord_flip()  +
       ggplot2::scale_x_continuous(breaks=NULL, limits = limits) +
       ggplot2::scale_y_continuous(breaks=NULL, expand = c(0,0)) +
+      ggplot2::scale_colour_manual(values = c("#2b83ba", "#abdda4", "#d7191c")) +
+      ggplot2::scale_fill_manual(values = c("#2b83ba", "#abdda4", "#d7191c")) +
       ggplot2::theme_bw() +
       #ggplot2::scale_colour_brewer(type = type, palette = palette) +
       theme0(plot.margin = ggplot2::unit(c(-0.1,1,1.2,0),"cm")) #0,1,2,-0.5

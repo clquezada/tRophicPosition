@@ -14,6 +14,7 @@
 #' @param quiet logical value to indicate whether messages generated during
 #'   posterior sampling will be suppressed, as well as the progress bar.
 #' @param ... additional arguments passed to \code{\link[rjags]{coda.samples}}.
+#' @param burnin  number of iterations discarded as burn in.
 #'
 #' @return mcmc.list object containing posterior samples of the Bayesian model.
 #' @export
@@ -28,6 +29,7 @@
 posteriorTP <- function (model,
                      variable.names = c("TP", "muDeltaN"),
                      n.iter = 10000,
+                     burnin = NULL,
                      thin = 10,
                      quiet = FALSE,
                      ...)
@@ -36,14 +38,27 @@ posteriorTP <- function (model,
   if (isTRUE(quiet)) progress.bar <- "none"
   else progress.bar <- "text"
 
-  posterior <- rjags::coda.samples(model,
-                                   variable.names = variable.names,
-                                   n.iter = n.iter,
-                                   thin = thin,
-                                   progress.bar = progress.bar, ...)
+  if (!is.null(burnin))
+    posterior <- rjags::coda.samples(model,
+                                     variable.names = variable.names,
+                                     n.iter = n.iter+burnin,
+                                     thin = thin,
+                                     progress.bar = progress.bar, ...)
+
+  else posterior <- rjags::coda.samples(model,
+                                        variable.names = variable.names,
+                                        n.iter = n.iter,
+                                        thin = thin,
+                                        progress.bar = progress.bar, ...)
 
   #Here we check if the model has the class required
   if (class(posterior) == "mcmc.list") {
+    if ((!is.null(burnin) & is.numeric(burnin))){
+      message(paste0("burnin: ", burnin, " thin: ", thin, " n.iter: ", n.iter))
+      message(paste0("length: ", end(posterior)))
+      end <- end(posterior)
+      posterior <- stats::window(posterior, start = end-n.iter)
+      }
     return (posterior)
 
   } else {

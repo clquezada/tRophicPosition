@@ -5,9 +5,9 @@
 \title{Extract stable isotope data from a data frame}
 \usage{
 extractIsotopeData(df = NULL, b1 = "Baseline 1", b2 = NULL,
-  baselineColumn = "FG", speciesColumn = "Spp", communityColumn = NULL,
+  baselineColumn = "FG", consumersColumn = "Spp", groupsColumn = NULL,
   deltaC = NULL, deltaN = NULL, d13C = "d13C", d15N = "d15N",
-  seed = 3)
+  seed = 3, ...)
 }
 \arguments{
 \item{df}{data frame containing raw isotope data, with one or more grouping
@@ -19,10 +19,10 @@ variables.}
 
 \item{baselineColumn}{string of the column where baselines are grouped.}
 
-\item{speciesColumn}{string of the column where species/consumers are
+\item{consumersColumn}{string of the column where consumers/species are
 grouped.}
 
-\item{communityColumn}{string of the column where communities are grouped.}
+\item{groupsColumn}{string of the column where groups/communities are grouped.}
 
 \item{deltaC}{vector of values with trophic discrimination factor for carbon.
 If NULL it will use Post's assumptions (56 values with 3.4 mean +- 0.98
@@ -37,6 +37,8 @@ nitrogen. If NULL it will use Post's assumptions (107 values with 0.39 mean
 \item{d15N}{string of the column that has d15N isotope values.}
 
 \item{seed}{integer to get reproducible results. By default, seed = 3.}
+
+\item{...}{Additional arguments passed to this funcion.}
 }
 \value{
 a list with isotopeData class objects
@@ -51,6 +53,6 @@ sampling sites, samples in time, multiple studies, etc.).
 data("Bilagay")
 head(Bilagay)
 isotopeList <- extractIsotopeData(Bilagay, b1 = "Benthic_BL",
-b2 = "Pelagic_BL", baselineColumn = "FG", speciesColumn = "Spp",
-communityColumn = "Location", d13C = "d13C", d15N = "d15N")
+b2 = "Pelagic_BL", baselineColumn = "FG", consumersColumn = "Spp",
+groupsColumn = "Location", d13C = "d13C", d15N = "d15N")
 }

@@ -110,6 +110,44 @@ jagsTwoBaselinesFull <- function (sigmaNc = NULL,
                                   ...)
 {
 
+  ##########################
+  ## Check priors
+  ##########################
+
+  arg <- do.call(cbind, (as.list(match.call())[-1]))
+  colnames <- colnames(arg)
+  count <- 0
+  for (i in seq_along(arg)) {
+
+    if(colnames[i] == "lambda") next()
+
+    if(grepl("dnorm(", arg[i], fixed = TRUE) &
+       grepl(",", arg[i], fixed = TRUE) &
+       grepl(")", arg[i], fixed = TRUE)) {
+      next()
+    } else if (grepl("dunif(", arg[i], fixed = TRUE) &
+               grepl(",", arg[i], fixed = TRUE) &
+               grepl(")", arg[i], fixed = TRUE)) {
+      next()
+    } else if (grepl("dbeta(", arg[i], fixed = TRUE) &
+               grepl(",", arg[i], fixed = TRUE) &
+               grepl(")", arg[i], fixed = TRUE)) {
+      next()
+    }
+    count <- count + 1
+  }
+
+  Check <- ArgumentCheck::newArgCheck()
+
+  if (count > 0)
+    ArgumentCheck::addWarning(
+      msg = "It seems that you are not using dnorm(mean, sd),  dunif(min, max)
+   or dbeta(a, b) as priors, or they are not correctly written. Please check
+   the arguments.",
+      argcheck = Check
+    )
+  ArgumentCheck::finishArgCheck(Check)
+
   # ----------------------------------------------------------------------------
   # JAGS code for fitting Inverse Wishart version of SIBER to two groups
   # ----------------------------------------------------------------------------
@@ -159,17 +197,30 @@ jagsTwoBaselinesFull <- function (sigmaNc = NULL,
   # dCc is modelled as having a normal distribution
   # with mean calculated with the two baselines weighted by alpha
   for (i in 1:length(dCc)) {
-  dCc[i] ~ dnorm(muCb2 + (muDeltaC * (TP-lambda)) + (alpha * (muCb1 - muCb2)),
-   tauCc)
+  dCc[i] ~ dnorm(muCc[i], tauCc)
+  muCc[i] <- muCb2 + (muDeltaC * (TP-lambda)) + (alpha * (muCb1 - muCb2))
   }
 
   # ----------------------------------------------------------------------------
   # Likelihood for the nitrogen data in the consumer uses the estimated
   # proportion of baseline 1 and 2 in the consumer to inform trophic position.
   for (i in 1:length(dNc)){
-  dNc[i] ~ dnorm(muDeltaN * (TP - lambda) + muNb1*alpha + muNb2 * (1 - alpha),
-   tauNc)
-  }"
+  dNc[i] ~ dnorm(muNc[i], tauNc)
+  muNc[i] <- muDeltaN * (TP - lambda) + muNb1*alpha + muNb2 * (1 - alpha)
+  }
+
+  # Likelihood for the predicted nitrogen data
+  for (i in 1:length(dNc)) {
+    dNcPred[i] ~ dnorm(muNc[i], tauNc)
+  }
+
+  # Likelihood for the predicted carbon data
+  for (i in 1:length(dCc)) {
+    dCcPred[i] ~ dnorm(muCc[i], tauCc)
+  }
+
+  "
+
 
   # ----------------------------------------------------------------------------
   # Priors
@@ -359,6 +410,7 @@ jagsTwoBaselinesFull <- function (sigmaNc = NULL,
     newString <- "lambda <- 2"
 
   } else {
+    if(!is.numeric(lambda)) stop("lambda must be numeric")
     newString <- paste("lambda <- ", toString(lambda))
   }
   modelString <- paste (modelString, newString, sep = "\n")

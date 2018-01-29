@@ -26,6 +26,40 @@
 
 jagsBayesianModel <- function (model = NULL, ... ) {
 
+  arguments <- list(...)
+  # print(length(arguments))
+  # print(arguments)
+  # print(names(arguments))
+  # #message(names(as.list(match.call())[-1]))
+
+  #oneBaseline priors
+  # priorsOB <- c("muB", "sigmaB", "muDeltaN","sigmaDeltaN", "sigma", "TP")
+
+  # flag_dnorm <- FALSE
+  # flag_dunif <- FALSE
+  # flag_dbeta <- FALSE
+  #
+  # for (argument in arguments){
+  #   #print(typeof(arguments$argument))
+  #   if(!grepl("dnorm", argument[[1]])) flag_dnorm <- TRUE
+  #   if(!grepl("dunif", argument[[1]])) flag_dunif <- TRUE
+  #   if(!grepl("dbeta", argument[[1]])) flag_dbeta <- TRUE
+  # }
+  #
+  # Check <- ArgumentCheck::newArgCheck()
+  #
+  # if (flag_dnorm | flag_dunif | flag_dbeta)
+  #   ArgumentCheck::addWarning(
+  #     msg = "It seems that you are not using dnorm(mean, sd),  dunif(min, max)
+  # or dbeta(a, b) as priors, or they are not correctly written. Please check
+  # the arguments",
+  #     argcheck = Check
+  #   )
+  #   # message(strwrap("It seems that you are not using dnorm(mean, sd), \n
+  #   # dunif(min, max) or dbeta(a, b) as prior, are you sure?"))
+  #
+  # ArgumentCheck::finishArgCheck(Check)
+
   if (is.null(model))
     return(jagsTwoBaselinesFull(...))
 
@@ -37,4 +71,5 @@ jagsBayesianModel <- function (model = NULL, ... ) {
 
   else if (model == "twoBaselinesFull")
     return(jagsTwoBaselinesFull(...))
+
 }

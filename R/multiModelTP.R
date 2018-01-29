@@ -65,7 +65,7 @@ multiModelTP <- function (siData = siData, lambda = 2,
 
 
   HPDs  <- data.frame(matrix(ncol = 11, nrow = 0))
-  colnames(HPDs) <- c("model", "community", "species",
+  colnames(HPDs) <- c("model", "group", "consumer",
                       "lower", "upper", "median", "mode", "alpha.lower",
                       "alpha.upper", "alpha.median", "alpha.mode")
 
@@ -79,8 +79,8 @@ multiModelTP <- function (siData = siData, lambda = 2,
 
     siData_mod <- siData
     # Check this...
-    # variable.names <- c("TP", "alpha", "muDeltaC")
-    variable.names <- c("TP", "alpha")
+    # variable.names = c("TP", "alpha", "muDeltaC")
+    variable.names = c("TP", "alpha")
 
 
     if (model == "oneBaseline") {
@@ -88,7 +88,7 @@ multiModelTP <- function (siData = siData, lambda = 2,
       model_txt <- "1b"
       myvars <- names(siData) %in% c("dCb1", "dNb2", "dCb2", "dCc", "deltaC")
       siData_mod <- siData[!myvars]
-      variable.names <- c("TP", "muDeltaN")
+      variable.names = c("TP", "muDeltaN")
       }
 
     else if (model == "twoBaselines") {
@@ -108,12 +108,12 @@ multiModelTP <- function (siData = siData, lambda = 2,
       class(siData_mod) <- "list"
 
       if (isTRUE(print)) {
-        summarise <- TRUE
-        plots <- TRUE
+        summarise = TRUE
+        plots = TRUE
       }
       else {
-        summarise <- FALSE
-        plots <- FALSE
+        summarise = FALSE
+        plots = FALSE
       }
 
       # runJagsOut <- runjags::run.jags(method = "parallel", model = model,
@@ -154,12 +154,12 @@ multiModelTP <- function (siData = siData, lambda = 2,
 
     if (isTRUE(print)) {
 
-      if (!is.null(attributes(siData)$community) &
+      if (!is.null(attributes(siData)$group) &
           !is.null(attributes(siData)$consumer))
 
         plotMCMC(samples, #coda:::plot.mcmc.list()
                  sub = paste(model,
-                             attributes(siData)$community,
+                             attributes(siData)$group,
                              attributes(siData)$consumer))
       else
 
@@ -180,7 +180,7 @@ multiModelTP <- function (siData = siData, lambda = 2,
     HPD <- coda::HPDinterval(TP.combined)
     lower <- HPD[1]
     upper <- HPD[3]
-    median <- stats::median(TP.combined[,1])
+    median <- median(TP.combined[,1])
     mode <- hdrcde::hdr(TP.combined[,1])$mode
 
     if (model == "oneBaseline") alpha.lower <- NA
@@ -198,18 +198,17 @@ multiModelTP <- function (siData = siData, lambda = 2,
         alpha.mode <- hdrcde::hdr(TP.combined[,2])$mode
         }
 
-    if (!is.null(attributes(siData)$community))
-      community <-  attributes(siData)$community
-    else community <- NA
+    if (!is.null(attributes(siData)$group))
+      group =  attributes(siData)$group
+    else group = NA
 
     if (!is.null(attributes(siData)$consumer))
-      species <- attributes(siData)$consumer
-    else species <- NA
+      consumer = attributes(siData)$consumer
+    else consumer = NA
 
     df <- data.frame("model" = model_txt,
-                     "community" = community,
-                     # "consumer" = consumer,
-                     "species" = species,
+                     "group" = group,
+                     "consumer" = consumer,
                      "lower" = lower,
                      "upper" = upper,
                      "median" = median,

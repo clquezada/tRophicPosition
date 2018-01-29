@@ -1,16 +1,23 @@
 ---
 title: "Using tRophicPosition to estimate TP through the use of multiple models"
 author: "Claudio Quezada-Romegialli, Andrew L Jackson & Chris Harrod"
-date: "October 05 2017"
+date: "January 26 2018"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Use of multiple models in tRophicPosition}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+
+```{r, eval = FALSE, echo = FALSE}
+# To update sysdata
+sysdata <- tRophicPosition:::sysdata
+devtools::use_data(sysdata, internal = TRUE, overwrite = TRUE)
+```
+
 # tRophicPosition
 
-`tRophicPosition`, is an R package incorporating a Bayesian model for the calculation of trophic position using stable isotopes with one or two baselines. As of 2017-10-05, the current version of the package is 0.7.2. `tRophicPosition` uses the powerful approach of Markov Chain Monte Carlo simulations provided by [JAGS](http://mcmc-jags.sourceforge.net) and the statistical language [R](https://www.r-project.org). Vignettes can be browsed with `browseVignettes("tRophicPosition")`.
+`tRophicPosition`, is an R package incorporating a Bayesian model for the calculation of trophic position using stable isotopes with one or two baselines. As of 2018-01-26, the current version of the package is 0.7.5. `tRophicPosition` uses the powerful approach of Markov Chain Monte Carlo simulations provided by [JAGS](http://mcmc-jags.sourceforge.net) and the statistical language [R](https://www.r-project.org). Vignettes can be browsed with `browseVignettes("tRophicPosition")`.
 
 # Introduction
 
@@ -61,7 +68,7 @@ We are constantly working on future releases of `tRophicPosition`, so feedback i
 
 # Calculation of TP for one species using multiple Bayesian models
 
-To demonstrate how `tRophicPosition` works, we will simulate some data. For example, imagine we have a fish species of interest that has mean (± SD) values of $\delta^{15}$N of 6 ($\pm$ 1) &#8240;, and $\delta^{13}$C of -4&#8240; ($\pm$ 1&#8240;). Also, as in many aquatic ecosystems, this fish lives in a system with two sources of C and N, meaning that we have to deal with two different baselines. One of the baselines has mean ($\pm$SD) values of $\delta^{15}$N of -0.8 ($\pm$ 1) &#8240; and $\delta^{13}$C -10 ($\pm$ 1) &#8240;, the other baseline has mean values of 1.2&#8240; ( 1&#8240;) and 2&#8240; ( 1&#8240;) ($\delta^{15}$N and $\delta^{13}$C respectively). We will use the function generateTPData() to simulate this simple ecosystem.
+To demonstrate how `tRophicPosition` works, we will simulate some data. For example, imagine we have a fish species of interest that has mean ($\pm$ SD) values of $\delta^{15}$N of 21&#8240; ($\pm$ 1&#8240;), and $\delta^{13}$C of -15&#8240; ($\pm$ 1&#8240;). Also, as in many aquatic ecosystems, this fish lives in a system with two sources of C and N, meaning that we have to deal with two different baselines. One of the baselines has mean ($\pm$ SD) values of $\delta^{15}$N of 14.2&#8240; ($\pm$ 1&#8240;) and $\delta^{13}$C -17.3&#8240; ($\pm$ 1&#8240;), while the other baseline has mean values of 15.4&#8240; ($\pm$ 1&#8240;) and -12.7&#8240; ($\pm$ 1&#8240;) ($\delta^{15}$N and $\delta^{13}$C respectively). We will use the function generateTPData() to simulate this simple ecosystem.
 
 ```{r}
 consumer1 <- generateTPData(dCb1 = -17.3, dNb1 = 14.2,
@@ -87,16 +94,19 @@ consumer1_models <- multiModelTP(consumer1)
 ```
 
 ```{r, eval = FALSE, echo = FALSE}
+# To update sysdata
 consumer1_models <- multiModelTP(consumer1)
-Bilagay_models <- tRophicPosition:::Bilagay_models
-Bilagay_models$consumer1_models <- consumer1_models
-Bilagay_models$consumer1_models$samples <- NULL
-devtools::use_data(Bilagay_models, internal = TRUE, overwrite = TRUE)
+sysdata <- tRophicPosition:::sysdata
+sysdata$vignetteMMCTP$consumer1_models <- consumer1_models
+
+#Not sure why I put this here 
+#Bilagay_models$consumer1_models$samples <- NULL
+devtools::use_data(sysdata, internal = TRUE, overwrite = TRUE)
 ```
 
 ```{r, echo = FALSE}
 consumer1_models <- multiModelTP(consumer1, n.adapt = 200, n.iter = 200, burnin = 200)
-consumer1_models <- tRophicPosition:::Bilagay_models$consumer1_models
+consumer1_models <- tRophicPosition:::sysdata$vignetteMMCTP$consumer1_models
 ```
 
 `multiModelsTP()` requires an object of the class `isotopeData`, which was created previously by the function `generateTPData()`. By default `multiModelsTP()` defines a `lambda = 2` for the baselines, uses 2 chains (`n.chains = 2`) to do the Bayesian calculation with 20,000 adaptive iterations (`n.adapt = 20000`), 20,000 actual iterations (`n.iter = 20000`), 20,000 iterations as burnin (`burnin = 20000`) and a thinning of 10 (`thin = 10`). Furthermore, it estimates TP using three different Bayesian models: one baseline, two baselines and two baselines full (`models = c("oneBaseline", "twoBaselines", "twoBaselinesFull"`). The default setting is to limit the amount of output for each model run (print = FALSE). NB: The user can change any of these options, simply adding them as arguments to `multiModelTP()`, see `?multiModelTP()` for details.
@@ -124,23 +134,25 @@ consumer2_models <- multiModelTP(consumer2)
 ```
 
 ```{r, eval = FALSE, echo = FALSE}
+# To update sysdata
 consumer2_models <- multiModelTP(consumer2)
-Bilagay_models <- tRophicPosition:::Bilagay_models
-Bilagay_models$consumer2_models <- consumer2_models
-Bilagay_models$consumer2_models$samples <- NULL
-devtools::use_data(Bilagay_models, internal = TRUE, overwrite = TRUE)
+sysdata <- tRophicPosition:::sysdata
+sysdata$vignetteMMCTP$consumer2_models <- consumer2_models
+
+#Bilagay_models$consumer2_models$samples <- NULL #???
+devtools::use_data(sysdata, internal = TRUE, overwrite = TRUE)
 ```
 
 ```{r, echo = FALSE}
 consumer2_models <- multiModelTP(consumer2, n.adapt = 200, n.iter = 200, burnin = 200)
-consumer2_models <- tRophicPosition:::Bilagay_models$consumer2_models
+consumer2_models <- tRophicPosition:::sysdata$vignetteMMCTP$consumer2_models
 ```
 
 In both cases we have calculated three Bayesian models (one baseline, two baselines without fractionation for C, and two baselines full model with C fractionation) for two simulated simple ecosystems consisting of one fish and 2 baselines, and the only difference between consumer 1 and consumer 2 is the trophic discrimination factor. In the first case we included Post's (2002) values, and in the second case we included McCutchan's et al. (2003) values for both N and C. We have saved the output of `multiModelTP()` into two objects `consumer1_models` and `consumer2_models`, and now we will analyze the results.
 
-If you are using RStudio, in the environment tab you will see that both `consumer1_models` and `consumer2_models` are lists of 4 elements each. The first element is a data frame named TP. This dataframe has the posterior samples of TP for each model. The second element is also a data frame, named alpha in this case, which includes the posterior samples of alpha for 2 over the 3 models (only the two baselines models calculate alpha, i.e. the relative contribution of the baseline 1). The third element is a data frame as well, named gg (to indicate us that has the structure required to use the ggplot2 package). This data frame has summary values of both posterior samples of trophic position and alpha: median and 95% credibility interval, grouped by model, community and species. The fourth and last element is a list of 3 elements named samples, that has raw posterior mcmc samples if you want to summarise the information, or analyze it in a different way. The first three elements (data frames TP, alpha and gg) are based in these raw posterior samples of every Bayesian model, summarised by `multiModelsTP()` for convenience.
+If you are using RStudio, in the environment tab you will see that both `consumer1_models` and `consumer2_models` are lists of 4 elements each. The first element is a data frame named TP. This dataframe has the posterior samples of TP for each model. The second element is also a data frame, named alpha in this case, which includes the posterior samples of alpha for 2 of the 3 models (only the two baselines models calculate alpha, i.e. the relative contribution of the baseline 1). The third element is a data frame as well, named gg (to indicate us that has the structure required to use the ggplot2 package). This data frame has summary values of both posterior samples of trophic position and alpha: median and 95% credibility interval, grouped by model, community and species. The fourth and last element is a list of 3 elements named samples, that has raw posterior mcmc samples if you want to summarise the information, or analyze it in a different way. The first three elements (data frames TP, alpha and gg) are based in these raw posterior samples of every Bayesian model, summarised by `multiModelsTP()` for convenience.
 
-WWe can produce a detailed summary of the structure described above using the function `str()`:
+We can produce a detailed summary of the structure described above using the function `str()`:
 
 ``` {r, eval = FALSE}
 str(consumer1_models)
@@ -148,14 +160,14 @@ str(consumer1_models)
 
 In order to plot the mode and 95% credibility interval for both posterior trophic position and alpha, we can use the function `credibilityIntervals():`
 
-```{r, fig.width = 6, fig.height = 4}
+```{r, fig.width = 6, fig.height = 4, warning=FALSE}
 # For consumer 1 (based on Post's (2002) TDF values)
 credibilityIntervals(consumer1_models$gg, x = "model")
 ```
 
 This figure provides mode ($\pm$ 95% credibility interval) for posterior estimates trophic position from the three different models (one baseline two baselines and two baselines full), as well as alpha (only given for two baselines models).
 
-```{r, fig.width = 6, fig.height = 4}
+```{r, fig.width = 6, fig.height = 4, warning=FALSE}
 # For consumer 2 (based on McCutchan's (2003) TDF values)
 credibilityIntervals(consumer2_models$gg, x = "model")
 ```
@@ -169,10 +181,11 @@ Probably, the single and most important assumption to get accurate and reliable 
 Now we will examine the impact of using the different TDFs for our simulated consumers. We have estimated trophic position and alpha for both consumers groups (differing only in TDF) and will test for statistical differences between posterior samples of these parameters. First, we must change the names of both posterior samples, because they have the same name (as they were calculated with `multiModelsTP()`):
 
 ```{r}
-# Here we see that we have 4000 posterior samples of 3 parameters (one for each Bayesian model) for consumer1
+# Here we see that we have 4002 posterior samples of 3 parameters
+# (one for each Bayesian model) for consumer1
 str(consumer1_models$TP)
 
-# And also 4000 posterior samples (for each 3 Bayesian models) for consumer2
+# And also 4002 posterior samples (for each 3 Bayesian models) for consumer2
 str(consumer2_models$TP)
 
 # But the names of each variables are the same for both consumers
@@ -183,11 +196,15 @@ names(consumer1_models$TP)
 names(consumer2_models$TP)
 
 # So, we change them in order to compare them.
-# To make things clear, consumer 1 will be "Post" and consumer 2 will be "McCutchan". 
-# Also, one baseline Bayesian model will be model1, two baselines model will be model2
-# and two baselines full model will be model2F
-names(consumer1_models$TP) <- c("Post-model1", "Post-model2", "Post-model2F")
-names(consumer2_models$TP) <- c("McCutchan-model1", "McCutchan-model2", "McCutchan-model2F")
+# To make things clear, consumer 1 will be "Post" and consumer 2 will be
+# "McCutchan". # Also, one baseline Bayesian model will be model1, two 
+# baselines model will be model2 and two baselines full model will be model2F
+names(consumer1_models$TP) <- c("Post-model1", 
+                                "Post-model2",
+                                "Post-model2F")
+names(consumer2_models$TP) <- c("McCutchan-model1",
+                                "McCutchan-model2",
+                                "McCutchan-model2F")
 ```
 
 A useful first step is to summarize the posterior distributions to get a quantitative idea of how different they are. For this, we will use the base function (i.e. that comes with R) `sapply()`. This function is part of the `lapply` functions that apply a function (in this case `summary`) over a list. As we have two lists (`consumer1_models$TP` and `consumer2_models$TP`) first we need to use the `c` operator, that combines them, then we will calculate a summary for the combined element:
@@ -208,7 +225,9 @@ Here we have a rudimentary summaries of posterior trophic position estimates ass
 As we are operating in a Bayesian universe, there is little sense to state a threshold under or above which both distributions will be considered different (as used in a frequentist universe e.g. p > 0.05). Instead, we think rather of comparing posterior distributions. For example, we can say that two posterior trophic position estimates will be considered different if their samples of posterior distributions are 100% different. In this stringent case and considering Post-model1 and McCutchan-model1 posterior estimates of trophic position, we would expect then that all the posterior estimates of Post-model1 are lesser than posterior estimates of McCutchan-model1.
 
 ```{r}
-compareTwoDistributions(combined_models$"Post-model1", combined_models$"McCutchan-model1", test = "<=")
+compareTwoDistributions(combined_models$"Post-model1",
+                        combined_models$"McCutchan-model1", 
+                        test = "<=")
 ```
 
 Above, we can see that trophic position posterior estimate of one baseline model using Post's (2002) TDF assumptions has a proportion of 4000 observations over the 4000 we sampled  (i.e. 4000 / 4000 = 1) that are lesser or equal than trophic position posterior estimate of the same one baseline model but using McCutchan's (2003) TDF assumptions. Thus, we are pretty confident that posterior estimation of trophic position calculated with one baseline Bayesian model with Post's (2000) assumptions is higher than posterior estimation of trophic position calculated with McCutchan's TDF assumptions. Remember that this is the same simulated fish consumer, in the same simple ecosystem, only considering differents TDF assumptions.
@@ -221,13 +240,13 @@ We can make a more detailed comparison of the different models and TDFs using th
 pairwiseComparisons(combined_models, test = "<=")
 ```
 
-The matrix generated by this function is symmetrical, below the diagonal we have the results of comparing how many posterior samples of the model in row are less or equal than posterior samples of the model in the column, while above the diagonal we have the results of comparing how many posterior samples of the model in the column are higher than posterior samples of the model in the row.
+The matrix generated by this function is symmetrical, below the diagonal we have the results of quatifying the proportion of  posterior samples of the model in row are less or equal than posterior samples of the model in the column, while above the diagonal we have the results of quantifying the proportion of posterior samples of the model in the column are higher than posterior samples of the model in the row.
 
 # Parametric trophic position
 As an appendix, we will calculate the parametric (i.e. non-Bayesian) version of trophic position. For this, we have to iterate through each consumer, and do the calculation with `parametricTP()`.
 
 ```{r}
-# First we  combine both consumers isotope values into a named list
+# First we combine both consumers' isotope values into a named list
 consumers <- list("consumer1" = consumer1, "consumer2" = consumer2)
 
 # And then, we calculate parametric TP using a loop for

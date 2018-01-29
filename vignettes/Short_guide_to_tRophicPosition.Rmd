@@ -1,22 +1,31 @@
 ---
 title: "Short guide to the use of tRophicPosition"
 author: "Claudio Quezada-Romegialli, Andrew L Jackson & Chris Harrod"
-date: "October 5 2017"
-output: rmarkdown::html_vignette
+date: "January 26 2018"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
 vignette: >
   %\VignetteIndexEntry{Short guide to the use of tRophicPosition}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
   %\VignetteDepends{MCMCvis}
+  %\VignetteEngine{knitr::rmarkdown}
 ---
+
+```{r, eval = FALSE, echo = FALSE}
+# To update sysdata
+sysdata <- tRophicPosition:::sysdata
+devtools::use_data(sysdata, internal = TRUE, overwrite = TRUE)
+```
 
 # tRophicPosition
 
-`tRophicPosition`, is an R package incorporating a Bayesian model for the calculation of consumer trophic position using stable isotopes with one or two baselines. As of 2017-10-05, the current version of the package is 0.7.2. `tRophicPosition` uses the powerful approach of Markov Chain Monte Carlo simulations provided by [JAGS](http://mcmc-jags.sourceforge.net) and the statistical language [R](https://www.r-project.org). Vignettes can be browsed with `browseVignettes("tRophicPosition")`.
+`tRophicPosition`, is an R package incorporating a Bayesian model for the calculation of consumer trophic position using stable isotopes with one or two baselines. As of 2018-01-26, the current version of the package is 0.7.5. `tRophicPosition` uses the powerful approach of Markov Chain Monte Carlo simulations provided by [JAGS](http://mcmc-jags.sourceforge.net) and the statistical language [R](https://www.r-project.org). Vignettes can be browsed with `browseVignettes("tRophicPosition")`.
 
 # Introduction
 
-In this vignette, we provide a short guide to the use of `tRophicPosition` in its current version (0.7.2).
+In this vignette, we provide a short guide to the use of `tRophicPosition` in its current version (0.7.5).
 
 ## Installing and loading the package
 
@@ -64,7 +73,7 @@ We are constantly working on future releases of `tRophicPosition`, so feedback i
 # Working with tRophicPosition
 ## Loading data into R
 
-To use `tRophicPosition`, you need to load data into R. You can use any function you prefer (e.g. `read.csv`, `read.table`, etc.) to accomplish this. For convenience, we have included a csv file within the package and we will load it with `read.csv`. The dataset `Bilagay-MEC.csv` includes $\delta^{13}$C and $\delta^{15}$N stable isotope data for one locality for the bilagay *Cheilodactylus variegatus* (http://www.fishbase.se/summary/Cheilodactylus-variegatus.html), a fish common to the coastal kelp forests of N Chile. It also includes $\delta^{13}$C and $\delta^{15}$N for two groups of primary consumers -one that provides a long-term integrated indicator of the pelagic baseline (filter feeding bivalves) and another for the benthic baseline (grazing gastropods)-, following Post (2002).
+To use `tRophicPosition`, you need to load data into R. You can use any function you prefer (e.g. `read.csv`, `read.table`, etc.) to accomplish this. For convenience, we have included a csv file within the package and we will load it with `read.csv`. The dataset `Bilagay-MEC.csv` includes $\delta^{13}$C and $\delta^{15}$N stable isotope data for one locality for the bilagay *Cheilodactylus variegatus* (http://www.fishbase.se/summary/Cheilodactylus-variegatus.html), a fish common to the coastal kelp forests of N Chile. It also includes $\delta^{13}$C and $\delta^{15}$N for two groups of primary consumers: one that provides a long-term integrated indicator of the pelagic baseline (filter feeding bivalves) and another for the benthic baseline (grazing gastropods), following Post (2002).
 
 ```{r}
 BilagayMEC <- read.csv(system.file("extdata", "Bilagay-MEC.csv",
@@ -77,33 +86,34 @@ In this case we have indicated a `system.file` function to locate the file withi
 head(BilagayMEC)
 ```
 
-To extract the stable isotope data from the data frame above we will use a function we have provided in the package called `loadIsotopeData()`. By default, this function extracts $\delta^{13}$C and $\delta^{15}$N stable isotope values from the columns `d13C` and `d15N`, grouping observations by a consumer, one or two baselines and a group identifier (here community, but can be location, time etc):
+Here FG stands for functional group, and NS refers to an integer representing the north to south ordering of locations. To extract the stable isotope data from the data frame above we will use a function we have provided in the package called `loadIsotopeData()`. By default, this function extracts $\delta^{13}$C and $\delta^{15}$N stable isotope values from the columns `d13C` and `d15N`, grouping observations by a consumer, one or two baselines and a group identifier (here community, but can be location, time etc):
 
 
 ```{r}
-consumer <- loadIsotopeData(BilagayMEC, species = "Bilagay", speciesColumn = "FG",
+consumer <- loadIsotopeData(BilagayMEC, consumer = "Bilagay", consumersColumn = "FG",
                             b1 = "Pelagic_BL", b2 = "Benthic_BL",
                             baselineColumn = "FG",
-                            community = "Coquimbo", communityColumn = "Location")
+                            group = "Coquimbo", groupsColumn = "Location")
 ```
 
-In the case above we have indicated that all observations that coincide with "Pelagic_BL" in the column "FG" will be extracted as baseline1, and all observations that coincide with "Benthic_BL" in the same column will be extracted as baseline2. And also, all observations that coincide with "Bilagay" in the column "FG" will be extracted as consumer values, while also belong to the community "Coquimbo", coded in the column "Location". Other options are available, and they can be found with `help(loadIsotopeData)`.
+In the case above we have indicated that all observations that coincide with "Pelagic_BL" in the column "FG" will be extracted as baseline1, and all observations that coincide with "Benthic_BL" in the same column will be extracted as baseline2. And also, all observations that coincide with "Bilagay" in the column "FG" and coincide with "Coquimbo" in the column "location" will be extracted as consumer values. Other options are available, and they can be found with `help(loadIsotopeData)`.
 
 An essential component of the model to estimate trophic position is the trophic discrimination factor (TDF). By default the function `loadIsotopeData()` returns $\Delta$N (3.4 $\pm$ 0.98 sd) and $\Delta$C (0.39 $\pm$ 1.3 sd) based on Post's (2002) assumptions. But you can change this assumption to use any values, simply adding them as arguments within the call to this function. For example, to get McCutchan's et al (2003) values on TDF, instead of Post's (2002) assumptions we could write the following:
 
 ```{r}
-# First we get TDF values from bibliography using McCutchan's et al (2003) paper
+# First we get TDF values from the internal database using McCutchan's et al
+# (2003) paper
 TDF_values <- TDF(author = "McCutchan", element = "both", type = "muscle")
 
 # Then we use those values within the call to loadIsotopeData()
 consumer_with_McCutchan <- loadIsotopeData(BilagayMEC, 
-                                           species = "Bilagay",
+                                           consumer = "Bilagay",
                                            b1 = "Pelagic_BL",
                                            b2 = "Benthic_BL", 
-                                           community = "Coquimbo",
-                                           speciesColumn = "FG",
+                                           group = "Coquimbo",
+                                           consumersColumn = "FG",
                                            baselineColumn = "FG",
-                                           communityColumn = "Location",
+                                           groupsColumn = "Location",
                                            deltaN = TDF_values$deltaN,
                                            deltaC = TDF_values$deltaC)
 ```
@@ -160,7 +170,7 @@ posterior.samples <- posteriorTP(model = model, n.iter = 20000,
 posterior.samples <- posteriorTP(model = model, n.iter = 500,
                                  variable.names = c("TP", "muDeltaN"))
 
-posterior.samples <- tRophicPosition:::Bilagay_models$posterior.samples
+posterior.samples <- tRophicPosition:::sysdata$vignetteSGTP$posterior.samples
 ```
 
 In the example above we set 20,000 MCMC iterations to sample the posterior using the model defined with `TPmodel()`. Also we defined to monitor the variables `"TP"` and `"muDeltaN"` (which is the default). TP is trophic position, our main parameter of interest, but also we included muDeltaN which is the mean for $\Delta$N.
@@ -190,7 +200,7 @@ In order to graphically depict our results we can use the generic plot function 
 # install.packages("MCMCvis")
  
 # MCMCvis plots trace and density from posterior samples
-MCMCvis::MCMCtrace(posterior.samples)
+MCMCvis::MCMCtrace(posterior.samples, pdf = FALSE)
 ```
 
 The plot above (`MCMCtrace()`) visualizes the trace and density of MCMC chains for our parameters of interest, in this case TP (trophic position) and muDeltaN (mean of TDF for nitrogen). It gives us a quick way to visualize if posterior sampling has converged: there should be no tendency of increase or decrease over time (both chains in trace plot are well mixed) and the density for both parameters should be smooth and unimodal (given the assumptions of the one baseline Bayesian model in this particular case).

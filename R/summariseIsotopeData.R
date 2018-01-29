@@ -37,10 +37,10 @@ summariseIsotopeData <- function (df = NULL, grouping = c("Species", "FG"),
     stop("Check the grouping variable or the names in your dataframe")
 
   summary <- plyr::ddply(df, grouping, plyr::summarise,
-                         NC = length(d13C),
+                         nC = length(d13C),
                          meanC = mean(d13C),
                          sdC = stats::sd(d13C),
-                         NN = length(d15N),
+                         nN = length(d15N),
                          meanN = mean(d15N),
                          sdN = stats::sd(d15N))
 
