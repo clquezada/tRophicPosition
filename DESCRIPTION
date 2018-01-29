@@ -31,7 +31,6 @@ RoxygenNote: 6.0.1
 Suggests:
     dplyr,
     knitr,
-    MCMCvis,
     rmarkdown,
     testthat,
     covr

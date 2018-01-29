@@ -22,7 +22,8 @@ variables.}
 \item{consumersColumn}{string of the column where consumers/species are
 grouped.}
 
-\item{groupsColumn}{string of the column where groups/communities are grouped.}
+\item{groupsColumn}{string of the column where groups/communities are
+grouped.}
 
 \item{deltaC}{vector of values with trophic discrimination factor for carbon.
 If NULL it will use Post's assumptions (56 values with 3.4 mean +- 0.98
