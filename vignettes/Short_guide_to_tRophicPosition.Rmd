@@ -9,7 +9,7 @@ output:
 vignette: >
   %\VignetteIndexEntry{Short guide to the use of tRophicPosition}
   %\VignetteEncoding{UTF-8}
-  %\VignetteDepends{MCMCvis}
+  %\VignetteDepends{}
   %\VignetteEngine{knitr::rmarkdown}
 ---
 
@@ -193,23 +193,22 @@ posterior.combined <- coda::mcmc(do.call(rbind, posterior.samples))
 getPosteriorMode(posterior.combined)
 ```
 
-In order to graphically depict our results we can use the generic plot function from coda package (`plot(posterior.samples)`), or even use other R packages to process/display the information in the posterior samples, such as `MCMCtrace()` and `MCMCplot()` functions from the package MCMCvis:
+In order to graphically depict our results we can use the generic plot function from coda package (`plot(posterior.samples)`), or even use other R packages to process/display the information in the posterior samples, such as `MCMCtrace()` and `MCMCplot()` functions from the package MCMCvis.
 
 ```{r, fig.width = 6, fig.height = 6}
-# First we install the package MCMCvis if we haven't done it before
-# install.packages("MCMCvis")
- 
-# MCMCvis plots trace and density from posterior samples
-MCMCvis::MCMCtrace(posterior.samples, pdf = FALSE)
+plot(posterior.samples)
 ```
 
-The plot above (`MCMCtrace()`) visualizes the trace and density of MCMC chains for our parameters of interest, in this case TP (trophic position) and muDeltaN (mean of TDF for nitrogen). It gives us a quick way to visualize if posterior sampling has converged: there should be no tendency of increase or decrease over time (both chains in trace plot are well mixed) and the density for both parameters should be smooth and unimodal (given the assumptions of the one baseline Bayesian model in this particular case).
+The plot above (`plot(posterior.samples)`) visualizes the trace and density of MCMC chains for our parameters of interest, in this case TP (trophic position) and muDeltaN (mean of TDF for nitrogen). It gives us a quick way to visualize if posterior sampling has converged: there should be no tendency of increase or decrease over time (both chains in trace plot are well mixed) and the density for both parameters should be smooth and unimodal (given the assumptions of the one baseline Bayesian model in this particular case).
 
-The plot below (`MCMCplot()`) visualizes the posterior distributions of both TP and muDeltaN. It gives a graphic summary of the median and 95 percent credible intervals for each posterior distribution (see `?MCMCplot` for details).
+The plot below (`plotTP()`, a wrapper from [SIBER](https://github.com/AndrewLJackson/SIBER/blob/master/R/siberdensityplot.R)) visualizes the posterior distributions of both TP and muDeltaN. It gives a graphical summary of the mode and 95, 75 and 50 percent credible intervals for each posterior distribution (see `?SIBER::siberDensityPlot` for details).
 
 ```{r, fig.width = 5, fig.height = 3.8}
-# MCMCplot visualize posterior distributions using caterpillar plots
-MCMCvis::MCMCplot(posterior.samples, ylim = c(0,5), horiz = FALSE)
+# First we combine the 2 chains
+combined <- as.data.frame(coda::mcmc(do.call(rbind, posterior.samples)))
+
+# Then we plot the data using a wrapper of SIBER::siberDensityPlot()
+plotTP(combined, xlab = "Monitored variables")
 ```
 
 When we are dealing with more than one species, or more than one Bayesian model (for one species) we will use the function `credibilityIntervals()`. This is covered in the rest of vignettes.
