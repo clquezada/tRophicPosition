@@ -65,6 +65,44 @@ jagsOneBaseline <- function (muB = NULL,
 							...)
 {
 
+  ##########################
+  ## Check priors
+  ##########################
+
+  arg <- do.call(cbind, (as.list(match.call())[-1]))
+  colnames <- colnames(arg)
+  count <- 0
+  for (i in seq_along(arg)) {
+
+    if(colnames[i] == "lambda") next()
+
+    if(grepl("dnorm(", arg[i], fixed = TRUE) &
+       grepl(",", arg[i], fixed = TRUE) &
+       grepl(")", arg[i], fixed = TRUE)) {
+      next()
+    } else if (grepl("dunif(", arg[i], fixed = TRUE) &
+               grepl(",", arg[i], fixed = TRUE) &
+               grepl(")", arg[i], fixed = TRUE)) {
+      next()
+    } else if (grepl("dbeta(", arg[i], fixed = TRUE) &
+               grepl(",", arg[i], fixed = TRUE) &
+               grepl(")", arg[i], fixed = TRUE)) {
+      next()
+    }
+    count <- count + 1
+  }
+
+  Check <- ArgumentCheck::newArgCheck()
+
+  if (count > 0)
+    ArgumentCheck::addWarning(
+      msg = "It seems that you are not using dnorm(mean, sd),  dunif(min, max)
+   or dbeta(a, b) as priors, or they are not correctly written. Please check
+   the arguments.",
+      argcheck = Check
+    )
+  ArgumentCheck::finishArgCheck(Check)
+
   # ----------------------------------------------------------------------------
   # JAGS code for fitting Inverse Wishart version of SIBER to a single group
   # ----------------------------------------------------------------------------
@@ -91,11 +129,18 @@ jagsOneBaseline <- function (muB = NULL,
       for (i in 1:length(dNc)) {
         dNc[i] ~ dnorm(mu[i], tau)
         mu[i] <- muB + muDeltaN * (TP - lambda)
-      }"
+      }
+
+      for (i in 1:length(dNc)) {
+        dNcPred[i] ~ dnorm(mu[i], tau)
+      }
+      #Prediction <- sum(dNcPred)
+
+  "
 
   # -----------------------------------------------------------------------
   # Now we define prior mean and precision for the baseline.
-  # If muBprior doesn't exist, an uninformative prior is defined.
+  # If muB doesn't exist, an uninformative prior is defined.
   # Otherwise muB is defined as the prior distribution
   # for muB
   if (is.null(muB)) {
@@ -173,6 +218,7 @@ jagsOneBaseline <- function (muB = NULL,
   if (is.null(lambda)) {
     newString <-     "lambda <- 2"
   } else {
+    if(!is.numeric(lambda)) stop("lambda must be numeric")
     newString <- paste("lambda <-", toString(lambda))
   }
 

@@ -4,7 +4,7 @@
 \alias{TDF}
 \title{Trophic discrimination factors from bibliography}
 \usage{
-TDF(author = "Post", element = "both", type = "all", seed = 3)
+TDF(author = "Post", element = "both", type = NULL, seed = 3)
 }
 \arguments{
 \item{author}{could be either "Post" or "McCutchan" at the moment.}

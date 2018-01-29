@@ -50,7 +50,7 @@
 #' credibilityIntervals(models$gg, x = "model")
 
 credibilityIntervals <- function (df,
-                                  x = "species",
+                                  x = "consumer",
                                   plotAlpha = TRUE,
                                   legend = NULL,
                                   legendAlpha = NULL,

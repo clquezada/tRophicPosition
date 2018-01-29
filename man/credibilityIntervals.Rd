@@ -5,7 +5,7 @@
 \title{Plot credibility intervals and central tendency descriptor from posterior
 distributions of trophic position and/or alpha parameter}
 \usage{
-credibilityIntervals(df, x = "species", plotAlpha = TRUE, legend = NULL,
+credibilityIntervals(df, x = "consumer", plotAlpha = TRUE, legend = NULL,
   legendAlpha = NULL, y1 = "mode", y1min = "lower", y1max = "upper",
   y1lim = NULL, y2 = "alpha.mode", y2min = "alpha.lower",
   y2max = "alpha.upper", xlab = "Bayesian models",

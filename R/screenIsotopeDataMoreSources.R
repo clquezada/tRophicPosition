@@ -153,6 +153,7 @@ screenIsotopeDataMoreSources <- function (isotopeData = NULL,
     #want to modify through the user. Same applies for the colors)
     xlab <- expression(paste(delta^{13}, "C (\u2030)"))
     ylab <- expression(paste(delta^{15}, "N (\u2030)"))
+
     palette <- "Set1"
     type <- "qual"
 

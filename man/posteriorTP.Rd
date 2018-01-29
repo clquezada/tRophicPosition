@@ -5,7 +5,7 @@
 \title{Function to generate posterior samples of a trophic position JAGS model}
 \usage{
 posteriorTP(model, variable.names = c("TP", "muDeltaN"), n.iter = 10000,
-  thin = 10, quiet = FALSE, ...)
+  burnin = NULL, thin = 10, quiet = FALSE, ...)
 }
 \arguments{
 \item{model}{a JAGS model object returned by any of functions
@@ -16,6 +16,8 @@ posteriorTP(model, variable.names = c("TP", "muDeltaN"), n.iter = 10000,
 be monitored.}
 
 \item{n.iter}{integer defining the number of iterations. By default is 10000}
+
+\item{burnin}{number of iterations discarded as burn in.}
 
 \item{thin}{thinning interval to get posterior samples.}
 

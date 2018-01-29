@@ -4,19 +4,19 @@
 \alias{loadIsotopeData}
 \title{Extract and load stable isotope data for selected consumers from a data frame}
 \usage{
-loadIsotopeData(df = NULL, species = NULL, community = NULL,
+loadIsotopeData(df = NULL, consumer = NULL, group = NULL,
   b1 = "Baseline 1", b2 = NULL, baselineColumn = "FG",
-  speciesColumn = "FG", communityColumn = NULL, d13C = "d13C",
-  d15N = "d15N", deltaC = NULL, deltaN = NULL, seed = 666)
+  consumersColumn = "FG", groupsColumn = NULL, d13C = "d13C",
+  d15N = "d15N", deltaC = NULL, deltaN = NULL, seed = 666, ...)
 }
 \arguments{
 \item{df}{data frame containing raw isotope data with at least one grouping
 column.}
 
-\item{species}{string or character vector indicating which consumer/species
+\item{consumer}{string or character vector indicating which consumer/species
 will be extracted.}
 
-\item{community}{string or character vector indicating which community(ies)
+\item{group}{string or character vector indicating which group(s)
 will be extracted.}
 
 \item{b1}{string or character vector indicating which baseline(s) will be
@@ -27,10 +27,11 @@ extracted as baseline 2.}
 
 \item{baselineColumn}{string of the column where baselines are grouped.}
 
-\item{speciesColumn}{string of the column where species/consumers are
+\item{consumersColumn}{string of the column where species/consumer(s) are
 grouped.}
 
-\item{communityColumn}{string of the column where communities are grouped.}
+\item{groupsColumn}{string of the column where groups/communities are
+grouped.}
 
 \item{d13C}{string indicating from which column extract d13C isotope values.}
 
@@ -47,11 +48,13 @@ nitrogen. If NULL it will use Post's assumptions (107 values with 0.39 mean
 \item{seed}{numerical value to get reproducible results with trophic
 discrimination factors (because they are simulated each time this function
 is called). By default, is 3.}
+
+\item{...}{Additional arguments passed to this function.}
 }
 \value{
-an isotopeData class object if one consumer and one community are
+an isotopeData class object if one consumer and one group are
   selected. A list of isotopeData class objects if more than one consumer or
-  more than one community are selected.
+  more than one group are selected.
 }
 \description{
 This function extracts only selected consumers/species with their respective
@@ -62,7 +65,7 @@ trophic position only for selected consumers in one or more communities.
 \examples{
 data("Bilagay")
 head(Bilagay)
-loadIsotopeData(df = Bilagay, species = "Bilagay", speciesColumn = "FG",
-community = c("CHI", "COL"), communityColumn = "Location",
+loadIsotopeData(df = Bilagay, consumer = "Bilagay", consumersColumn = "FG",
+group = c("CHI", "COL"), groupsColumn = "Location",
 b1 = "Benthic_BL", b2 = "Pelagic_BL", baselineColumn = "FG")
 }

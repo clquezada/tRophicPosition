@@ -7,13 +7,14 @@
 #'
 #' @param df data frame containing raw isotope data with at least one grouping
 #'   column.
-#' @param species string or character vector indicating which consumer/species
+#' @param consumer string or character vector indicating which consumer/species
 #'   will be extracted.
-#' @param speciesColumn string of the column where species/consumers are
+#' @param consumersColumn string of the column where species/consumer(s) are
 #'   grouped.
-#' @param community string or character vector indicating which community(ies)
+#' @param group string or character vector indicating which group(s)
 #'   will be extracted.
-#' @param communityColumn string of the column where communities are grouped.
+#' @param groupsColumn string of the column where groups/communities are
+#' grouped.
 #' @param b1 string or character vector indicating which baseline(s) will be
 #'   extracted as baseline 1.
 #' @param b2 string or character vector indicating which baseline(s) will be
@@ -30,45 +31,73 @@
 #' @param seed numerical value to get reproducible results with trophic
 #'   discrimination factors (because they are simulated each time this function
 #'   is called). By default, is 3.
+#' @param ... Additional arguments passed to this function.
 #'
-#' @return an isotopeData class object if one consumer and one community are
+#' @return an isotopeData class object if one consumer and one group are
 #'   selected. A list of isotopeData class objects if more than one consumer or
-#'   more than one community are selected.
+#'   more than one group are selected.
 #' @export
 #'
 #' @examples
 #' data("Bilagay")
 #' head(Bilagay)
-#' loadIsotopeData(df = Bilagay, species = "Bilagay", speciesColumn = "FG",
-#' community = c("CHI", "COL"), communityColumn = "Location",
+#' loadIsotopeData(df = Bilagay, consumer = "Bilagay", consumersColumn = "FG",
+#' group = c("CHI", "COL"), groupsColumn = "Location",
 #' b1 = "Benthic_BL", b2 = "Pelagic_BL", baselineColumn = "FG")
 
 loadIsotopeData <- function(df = NULL,
-                            species = NULL,
-                            community = NULL,
+                            consumer = NULL,
+                            group = NULL,
                             b1 = "Baseline 1", b2 = NULL,
                             baselineColumn = "FG",
-                            speciesColumn = "FG",
-                            communityColumn = NULL,
+                            consumersColumn = "FG",
+                            groupsColumn = NULL,
                             d13C = "d13C", d15N = "d15N",
                             deltaC = NULL, deltaN = NULL,
-                            seed = 666) {
+                            seed = 666,
+                            ...) {
 
-  if (is.null(species)) stop("species can not be NULL")
+  arguments <- list(...) #might be names(as.list(match.call())[-1])
+
+  if("species" %in% names(arguments)){
+    consumer <- list(...)$species
+    message(strwrap("The Argument 'species' was maintained for compatibility
+                    tRophicPosition =< 0.7.5. Avoid to use it in the future and
+                    use 'consumersColumn' instead. Check the help for more
+                    details."))
+  }
+
+  if (is.null(consumer)) stop("consumer can not be NULL")
+  if (is.null(consumersColumn)) stop("consumersColumn can not be NULL")
+
+
+
+  if("communityColumn" %in% names(arguments)){
+    groupsColumn <- list(...)$communityColumn
+    message("The Argument 'communityColumn' was maintained for compatibility with
+            tRophicPosition =< 0.7.5. Avoid to use it in the future and use
+            'groupsColumn' instead. Check the help for more details.")
+  }
+
+  for (column in c(baselineColumn, consumersColumn, groupsColumn,
+                   d13C, d15N))
+    if(!(column %in% names(df)))
+      stop(paste0("The column ", column,
+                  " is not present in your data frame"))
 
   getValues <- function(df, item, column)
     df[df[,column] %in% item,]
 
   new_df <- data.frame(df[0,])
 
-  if(!is.null(community) & !is.null(communityColumn)) {
-    for (site in community){
-      site_subset <- getValues(df, site, communityColumn)
+  if(!is.null(group) & !is.null(groupsColumn)) {
+    for (site in group){
+      site_subset <- getValues(df, site, groupsColumn)
 
-      species_subset <- getValues(site_subset, species, speciesColumn)
+      consumer_subset <- getValues(site_subset, consumer, consumersColumn)
 
-      if (nrow(species_subset) == 0) next
-      else new_df <- rbind(new_df, species_subset)
+      if (nrow(consumer_subset) == 0) next
+      else new_df <- rbind(new_df, consumer_subset)
       new_df <- rbind(new_df, getValues(site_subset, b1, baselineColumn))
 
       if (!is.null(b2)) new_df <- rbind(new_df, getValues(site_subset, b2,
@@ -76,11 +105,11 @@ loadIsotopeData <- function(df = NULL,
     }
 
   } else {
-    for (sp in species) {
-      species_subset <- getValues(df, sp, speciesColumn)
+    for (sp in consumer) {
+      consumer_subset <- getValues(df, sp, consumersColumn)
 
-      if (nrow(species_subset) == 0) next
-      else new_df <- rbind(new_df, species_subset)
+      if (nrow(consumer_subset) == 0) next
+      else new_df <- rbind(new_df, consumer_subset)
       new_df <- rbind(new_df, getValues(df, b1, baselineColumn))
 
       if (!is.null(b2)) new_df <- rbind(new_df, getValues(df, b2,
@@ -90,8 +119,8 @@ loadIsotopeData <- function(df = NULL,
 
   isotopes <- extractIsotopeData(new_df, b1 = b1, b2 = b2,
                                  baselineColumn = baselineColumn,
-                                 speciesColumn = speciesColumn,
-                                 communityColumn = communityColumn,
+                                 consumersColumn = consumersColumn,
+                                 groupsColumn = groupsColumn,
                                  deltaC = deltaC, deltaN = deltaN,
                                  d13C = d13C, d15N = d15N,
                                  seed = seed)

@@ -1,7 +1,7 @@
 ---
 title: "tRophicPosition: calculating trophic position for multiple species"
 author: "Claudio Quezada-Romegialli, Andrew L Jackson & Chris Harrod"
-date: "October 05 2017"
+date: "January 26 2018"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Multiple species tRophicPosition}
@@ -10,9 +10,16 @@ vignette: >
   %\VignetteDepends{dplyr}
   %\VignetteDepends{knitr}
 ---
+
+```{r, eval = FALSE, echo = FALSE}
+# To update sysdata
+sysdata <- tRophicPosition:::sysdata
+devtools::use_data(sysdata, internal = TRUE, overwrite = TRUE)
+```
+
 # tRophicPosition
 
-`tRophicPosition`, is an R package incorporating a Bayesian model for the calculation of trophic position using stable isotopes with one or two baselines. As of 2017-10-05, the current version of the package is 0.7.2. `tRophicPosition` uses the powerful approach of Markov Chain Monte Carlo simulations provided by [JAGS](http://mcmc-jags.sourceforge.net) and the statistical language [R](https://www.r-project.org). Vignettes can be browsed with `browseVignettes("tRophicPosition")`.
+`tRophicPosition`, is an R package incorporating a Bayesian model for the calculation of trophic position using stable isotopes with one or two baselines. As of 2018-01-26, the current version of the package is 0.7.5. `tRophicPosition` uses the powerful approach of Markov Chain Monte Carlo simulations provided by [JAGS](http://mcmc-jags.sourceforge.net) and the statistical language [R](https://www.r-project.org). Vignettes can be browsed with `browseVignettes("tRophicPosition")`.
 
 # Introduction
 
@@ -65,7 +72,7 @@ We are constantly working on future releases of `tRophicPosition`, so feedback i
 
 ## Before we start
 
-If you have been using R prior to starting your analysis of trophic Position, it is possible that the environment contains unwanted data. Try to be as organized as possible with the data generated within R/RStudio, as this will make things a lot clearer.
+If you have been using R prior to starting your analysis of `tRophicPosition`, it is possible that the environment contains unwanted data. Try to be as organized as possible with the data generated within R/RStudio, as this will make things a lot clearer.
 
 When working on your analysis, a good first thing to do is to set the working directory to a convenient location. This is accomplished using `setwd()`. In RStudio you can use the menu "Session/Set Working Directory" to make things easier.
 
@@ -114,12 +121,12 @@ Now, we are ready to proceed with the calculation of trophic position. This foll
 
 If we only have 2 sampling sites, this can be done by hand. However, here we have different 10 sampling sites, so this task can be prone to errors and time-consuming, as we have to repeat the same code 10 times, but with changes in the Location, selecting the baseline, etc.
 
-To deal with this issue, we have developed a convenient function `extractIsotopeData()` where you can indicate the text for each of the baselines and the respective column where they are coded, the species column, and the community column. This function iterates through the data frame selecting unique values from the community column, extracting all the values that belong to each community and then iterate through them. Then it will extract all stable isotope values from the columns "d13C" and "d15N" (if their values haven't changed) for each baseline. Finally, it will select each unique value from the species column and it generates an `isotopeData` class object for each consumer combining their baselines isotope values. See `help(extractIsotopeData)` for other options.
+To deal with this issue, we have developed a convenient function `extractIsotopeData()` where you can indicate the text for each of the baselines and the respective column where they are coded, the consumers column, and the group column. This function iterates through the data frame selecting unique values from the group column, extracting all the values that belong to each group and then iterate within them. Then it will extract all stable isotope values from the columns "d13C" and "d15N" (if their values haven't changed) for each baseline. Finally, it will select each unique value from the consumers column and it will generate an `isotopeData` class object for each consumer combining their baselines isotope values. See `help(extractIsotopeData)` for other options.
 
 ```{r}
 BilagayList <- extractIsotopeData(Bilagay, b1 = "Pelagic_BL", b2 = "Benthic_BL",
-                                  baselineColumn = "FG", speciesColumn = "Spp",
-                                  communityColumn = "Community",
+                                  baselineColumn = "FG", consumersColumn = "Spp",
+                                  groupsColumn = "Community",
                                   d13C = "d13C", d15N = "d15N")
 ```
 
@@ -162,37 +169,37 @@ For this, we have developed a function that automatically i) defines a Bayesian 
 ```{r, eval = FALSE}
 Bilagay_models <- multiSpeciesTP(BilagayList, model = "twoBaselinesFull",
                                              n.adapt = 10000, n.iter = 10000,
-                                             burnin = 10000, n.chains = 2, print = FALSE)
+                                             burnin = 10000, n.chains = 5, print = FALSE)
 ```
 
 ```{r, echo=FALSE}
 a <- multiSpeciesTP(BilagayList[1], model = "twoBaselinesFull",
                     n.adapt = 100, n.iter = 100,
-                    burnin = 100, n.chains = 2, print = FALSE)
+                    burnin = 100, n.chains = 5, print = FALSE)
 ```
 
 By default, the function `multiSpeciesTP()` uses `lambda = 2` (trophic level of baselines), `n.chains = 2` (number of parallel MCMC simulations), and set n.adapt, n.iter and burnin as 10000 iterations. The model calculated by default is `oneBaseline`, so in this case we have changed it to `model = "twoBaselinesFull"` as we have two separate potential sources of N and C. In this particularly case, there was no need to explicitly state the number of adaptive iterations, iterations and burnin, but we decided to make them clear. Also, here we calculate 5 chains instead of the default (i.e. `n.chains = 2`).
 
 The function `multiSpeciesTP()` returns 4 objects:
-1. a list named `multiSpeciesTP`, which includes the raw data returned by `posteriorTP()` for each species per community/sampling location;
-2. a data frame named `df` with the mode, median and credibility confidence interval for trophic position and alpha (if a two baselines model was chosen), grouped by model, species and community/sampling location;
-3. a list named `TPs` with the posterior samples of trophic position for each community/location and species; and
-4. a list named `Alphas` which includes the posterior samples of alpha (relative contribution of baseline 1) for each species by community/location.
+1. a list named `multiSpeciesTP`, which includes the raw data returned by `posteriorTP()` for each consumer/species per group/community/sampling location;
+2. a data frame named `df` with the mode, median and credibility confidence interval for trophic position and alpha (if a two baselines model was chosen), grouped by model, consumer/species and group/community/sampling location;
+3. a list named `TPs` with the posterior samples of trophic position for each group/community/location and consumer/species; and
+4. a list named `Alphas` which includes the posterior samples of alpha (relative contribution of baseline 1) for each species by group/community/location.
 
 More advanced users will likely directly access this object for subsequent analysis. For now, we will concentrate on plotting the mode or median and 95% credibility interval for Bilagay from each location, using the joint values of trophic position and alpha by community/location, allowing an easy visual comparison between them:
 
 ```{r eval = FALSE}
 # By default the mode is used in both trophic position and alpha plots
-credibilityIntervals(Bilagay_models$df, x = "community", xlab ="Community")
+credibilityIntervals(Bilagay_models$df, x = "group", xlab ="Community")
 
 # If you want to use the median instead of the mode,
 # just add y1 and y2 as arguments
-credibilityIntervals(Bilagay_models$df, x = "community", xlab ="Community", 
+credibilityIntervals(Bilagay_models$df, x = "group", xlab ="Community", 
                      y1 = "median", y2 = "alpha.median")
 ```
 
 ```{r echo = FALSE, fig.width = 7, fig.height = 5}
-credibilityIntervals(tRophicPosition:::Bilagay_models$df, x = "community", xlab ="Community")
+credibilityIntervals(tRophicPosition:::sysdata$vignetteMSCTP$Bilagay_models$df, x = "group", xlab ="Community")
 ```
 
 To get a numerical summary of posterior estimates (median and 95% credibility interval) of trophic position, we can write the following:
@@ -207,10 +214,10 @@ getPosteriorMode(Bilagay_models$"TPs")
 
 ```{r echo = FALSE}
 # To get a numerical summary
-sapply(tRophicPosition:::Bilagay_models$"TPs", quantile, probs = c(0.025, 0.5, 0.975)) %>% round(3)
+sapply(tRophicPosition:::sysdata$vignetteMSCTP$Bilagay_models$"TPs", quantile, probs = c(0.025, 0.5, 0.975)) %>% round(3)
 
 # To get the mode
-getPosteriorMode(tRophicPosition:::Bilagay_models$"TPs")
+getPosteriorMode(tRophicPosition:::sysdata$vignetteMSCTP$Bilagay_models$"TPs")
 ```
 
 Finally, we can statistically compare whether either the posterior samples of trophic position and/or alpha alpha differ between communities/locations. In this example we compare both posterior estimates accross communities/locations with the function `pairwiseComparisons()`. Remember that this output must to be read as: what is the probability that consumer in row Y has a posterior trophic position/alpha less than or equal to consumer in column X. To make readable the output, we will compare only the first 8 communities/locations. If you want to compare all the communities/locations, just remove `[1:8]` below:
@@ -226,10 +233,10 @@ pairwiseAlpha <- pairwiseComparisons(Bilagay_models$Alphas[1:8], print = TRUE)
 
 ```{r echo = FALSE}
 # First, we compare bilagay posterior trophic position estimates
-pairwiseTP <- pairwiseComparisons(tRophicPosition:::Bilagay_models$TPs[1:8], print = TRUE)
+pairwiseTP <- pairwiseComparisons(tRophicPosition:::sysdata$vignetteMSCTP$Bilagay_models$TPs[1:8], print = TRUE)
 
 # And then, we compare their posterior alpha estimates
-pairwiseAlpha <- pairwiseComparisons(tRophicPosition:::Bilagay_models$Alphas[1:8], print = TRUE)
+pairwiseAlpha <- pairwiseComparisons(tRophicPosition:::sysdata$vignetteMSCTP$Bilagay_models$Alphas[1:8], print = TRUE)
 ```
 
 ## Parallel trophic position
@@ -260,7 +267,7 @@ print(rbind(time_parallel, time_serial))
 ```
 
 ```{r echo = FALSE}
-print(tRophicPosition:::Bilagay_models$time)
+print(tRophicPosition:::sysdata$vignetteMSCTP$time)
 ```
 
 Above you will see that in a modest MacBook Air (Intel Core i5, 1.6 GHz, 4 cores) the elapsed time with the serial version of `multiModelTP()` is roughly 92 seconds, while using the parallel version, the analysis time is reduced by almost 50 % (44 seconds), a not trivial difference. However, on desktop pc running Windows 10 (i7 3930-K, 3.2 GHz, 12 cores), the serial version took 73 seconds, while the parallel version took only 14 seconds.
