@@ -109,7 +109,7 @@ multiModelTP <- function (siData = siData, lambda = 2,
 
       if (isTRUE(print)) {
         summarise <- TRUE
-        plots = TRUE
+        plots <- TRUE
       }
       else {
         summarise <- FALSE
