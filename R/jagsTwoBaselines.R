@@ -131,8 +131,8 @@ jagsTwoBaselines <- function (sigmaNc = NULL,
     warning(
       msg = "It seems that you are not using dnorm(mean, sd),  dunif(min, max)
       or dbeta(a, b) as priors, or they are not correctly written. Please check
-      the arguments.",
-    )
+      the arguments."
+      )
 
   # ----------------------------------------------------------------------------
   # JAGS code for fitting Inverse Wishart version of SIBER to two groups
