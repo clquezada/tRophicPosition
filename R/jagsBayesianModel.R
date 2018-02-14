@@ -46,19 +46,13 @@ jagsBayesianModel <- function (model = NULL, ... ) {
   #   if(!grepl("dbeta", argument[[1]])) flag_dbeta <- TRUE
   # }
   #
-  # Check <- ArgumentCheck::newArgCheck()
-  #
   # if (flag_dnorm | flag_dunif | flag_dbeta)
-  #   ArgumentCheck::addWarning(
-  #     msg = "It seems that you are not using dnorm(mean, sd),  dunif(min, max)
+  #   warning(
+  #     "It seems that you are not using dnorm(mean, sd),  dunif(min, max)
   # or dbeta(a, b) as priors, or they are not correctly written. Please check
-  # the arguments",
-  #     argcheck = Check
-  #   )
+  # the arguments")
   #   # message(strwrap("It seems that you are not using dnorm(mean, sd), \n
   #   # dunif(min, max) or dbeta(a, b) as prior, are you sure?"))
-  #
-  # ArgumentCheck::finishArgCheck(Check)
 
   if (is.null(model))
     return(jagsTwoBaselinesFull(...))

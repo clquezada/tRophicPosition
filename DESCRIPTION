@@ -14,8 +14,7 @@ Imports:
     MCMCglmm,
     plyr,
     rjags,
-    stats,
-    ArgumentCheck
+    stats
 Author: Claudio Quezada-Romegialli, Andrew L Jackson, Chris Harrod
 URL: https://github.com/clquezada/tRophicPosition
 BugReports: https://groups.google.com/d/forum/trophicposition-support

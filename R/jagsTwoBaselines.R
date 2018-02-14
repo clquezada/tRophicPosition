@@ -127,16 +127,12 @@ jagsTwoBaselines <- function (sigmaNc = NULL,
     count <- count + 1
   }
 
-  Check <- ArgumentCheck::newArgCheck()
-
   if (count > 0)
-    ArgumentCheck::addWarning(
+    warning(
       msg = "It seems that you are not using dnorm(mean, sd),  dunif(min, max)
       or dbeta(a, b) as priors, or they are not correctly written. Please check
       the arguments.",
-      argcheck = Check
     )
-  ArgumentCheck::finishArgCheck(Check)
 
   # ----------------------------------------------------------------------------
   # JAGS code for fitting Inverse Wishart version of SIBER to two groups
