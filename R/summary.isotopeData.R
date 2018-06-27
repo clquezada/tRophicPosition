@@ -39,8 +39,8 @@ summary.isotopeData <- function (object, print = TRUE, round_dec = 1, ...) {
 
     cat("\nSummary for stable isotope data object", "\n\n")
 
-    if (!is.null(attributes(object)$consumer))
-      cat("Community ", attributes(object)$community, "\n")
+    if (!is.null(attributes(object)$group))
+      cat("Group ", attributes(object)$group, "\n")
     if (!is.null(attributes(object)$consumer))
       cat("Consumer ", attributes(object)$consumer, "\n")
     if (!is.null(attributes(object)$baseline1))

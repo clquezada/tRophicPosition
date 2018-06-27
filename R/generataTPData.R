@@ -155,17 +155,17 @@ generateTPData <- function (n.baselines = 2,
 
   } else if (n.baselines > 2){
 
-#     dCb2 <- rnorm(n.obsB, stats::runif(1, -25, -10), std.devB1)
-#     dNb2 <- rnorm(n.obsB, stats::runif(1, -5, 5), std.devB1)
-#
-#     dCb3 <- rnorm(n.obsB, stats::runif(1, -25, -10), std.devB1)
-#     dNb3 <- rnorm(n.obsB, stats::runif(1, -5, 5), std.devB1)
-#
-#     return(list(dNb1 = dNb1, dCb1 = dCb1,
-#                 dNc = dNc, dCc = dCc,
-#                 dNb2 = dNb2, dCb2 = dCb2,
-#                 dCb3 = dCb3, dNb3 = dNb3,
-#                 deltaN = deltaN))
+    #     dCb2 <- rnorm(n.obsB, stats::runif(1, -25, -10), std.devB1)
+    #     dNb2 <- rnorm(n.obsB, stats::runif(1, -5, 5), std.devB1)
+    #
+    #     dCb3 <- rnorm(n.obsB, stats::runif(1, -25, -10), std.devB1)
+    #     dNb3 <- rnorm(n.obsB, stats::runif(1, -5, 5), std.devB1)
+    #
+    #     return(list(dNb1 = dNb1, dCb1 = dCb1,
+    #                 dNc = dNc, dCc = dCc,
+    #                 dNb2 = dNb2, dCb2 = dCb2,
+    #                 dCb3 = dCb3, dNb3 = dNb3,
+    #                 deltaN = deltaN))
     stop("Three or more baselines is not implemented yet")
 
   } else {
@@ -174,5 +174,5 @@ generateTPData <- function (n.baselines = 2,
                 dCc = dCc, dNc = dNc,
                 deltaN = deltaN))
 
-    }
+  }
 }

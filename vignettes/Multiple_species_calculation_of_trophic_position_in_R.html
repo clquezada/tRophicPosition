@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Claudio Quezada-Romegialli, Andrew L Jackson &amp; Chris Harrod" />
+
+
+<title>tRophicPosition: calculating trophic position for multiple species</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+
+
+<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">tRophicPosition: calculating trophic position for multiple species</h1>
+<h4 class="author"><em>Claudio Quezada-Romegialli, Andrew L Jackson &amp; Chris Harrod</em></h4>
+<h4 class="date"><em>January 26 2018</em></h4>
+
+
+
+<div id="trophicposition" class="section level1">
+<h1>tRophicPosition</h1>
+<p><code>tRophicPosition</code>, is an R package incorporating a Bayesian model for the calculation of trophic position using stable isotopes with one or two baselines. As of 2018-01-26, the current version of the package is 0.7.5. <code>tRophicPosition</code> uses the powerful approach of Markov Chain Monte Carlo simulations provided by <a href="http://mcmc-jags.sourceforge.net">JAGS</a> and the statistical language <a href="https://www.r-project.org">R</a>. Vignettes can be browsed with <code>browseVignettes(&quot;tRophicPosition&quot;)</code>.</p>
+</div>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>In this vignette, we will introduce the new functions we have developed for <code>tRophicPosition</code> in the version 0.6.8-9. These functions are <code>extractIsotopeData()</code>, <code>jagsBayesianModel()</code> and <code>multiSpeciesTP()</code>. Aditionally, we provide an example to run these calculations in parallel (maximizing efficient use of computing power). Each of these functions accomplish different tasks within the Bayesian estimation of trophic position with stable isotopes, extracting stable isotope data for multiple species and/or communities, and facilitating the calculation of trophic position for multiple consumers within one or more ecosystems. We have also included a parallel calculation of trophic position, to make full use of the multiple processor cores typical in modern computers.</p>
+<div id="installing-and-loading-the-package" class="section level2">
+<h2>Installing and loading the package</h2>
+<div id="stable-version---cran" class="section level3">
+<h3>Stable version - CRAN</h3>
+<p>First of all, you need to install <a href="http://mcmc-jags.sourceforge.net/">JAGS</a> for your platform, and then install the stable version of <code>tRophicPosition</code> from <a href="https://CRAN.R-project.org/package=tRophicPosition">CRAN</a>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;tRophicPosition&quot;</span>)</code></pre></div>
+<p>After that, you have to load the package with:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tRophicPosition)</code></pre></div>
+</div>
+<div id="development-version---github" class="section level3">
+<h3>Development version - GitHub</h3>
+<p>If you want to install the development version of <code>tRophicPosition</code>, you must install it from GitHub. For this, we use the function <code>install_github()</code> from the package <code>devtools</code> (installation instructions <a href="https://github.com/hadley/devtools#updating-to-the-latest-version-of-devtools">here</a>), which needs to be installed previously (either from <a href="https://CRAN.R-project.org/package=devtools">CRAN</a> or <a href="https://github.com/hadley/devtools">GitHub</a>):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)
+<span class="kw">library</span>(devtools)</code></pre></div>
+<p>If you are working in Windows, <code>devtools</code> also requires <a href="http://bit.ly/2smGeVQ">Rtools</a>, or if you are working on a Mac, <a href="https://developer.apple.com/xcode/">Xcode</a> (from Apple Store). In Linux you will need to install a compiler and various development libraries.</p>
+<p>Besides installing <code>devtools</code>, you must also install <a href="http://mcmc-jags.sourceforge.net/">JAGS</a> (Just Another Gibbs Sampler), which is at the core of the Bayesian model analysis supporting <code>tRophicPosition</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install_github</span>(<span class="st">&quot;clquezada/tRophicPosition&quot;</span>, <span class="dt">build_vignettes =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<p>After installing <code>tRophicPosition</code>, it should be loaded into memory, which automatically reports the version of the software (we need at least 0.6.8-8 to use the routines described in this vignette).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tRophicPosition)</code></pre></div>
+</div>
+</div>
+<div id="future-releases-and-how-to-get-support" class="section level2">
+<h2>Future releases and how to get support</h2>
+<p>You are encouraged to use <code>tRophicPosition</code> with your own data, test the package and see if there are any issues or problems. You can send your questions or commentaries to the google group <a href="https://groups.google.com/d/forum/trophicposition-support">tRophicPosition-support</a> or directly to the email <a href="mailto:trophicposition-support@googlegroups.com">trophicposition-support@googlegroups.com</a>. You can send your questions to <a href="http://stackexchange.com/" class="uri">http://stackexchange.com/</a> <a href="http://stackoverflow.com/" class="uri">http://stackoverflow.com/</a> or even <a href="https://www.facebook.com/groups/stableisotopes/">Facebook (stable isotope ecology group)</a>.</p>
+<p>We are constantly working on future releases of <code>tRophicPosition</code>, so feedback is very much appreciated.</p>
+</div>
+</div>
+<div id="multiple-species-calculation-of-trophic-position-tp" class="section level1">
+<h1>Multiple species calculation of trophic position (TP)</h1>
+<div id="before-we-start" class="section level2">
+<h2>Before we start</h2>
+<p>If you have been using R prior to starting your analysis of <code>tRophicPosition</code>, it is possible that the environment contains unwanted data. Try to be as organized as possible with the data generated within R/RStudio, as this will make things a lot clearer.</p>
+<p>When working on your analysis, a good first thing to do is to set the working directory to a convenient location. This is accomplished using <code>setwd()</code>. In RStudio you can use the menu “Session/Set Working Directory” to make things easier.</p>
+<p>The next thing is to clear the environment. With RStudio you can click on the little broom icon in the environment tab, or use the command <code>rm(list = ls())</code>. Also, it is a good idea to clear the plots using the same broom icon in the plots tab, or the command <code>graphics.off()</code>. This is only needed if you have been working with some data before.</p>
+</div>
+<div id="and-now-an-initial-analysis---bilagay-tp-from-multiple-coastal-kelp-forests-in-n-chile" class="section level2">
+<h2>And now, an initial analysis - Bilagay TP from multiple coastal kelp forests in N Chile</h2>
+<p>We will start with some data from a fish common to the coastal kelp forests of N Chile, the bilagay <em>Cheilodactylus variegatus</em> (<a href="http://www.fishbase.se/summary/Cheilodactylus-variegatus.html" class="uri">http://www.fishbase.se/summary/Cheilodactylus-variegatus.html</a>). We have data from a number of populations (and associated filter feeding and grazing molluscs representing pelagic and benthic baselines respectively) from a series of different locations along the N Chilean coast. We know from the literature that bilagay diet is extremely variable and reflects what is locally available. We also know that there is a marked <span class="math inline">\(\delta^{15}\)</span>N-enrichment at the base of the food chain reflecting increased upwelling intensity as you move northwards up the coast. As such, we need to account for variation in baseline <span class="math inline">\(\delta^{15}\)</span>N variation before calculating TP at each site.</p>
+<p>So, our question is, given the potential influences of local differences in diet stomach contents and upwelling intensity, are there measurable differences in bilagay TP between the different locations along the S-N latitudinal gradient?</p>
+<p>We will use a data set included within <code>tRophicPosition</code>. The structure of the file has 7 columns, where species (<code>Spp</code>) are grouped into functional groups (<code>FG</code>) to describe its role in each of the ecosystems: “Bilagay” (our fish of interest), “Benthic_BL” (benthic baseline) and “Pelagic_BL” (pelagic baseline). We have samples from locations along the N Chilean coast (<code>NS</code> stands for the N-S ordering) and from multiple studies (<code>Study</code>) and locations (<code>Location</code>). We also have stable isotope values in two columns: “d13C” and “d15N”.</p>
+<table>
+<caption>Structure of the file Bilagay_for_tRophicPosition.csv</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">Study</th>
+<th align="left">Location</th>
+<th align="left">Spp</th>
+<th align="left">FG</th>
+<th align="right">d13C</th>
+<th align="right">d15N</th>
+<th align="right">NS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td align="left">MEL</td>
+<td align="left">CHI</td>
+<td align="left">Echinolittorina peruviana</td>
+<td align="left">Benthic_BL</td>
+<td align="right">-10.1</td>
+<td align="right">16.3</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td align="left">MEL</td>
+<td align="left">CHI</td>
+<td align="left">Echinolittorina peruviana</td>
+<td align="left">Benthic_BL</td>
+<td align="right">-11.7</td>
+<td align="right">16.3</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td align="left">MEL</td>
+<td align="left">CHI</td>
+<td align="left">Echinolittorina peruviana</td>
+<td align="left">Benthic_BL</td>
+<td align="right">-9.8</td>
+<td align="right">16.4</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td>130</td>
+<td align="left">MEL</td>
+<td align="left">COL</td>
+<td align="left">Bilagay</td>
+<td align="left">Bilagay</td>
+<td align="right">-15.2</td>
+<td align="right">20.9</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td>131</td>
+<td align="left">MEL</td>
+<td align="left">COL</td>
+<td align="left">Bilagay</td>
+<td align="left">Bilagay</td>
+<td align="right">-15.4</td>
+<td align="right">21.3</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td>132</td>
+<td align="left">MEL</td>
+<td align="left">COL</td>
+<td align="left">Bilagay</td>
+<td align="left">Bilagay</td>
+<td align="right">-15.2</td>
+<td align="right">21.6</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td>133</td>
+<td align="left">MEL</td>
+<td align="left">COL</td>
+<td align="left">Bilagay</td>
+<td align="left">Bilagay</td>
+<td align="right">-15.0</td>
+<td align="right">22.0</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td>660</td>
+<td align="left">MEL</td>
+<td align="left">MEJ</td>
+<td align="left">Perumytilus purpuratus</td>
+<td align="left">Pelagic_BL</td>
+<td align="right">-15.9</td>
+<td align="right">18.1</td>
+<td align="right">9</td>
+</tr>
+<tr class="odd">
+<td>661</td>
+<td align="left">MEL</td>
+<td align="left">MEJ</td>
+<td align="left">Perumytilus purpuratus</td>
+<td align="left">Pelagic_BL</td>
+<td align="right">-15.6</td>
+<td align="right">17.4</td>
+<td align="right">9</td>
+</tr>
+</tbody>
+</table>
+<p>If you want to edit the raw data or modify it, open the following file with your favourite application, save it to your working directory and then load it with <code>read.csv()</code> or <code>read.table()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;Bilagay_for_tRophicPosition.csv&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;tRophicPosition&quot;</span>)</code></pre></div>
+<pre><code>## [1] &quot;D:/Dropbox (HarrodLab)/GitHub/tRophicPosition/inst/extdata/Bilagay_for_tRophicPosition.csv&quot;</code></pre>
+<p>To load the <code>Bilagay</code> data set into R, use <code>data()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(<span class="st">&quot;Bilagay&quot;</span>)</code></pre></div>
+<p>As shown above, in this data set we have a combination of Study and Location variables, which need to be concatenated. Here we introduce <code>mutate</code> and <code>arrange</code> functions from the package dplyr and the pipe operator <code>%&gt;%</code> (from magrittr but loaded through dplyr).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages(dplyr) if you haven't installed it before</span>
+<span class="kw">library</span>(dplyr)
+Bilagay &lt;-<span class="st"> </span>Bilagay <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Community =</span> <span class="kw">paste</span>(Study,<span class="st">&quot;-&quot;</span>, Location, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>))</code></pre></div>
+<p>Also, this spreadsheet has information from the latitudinal arrangement of sampling sites, which is the variable <code>NS</code> (North to South order), ranging from 1 (most southern site) to 10 (most northern site). Below we order the whole data frame considering those values.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Bilagay &lt;-<span class="st"> </span>Bilagay <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(NS)</code></pre></div>
+<p>Now, we are ready to proceed with the calculation of trophic position. This follows the same general process you have already encountered in the previous vignette (<a href="https://github.com/clquezada/tRophicPosition-release-and-vignettes/blob/master/A_guide_to_the_use_of_tRophicPosition_2016-06-12.pdf">A guide to the use of tRophicPosition</a>. First we must consecutively subset the data frame considering each of the communities we have samples of. We could use the subset command, repeating the same command each time for each community.</p>
+<p>If we only have 2 sampling sites, this can be done by hand. However, here we have different 10 sampling sites, so this task can be prone to errors and time-consuming, as we have to repeat the same code 10 times, but with changes in the Location, selecting the baseline, etc.</p>
+<p>To deal with this issue, we have developed a convenient function <code>extractIsotopeData()</code> where you can indicate the text for each of the baselines and the respective column where they are coded, the consumers column, and the group column. This function iterates through the data frame selecting unique values from the group column, extracting all the values that belong to each group and then iterate within them. Then it will extract all stable isotope values from the columns “d13C” and “d15N” (if their values haven’t changed) for each baseline. Finally, it will select each unique value from the consumers column and it will generate an <code>isotopeData</code> class object for each consumer combining their baselines isotope values. See <code>help(extractIsotopeData)</code> for other options.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">BilagayList &lt;-<span class="st"> </span><span class="kw">extractIsotopeData</span>(Bilagay, <span class="dt">b1 =</span> <span class="st">&quot;Pelagic_BL&quot;</span>, <span class="dt">b2 =</span> <span class="st">&quot;Benthic_BL&quot;</span>,
+                                  <span class="dt">baselineColumn =</span> <span class="st">&quot;FG&quot;</span>, <span class="dt">consumersColumn =</span> <span class="st">&quot;Spp&quot;</span>,
+                                  <span class="dt">groupsColumn =</span> <span class="st">&quot;Community&quot;</span>,
+                                  <span class="dt">d13C =</span> <span class="st">&quot;d13C&quot;</span>, <span class="dt">d15N =</span> <span class="st">&quot;d15N&quot;</span>)</code></pre></div>
+<p>If no <span class="math inline">\(\Delta\)</span>N and/or <span class="math inline">\(\Delta\)</span>C values are included as arguments, by default this function will use assumptions from Post (2002), i.e. 3.4 <span class="math inline">\(\pm\)</span> 0.98 sd for nitrogen and 0.39 <span class="math inline">\(\pm\)</span> 1.3 sd for carbon). You can change either TDF values using the function <code>TDF()</code> or a list of values, as explained in the short guide to the use of tRophicPosition vignette.</p>
+<p>The next step is use the <code>str</code> function to check that all went well during the use of the <code>extractIsotopeData()</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(BilagayList)</code></pre></div>
+<pre><code>## List of 1
+##  $ MEC-Coquimbo-Bilagay:List of 8
+##   ..$ dNb1  : num [1:15] 13.8 14.3 14.2 13.4 13.8 13.3 14.6 14 14.2 13.9 ...
+##   ..$ dCb1  : num [1:15] -17.3 -17.6 -17.4 -16.6 -17 -16.9 -18.5 -18.1 -17.5 -18.3 ...
+##   ..$ dNb2  : num [1:28] 14.9 15.2 15 15.2 16.3 15.7 15.4 15.5 16.4 15.4 ...
+##   ..$ dCb2  : num [1:28] -11.1 -11.9 -11.7 -11.5 -14.6 -13.8 -14.5 -14.3 -14.6 -13.9 ...
+##   ..$ deltaN: num [1:56] 2.48 3.21 3.81 2.28 3.74 ...
+##   ..$ deltaC: num [1:107] -1.158 -0.129 0.719 -1.45 0.622 ...
+##   ..$ dNc   : num [1:10] 19.4 19 19.1 18.3 19.8 20.1 19.6 20.3 19.5 19.9
+##   ..$ dCc   : num [1:10] -16.2 -16.7 -17.8 -16.5 -16.8 -17.8 -16.3 -15.5 -16.3 -16
+##   ..- attr(*, &quot;class&quot;)= chr &quot;isotopeData&quot;
+##   ..- attr(*, &quot;consumer&quot;)= chr &quot;Bilagay&quot;
+##   ..- attr(*, &quot;baseline1&quot;)= chr &quot;Pelagic_BL&quot;
+##   ..- attr(*, &quot;baseline2&quot;)= chr &quot;Benthic_BL&quot;
+##   ..- attr(*, &quot;group&quot;)= chr &quot;MEC-Coquimbo&quot;</code></pre>
+<p>If you execute the code above you will see a lot of information, but for this vignette, we have shortened the output to make it readable. In your console, you will note that there is a list of 10 elements, followed by the sign $ and the concatenated name of each of our communities with the name of our species (Bilagay). Each of these objects (MEC-Coquimbo-Bilagay, MEC-Taltal-Bilagay, etc.) is a list of 8 elements that relate to a particular sampling location, in a structure that is ready to use with <code>tRophicPosition</code>: they are objects of the class <code>isotopeData</code>.</p>
+<p>The class <code>isotopeData</code> is a special object recognized within the package. It also has other information embedded within it: consumer, baseline 1, baseline 2, and community labels, besides a list of isotope values with the convention introduced before (dNb1 is d15N of baseline 1, dCb1 is d13C of baseline 1, dNb2 and dCb2 respectively for the baseline 2, dNc and dCc respectively for the consumer, and deltaN and deltaC are trophic discrimination factors).</p>
+<p>Now, as we have extracted each community from the original data frame, we can iterate through them, prepare a summary and plot them. Here we introduce the <code>for</code> command, which is one of the basic control-flow elements of programming. Again, if you execute the following code you will have a summary and a plot for each community, but in this vignette, you will see only one example.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span> (community <span class="cf">in</span> BilagayList) {
+  <span class="kw">print</span>(<span class="kw">summary</span>(community))
+  <span class="kw">plot</span>(community)
+  }</code></pre></div>
+<pre><code>## 
+## Summary for stable isotope data object 
+## 
+## Group  MEC-Coquimbo 
+## Consumer  Bilagay 
+## Baseline 1  Pelagic_BL 
+## Baseline 2  Benthic_BL 
+## 
+##        n   mean  sd  se  min   max   median
+## dNb1   15  13.7  0.7 0.2 12.1  14.6  13.8  
+## dCb1   15  -17.5 0.6 0.1 -18.5 -16.6 -17.5 
+## dNb2   28  15.4  0.5 0.1 14.6  16.4  15.3  
+## dCb2   28  -13.3 1.2 0.2 -15.1 -11.1 -13.8 
+## deltaN 56  3.4   1   0.1 1.1   5.4   3.3   
+## deltaC 107 0.4   1.3 0.1 -3.2  3     0.6   
+## dNc    10  19.5  0.6 0.2 18.3  20.3  19.6  
+## dCc    10  -16.6 0.7 0.2 -17.8 -15.5 -16.4</code></pre>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p>Now we have to model each community within the Bayesian framework of <code>tRophicPosition</code> (as introduced previously in other vignettes, e.g. <a href="https://github.com/clquezada/tRophicPosition-release-and-vignettes/blob/master/A_guide_to_the_use_of_tRophicPosition_2016-06-12.pdf">a guide to the use of tRophicPosition</a>.</p>
+<p>For this, we have developed a function that automatically i) defines a Bayesian model, ii) initializes the model and iii) samples the posterior distribution of trophic position. This is accomplished using the function <code>multiSpeciesTP()</code>, similar to the function <code>multiModelsTP()</code> explained in the vignette multiple models calculation with tRophicPosition.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Bilagay_models &lt;-<span class="st"> </span><span class="kw">multiSpeciesTP</span>(BilagayList, <span class="dt">model =</span> <span class="st">&quot;twoBaselinesFull&quot;</span>,
+                                             <span class="dt">n.adapt =</span> <span class="dv">10000</span>, <span class="dt">n.iter =</span> <span class="dv">10000</span>,
+                                             <span class="dt">burnin =</span> <span class="dv">10000</span>, <span class="dt">n.chains =</span> <span class="dv">5</span>, <span class="dt">print =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<pre><code>## Compiling model graph
+##    Resolving undeclared variables
+##    Allocating nodes
+## Graph information:
+##    Observed stochastic nodes: 269
+##    Unobserved stochastic nodes: 36
+##    Total graph size: 374
+## 
+## Initializing model</code></pre>
+<p>By default, the function <code>multiSpeciesTP()</code> uses <code>lambda = 2</code> (trophic level of baselines), <code>n.chains = 2</code> (number of parallel MCMC simulations), and set n.adapt, n.iter and burnin as 10000 iterations. The model calculated by default is <code>oneBaseline</code>, so in this case we have changed it to <code>model = &quot;twoBaselinesFull&quot;</code> as we have two separate potential sources of N and C. In this particularly case, there was no need to explicitly state the number of adaptive iterations, iterations and burnin, but we decided to make them clear. Also, here we calculate 5 chains instead of the default (i.e. <code>n.chains = 2</code>).</p>
+<p>The function <code>multiSpeciesTP()</code> returns 4 objects: 1. a list named <code>multiSpeciesTP</code>, which includes the raw data returned by <code>posteriorTP()</code> for each consumer/species per group/community/sampling location; 2. a data frame named <code>df</code> with the mode, median and credibility confidence interval for trophic position and alpha (if a two baselines model was chosen), grouped by model, consumer/species and group/community/sampling location; 3. a list named <code>TPs</code> with the posterior samples of trophic position for each group/community/location and consumer/species; and 4. a list named <code>Alphas</code> which includes the posterior samples of alpha (relative contribution of baseline 1) for each species by group/community/location.</p>
+<p>More advanced users will likely directly access this object for subsequent analysis. For now, we will concentrate on plotting the mode or median and 95% credibility interval for Bilagay from each location, using the joint values of trophic position and alpha by community/location, allowing an easy visual comparison between them:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># By default the mode is used in both trophic position and alpha plots</span>
+<span class="kw">credibilityIntervals</span>(Bilagay_models<span class="op">$</span>df, <span class="dt">x =</span> <span class="st">&quot;group&quot;</span>, <span class="dt">xlab =</span><span class="st">&quot;Community&quot;</span>)
+
+<span class="co"># If you want to use the median instead of the mode,</span>
+<span class="co"># just add y1 and y2 as arguments</span>
+<span class="kw">credibilityIntervals</span>(Bilagay_models<span class="op">$</span>df, <span class="dt">x =</span> <span class="st">&quot;group&quot;</span>, <span class="dt">xlab =</span><span class="st">&quot;Community&quot;</span>, 
+                     <span class="dt">y1 =</span> <span class="st">&quot;median&quot;</span>, <span class="dt">y2 =</span> <span class="st">&quot;alpha.median&quot;</span>)</code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p>To get a numerical summary of posterior estimates (median and 95% credibility interval) of trophic position, we can write the following:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># To get a numerical summary</span>
+<span class="kw">sapply</span>(Bilagay_models<span class="op">$</span><span class="st">&quot;TPs&quot;</span>, quantile, <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.025</span>, <span class="fl">0.5</span>, <span class="fl">0.975</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">round</span>(<span class="dv">3</span>)
+
+<span class="co"># To get the mode</span>
+<span class="kw">getPosteriorMode</span>(Bilagay_models<span class="op">$</span><span class="st">&quot;TPs&quot;</span>)</code></pre></div>
+<pre><code>##       MEC.Coquimbo.Bilagay.2bf MEC.Taltal.Bilagay.2bf MEL.COL.Bilagay.2bf
+## 2.5%                     3.449                  2.920               3.337
+## 50%                      3.660                  3.192               3.463
+## 97.5%                    3.893                  3.483               3.612
+##       MEL.CHI.Bilagay.2bf MEL.RIN.Bilagay.2bf Fondecyt.ISM.Bilagay.2bf
+## 2.5%                3.557               3.400                    3.278
+## 50%                 3.703               3.545                    3.482
+## 97.5%               3.865               3.711                    3.717
+##       MEL.LAG.Bilagay.2bf MEL.LOB.Bilagay.2bf MEL.MEJ.Bilagay.2bf
+## 2.5%                3.089               3.246               3.218
+## 50%                 3.206               3.384               3.342
+## 97.5%               3.333               3.533               3.487
+##       MEC.Tocopilla.Bilagay.2bf
+## 2.5%                      3.547
+## 50%                       3.762
+## 97.5%                     4.006</code></pre>
+<pre><code>##                MEC.Coquimbo.Bilagay.2bf MEC.Taltal.Bilagay.2bf
+## Posterior mode                    3.659                  3.182
+##                MEL.COL.Bilagay.2bf MEL.CHI.Bilagay.2bf MEL.RIN.Bilagay.2bf
+## Posterior mode               3.461               3.697               3.542
+##                Fondecyt.ISM.Bilagay.2bf MEL.LAG.Bilagay.2bf
+## Posterior mode                    3.476               3.205
+##                MEL.LOB.Bilagay.2bf MEL.MEJ.Bilagay.2bf
+## Posterior mode               3.381               3.338
+##                MEC.Tocopilla.Bilagay.2bf
+## Posterior mode                     3.761</code></pre>
+<p>Finally, we can statistically compare whether either the posterior samples of trophic position and/or alpha alpha differ between communities/locations. In this example we compare both posterior estimates accross communities/locations with the function <code>pairwiseComparisons()</code>. Remember that this output must to be read as: what is the probability that consumer in row Y has a posterior trophic position/alpha less than or equal to consumer in column X. To make readable the output, we will compare only the first 8 communities/locations. If you want to compare all the communities/locations, just remove <code>[1:8]</code> below:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># First, we compare bilagay posterior trophic position estimates</span>
+pairwiseTP &lt;-<span class="st"> </span><span class="kw">pairwiseComparisons</span>(Bilagay_models<span class="op">$</span>TPs[<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>], <span class="dt">print =</span> <span class="ot">TRUE</span>)
+
+<span class="co"># And then, we compare their posterior alpha estimates</span>
+pairwiseAlpha &lt;-<span class="st"> </span><span class="kw">pairwiseComparisons</span>(Bilagay_models<span class="op">$</span>Alphas[<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>], <span class="dt">print =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>##                                [1]   [2]   [3]   [4]   [5]   [6]   [7]
+## [1] MEC.Coquimbo.Bilagay.2bf 0.000 0.005 0.071 0.628 0.206 0.138 0.000
+## [2] MEC.Taltal.Bilagay.2bf   0.995 0.000 0.958 0.998 0.981 0.949 0.541
+## [3] MEL.COL.Bilagay.2bf      0.929 0.042 0.000 0.987 0.777 0.550 0.002
+## [4] MEL.CHI.Bilagay.2bf      0.372 0.002 0.013 0.000 0.081 0.056 0.000
+## [5] MEL.RIN.Bilagay.2bf      0.794 0.019 0.223 0.919 0.000 0.326 0.001
+## [6] Fondecyt.ISM.Bilagay.2bf 0.862 0.051 0.450 0.944 0.674 0.000 0.014
+## [7] MEL.LAG.Bilagay.2bf      1.000 0.459 0.998 1.000 0.999 0.986 0.000
+## [8] MEL.LOB.Bilagay.2bf      0.978 0.120 0.781 0.999 0.929 0.764 0.030
+##                                [8]
+## [1] MEC.Coquimbo.Bilagay.2bf 0.022
+## [2] MEC.Taltal.Bilagay.2bf   0.880
+## [3] MEL.COL.Bilagay.2bf      0.219
+## [4] MEL.CHI.Bilagay.2bf      0.001
+## [5] MEL.RIN.Bilagay.2bf      0.071
+## [6] Fondecyt.ISM.Bilagay.2bf 0.236
+## [7] MEL.LAG.Bilagay.2bf      0.970
+## [8] MEL.LOB.Bilagay.2bf      0.000</code></pre>
+<pre><code>##                                [1]   [2]   [3]   [4]   [5]   [6]   [7]
+## [1] MEC.Coquimbo.Bilagay.2bf 0.000 0.528 0.809 0.622 0.838 0.026 0.899
+## [2] MEC.Taltal.Bilagay.2bf   0.472 0.000 0.805 0.614 0.835 0.019 0.897
+## [3] MEL.COL.Bilagay.2bf      0.191 0.195 0.000 0.272 0.544 0.006 0.682
+## [4] MEL.CHI.Bilagay.2bf      0.378 0.386 0.728 0.000 0.770 0.012 0.861
+## [5] MEL.RIN.Bilagay.2bf      0.162 0.165 0.456 0.230 0.000 0.004 0.639
+## [6] Fondecyt.ISM.Bilagay.2bf 0.974 0.981 0.994 0.988 0.996 0.000 0.997
+## [7] MEL.LAG.Bilagay.2bf      0.101 0.103 0.318 0.139 0.361 0.003 0.000
+## [8] MEL.LOB.Bilagay.2bf      0.187 0.195 0.465 0.247 0.507 0.006 0.649
+##                                [8]
+## [1] MEC.Coquimbo.Bilagay.2bf 0.813
+## [2] MEC.Taltal.Bilagay.2bf   0.805
+## [3] MEL.COL.Bilagay.2bf      0.535
+## [4] MEL.CHI.Bilagay.2bf      0.753
+## [5] MEL.RIN.Bilagay.2bf      0.493
+## [6] Fondecyt.ISM.Bilagay.2bf 0.994
+## [7] MEL.LAG.Bilagay.2bf      0.351
+## [8] MEL.LOB.Bilagay.2bf      0.000</code></pre>
+</div>
+<div id="parallel-trophic-position" class="section level2">
+<h2>Parallel trophic position</h2>
+<p>As an appendix, we will estimate trophic position using parallel calculations. We will use the library <code>parallel</code> that comes with base R. First we have to create a parallel socket cluster, i.e. to create a set of copies of R running in parallel. This is done with the function <code>makePSOCKcluster()</code> and detecting the number of cores with <code>detectCores()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cl &lt;-<span class="st"> </span>parallel<span class="op">::</span><span class="kw">makePSOCKcluster</span>(parallel<span class="op">::</span><span class="kw">detectCores</span>())</code></pre></div>
+<p>Then we will use the function <code>parLapply()</code>. This function is a parallel version of <code>lapply()</code> a function that applies a function over a list. As we coded <code>tRophicPosition</code> specifically to use lists, we can calculate the trophic position for a number of species in parallel rather in series. As we are just comparing the performance of the serial vs parallel version of multiModelTP, we will use just 500 adaptive iterations and 500 actual iterations after discarding 500 iterations as burnin:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># First we calculate the time elapsed with system.time() with parallel</span>
+time_parallel &lt;-<span class="st"> </span><span class="kw">system.time</span>(a &lt;-<span class="st"> </span>parallel<span class="op">::</span><span class="kw">parLapply</span>(cl, BilagayList, multiModelTP, 
+                                               <span class="dt">adapt =</span> <span class="dv">500</span>, <span class="dt">n.iter =</span> <span class="dv">500</span>,
+                                               <span class="dt">burnin =</span> <span class="dv">500</span>))
+
+<span class="co"># Then we calculate the elapsed time with the normal version</span>
+time_serial &lt;-<span class="st"> </span><span class="kw">system.time</span>(b &lt;-<span class="st"> </span><span class="kw">lapply</span>(BilagayList, multiModelTP, <span class="dt">quiet =</span> <span class="ot">TRUE</span>, 
+                                               <span class="dt">adapt =</span> <span class="dv">500</span>, <span class="dt">n.iter =</span> <span class="dv">500</span>,
+                                               <span class="dt">burnin =</span> <span class="dv">500</span>))
+
+<span class="co"># We have to stop the cluster after each set of calculations</span>
+parallel<span class="op">::</span><span class="kw">stopCluster</span>(cl)
+
+<span class="co"># And print the elapsed time</span>
+<span class="kw">print</span>(<span class="kw">rbind</span>(time_parallel, time_serial))</code></pre></div>
+<pre><code>##               user.self sys.self elapsed user.child sys.child
+## time_parallel     0.122    0.097  44.455      0.008     0.075
+## time_serial      85.587    1.432  92.284      0.000     0.000</code></pre>
+<p>Above you will see that in a modest MacBook Air (Intel Core i5, 1.6 GHz, 4 cores) the elapsed time with the serial version of <code>multiModelTP()</code> is roughly 92 seconds, while using the parallel version, the analysis time is reduced by almost 50 % (44 seconds), a not trivial difference. However, on desktop pc running Windows 10 (i7 3930-K, 3.2 GHz, 12 cores), the serial version took 73 seconds, while the parallel version took only 14 seconds.</p>
+</div>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

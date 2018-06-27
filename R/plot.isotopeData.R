@@ -44,7 +44,7 @@ plot.isotopeData <- function (x,
       consumer <- attributes(x)$consumer
 
 
-  if(is.null(attributes(x)$community))
+  if(is.null(attributes(x)$group))
     invisible(utils::capture.output(screenIsotopeData(isotopeData = x,
                       consumer = consumer,
                       b1 = b1,
@@ -58,5 +58,5 @@ plot.isotopeData <- function (x,
                         b2 = b2,
                         legend = legend,
                         density = density,
-                        title = attributes(x)$community)))
+                        title = attributes(x)$group)))
 }
