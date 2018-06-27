@@ -2,101 +2,18 @@
 % Please edit documentation in R/generataIsotopeData.R
 \name{generateIsotopeData}
 \alias{generateIsotopeData}
-\title{A function to generate random stable isotope data for trophic position
-calculation}
+\title{A function to generate stable isotope data for analysis in R}
 \usage{
-generateIsotopeData(n.baselines = 2, n.obsB = 25, dNb1 = NULL,
-  sd.dNb1 = 1, dCb1 = NULL, sd.dCb1 = 1, dNb2 = NULL, sd.dNb2 = 1,
-  dCb2 = NULL, sd.dCb2 = 1, dNb3 = NULL, sd.dNb3 = 1, dCb3 = NULL,
-  sd.dCb3 = 1, n.obsC = 25, consumer = NULL, dNc = NULL, sd.dNc = 1,
-  dCc = NULL, sd.dCc = 1, DeltaN = 3.4, sd.DeltaN = 0.98,
-  n.obsDeltaN = 56, DeltaC = 0.39, sd.DeltaC = 1.3, n.obsDeltaC = 107,
-  seed = 3)
-}
-\arguments{
-\item{n.baselines}{number of baselines (could be 1 or 2), default is 2.}
-
-\item{n.obsB}{number of observations for baselines. Default is 25.}
-
-\item{dNb1}{mean value for d15N of baseline 1. Default is a random number
-between -5 and 5.}
-
-\item{sd.dNb1}{standard deviation for d15N of baseline 1.}
-
-\item{dCb1}{mean value for d13C of baseline 1.}
-
-\item{sd.dCb1}{standard deviation for d13C of baseline 1.}
-
-\item{dNb2}{mean value for d15N of baseline 2.}
-
-\item{sd.dNb2}{standard deviation for d15N of baseline 2.}
-
-\item{dCb2}{mean value for d13C of baseline 2.}
-
-\item{sd.dCb2}{standard deviation for d13C of baseline 2.}
-
-\item{dNb3}{mean value for d15N of baseline 3.}
-
-\item{sd.dNb3}{standard deviation for d15N of baseline 3.}
-
-\item{dCb3}{mean value for d13C of baseline 3.}
-
-\item{sd.dCb3}{standard deviation for d13C of baseline 3.}
-
-\item{n.obsC}{number of observations for consumer. Default is 25.}
-
-\item{consumer}{string for consumer.}
-
-\item{dNc}{mean value for d15N of consumer. Default value is dNb1 multiplied 2
-times the trophic discrimination factor.}
-
-\item{sd.dNc}{standard deviation for d15N of consumer.}
-
-\item{dCc}{mean value for d13C of consumer.}
-
-\item{sd.dCc}{standard deviation for d13C of consumer.}
-
-\item{DeltaN}{mean value for trophic discrimination factor of nitrogen.
-Default value is 3.4.}
-
-\item{sd.DeltaN}{standard deviation for trophic discrimination factor of
-nitrogen. Default value is 0.98.}
-
-\item{n.obsDeltaN}{number of observations of deltaN (trophic discrimination
-factor). Default value is 56.}
-
-\item{DeltaC}{mean value for trophic discrimination factor of carbon. Default
-value is 0.39.}
-
-\item{sd.DeltaC}{standard deviation for trophic discrimination factor for
-carbon. Default value is 1.3.}
-
-\item{n.obsDeltaC}{number of observations of DeltaC (trophic discrimination
-factor). Default is 107.}
-
-\item{seed}{numerical value to get reproducible results.}
+generateIsotopeData(matrix = NULL, labels = NULL, iso_labels = NULL,
+  seed = 3, ...)
 }
 \value{
-An isotopeData class object (named list) with dNb1, dNc and deltaN
- randomly generated observations. If n.baselines = 2, then dCb1, dNb2, dCb2,
- dCc and deltaC are also returned.
+Missing.
 }
 \description{
-This function generates random stable isotope (d13C and d15N) data to use
-basic functions and calculations coded within the package.
+This function generates random stable isotope data (unlimited elements) to use
+within the stable isotope R packages.
 }
 \examples{
-## Good data
-a <-generateTPData(dCb1 = -10, dNb1 = -10,
-dCc = -4, dNc = 4,
-dCb2 = 2, dNb2 = 0)
-plot(a)
 
-## Consumer more enriched in carbon
-b <-generateTPData(dCb1 = -10, dCc = 0, dCb2 = -2)
-plot(b)
-
-## Consumer much more enriched
-c <-generateTPData(dCb1 = -10, dCc = 3, dCb2 = -2)
-plot(c)
 }
