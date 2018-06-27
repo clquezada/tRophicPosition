@@ -7,6 +7,8 @@ As of 29th of January 2018, we are releasing the version 0.7.5 of the package, t
 
 If you are interested in joining the tRophicPosition support group, do it at https://groups.google.com/d/forum/trophicposition-support
 
+## NEWS (27 June 2018)
+* Fixed [issue 69](https://github.com/clquezada/tRophicPosition/issues/69) (parametricTP() when using only one baseline). This small fix changes current version of tRophicPosition to 0.7.6 only in GitHub. CRAN version will be updated soon.
 
 ## NEWS (29 January 2018)
 
