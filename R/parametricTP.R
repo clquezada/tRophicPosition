@@ -75,6 +75,9 @@ parametricTP <- function (siData, lambda = 2, print = TRUE) {
   TPoneBaseline <- lambda + ((dNc - dNb1)/deltaN)
   if (isTRUE(print)) print(paste("One baseline TP: ", round(TPoneBaseline,2)))
 
+  if (is.null(dNb2) | is.null(dCb2))
+    return(TPoneBaseline)
+
   alpha <- (dCc - dCb2) / (dCb1 - dCb2)
   TPTwoBaselines <- TP(dNc, dNb1, dNb2, deltaN, alpha)
   if (isTRUE(print)) print(paste("Two baselines TP: ", round(TPTwoBaselines,2),
