@@ -55,7 +55,7 @@ Can be found in GitHub [here](https://github.com/clquezada/tRophicPosition/wiki/
 ## Citation
 When citing `tRophicPosition` in publications, please cite both the paper describing the method and the package version you used to analyse your data:
   
-Claudio Quezada-Romegialli, Andrew L Jackson, Brian Hayden, Kimmo K Kahilainen, Christelle Lopes and Chris Harrod (in press). `tRophicPosition` , an R package for the Bayesian estimation of trophic position from consumer stable isotope ratios. Methods in Ecology and Evolution, doi:[10.1111/2041-210X.13009](http://doi.org/10.1111/2041-210X.13009)
+Claudio Quezada-Romegialli, Andrew L Jackson, Brian Hayden, Kimmo K Kahilainen, Christelle Lopes and Chris Harrod (2018). `tRophicPosition` , an R package for the Bayesian estimation of trophic position from consumer stable isotope ratios. Methods in Ecology and Evolution, 9(6):1592-1599. doi:[10.1111/2041-210X.13009](http://doi.org/10.1111/2041-210X.13009)
 
 Claudio Quezada-Romegialli, Andrew L Jackson, Brian Hayden, Kimmo K Kahilainen, Christelle Lopes and Chris Harrod (2018).
 tRophicPosition: Bayesian Trophic Position Calculation with Stable Isotopes. R package version 0.7.5. [https://cran.r-project.org/package=tRophicPosition](https://cran.r-project.org/package=tRophicPosition) doi:[10.5281/zenodo.1161826](https://doi.org/10.5281/zenodo.1161826)
