@@ -52,8 +52,10 @@ three Bayesian models: one and two baselines without carbon fractionation and
 two baselines with carbon fractionation.
 }
 \examples{
+\dontrun{
 isotopeData <- generateTPData()
 models <- multiModelTP(isotopeData, n.adapt = 500, n.iter = 500,
 burnin = 500)
 credibilityIntervals(models$gg, x = "model")
+}
 }

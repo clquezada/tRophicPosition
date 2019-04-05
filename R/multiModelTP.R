@@ -34,10 +34,12 @@
 #' @import coda
 #'
 #' @examples
+#' \dontrun{
 #' isotopeData <- generateTPData()
 #' models <- multiModelTP(isotopeData, n.adapt = 500, n.iter = 500,
 #' burnin = 500)
 #' credibilityIntervals(models$gg, x = "model")
+#' }
 
 multiModelTP <- function (siData = siData, lambda = 2,
                           n.chains = 2,

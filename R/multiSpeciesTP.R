@@ -33,11 +33,13 @@
 #' @export
 #'
 #' @examples
+#'\dontrun{
 #'siDataList <- list("consumer1" = generateTPData(consumer = "consumer1"),
 #'"consumer2" = generateTPData(consumer = "consumer2"))
 #'models <- multiSpeciesTP(siDataList, model = "twoBaselines", n.adapt = 500,
 #'n.iter = 500, burnin = 500)
 #'credibilityIntervals(models$df, x = "consumer")
+#'}
 #'
 
 multiSpeciesTP <- function (siDataList = siDataList, lambda = 2,

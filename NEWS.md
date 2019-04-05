@@ -1,3 +1,13 @@
+tRophicPosition v 0.7.7 (Release date: 2019-04-05)
+==============
+
+* Updating CRAN version (archived recently). Small fix regarding examples.
+
+tRophicPosition v 0.7.6 (Release date: 2018-06-27)
+==============
+
+* Fixed [issue 69](https://github.com/clquezada/tRophicPosition/issues/69) (parametricTP() when using only one baseline). This small fix changes current version of tRophicPosition to 0.7.6 only in GitHub. CRAN version will be updated soon.
+
 tRophicPosition v0.7.5 (Release date: 2018-01-29)
 ==============
 
