@@ -4,9 +4,10 @@
 \alias{multiModelTP}
 \title{Multiple model calculation of trophic position}
 \usage{
-multiModelTP(siData = siData, lambda = 2, n.chains = 2, n.adapt = 20000,
-  n.iter = 20000, burnin = 20000, thin = 10, models = c("oneBaseline",
-  "twoBaselines", "twoBaselinesFull"), print = FALSE, quiet = FALSE, ...)
+multiModelTP(siData = siData, lambda = 2, n.chains = 2,
+  n.adapt = 20000, n.iter = 20000, burnin = 20000, thin = 10,
+  models = c("oneBaseline", "twoBaselines", "twoBaselinesFull"),
+  print = FALSE, quiet = FALSE, ...)
 }
 \arguments{
 \item{siData}{an isotopeData class object.}

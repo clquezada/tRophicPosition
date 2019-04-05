@@ -1,8 +1,8 @@
 Package: tRophicPosition
 Type: Package
 Title: Bayesian Trophic Position Calculation with Stable Isotopes
-Version: 0.7.6
-Date: 2018-06-27
+Version: 0.7.7
+Date: 2019-04-05
 Depends:
     R (>= 3.4.0)
 Imports:
@@ -26,7 +26,7 @@ Description: Estimates the trophic position of a consumer relative
     trophicposition-support@googlegroups.com.
 License: GPL (>= 2)
 LazyData: TRUE
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
 Suggests:
     dplyr,
     knitr,

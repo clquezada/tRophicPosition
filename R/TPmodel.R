@@ -20,10 +20,13 @@
 #'   the parameters
 #' @export
 #'
-#' @examples isotopeData <- generateTPData()
+#' @examples
+#' \dontrun{
+#' isotopeData <- generateTPData()
 #' model.string <- jagsBayesianModel()
 #' model <- TPmodel(data = isotopeData, model.string = model.string,
 #' n.adapt = 500)
+#' }
 
 TPmodel <- function (data = NULL,
                      model.string = NULL,

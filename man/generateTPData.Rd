@@ -5,12 +5,12 @@
 \title{A function to generate random stable isotope data for trophic position
 calculation}
 \usage{
-generateTPData(n.baselines = 2, n.obsB = 25, dNb1 = NULL, sd.dNb1 = 1,
-  dCb1 = NULL, sd.dCb1 = 1, dNb2 = NULL, sd.dNb2 = 1, dCb2 = NULL,
-  sd.dCb2 = 1, n.obsC = 25, consumer = NULL, dNc = NULL, sd.dNc = 1,
-  dCc = NULL, sd.dCc = 1, DeltaN = 3.4, sd.DeltaN = 0.98,
-  n.obsDeltaN = 56, DeltaC = 0.39, sd.DeltaC = 1.3, n.obsDeltaC = 107,
-  seed = 3)
+generateTPData(n.baselines = 2, n.obsB = 25, dNb1 = NULL,
+  sd.dNb1 = 1, dCb1 = NULL, sd.dCb1 = 1, dNb2 = NULL,
+  sd.dNb2 = 1, dCb2 = NULL, sd.dCb2 = 1, n.obsC = 25,
+  consumer = NULL, dNc = NULL, sd.dNc = 1, dCc = NULL,
+  sd.dCc = 1, DeltaN = 3.4, sd.DeltaN = 0.98, n.obsDeltaN = 56,
+  DeltaC = 0.39, sd.DeltaC = 1.3, n.obsDeltaC = 107, seed = 3)
 }
 \arguments{
 \item{n.baselines}{number of baselines (could be 1 or 2), default is 2.}

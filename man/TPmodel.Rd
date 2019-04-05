@@ -4,8 +4,8 @@
 \alias{TPmodel}
 \title{Function to create a JAGS-based Bayesian model to calculate trophic position}
 \usage{
-TPmodel(data = NULL, model.string = NULL, n.chains = 2, n.adapt = 10000,
-  quiet = FALSE, ...)
+TPmodel(data = NULL, model.string = NULL, n.chains = 2,
+  n.adapt = 10000, quiet = FALSE, ...)
 }
 \arguments{
 \item{data}{a list containing the data.}
@@ -35,8 +35,10 @@ either \code{\link{jagsOneBaseline}}, \code{\link{jagsTwoBaselines}},
 creates a JAGS model object.
 }
 \examples{
+\dontrun{
 isotopeData <- generateTPData()
 model.string <- jagsBayesianModel()
 model <- TPmodel(data = isotopeData, model.string = model.string,
 n.adapt = 500)
+}
 }

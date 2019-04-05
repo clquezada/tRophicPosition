@@ -4,8 +4,8 @@
 \alias{simulateTDF}
 \title{Simulate trophic discrimination factors}
 \usage{
-simulateTDF(nN = 56, meanN = NULL, sdN = 0.98, nC = 107, meanC = NULL,
-  sdC = 1.3, seed = 3)
+simulateTDF(nN = 56, meanN = NULL, sdN = 0.98, nC = 107,
+  meanC = NULL, sdC = 1.3, seed = 3)
 }
 \arguments{
 \item{nN}{number of observations for deltaN.}
