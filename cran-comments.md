@@ -7,7 +7,10 @@
 
 ## R CMD check results
 There were no ERRORs or WARNINGs in local and remote installs.
-NOTE: package was archived on CRAN as check problems were not corrected in time.
+* NOTE: package was archived on CRAN as check problems were not corrected in time.
+
+* checking Rd cross-references ... NOTE
+Package unavailable to check Rd xrefs: ‘SIBER’
 
 ## Downstream dependencies
 No ERRORs or WARNINGs found with devtools::revdep_check()
