@@ -227,6 +227,9 @@ multiModelTP <- function (siData = siData, lambda = 2,
     easySamples_list[[model_txt]] <- samples
   }
 
+  #stupid CRAN fix
+  #close(model.string)
+
   if (model != "oneBaseline")
     return(list("TP" = as.list(easyTP_list),
                 "alpha" = as.list(easyAlpha_list),

@@ -41,12 +41,15 @@ TPmodel <- function (data = NULL,
     if (class(model.string)[[2]] == "oneBaseline")
       data[names(data) %in% c("dCb1", "dNb2", "dCb2", "deltaC", "dCc")] <- NULL
 
-  model <- invisible(rjags::jags.model(textConnection(model.string),
+  con <- textConnection(model.string)
+
+  model <- invisible(rjags::jags.model(con,
                              data = data,
                              n.chains = n.chains,
                              n.adapt = n.adapt,
                              #inits = inits,
                              quiet = quiet))
+  close.connection(con)
 
   #Here we check if the model has the class required
   if (class(model) == "jags") {

@@ -20,11 +20,13 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' isotopeData <- generateTPData()
 #' model.string <- jagsBayesianModel()
 #' model <- TPmodel(data = isotopeData, model.string = model.string,
 #' n.adapt = 500)
 #' posterior.samples <- posteriorTP(model, n.iter = 500)
+#' }
 
 posteriorTP <- function (model,
                      variable.names = c("TP", "muDeltaN"),

@@ -33,7 +33,7 @@
 #' @export
 #'
 #' @examples
-#'\dontrun{
+#'\donttest{
 #'siDataList <- list("consumer1" = generateTPData(consumer = "consumer1"),
 #'"consumer2" = generateTPData(consumer = "consumer2"))
 #'models <- multiSpeciesTP(siDataList, model = "twoBaselines", n.adapt = 500,

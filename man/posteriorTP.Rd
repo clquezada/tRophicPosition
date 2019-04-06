@@ -35,9 +35,11 @@ wrapper of \code{\link[rjags]{jags.samples}}. It extracts random samples from
 the posterior distribution of the parameters of a jags model.
 }
 \examples{
+\dontrun{
 isotopeData <- generateTPData()
 model.string <- jagsBayesianModel()
 model <- TPmodel(data = isotopeData, model.string = model.string,
 n.adapt = 500)
 posterior.samples <- posteriorTP(model, n.iter = 500)
+}
 }
