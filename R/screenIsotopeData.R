@@ -27,7 +27,7 @@
 screenIsotopeData <- function (isotopeData = NULL, density = "both",
                                consumer = "Consumer", b1 = "Pelagic baseline",
                                b2 = "Benthic baseline", legend = c(1.15, 1.15),
-                               title = NULL,
+                               title = NULL, xylim = NULL,
                                ...) {
 
   if (class(isotopeData) == "isotopeData")
@@ -35,10 +35,11 @@ screenIsotopeData <- function (isotopeData = NULL, density = "both",
     ifelse(is.null(title),
            screenIsotopeDataMoreSources(isotopeData, density, baselines = 2,
                                         consumer = consumer, b1 = b1, b2 = b2,
-                                        legend = legend),
+                                        legend = legend, xylim = xylim),
            screenIsotopeDataMoreSources(isotopeData, density, baselines = 2,
                                         consumer = consumer, b1 = b1, b2 = b2,
-                                        legend = legend, title = title))
+                                        legend = legend, title = title,
+                                        xylim = xylim))
 
   else if (!is.null(isotopeData)) {
     #To do: isotopeData will be an object of the class IsoData. It would be a

@@ -14,7 +14,7 @@
 # @return Multiple objects returned
 #
 biPlot <- function (df = NULL, df2 = NULL, ylab = NULL, xlab = NULL, p = "p1",
-                    legend = legend, limits = limits, ...){
+                    legend = legend, limits = limits, xylim = NULL, ...){
 
   # Stupid CRAN fix for variables - see here http://stackoverflow.com/questions/
   # 9439256/how-can-i-handle-r-cmd-check-no-visible-binding-for-global-variable
@@ -52,12 +52,22 @@ biPlot <- function (df = NULL, df2 = NULL, ylab = NULL, xlab = NULL, p = "p1",
                                ggplot2::element_rect(fill="transparent"))
      }
 
+     if(!is.null(xylim)) {
+       pNew <- pNew + ggplot2::xlim(c(xylim[1], xylim[2])) +
+         ggplot2::ylim(c(xylim[3], xylim[4]))
 
-     # if(!is.null(title)) pNew <- pNew + ggplot2::ggtitle(title)
+       list(xylim[1:2],
+            xylim[3:4],
+            pNew)
 
-     list(ggplot2::ggplot_build(pNew)$layout$panel_ranges[[1]]$x.range,
-          ggplot2::ggplot_build(pNew)$layout$panel_ranges[[1]]$y.range,
-          pNew)
+     } else {
+
+       # if(!is.null(title)) pNew <- pNew + ggplot2::ggtitle(title)
+
+       list(ggplot2::ggplot_build(pNew)$layout$panel_ranges[[1]]$x.range,
+            ggplot2::ggplot_build(pNew)$layout$panel_ranges[[1]]$y.range,
+            pNew)
+     }
 
   } else if (p == "p2") {
 

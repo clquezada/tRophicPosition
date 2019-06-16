@@ -21,6 +21,7 @@ screenIsotopeDataMoreSources <- function (isotopeData = NULL,
                                           b2 = b2,
                                           legend = legend,
                                           title = NULL,
+                                          xylim = NULL,
                                           ...) {
 
   #library(RColorBrewer)
@@ -168,12 +169,26 @@ screenIsotopeDataMoreSources <- function (isotopeData = NULL,
 
     # if(!is.null(title)) {cat(title); str(title)}
 
-    p0 <- biPlot(df, df2, ylab, xlab, p = "p1", legend = legend)
-    p1 <- p0[[3]]
+    if(!is.null(xylim)) {
 
-    p2 <- biPlot(df, p = "p2", limits = p0[[1]])
+      p0 <- biPlot(df, df2, ylab, xlab, p = "p1", legend = legend,
+                   xylim = xylim)
+      p1 <- p0[[3]]
 
-    p3 <- biPlot(df, p = "p3", limits = p0[[2]])
+      p2 <- biPlot(df, p = "p2", limits = p0[[1]])
+
+      p3 <- biPlot(df, p = "p3", limits = p0[[2]])
+
+    } else {
+
+      p0 <- biPlot(df, df2, ylab, xlab, p = "p1", legend = legend)
+      p1 <- p0[[3]]
+
+      p2 <- biPlot(df, p = "p2", limits = p0[[1]])
+
+      p3 <- biPlot(df, p = "p3", limits = p0[[2]])
+
+    }
 
     if (density == "none") {
 
