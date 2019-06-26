@@ -1,8 +1,8 @@
 Package: tRophicPosition
 Type: Package
 Title: Bayesian Trophic Position Calculation with Stable Isotopes
-Version: 0.7.7
-Date: 2019-04-05
+Version: 0.7.8b
+Date: 2019-06-25
 Depends:
     R (>= 3.4.0)
 Imports:
