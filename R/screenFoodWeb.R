@@ -62,5 +62,6 @@ screenFoodWeb <- function (df = NULL, grouping = c("Species", "FG"),
   #if (!is.null(title)) p <- p + labs(title = title)
 
   print(p)
+  p
 
 }
