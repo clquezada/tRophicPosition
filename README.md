@@ -7,6 +7,9 @@ As of 5th of April 2019, we are releasing the version 0.7.7 of the package, the 
 
 If you are interested in joining the tRophicPosition support group, do it at https://groups.google.com/d/forum/trophicposition-support
 
+## NEWS (11 December 2022)
+* Small updates to be back on CRAN. I am working on a major release. Come back soon.
+
 ## NEWS (05 April 2019)
 * Updating CRAN release to v 0.7.7 (archived recently). Small fix regarding examples.
 
