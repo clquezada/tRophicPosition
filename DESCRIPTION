@@ -1,7 +1,7 @@
 Package: tRophicPosition
 Type: Package
 Title: Bayesian Trophic Position Estimation with Stable Isotopes
-Version: 0.8
+Version: 0.8.0
 Date: 2022-12-11
 Depends:
     R (>= 3.4.0)
@@ -37,3 +37,4 @@ Suggests:
     covr
 VignetteBuilder: knitr
 Encoding: UTF-8
+Language:en-GB

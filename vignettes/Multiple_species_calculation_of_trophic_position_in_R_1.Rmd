@@ -19,7 +19,7 @@ devtools::use_data(sysdata, internal = TRUE, overwrite = TRUE)
 
 # tRophicPosition
 
-`tRophicPosition`, is an R package incorporating a Bayesian model for the calculation of trophic position using stable isotopes with one or two baselines. As of 2022-12-11, the current version of the package is 0.8. `tRophicPosition` uses the powerful approach of Markov Chain Monte Carlo simulations provided by [JAGS](http://mcmc-jags.sourceforge.net) and the statistical language [R](https://www.r-project.org). Vignettes can be browsed with `browseVignettes("tRophicPosition")`.
+`tRophicPosition`, is an R package incorporating a Bayesian model for the calculation of trophic position using stable isotopes with one or two baselines. As of 2022-12-11, the current version of the package is 0.8. `tRophicPosition` uses the powerful approach of Markov Chain Monte Carlo simulations provided by [JAGS](https://mcmc-jags.sourceforge.io/) and the statistical language [R](https://www.r-project.org). Vignettes can be browsed with `browseVignettes("tRophicPosition")`.
 
 # Introduction
 
@@ -28,7 +28,7 @@ In this vignette, we will introduce the new functions we have developed for `tRo
 ## Installing and loading the package
 
 ### Stable version - CRAN
-First of all, you need to install [JAGS](http://mcmc-jags.sourceforge.net/) for your platform, and then install the stable version of `tRophicPosition` from [CRAN](https://CRAN.R-project.org/package=tRophicPosition):
+First of all, you need to install [JAGS](https://mcmc-jags.sourceforge.io/) for your platform, and then install the stable version of `tRophicPosition` from [CRAN](https://CRAN.R-project.org/package=tRophicPosition):
 
 ```{r eval = FALSE}
 install.packages("tRophicPosition")

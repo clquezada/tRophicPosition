@@ -1,3 +1,8 @@
+tRophicPosition v 0.8.0 (Release date: 2022-12-11)
+==============
+
+* Updating CRAN version (archived recently due to email error). Small fixes.
+
 tRophicPosition v 0.7.7 (Release date: 2019-04-05)
 ==============
 
