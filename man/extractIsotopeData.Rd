@@ -4,10 +4,20 @@
 \alias{extractIsotopeData}
 \title{Extract stable isotope data from a data frame}
 \usage{
-extractIsotopeData(df = NULL, b1 = "Baseline 1", b2 = NULL,
-  baselineColumn = "FG", consumersColumn = "Spp",
-  groupsColumn = NULL, deltaC = NULL, deltaN = NULL, d13C = "d13C",
-  d15N = "d15N", seed = 3, ...)
+extractIsotopeData(
+  df = NULL,
+  b1 = "Baseline 1",
+  b2 = NULL,
+  baselineColumn = "FG",
+  consumersColumn = "Spp",
+  groupsColumn = NULL,
+  deltaC = NULL,
+  deltaN = NULL,
+  d13C = "d13C",
+  d15N = "d15N",
+  seed = 3,
+  ...
+)
 }
 \arguments{
 \item{df}{data frame containing raw isotope data, with one or more grouping

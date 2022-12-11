@@ -4,9 +4,19 @@
 \alias{multiSpeciesTP}
 \title{Multiple species calculation of trophic position}
 \usage{
-multiSpeciesTP(siDataList = siDataList, lambda = 2, n.chains = 2,
-  n.adapt = 20000, n.iter = 20000, burnin = 20000, thin = 10,
-  model = "oneBaseline", print = FALSE, quiet = FALSE, ...)
+multiSpeciesTP(
+  siDataList = siDataList,
+  lambda = 2,
+  n.chains = 2,
+  n.adapt = 20000,
+  n.iter = 20000,
+  burnin = 20000,
+  thin = 10,
+  model = "oneBaseline",
+  print = FALSE,
+  quiet = FALSE,
+  ...
+)
 }
 \arguments{
 \item{siDataList}{a named list of isotopeData class objects.}

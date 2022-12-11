@@ -1,7 +1,7 @@
 ---
 title: "tRophicPosition: calculating trophic position for multiple species"
 author: "Claudio Quezada-Romegialli, Andrew L Jackson & Chris Harrod"
-date: "January 26 2018"
+date: "December 11 2022"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Multiple species tRophicPosition}
@@ -19,7 +19,7 @@ devtools::use_data(sysdata, internal = TRUE, overwrite = TRUE)
 
 # tRophicPosition
 
-`tRophicPosition`, is an R package incorporating a Bayesian model for the calculation of trophic position using stable isotopes with one or two baselines. As of 2018-01-26, the current version of the package is 0.7.5. `tRophicPosition` uses the powerful approach of Markov Chain Monte Carlo simulations provided by [JAGS](http://mcmc-jags.sourceforge.net) and the statistical language [R](https://www.r-project.org). Vignettes can be browsed with `browseVignettes("tRophicPosition")`.
+`tRophicPosition`, is an R package incorporating a Bayesian model for the calculation of trophic position using stable isotopes with one or two baselines. As of 2022-12-11, the current version of the package is 0.8. `tRophicPosition` uses the powerful approach of Markov Chain Monte Carlo simulations provided by [JAGS](http://mcmc-jags.sourceforge.net) and the statistical language [R](https://www.r-project.org). Vignettes can be browsed with `browseVignettes("tRophicPosition")`.
 
 # Introduction
 

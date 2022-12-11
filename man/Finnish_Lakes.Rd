@@ -4,7 +4,8 @@
 \name{Finnish_Lakes}
 \alias{Finnish_Lakes}
 \title{Data frame of food webs in Inari and Kilpis Lakes (Finland)}
-\format{A data frame with 7 variables:
+\format{
+A data frame with 7 variables:
 \describe{
   \item{Lake}{factor, with two levels, each representing one Lake}
   \item{Species.group}{factor, with 20 levels, each representing one species}
@@ -13,7 +14,8 @@
   \item{C}{numeric, amount of carbon}
   \item{N}{numeric, amount of nitrogen}
   \item{C.N}{numeric, C/N ratio}
-}}
+}
+}
 \usage{
 data("Finnish_Lakes")
 }

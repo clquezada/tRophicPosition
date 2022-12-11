@@ -54,7 +54,7 @@ posteriorTP <- function (model,
                                         progress.bar = progress.bar, ...)
 
   #Here we check if the model has the class required
-  if (class(posterior) == "mcmc.list") {
+  if (methods::is(posterior)[1] == "mcmc.list") {
     if ((!is.null(burnin) & is.numeric(burnin))){
       message(paste0("burnin: ", burnin, " thin: ", thin, " n.iter: ", n.iter))
       message(paste0("length: ", end(posterior)))

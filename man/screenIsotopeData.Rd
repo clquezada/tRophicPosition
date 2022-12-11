@@ -4,9 +4,16 @@
 \alias{screenIsotopeData}
 \title{Function to plot and screen stable isotope data with one or more baselines.}
 \usage{
-screenIsotopeData(isotopeData = NULL, density = "both",
-  consumer = "Consumer", b1 = "Pelagic baseline",
-  b2 = "Benthic baseline", legend = c(1.15, 1.15), title = NULL, ...)
+screenIsotopeData(
+  isotopeData = NULL,
+  density = "both",
+  consumer = "Consumer",
+  b1 = "Pelagic baseline",
+  b2 = "Benthic baseline",
+  legend = c(1.15, 1.15),
+  title = NULL,
+  ...
+)
 }
 \arguments{
 \item{isotopeData}{an isotopeData class object.}

@@ -4,7 +4,8 @@
 \name{Roach}
 \alias{Roach}
 \title{Data frame of Roach in Lough Neagh}
-\format{A data frame with 6 variables:
+\format{
+A data frame with 6 variables:
 \describe{
   \item{Taxon}{factor, with 5 levels, the common name of each baseline species
   and Roach}
@@ -15,7 +16,8 @@
   \item{Size.class}{numeric, each representing deciles of fork length of roach}
   \item{d13C}{numeric, stable isotope values of d13C}
   \item{d15N}{numeric, stable isotope values of d15N}
-}}
+}
+}
 \usage{
 data("Roach")
 }

@@ -4,8 +4,16 @@
 \alias{plotMCMC}
 \title{Internal function that plot a mcmc.list object.}
 \usage{
-plotMCMC(x, trace = TRUE, density = TRUE, smooth = TRUE, bwf,
-  auto.layout = TRUE, ask = graphics::par("ask"), ...)
+plotMCMC(
+  x,
+  trace = TRUE,
+  density = TRUE,
+  smooth = TRUE,
+  bwf,
+  auto.layout = TRUE,
+  ask = graphics::par("ask"),
+  ...
+)
 }
 \arguments{
 \item{x}{null}

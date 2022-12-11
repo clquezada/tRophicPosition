@@ -4,7 +4,8 @@
 \name{Orestias}
 \alias{Orestias}
 \title{Named list containing stable isotope values of Orestias chungarensis}
-\format{A named list with 8 elements:
+\format{
+A named list with 8 elements:
 \describe{
   \item{dCc}{numeric, stable isotope values of d13C for Orestias
   chungarensis}
@@ -16,7 +17,8 @@
   \item{dNb2}{numeric, stable isotope values of d15N for baseline 2}
   \item{deltaN}{numeric, trophic discrimination factor for nitrogen}
   \item{deltaC}{numeric, trophic discrimination factor for carbon}
-}}
+}
+}
 \usage{
 data("Orestias")
 }

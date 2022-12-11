@@ -5,8 +5,12 @@
 \title{Function that creates a biplot of a food web with stable isotope values (d13C
 and d15N)}
 \usage{
-screenFoodWeb(df = NULL, grouping = c("Species", "FG"),
-  printSummary = FALSE, ...)
+screenFoodWeb(
+  df = NULL,
+  grouping = c("Species", "FG"),
+  printSummary = FALSE,
+  ...
+)
 }
 \arguments{
 \item{df}{a data frame that contains the isotope values. By defaults, the
@@ -31,7 +35,9 @@ Function that creates a biplot of a food web with stable isotope values (d13C
 and d15N)
 }
 \examples{
+\dontrun{
 data("Bilagay")
 subset_CHI <- Bilagay[Bilagay[,"Location"] \%in\% "CHI",]
 screenFoodWeb(subset_CHI, grouping = c("Spp", "FG"))
+}
 }

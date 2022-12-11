@@ -4,7 +4,8 @@
 \name{Bilagay}
 \alias{Bilagay}
 \title{Data frame containing stable isotope values of Bilagay.}
-\format{A data frame with 841 rows and 7 variables:
+\format{
+A data frame with 841 rows and 7 variables:
 \describe{
   \item{Study}{factor, character describing which study funded data
   collection}
@@ -17,7 +18,8 @@
   \item{d13C}{numeric, stable isotope d13C values}
   \item{d15N}{numeric, stable isotope d15N values}
   \item{NS}{numeric, integer
-  describing north to south ordering (1-10)} }}
+  describing north to south ordering (1-10)} }
+}
 \usage{
 data("Bilagay")
 }

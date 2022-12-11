@@ -72,15 +72,15 @@ credibilityIntervals <- function (df,
 
   #if(missing(plot)) plot = TRUE
 
-  if(class(df) == "posteriorTP")
+  if(methods::is(df)[1] == "posteriorTP")
     stop("Not implemented yet (posteriorTP")
 
-  else if(class(df) == "posteriorAlpha")
+  else if(methods::is(df)[1] == "posteriorAlpha")
     stop("Not implemented yet (posteriorAlpha")
 
-  else if(class(df) == "list" &
-          class(df[1]) == "posteriorTP" &
-          class(df[2]) == "posteriorAlpha")
+  else if(methods::is(df)[1] == "list" &
+          methods::is(df[1])[1] == "posteriorTP" &
+          methods::is(df[2])[1] == "posteriorAlpha")
     stop("Not implemented yet (posteriorTP & posteriorAlpha")
 
   if (!is.null(levels(df$model))){

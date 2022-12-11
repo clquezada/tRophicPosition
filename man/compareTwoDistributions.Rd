@@ -5,8 +5,14 @@
 \title{Function to compare two distributions and test a hypothesis, in a Bayesian
 context}
 \usage{
-compareTwoDistributions(dist1 = NULL, dist2 = NULL, test = "<=",
-  sample = NULL, round = 3, ...)
+compareTwoDistributions(
+  dist1 = NULL,
+  dist2 = NULL,
+  test = "<=",
+  sample = NULL,
+  round = 3,
+  ...
+)
 }
 \arguments{
 \item{dist1}{A collection of numerical values (posterior distribution).}

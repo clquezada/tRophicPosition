@@ -25,9 +25,9 @@ getPosteriorMode <- function(df = NULL, round = 3) {
   #@importFrom magrittr "%>%" (in the header)
   if (is.null(df)) stop("data frame is NULL")
 
-  if (class(df) == "character") stop("data frame is a string")
+  if (methods::is(df)[1] == "character") stop("data frame is a string")
 
-  if (class(df) == "mcmc")
+  if (methods::is(df)[1] == "mcmc")
     return(round(MCMCglmm::posterior.mode(df), round))
 
   else if (is.numeric(df)) return(round(hdrcde::hdr(df)[[2]], round))

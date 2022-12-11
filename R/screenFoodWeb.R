@@ -17,9 +17,11 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' data("Bilagay")
 #' subset_CHI <- Bilagay[Bilagay[,"Location"] %in% "CHI",]
 #' screenFoodWeb(subset_CHI, grouping = c("Spp", "FG"))
+#' }
 
 screenFoodWeb <- function (df = NULL, grouping = c("Species", "FG"),
                                 printSummary = FALSE, ...){
@@ -32,13 +34,47 @@ screenFoodWeb <- function (df = NULL, grouping = c("Species", "FG"),
   # output.R
   meanC <- meanN <- sdN <- sdC <- NULL
 
-  summary <- tRophicPosition::summariseIsotopeData(df, grouping, printSummary)
+  summary <- summariseIsotopeData(df, grouping, printSummary)
+  print(summary)
 
+  print("shape")
+  print(levels(summary[[grouping[2]]]))
+  print(summary[[grouping[2]]])
+  # shape
+  # as.numeric(summary[[grouping[2]]])+19
+  # shape <- factor(summary[[grouping[2]]],
+  #                 levels = as.numeric(summary[[grouping[2]]])+19,
+  #                 labels = summary[[grouping[2]]])
+  #
+  # shape <- levels(as.numeric(summary[[grouping[2]]])+19)
   shape <- as.numeric(factor(summary[[grouping[2]]])) + 20
+  shape <- factor(shape, levels = levels(summary[[grouping[2]]]),
+                  labels = summary[[grouping[2]]])
+  print(unique(summary[[grouping[2]]]))
+
+  print(shape)
+
+  print("fill_as_factor")
+  fill_as_factor <- as.factor(factor(summary[[grouping[1]]]))
+  utils::str(fill_as_factor)
+  print(fill_as_factor)
+
+  n <- length(fill_as_factor)
+  colours <- RColorBrewer::brewer.pal(12, "Paired")
+  colours <- grDevices::colorRampPalette(colours)(n)
+  # pie(rep(1, length(colours)), col = colours , main="")
+
+  print("colours")
+  utils::str(colours)
+  print(colours)
+
+  #,
+  #fill = fill_as_factor)
 
   p <- ggplot2::ggplot(summary,
                        ggplot2::aes(meanC, meanN,
-                                    fill = factor(summary[[grouping[1]]]))) +
+                                    fill = fill_as_factor,
+                                    shape = shape)) +
     ggplot2::geom_errorbar(data = summary,
                            ggplot2::aes(ymin = meanN - sdN, ymax = meanN + sdN),
                            width = 0.15,
@@ -50,17 +86,16 @@ screenFoodWeb <- function (df = NULL, grouping = c("Species", "FG"),
     ggplot2::geom_point(size = 4, shape = shape)+
     ggplot2::ylab(expression(paste(delta^{15}, "N (\u2030)"))) +
     ggplot2::xlab(expression(paste(delta^{13}, "C (\u2030)"))) +
-    ggplot2::labs(fill = grouping[1])+
+    ggplot2::labs(fill = grouping[1]) +
+    ggplot2::labs(shape = grouping[2])
     #scale_colour_brewer(RColorBrewer::brewer.pal(
     #length(Strangford.summary$Species_name),"Set1"))+
     #title = "Strangford Lough (mean +- sd)") +
     #geom_point(data=Strangford.summary, size=3,
     #shape = Strangford.summary$FG) +
-    #scale_shape_discrete(solid = T) +
-    ggplot2::theme_bw()
-
-  #if (!is.null(title)) p <- p + labs(title = title)
+    # scale_fill_manual(breaks = as.character(fill_as_factor))
+    # ggplot2::theme_bw()
 
   print(p)
-
 }
+# screenFoodWeb(subset_CHI, grouping = c("Spp", "FG"), FALSE)

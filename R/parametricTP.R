@@ -45,7 +45,7 @@
 #' parametricTP(consumer)
 parametricTP <- function (siData, lambda = 2, print = TRUE) {
 
-  if (class(siData) != "isotopeData")
+  if (methods::is(siData)[1] != "isotopeData")
     stop ("We need an isotopeData class object")
 
   cat("")

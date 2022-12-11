@@ -30,12 +30,14 @@ In case of the one baseline model, trophic position is calculated as \deqn{TP
 1, dNc are d15N values of consumer, dNb1 are d15N values of baseline 1 and
 deltaN are trophic discrimination factor values of N.
 
+
 In case of the two baselines model, trophic position is calculated as
 \deqn{TP = lambda + ((dNc - ((dNb1 * alpha) + (dNb2 * (1 - alpha)))) /
 deltaN)} and \deqn{alpha = (dCc - dCb2) / (dCb1 - dCb2)} Additional variables
 are dCc (d13C values of consumer), dNb2 (d15N values of baseline 2), alpha
 (relative contribution of N from baseline 1), and dCb1 and dCb2 (d13C values
 of baselines 1 and 2 respectively).
+
 
 In case of the two baselines full model, trophic position is calculated with
 the same equation as the two baselines model, but alpha is calculated as

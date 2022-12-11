@@ -30,7 +30,7 @@ screenIsotopeData <- function (isotopeData = NULL, density = "both",
                                title = NULL, xylim = NULL,
                                ...) {
 
-  if (class(isotopeData) == "isotopeData")
+  if (methods::is(isotopeData)[1] == "isotopeData")
 
     ifelse(is.null(title),
            screenIsotopeDataMoreSources(isotopeData, density, baselines = 2,

@@ -22,7 +22,6 @@
 #' @param quiet logical value to indicate whether messages generated during
 #'   compilation will be suppressed, as well as the progress bar during
 #'   adaptation.
-#' @param params aditional parameters included as a list.
 #' @param ... additional arguments passed to this function.
 #'
 #' @return For each model calculated, returns a data frame of 4 elements with
@@ -42,8 +41,7 @@
 #' credibilityIntervals(models$gg, x = "model")
 #' }
 
-multiModelTP <- function (siData = siData,
-                          lambda = 2,
+multiModelTP <- function (siData = siData, lambda = 2,
                           n.chains = 2,
                           n.adapt = 20000,
                           n.iter = 20000,
@@ -52,6 +50,7 @@ multiModelTP <- function (siData = siData,
                           models = c("oneBaseline",
                                      "twoBaselines",
                                      "twoBaselinesFull"),
+                          params = NULL,
                           print = FALSE,
                           quiet = FALSE,
                           ...)

@@ -5,8 +5,12 @@
 \title{Function that summarises a data frame containing stable isotope values (d13C
 and d15N) grouping by Species and FG columns}
 \usage{
-summariseIsotopeData(df = NULL, grouping = c("Species", "FG"),
-  printSummary = FALSE, ...)
+summariseIsotopeData(
+  df = NULL,
+  grouping = c("Species", "FG"),
+  printSummary = FALSE,
+  ...
+)
 }
 \arguments{
 \item{df}{a data frame that contains the isotope values. It needs to have the
@@ -30,7 +34,7 @@ a data frame with the summary of the data frame.
 A wrapper of plyr:ddply to summarise a data frame.
 }
 \examples{
-data("Bilagay")
-subset_CHI <- Bilagay[Bilagay[,"Location"] \%in\% "CHI",]
-summariseIsotopeData(subset_CHI, grouping = c("Spp", "FG"))
+data('Bilagay')
+subset_CHI <- Bilagay[Bilagay[,'Location'] \%in\% 'CHI',]
+summariseIsotopeData(subset_CHI, grouping = c('Spp', 'FG'))
 }

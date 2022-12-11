@@ -4,8 +4,14 @@
 \alias{simulateTEF}
 \title{Simulate trophic enrichment factors}
 \usage{
-simulateTEF(nN = 56, meanN = NULL, sdN = 0.98, nC = 107,
-  meanC = NULL, sdC = 1.3)
+simulateTEF(
+  nN = 56,
+  meanN = NULL,
+  sdN = 0.98,
+  nC = 107,
+  meanC = NULL,
+  sdC = 1.3
+)
 }
 \arguments{
 \item{nN}{number of observations for deltaN.}

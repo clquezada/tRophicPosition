@@ -75,7 +75,7 @@ ggplot2::ggplot() +
   ggplot2::geom_histogram(ggplot2::aes(x = a$dNc, y = ..density..),
                           binwidth = 0.3, fill = "grey", color = "black") +
   ggplot2::geom_density(ggplot2::aes(x = dNcPred_all), color = "blue") +
-  ggplot2::xlab(expression(paste(delta^{15}, "N (\\u2030)"))) +
+  ggplot2::xlab(expression(paste(delta^{15}, "N (\u2030)"))) +
   ggplot2::theme_bw()
 }
 

@@ -4,8 +4,14 @@
 \alias{TPmodel}
 \title{Function to create a JAGS-based Bayesian model to calculate trophic position}
 \usage{
-TPmodel(data = NULL, model.string = NULL, n.chains = 2,
-  n.adapt = 10000, quiet = FALSE, ...)
+TPmodel(
+  data = NULL,
+  model.string = NULL,
+  n.chains = 2,
+  n.adapt = 10000,
+  quiet = FALSE,
+  ...
+)
 }
 \arguments{
 \item{data}{a list containing the data.}

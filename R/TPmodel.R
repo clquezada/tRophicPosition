@@ -37,8 +37,8 @@ TPmodel <- function (data = NULL,
                      ...)
                      {
 
-  if (length(class(model.string)) == 2)
-    if (class(model.string)[[2]] == "oneBaseline")
+  if (length(methods::is(model.string)) == 2)
+    if (methods::is(model.string)[1] == "oneBaseline")
       data[names(data) %in% c("dCb1", "dNb2", "dCb2", "deltaC", "dCc")] <- NULL
 
   con <- textConnection(model.string)
@@ -52,7 +52,7 @@ TPmodel <- function (data = NULL,
   close.connection(con)
 
   #Here we check if the model has the class required
-  if (class(model) == "jags") {
+  if (methods::is(model)[1] == "jags") {
     return (model)
 
   } else {

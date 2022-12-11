@@ -5,11 +5,24 @@
 \title{Defines a jags Bayesian model to fit a two baselines trophic position model
 (without fractionation for C)}
 \usage{
-jagsTwoBaselines(sigmaNc = NULL, sigmaCc = NULL, muCb1 = NULL,
-  sigmaCb1 = NULL, muNb1 = NULL, sigmaNb1 = NULL, muCb2 = NULL,
-  sigmaCb2 = NULL, muNb2 = NULL, sigmaNb2 = NULL, lambda = NULL,
-  TP = NULL, alpha = NULL, muDeltaN = NULL, sigmaDeltaN = NULL,
-  ...)
+jagsTwoBaselines(
+  sigmaNc = NULL,
+  sigmaCc = NULL,
+  muCb1 = NULL,
+  sigmaCb1 = NULL,
+  muNb1 = NULL,
+  sigmaNb1 = NULL,
+  muCb2 = NULL,
+  sigmaCb2 = NULL,
+  muNb2 = NULL,
+  sigmaNb2 = NULL,
+  lambda = NULL,
+  TP = NULL,
+  alpha = NULL,
+  muDeltaN = NULL,
+  sigmaDeltaN = NULL,
+  ...
+)
 }
 \arguments{
 \item{sigmaNc}{a distribution defining sigma (standard deviation) for N of

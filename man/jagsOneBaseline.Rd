@@ -4,8 +4,16 @@
 \alias{jagsOneBaseline}
 \title{Defines a jags Bayesian model to fit a single baseline trophic position model}
 \usage{
-jagsOneBaseline(muB = NULL, sigmaB = NULL, muDeltaN = NULL,
-  sigmaDeltaN = NULL, sigma = NULL, TP = NULL, lambda = NULL, ...)
+jagsOneBaseline(
+  muB = NULL,
+  sigmaB = NULL,
+  muDeltaN = NULL,
+  sigmaDeltaN = NULL,
+  sigma = NULL,
+  TP = NULL,
+  lambda = NULL,
+  ...
+)
 }
 \arguments{
 \item{muB}{a distribution defining prior for mean (mu) of baseline. By

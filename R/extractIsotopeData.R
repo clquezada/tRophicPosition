@@ -90,34 +90,37 @@ extractIsotopeData <- function(df = NULL,
       return(list("dNb1" = dNb1, "dCb1" = dCb1))
     }
 
-  getIsotopeData <- function(df, deltaN, deltaC, consumersColumn,
+  getIsotopeData <- function(subset_df, deltaN, deltaC, consumersColumn,
                              group = NULL) {
 
-    siDataList <- list()
+    siDataListTemp <- list()
 
-    extracted <- getBaselines(df, b1, b2, d15N, d13C)
+    extracted <- getBaselines(subset_df, b1, b2, d15N, d13C)
     extracted[["deltaN"]] <- deltaN
     extracted[["deltaC"]] <- deltaC
 
     attrb1 <- b1[b1 %in% unique(df[[baselineColumn]])]
-    if (!is.null(b2)) attrb2 <- b2[b2 %in% unique(df[[baselineColumn]])]
-    else attrb2 <- NULL
+    if (!is.null(b2)) { attrb2 <- b2[b2 %in% unique(df[[baselineColumn]])]
+     } else { attrb2 <- NULL
+      }
 
-    df <- df[!df[,baselineColumn] %in% c(b1, b2),]
+    subset_df_temp <- subset_df[!subset_df[,baselineColumn] %in% c(b1, b2),]
 
-    for (consumer in unique(df[[consumersColumn]])) {
+    # for (consumer in unique(subset_df[[consumersColumn]])) { #original
+    for (consumer in unique(subset_df_temp[[consumersColumn]])) { #modificada
 
-      dNc <- getValues(df, consumer, consumersColumn, d15N)
-      dCc <- getValues(df, consumer, consumersColumn, d13C)
+      dNc <- getValues(subset_df, consumer, consumersColumn, d15N)
+      dCc <- getValues(subset_df, consumer, consumersColumn, d13C)
 
-      if (!is.null(group)) consumer_group <- paste(group,
-                                                          consumer, sep = "-")
-      else consumer_group <- consumer
-
+      if (!is.null(group)) { consumer_group <- paste(group,
+                                                     consumer,
+                                                     sep = "-")
+       } else { consumer_group <- consumer
+        }
 
       data <- append(extracted, list("dNc" = dNc, "dCc" = dCc))
 
-      siDataList[[consumer_group]] <- data
+      siDataListTemp[[consumer_group]] <- data
 
       attributes <- list(class = "isotopeData",
                          names = names(data),
@@ -126,11 +129,10 @@ extractIsotopeData <- function(df = NULL,
                          baseline2 = attrb2,
                          group = group)
 
-      mostattributes(siDataList[[consumer_group]]) <- attributes
+      mostattributes(siDataListTemp[[consumer_group]]) <- attributes
     }
 
-    return(siDataList)
-
+    return(siDataListTemp)
   }
 
   if (is.null(deltaN)) {
@@ -160,7 +162,6 @@ extractIsotopeData <- function(df = NULL,
                                                       deltaN, deltaC,
                                                       consumersColumn,
                                                       group))
-
       }
 
   } else {

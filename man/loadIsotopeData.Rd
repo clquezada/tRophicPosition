@@ -4,10 +4,22 @@
 \alias{loadIsotopeData}
 \title{Extract and load stable isotope data for selected consumers from a data frame}
 \usage{
-loadIsotopeData(df = NULL, consumer = NULL, group = NULL,
-  b1 = "Baseline 1", b2 = NULL, baselineColumn = "FG",
-  consumersColumn = "FG", groupsColumn = NULL, d13C = "d13C",
-  d15N = "d15N", deltaC = NULL, deltaN = NULL, seed = 666, ...)
+loadIsotopeData(
+  df = NULL,
+  consumer = NULL,
+  group = NULL,
+  b1 = "Baseline 1",
+  b2 = NULL,
+  baselineColumn = "FG",
+  consumersColumn = "FG",
+  groupsColumn = NULL,
+  d13C = "d13C",
+  d15N = "d15N",
+  deltaC = NULL,
+  deltaN = NULL,
+  seed = 666,
+  ...
+)
 }
 \arguments{
 \item{df}{data frame containing raw isotope data with at least one grouping

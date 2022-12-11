@@ -36,55 +36,72 @@ compareTwoDistributions <- function (dist1 = NULL,
   # #' Internal function that calculates the Bhattacharrya Coefficient.
   # #'
   # #' Not intended to be used by the user.
-  bhatt.coeff <- function(x, y, bw = stats::bw.nrd0, ...) {
-    ## Check data
-    ## x and y
-    check.class(x, "numeric")
-    check.class(y, "numeric")
-
-    ## bw (bandwidth)
-    if(class(bw) == "numeric") {
-      check.length(bw, 1,
-                   " must be either a single numeric value or a function.")
-      bw <- round(bw)
-    } else {
-      check.class(bw, "function",
-                  " must be either a single numeric value or a function.")
+  # From https://github.com/TGuillerme/SpatioTemporal_Disparity/blob/master/Functions/disparity/R/bhatt.coef.R
+  bhatt.coeff<-function(x,y, bw = 15, ...) {
+    #SANITIZING
+    #x
+    if(methods::is(x)[1] != 'numeric') {
+      stop("'x' must be numeric.")
+    }
+    if(length(x) < 2) {
+      stop("'x' need at least two data points.")
     }
 
-    ## BHATTACHARYYA COEFFICIENT
-    ## sum(sqrt(x relative counts in bin_i * y relative counts in bin_i))
+    #y
+    if(methods::is(y)[1] != 'numeric') {
+      stop("'y' must be numeric.")
+    }
+    if(length(y) < 2) {
+      stop("'y' need at least two data points.")
+    }
 
-    ## Setting the right number of bins (i)
-    if(class(bw) == 'function') {
-      ## Bin width
-      band.width <- bw(c(x, y), ...)
-      ## Bin breaks
-      ## adding an extra bandwith to the max to be sure to include all the data
-      bin.breaks <- seq(from = min(c(x, y)), to = max(c(x, y) + band.width),
-                        by = band.width)
-      ## Number of bins
+    #bw
+    if(length(bw) != 1) {
+      stop("'bw' must be either a single numeric value or a single function.")
+    }
+    if(methods::is(bw)[1] != 'function') {
+      if(methods::is(bw)[1] != 'numeric') {
+        stop("'bw' must be either a single numeric value or a single function.")
+      }
+    }
+    #Avoiding non-entire numbers
+    if(methods::is(bw)[1] == 'numeric') {
+      bw <- round(bw)
+    }
+
+    #BHATTACHARYYA COEFFICIENT
+    #sum(sqrt(x relative counts in bin_i * y relative counts in bin_i))
+
+    #Setting the right number of bins (i)
+    if(methods::is(bw)[1] == 'function') {
+      #Bin width
+      band.width <- bw(c(x,y), ...)
+      #Bin breaks
+      bin.breaks <- seq(from = min(c(x,y)),
+                        to = max(c(x,y) + band.width),
+                        by = band.width) #adding an extra bandwith to the max to be sure to include all the data
+      #Number of bins
       bin.n <- length(bin.breaks) - 1
     } else {
-      ## Bin breaks
-      bin.breaks <- graphics::hist(c(x, y), breaks = bw, plot = FALSE)$breaks
-      ## Bin width
+      #Bin breaks
+      bin.breaks <- graphics::hist(c(x,y), breaks = bw, plot=F)$breaks
+      #Bin width
       band.width <- diff(bin.breaks)[1]
-      ## Number of bins
+      #Number of bins
       bin.n <- bw
     }
 
-    ## Counting the number of elements per bin
-    histx <- graphics::hist(x, breaks = bin.breaks, plot = FALSE)[[2]]
-    histy <- graphics::hist(y, breaks = bin.breaks, plot = FALSE)[[2]]
-    ## Relative counts
+    #Counting the number of elements per bin
+    histx <- graphics::hist(x, breaks = bin.breaks, plot=FALSE)[[2]]
+    histy <- graphics::hist(y, breaks = bin.breaks, plot=FALSE)[[2]]
+    #Relative counts
     rel.histx <- histx / sum(histx)
     rel.histy <- histy / sum(histy)
 
-    ## Calculating the Bhattacharyya Coefficient (sum of the square root of the
-    ##  multiple of the relative counts of both distributions)
+    #Calculating the Bhattacharyya Coefficient (sum of the square root of the multiple of the relative counts of both distributions)
     bhatt.coeff <- sum(sqrt(rel.histx * rel.histy))
     return(bhatt.coeff)
+    #End
   }
 
   check.class <- function (object, class, msg, errorif = FALSE) {
