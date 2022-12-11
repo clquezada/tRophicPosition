@@ -11,6 +11,7 @@
   b2 = NULL,
   legend = c(1.15, 1.15),
   density = "both",
+  xylim = NULL,
   ...
 )
 }
@@ -28,6 +29,8 @@
 \item{density}{string representing whether the density function is plotted.
 Accepted characters are "both" in which case this function will plot the
 density function above and to the right, "right", "above" or "none".}
+
+\item{xylim}{argument for modifying x-y limits (for testing)}
 
 \item{...}{additional arguments passed to this function.}
 }

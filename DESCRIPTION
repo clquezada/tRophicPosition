@@ -28,7 +28,7 @@ Description: Estimates the trophic position of a consumer relative
     trophicposition-support@googlegroups.com.
 License: GPL (>= 2)
 LazyData: TRUE
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Suggests:
     dplyr,
     knitr,

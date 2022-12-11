@@ -12,6 +12,7 @@ screenIsotopeData(
   b2 = "Benthic baseline",
   legend = c(1.15, 1.15),
   title = NULL,
+  xylim = NULL,
   ...
 )
 }
@@ -31,6 +32,8 @@ above and to the right, "right", "above" or "none".}
 \item{legend}{coordinates representing where to locate the legend.}
 
 \item{title}{string representing title.}
+
+\item{xylim}{argument for modifying x-y limits (for testing)}
 
 \item{...}{additional arguments passed to this function.}
 }

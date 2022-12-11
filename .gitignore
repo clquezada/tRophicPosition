@@ -5,3 +5,5 @@
 packrat/lib*/
 inst/doc
 /revdep/*
+/doc/
+/Meta/

@@ -15,6 +15,7 @@
 #' @param legend coordinates representing where to locate the legend.
 #' @param title string representing title.
 #' @param ... additional arguments passed to this function.
+#' @param xylim argument for modifying x-y limits (for testing)
 #'
 #' @return none
 #'

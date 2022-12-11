@@ -9,6 +9,7 @@
 #'   Accepted characters are "both" in which case this function will plot the
 #'   density function above and to the right, "right", "above" or "none".
 #' @param ... additional arguments passed to this function.
+#' @param xylim argument for modifying x-y limits (for testing)
 #'
 #' @return a ggplot2 object with the biplot of isotopes.
 #' @export
