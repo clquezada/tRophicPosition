@@ -39,7 +39,7 @@ The stable version of `tRophicPosition` is hosted on [CRAN](https://cran.r-proje
 install.packages("tRophicPosition")
 ```
 
-Remember to install [JAGS](http://mcmc-jags.sourceforge.net) for your platform as well. A number of packages are needed, which can be installed with:
+Remember to install [JAGS](https://mcmc-jags.sourceforge.io/) for your platform as well. A number of packages are needed, which can be installed with:
 
 ```{r}
 install.packages(c("coda", "data.table", "dplyr", "ggplot2", "gridExtra",

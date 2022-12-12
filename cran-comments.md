@@ -5,8 +5,6 @@
 * CRAN’s servers with devtools::check_win_devel()
 * CRAN’s servers with rhub::check()
 
-
-
 ## R CMD check results  [2022-12-11]
 There were no ERRORs or WARNINGs in local and remote installs.
 
@@ -24,10 +22,6 @@ Possibly misspelled words in DESCRIPTION:
   trophic (13:28)
   
 Found the following (possibly) invalid URLs:
-  URL: http://mcmc-jags.sourceforge.net (moved to https://mcmc-jags.sourceforge.io/)
-    From: README.md
-    Status: 200
-    Message: OK
   URL: https://doi.org/10.1111/2041-210X.13009
     From: README.md
     Status: 503
