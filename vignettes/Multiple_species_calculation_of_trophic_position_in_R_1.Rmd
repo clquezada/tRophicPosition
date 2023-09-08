@@ -30,7 +30,7 @@ In this vignette, we will introduce the new functions we have developed for `tRo
 ### Stable version - CRAN
 First of all, you need to install [JAGS](https://mcmc-jags.sourceforge.io/) for your platform, and then install the stable version of `tRophicPosition` from [CRAN](https://CRAN.R-project.org/package=tRophicPosition):
 
-```{r eval = FALSE}
+```{r, eval = FALSE}
 install.packages("tRophicPosition")
 ```
 

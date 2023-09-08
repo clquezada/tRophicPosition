@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Claudio Quezada-Romegialli, Andrew L Jackson &amp; Chris Harrod" />
+
+
+<title>Using tRophicPosition to estimate TP through the use of multiple models</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Using tRophicPosition to estimate TP
+through the use of multiple models</h1>
+<h4 class="author">Claudio Quezada-Romegialli, Andrew L Jackson &amp;
+Chris Harrod</h4>
+<h4 class="date">December 11 2022</h4>
+
+
+
+<div id="trophicposition" class="section level1">
+<h1>tRophicPosition</h1>
+<p><code>tRophicPosition</code>, is an R package incorporating a
+Bayesian model for the calculation of trophic position using stable
+isotopes with one or two baselines. As of 2022-12-11, the current
+version of the package is 0.8. <code>tRophicPosition</code> uses the
+powerful approach of Markov Chain Monte Carlo simulations provided by <a href="https://mcmc-jags.sourceforge.io/">JAGS</a> and the statistical
+language <a href="https://www.r-project.org">R</a>. Vignettes can be
+browsed with <code>browseVignettes(&quot;tRophicPosition&quot;)</code>.</p>
+</div>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>In this vignette, we will introduce the new functions we have
+developed for <code>tRophicPosition</code> in the version 0.6.8. These
+functions are <code>multiModelTP()</code>,
+<code>credibilityIntervals()</code>, <code>pairwiseComparisons()</code>
+and <code>parametricTP()</code>. Each of these functions accomplish
+different tasks within the Bayesian estimation of trophic position with
+stable isotopes, facilitating the calculation of multiple models (either
+one, two baselines and/or two baselines full model of trophic position)
+for a single species, pairwise comparisons of posterior estimates of
+trophic position and/or alpha parameters, plotting of credibility
+intervals of posterior estimates of trophic position and/or alpha, and
+calculation of a parametric (non-Bayesian) estimate of trophic
+position.</p>
+<div id="installing-and-loading-the-package" class="section level2">
+<h2>Installing and loading the package</h2>
+<div id="stable-version---cran" class="section level3">
+<h3>Stable version - CRAN</h3>
+<p>First of all, you need to install <a href="https://mcmc-jags.sourceforge.io/">JAGS</a> for your platform, and
+then install the stable version of <code>tRophicPosition</code> from <a href="https://CRAN.R-project.org/package=tRophicPosition">CRAN</a>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tRophicPosition&quot;</span>)</span></code></pre></div>
+<p>After that, you have to load the package with:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(tRophicPosition)</span></code></pre></div>
+</div>
+<div id="development-version---github" class="section level3">
+<h3>Development version - GitHub</h3>
+<p>If you want to install the development version of
+<code>tRophicPosition</code>, you must install it from GitHub. For this,
+we use the function <code>install_github()</code> from the package
+<code>devtools</code> (installation instructions <a href="https://github.com/r-lib/devtools#updating-to-the-latest-version-of-devtools">here</a>),
+which needs to be installed previously (either from <a href="https://CRAN.R-project.org/package=devtools">CRAN</a> or <a href="https://github.com/r-lib/devtools">GitHub</a>):</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">library</span>(devtools)</span></code></pre></div>
+<p>If you are working in Windows, <code>devtools</code> also requires <a href="https://cran.r-project.org/bin/windows/Rtools/">Rtools</a>, or if
+you are working on a Mac, <a href="https://developer.apple.com/xcode/">Xcode</a> (from Apple Store).
+In Linux you will need to install a compiler and various development
+libraries.</p>
+<p>Besides installing <code>devtools</code>, you must also install <a href="https://mcmc-jags.sourceforge.io/">JAGS</a> (Just Another Gibbs
+Sampler), which is at the core of the Bayesian model analysis supporting
+<code>tRophicPosition</code>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">install_github</span>(<span class="st">&quot;clquezada/tRophicPosition&quot;</span>, <span class="at">build_vignettes =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>After installing <code>tRophicPosition</code>, it should be loaded
+into memory, which automatically reports the version of the software (we
+need at least 0.6.8-8 to use the routines described in this
+vignette).</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">library</span>(tRophicPosition)</span></code></pre></div>
+</div>
+</div>
+<div id="future-releases-and-how-to-get-support" class="section level2">
+<h2>Future releases and how to get support</h2>
+<p>You are encouraged to use <code>tRophicPosition</code> with your own
+data, test the package and see if there are any issues or problems. You
+can send your questions or commentaries to the google group <a href="https://groups.google.com/d/forum/trophicposition-support">tRophicPosition-support</a>
+or directly to the email <a href="mailto:trophicposition-support@googlegroups.com" class="email">trophicposition-support@googlegroups.com</a>. You can send
+your questions to <a href="https://stackexchange.com/" class="uri">https://stackexchange.com/</a> <a href="https://stackoverflow.com/" class="uri">https://stackoverflow.com/</a> or even <a href="https://www.facebook.com/groups/stableisotopes/">Facebook (stable
+isotope ecology group)</a>.</p>
+<p>We are constantly working on future releases of
+<code>tRophicPosition</code>, so feedback is very much appreciated.</p>
+</div>
+</div>
+<div id="calculation-of-tp-for-one-species-using-multiple-bayesian-models" class="section level1">
+<h1>Calculation of TP for one species using multiple Bayesian
+models</h1>
+<p>To demonstrate how <code>tRophicPosition</code> works, we will
+simulate some data. For example, imagine we have a fish species of
+interest that has mean (<span class="math inline">\(\pm\)</span> SD)
+values of <span class="math inline">\(\delta^{15}\)</span>N of 21‰
+(<span class="math inline">\(\pm\)</span> 1‰), and <span class="math inline">\(\delta^{13}\)</span>C of -15‰ (<span class="math inline">\(\pm\)</span> 1‰). Also, as in many aquatic
+ecosystems, this fish lives in a system with two sources of C and N,
+meaning that we have to deal with two different baselines. One of the
+baselines has mean (<span class="math inline">\(\pm\)</span> SD) values
+of <span class="math inline">\(\delta^{15}\)</span>N of 14.2‰ (<span class="math inline">\(\pm\)</span> 1‰) and <span class="math inline">\(\delta^{13}\)</span>C -17.3‰ (<span class="math inline">\(\pm\)</span> 1‰), while the other baseline has
+mean values of 15.4‰ (<span class="math inline">\(\pm\)</span> 1‰) and
+-12.7‰ (<span class="math inline">\(\pm\)</span> 1‰) (<span class="math inline">\(\delta^{15}\)</span>N and <span class="math inline">\(\delta^{13}\)</span>C respectively). We will use
+the function generateTPData() to simulate this simple ecosystem.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>consumer1 <span class="ot">&lt;-</span> <span class="fu">generateTPData</span>(<span class="at">dCb1 =</span> <span class="sc">-</span><span class="fl">17.3</span>, <span class="at">dNb1 =</span> <span class="fl">14.2</span>,</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>                            <span class="at">dCc =</span> <span class="sc">-</span><span class="dv">15</span>, <span class="at">dNc =</span> <span class="dv">21</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>                            <span class="at">dCb2 =</span> <span class="sc">-</span><span class="fl">12.7</span>, <span class="at">dNb2 =</span> <span class="fl">15.4</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>                            <span class="at">DeltaN =</span> <span class="fl">3.4</span>, <span class="at">sd.DeltaN =</span> <span class="fl">0.98</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>                            <span class="at">DeltaC =</span> <span class="fl">0.39</span>, <span class="at">sd.DeltaC =</span> <span class="fl">1.3</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>                            <span class="at">consumer =</span> <span class="st">&quot;Consumer 1&quot;</span>)</span></code></pre></div>
+<p>In this function we have also indicated mean and sd values for
+trophic discrimination factors for <code>DeltaN</code> (<span class="math inline">\(\Delta\)</span>N) and <code>DeltaC</code> (<span class="math inline">\(\Delta\)</span>C), and also have indicated a name
+for the consumer. Remember that all the functions have a help page where
+you will find other options (write for example
+<code>?generateTPData</code> in the console).</p>
+<p>Now that we have our simple ecosystem simulated, we will plot it:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">plot</span>(consumer1)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p>In this figure we can see that sample of simulated fish consumers is
+exactly located in-between both baselines on the <span class="math inline">\(\delta^{13}\)</span>C axis, and also, our fish is
+6.8‰ above the baseline 1 in terms of its <span class="math inline">\(\delta^{15}\)</span>N value. If we use a one
+baseline model, and if the trophic level of baseline 1
+(<code>lambda</code>) is 2, we would expect a mean trophic position of 4
+for our simulated fish species. If we use a two baselines model without
+fractionation for carbon, we would expect an <code>alpha</code> value of
+0.5, which means that each baseline is contributing in 50% of the energy
+inputs to our fish. Finally, if we use a two baselines full model
+(including fractionation for <span class="math inline">\(\delta^{13}\)</span>C), the trophic position of
+our fish would depend on both baselines, and the relative contribution
+of each baseline would depend on the trophic discrimination factors
+(<span class="math inline">\(\Delta\)</span>N and <span class="math inline">\(\Delta\)</span>C). Clearly, this is worth
+exploring more, so we will calculate (and compare) estimates for TP
+using these models with the function <code>multiModelTP()</code>.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>consumer1_models <span class="ot">&lt;-</span> <span class="fu">multiModelTP</span>(consumer1)</span></code></pre></div>
+<pre><code>## Compiling model graph
+##    Resolving undeclared variables
+##    Allocating nodes
+## Graph information:
+##    Observed stochastic nodes: 106
+##    Unobserved stochastic nodes: 31
+##    Total graph size: 149
+## 
+## Initializing model
+## 
+## Compiling model graph
+##    Resolving undeclared variables
+##    Allocating nodes
+## Graph information:
+##    Observed stochastic nodes: 206
+##    Unobserved stochastic nodes: 14
+##    Total graph size: 243
+## 
+## Initializing model
+## 
+## Compiling model graph
+##    Resolving undeclared variables
+##    Allocating nodes
+## Graph information:
+##    Observed stochastic nodes: 313
+##    Unobserved stochastic nodes: 66
+##    Total graph size: 404
+## 
+## Initializing model</code></pre>
+<p><code>multiModelsTP()</code> requires an object of the class
+<code>isotopeData</code>, which was created previously by the function
+<code>generateTPData()</code>. By default <code>multiModelsTP()</code>
+defines a <code>lambda = 2</code> for the baselines, uses 2 chains
+(<code>n.chains = 2</code>) to do the Bayesian calculation with 20,000
+adaptive iterations (<code>n.adapt = 20000</code>), 20,000 actual
+iterations (<code>n.iter = 20000</code>), 20,000 iterations as burnin
+(<code>burnin = 20000</code>) and a thinning of 10
+(<code>thin = 10</code>). Furthermore, it estimates TP using three
+different Bayesian models: one baseline, two baselines and two baselines
+full
+(<code>models = c(&quot;oneBaseline&quot;, &quot;twoBaselines&quot;, &quot;twoBaselinesFull&quot;</code>).
+The default setting is to limit the amount of output for each model run
+(print = FALSE). NB: The user can change any of these options, simply
+adding them as arguments to <code>multiModelTP()</code>, see
+<code>?multiModelTP()</code> for details.</p>
+<p>Also, by default this function uses Post’s (2002) assumptions on TDF
+(i.e. 56 values with mean 3.4 <span class="math inline">\(\pm\)</span>
+0.98 SD for <span class="math inline">\(\Delta\)</span>N and 107 values
+with mean 0.39 <span class="math inline">\(\pm\)</span> 1.3 SD for <span class="math inline">\(\Delta\)</span>C).</p>
+<p>For example, if we have used the option <code>print = TRUE</code> as
+argument (i.e. <code>multiModelTP(print = TRUE)</code>), we would have a
+trace plot for every model (to check graphically if our parameters of
+interest <code>TP</code>, <code>muDeltaN</code> and <code>alpha</code>
+have converged), and if more than 1 chain were used, also would have
+printed two statistics from the coda package: Gelman and Rubin’s
+convergence diagnostic statistics (see ?gelman.diag for a detailed
+explanation). Basically, we expect that potential scale reduction
+factors for each parameter is close to 1, which means that our model has
+converged and it is reliable.</p>
+<p>These estimates have been generated using Post’s (2002) mean
+estimates for TDFs, which are commonly used across a wide range of
+ecological studies. Now that we have calculated the trophic position for
+our simulated fish in a simple ecosystem, we will do the same
+calculation, but this time, we will change the trophic discrimination
+factor from Post’s (2002) values to McCutchan’s et al. (2003) values in
+order to examine the sensitivity of the models to TDF estimates. To do
+this, we will we will generate <code>consumer2</code> with the same
+isotope values as <code>consumer1</code> and simply change the variables
+<code>deltaN</code> and <code>deltaC</code> within the object
+<code>consumer2</code>.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>consumer2 <span class="ot">&lt;-</span> <span class="fu">generateTPData</span>(<span class="at">dCb1 =</span> <span class="sc">-</span><span class="fl">17.3</span>, <span class="at">dNb1 =</span> <span class="fl">14.2</span>,</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>                            <span class="at">dCc =</span> <span class="sc">-</span><span class="dv">15</span>, <span class="at">dNc =</span> <span class="dv">21</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>                            <span class="at">dCb2 =</span> <span class="sc">-</span><span class="fl">12.7</span>, <span class="at">dNb2 =</span> <span class="fl">15.4</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>                            <span class="at">consumer =</span> <span class="st">&quot;Consumer 2&quot;</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>consumer2<span class="sc">$</span>deltaN <span class="ot">&lt;-</span> <span class="fu">TDF</span>(<span class="at">author =</span> <span class="st">&quot;McCutchan&quot;</span>, <span class="at">element =</span> <span class="st">&quot;N&quot;</span>)</span></code></pre></div>
+<pre><code>## You selected McCutchan&#39;s et al (2003)
+##                   All d15N: 73 values with mean 2.3 +- 0.18 se</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>consumer2<span class="sc">$</span>deltaC <span class="ot">&lt;-</span> <span class="fu">TDF</span>(<span class="at">author =</span> <span class="st">&quot;McCutchan&quot;</span>, <span class="at">element =</span> <span class="st">&quot;C&quot;</span>)</span></code></pre></div>
+<pre><code>## You selected McCutchan&#39;s et al (2003)
+##                   All d13C: 102 values with mean 0.5 +- 0.13 se</code></pre>
+<p>And now we will calculate the three Bayesian models of trophic
+position again, with the only difference being we have changed their TDF
+values.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>consumer2_models <span class="ot">&lt;-</span> <span class="fu">multiModelTP</span>(consumer2)</span></code></pre></div>
+<pre><code>## Compiling model graph
+##    Resolving undeclared variables
+##    Allocating nodes
+## Graph information:
+##    Observed stochastic nodes: 123
+##    Unobserved stochastic nodes: 31
+##    Total graph size: 166
+## 
+## Initializing model
+## 
+## Compiling model graph
+##    Resolving undeclared variables
+##    Allocating nodes
+## Graph information:
+##    Observed stochastic nodes: 223
+##    Unobserved stochastic nodes: 14
+##    Total graph size: 260
+## 
+## Initializing model
+## 
+## Compiling model graph
+##    Resolving undeclared variables
+##    Allocating nodes
+## Graph information:
+##    Observed stochastic nodes: 325
+##    Unobserved stochastic nodes: 66
+##    Total graph size: 416
+## 
+## Initializing model</code></pre>
+<p>In both cases we have calculated three Bayesian models (one baseline,
+two baselines without fractionation for C, and two baselines full model
+with C fractionation) for two simulated simple ecosystems consisting of
+one fish and 2 baselines, and the only difference between consumer 1 and
+consumer 2 is the trophic discrimination factor. In the first case we
+included Post’s (2002) values, and in the second case we included
+McCutchan’s et al. (2003) values for both N and C. We have saved the
+output of <code>multiModelTP()</code> into two objects
+<code>consumer1_models</code> and <code>consumer2_models</code>, and now
+we will analyze the results.</p>
+<p>If you are using RStudio, in the environment tab you will see that
+both <code>consumer1_models</code> and <code>consumer2_models</code> are
+lists of 4 elements each. The first element is a data frame named TP.
+This dataframe has the posterior samples of TP for each model. The
+second element is also a data frame, named alpha in this case, which
+includes the posterior samples of alpha for 2 of the 3 models (only the
+two baselines models calculate alpha, i.e. the relative contribution of
+the baseline 1). The third element is a data frame as well, named gg (to
+indicate us that has the structure required to use the ggplot2 package).
+This data frame has summary values of both posterior samples of trophic
+position and alpha: median and 95% credibility interval, grouped by
+model, community and species. The fourth and last element is a list of 3
+elements named samples, that has raw posterior mcmc samples if you want
+to summarise the information, or analyze it in a different way. The
+first three elements (data frames TP, alpha and gg) are based in these
+raw posterior samples of every Bayesian model, summarised by
+<code>multiModelsTP()</code> for convenience.</p>
+<p>We can produce a detailed summary of the structure described above
+using the function <code>str()</code>:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">str</span>(consumer1_models)</span></code></pre></div>
+<p>In order to plot the mode and 95% credibility interval for both
+posterior trophic position and alpha, we can use the function
+<code>credibilityIntervals():</code></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># For consumer 1 (based on Post&#39;s (2002) TDF values)</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="fu">credibilityIntervals</span>(consumer1_models<span class="sc">$</span>gg, <span class="at">x =</span> <span class="st">&quot;model&quot;</span>)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p>This figure provides mode (<span class="math inline">\(\pm\)</span>
+95% credibility interval) for posterior estimates trophic position from
+the three different models (one baseline two baselines and two baselines
+full), as well as alpha (only given for two baselines models).</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># For consumer 2 (based on McCutchan&#39;s (2003) TDF values)</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="fu">credibilityIntervals</span>(consumer2_models<span class="sc">$</span>gg, <span class="at">x =</span> <span class="st">&quot;model&quot;</span>)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p>The arguments <code>df = consumer1_models$gg</code> and
+<code>x = model</code> above, tells the function
+<code>credibilityIntervals()</code> to plot the data frame
+<code>consumer1_models$gg</code> using the model column within that data
+frame as the independent variable (<code>x</code>), and by default using
+the mode as the central tendency descriptor (see
+<code>credibilityIntervals()</code> for details). If you want to plot
+the median instead of the mode add <code>y1 = &quot;median</code> and
+<code>y2 = &quot;alpha.median&quot;</code> as arguments within
+<code>credibilityIntervals()</code>. When we have multiple species or
+several communities we will change this (e.g. see the vignette multiple
+species calculation of trophic position).</p>
+<div id="why-we-need-of-accurate-trophic-discrimination-factors-tdf" class="section level2">
+<h2>Why we need of accurate trophic discrimination factors (TDF)?</h2>
+<p>Probably, the single and most important assumption to get accurate
+and reliable estimations of trophic position is the <em>trophic
+discrimination factor</em>, either for nitrogen <span class="math inline">\(\Delta^{15}\)</span>N (one and two baselines
+models) and both <span class="math inline">\(\Delta\)</span>N and <span class="math inline">\(\Delta\)</span>C for the two baselines full model.
+Obviously, the use of a non-representative TDF estimate for either <span class="math inline">\(\Delta\)</span>N or <span class="math inline">\(\Delta\)</span>C can affect both trophic position
+estimations and the alpha parameter.</p>
+<p>Now we will examine the impact of using the different TDFs for our
+simulated consumers. We have estimated trophic position and alpha for
+both consumers groups (differing only in TDF) and will test for
+statistical differences between posterior samples of these parameters.
+First, we must change the names of both posterior samples, because they
+have the same name (as they were calculated with
+<code>multiModelsTP()</code>):</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># Here we see that we have 4002 posterior samples of 3 parameters</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="co"># (one for each Bayesian model) for consumer1</span></span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="fu">str</span>(consumer1_models<span class="sc">$</span>TP)</span></code></pre></div>
+<pre><code>## List of 3
+##  $ 1b : num [1:4002] 4.09 3.91 3.94 3.73 3.93 ...
+##  $ 2b : num [1:4002] 3.74 3.77 3.8 3.99 3.7 ...
+##  $ 2bf: num [1:4002] 4.17 3.79 3.85 3.83 3.71 ...</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="co"># And also 4002 posterior samples (for each 3 Bayesian models) for consumer2</span></span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="fu">str</span>(consumer2_models<span class="sc">$</span>TP)</span></code></pre></div>
+<pre><code>## List of 3
+##  $ 1b : num [1:4002] 4.82 4.76 4.65 4.78 4.94 ...
+##  $ 2b : num [1:4002] 4.71 4.31 4.94 5.22 4.44 ...
+##  $ 2bf: num [1:4002] 5.28 4.88 5.23 5.61 5.03 ...</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="co"># But the names of each variables are the same for both consumers</span></span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="co"># For consumer1</span></span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a><span class="fu">names</span>(consumer1_models<span class="sc">$</span>TP)</span></code></pre></div>
+<pre><code>## [1] &quot;1b&quot;  &quot;2b&quot;  &quot;2bf&quot;</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="co"># For consumer2</span></span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a><span class="fu">names</span>(consumer2_models<span class="sc">$</span>TP)</span></code></pre></div>
+<pre><code>## [1] &quot;1b&quot;  &quot;2b&quot;  &quot;2bf&quot;</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="co"># So, we change them in order to compare them.</span></span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a><span class="co"># To make things clear, consumer 1 will be &quot;Post&quot; and consumer 2 will be</span></span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a><span class="co"># &quot;McCutchan&quot;. # Also, one baseline Bayesian model will be model1, two </span></span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a><span class="co"># baselines model will be model2 and two baselines full model will be model2F</span></span>
+<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a><span class="fu">names</span>(consumer1_models<span class="sc">$</span>TP) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Post-model1&quot;</span>, </span>
+<span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a>                                <span class="st">&quot;Post-model2&quot;</span>,</span>
+<span id="cb27-7"><a href="#cb27-7" tabindex="-1"></a>                                <span class="st">&quot;Post-model2F&quot;</span>)</span>
+<span id="cb27-8"><a href="#cb27-8" tabindex="-1"></a><span class="fu">names</span>(consumer2_models<span class="sc">$</span>TP) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;McCutchan-model1&quot;</span>,</span>
+<span id="cb27-9"><a href="#cb27-9" tabindex="-1"></a>                                <span class="st">&quot;McCutchan-model2&quot;</span>,</span>
+<span id="cb27-10"><a href="#cb27-10" tabindex="-1"></a>                                <span class="st">&quot;McCutchan-model2F&quot;</span>)</span></code></pre></div>
+<p>A useful first step is to summarize the posterior distributions to
+get a quantitative idea of how different they are. For this, we will use
+the base function (i.e. that comes with R) <code>sapply()</code>. This
+function is part of the <code>lapply</code> functions that apply a
+function (in this case <code>summary</code>) over a list. As we have two
+lists (<code>consumer1_models$TP</code> and
+<code>consumer2_models$TP</code>) first we need to use the
+<code>c</code> operator, that combines them, then we will calculate a
+summary for the combined element:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="co"># Here we combine posterior estimates of trophic position for both consumers</span></span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>combined_models <span class="ot">&lt;-</span> <span class="fu">c</span>(consumer1_models<span class="sc">$</span>TP, consumer2_models<span class="sc">$</span>TP)</span>
+<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" tabindex="-1"></a><span class="co"># Then we calculate a summary of posterior trophic position</span></span>
+<span id="cb28-5"><a href="#cb28-5" tabindex="-1"></a><span class="fu">sapply</span>(combined_models, summary)</span></code></pre></div>
+<pre><code>##         Post-model1 Post-model2 Post-model2F McCutchan-model1 McCutchan-model2
+## Min.       3.608028    3.415638     3.493050         4.085558         4.003042
+## 1st Qu.    3.921280    3.756448     3.806252         4.808365         4.550024
+## Median     4.002738    3.827421     3.885791         4.986985         4.712765
+## Mean       4.006179    3.830818     3.888840         5.006483         4.733087
+## 3rd Qu.    4.084321    3.901013     3.962907         5.173656         4.899018
+## Max.       4.435879    4.246032     4.453742         6.580966         6.433009
+##         McCutchan-model2F
+## Min.             4.093534
+## 1st Qu.          4.685633
+## Median           4.856066
+## Mean             4.875364
+## 3rd Qu.          5.045211
+## Max.             6.257308</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="co"># And we calculate the modes</span></span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a><span class="fu">getPosteriorMode</span>(combined_models)</span></code></pre></div>
+<pre><code>##                Post.model1 Post.model2 Post.model2F McCutchan.model1
+## Posterior mode       4.003       3.824        3.895            4.956
+##                McCutchan.model2 McCutchan.model2F
+## Posterior mode            4.671             4.827</code></pre>
+<p>Here we have a rudimentary summaries of posterior trophic position
+estimates associated with each model for both consumers. For example,
+the median TP for consumer 1 based on the one baseline model
+(Post-model1) is higher than consumer 1 calculated with both 2 baselines
+(Post-model2) and 2 baselines full (Post-model2F) models. It appears
+that the same is true for consumer 2, where median TP estimated for the
+one baseline model (McCutchan-model1) is higher than that for both two
+baselines model (McCutchan-model2 and McCutchan-model2F).</p>
+<p>As we are operating in a Bayesian universe, there is little sense to
+state a threshold under or above which both distributions will be
+considered different (as used in a frequentist universe e.g. p &gt;
+0.05). Instead, we think rather of comparing posterior distributions.
+For example, we can say that two posterior trophic position estimates
+will be considered different if their samples of posterior distributions
+are 100% different. In this stringent case and considering Post-model1
+and McCutchan-model1 posterior estimates of trophic position, we would
+expect then that all the posterior estimates of Post-model1 are lesser
+than posterior estimates of McCutchan-model1.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="fu">compareTwoDistributions</span>(combined_models<span class="sc">$</span><span class="st">&quot;Post-model1&quot;</span>,</span>
+<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a>                        combined_models<span class="sc">$</span><span class="st">&quot;McCutchan-model1&quot;</span>, </span>
+<span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a>                        <span class="at">test =</span> <span class="st">&quot;&lt;=&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<p>Above, we can see that trophic position posterior estimate of one
+baseline model using Post’s (2002) TDF assumptions has a proportion of
+4000 observations over the 4000 we sampled (i.e. 4000 / 4000 = 1) that
+are lesser or equal than trophic position posterior estimate of the same
+one baseline model but using McCutchan’s (2003) TDF assumptions. Thus,
+we are pretty confident that posterior estimation of trophic position
+calculated with one baseline Bayesian model with Post’s (2000)
+assumptions is higher than posterior estimation of trophic position
+calculated with McCutchan’s TDF assumptions. Remember that this is the
+same simulated fish consumer, in the same simple ecosystem, only
+considering differents TDF assumptions.</p>
+<p>By default <code>compareTwoDistributions()</code> evaluates how many
+observations from <code>combined_models$&quot;Post-model1&quot;</code> are <span class="math inline">\(\leq\)</span> (less than or equal) than
+<code>combined_models$&quot;McCutchan-model1&quot;</code>, randomly drawn from
+each of the models posterior distribution. We can change to <span class="math inline">\(\geq\)</span>, <span class="math inline">\(&lt;\)</span> or <span class="math inline">\(&gt;\)</span> stating the argument within
+<code>pairwiseComparisons</code> function (add
+<code>test = &quot;&gt;=&quot;</code>, for example).</p>
+<p>We can make a more detailed comparison of the different models and
+TDFs using the <code>pairwiseComparisons</code>() function, which as its
+name suggests, produces a matrix of of pairwise comparisons:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="fu">pairwiseComparisons</span>(combined_models, <span class="at">test =</span> <span class="st">&quot;&lt;=&quot;</span>)</span></code></pre></div>
+<pre><code>##                         [1]   [2]   [3]   [4]   [5]   [6]
+## [1] Post-model1       0.000 0.135 0.241 1.000 0.998 1.000
+## [2] Post-model2       0.865 0.000 0.639 1.000 1.000 1.000
+## [3] Post-model2F      0.759 0.361 0.000 1.000 1.000 1.000
+## [4] McCutchan-model1  0.000 0.000 0.000 0.000 0.231 0.371
+## [5] McCutchan-model2  0.002 0.000 0.000 0.769 0.000 0.647
+## [6] McCutchan-model2F 0.000 0.000 0.000 0.629 0.353 0.000</code></pre>
+<p>The matrix generated by this function is symmetrical, below the
+diagonal we have the results of quatifying the proportion of posterior
+samples of the model in row are less or equal than posterior samples of
+the model in the column, while above the diagonal we have the results of
+quantifying the proportion of posterior samples of the model in the
+column are higher than posterior samples of the model in the row.</p>
+</div>
+</div>
+<div id="parametric-trophic-position" class="section level1">
+<h1>Parametric trophic position</h1>
+<p>As an appendix, we will calculate the parametric (i.e. non-Bayesian)
+version of trophic position. For this, we have to iterate through each
+consumer, and do the calculation with <code>parametricTP()</code>.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="co"># First we combine both consumers&#39; isotope values into a named list</span></span>
+<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a>consumers <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&quot;consumer1&quot;</span> <span class="ot">=</span> consumer1, <span class="st">&quot;consumer2&quot;</span> <span class="ot">=</span> consumer2)</span>
+<span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" tabindex="-1"></a><span class="co"># And then, we calculate parametric TP using a loop for</span></span>
+<span id="cb36-5"><a href="#cb36-5" tabindex="-1"></a><span class="cf">for</span> (consumer <span class="cf">in</span> consumers) <span class="fu">parametricTP</span>(consumer)</span></code></pre></div>
+<pre><code>## [1] &quot;***************************************&quot;
+## [1] &quot;Parametric version of trophic position&quot;
+## [1] &quot;For consumer:  Consumer 1&quot;
+## [1] &quot;One baseline TP:  4&quot;
+## [1] &quot;Two baselines TP:  3.82 0.5&quot;
+## [1] &quot;Full model TP. At the beginning:  3.82 0.662&quot;
+## [1] &quot;Convergence after  8  iterations. TP:  3.88  alpha:  0.665&quot;
+## [1] &quot;***************************************&quot;
+## [1] &quot;Parametric version of trophic position&quot;
+## [1] &quot;For consumer:  Consumer 2&quot;
+## [1] &quot;One baseline TP:  4.96&quot;
+## [1] &quot;Two baselines TP:  4.7 0.5&quot;
+## [1] &quot;Full model TP. At the beginning:  4.7 0.755&quot;
+## [1] &quot;Convergence after  10  iterations. TP:  4.83  alpha:  0.763&quot;</code></pre>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

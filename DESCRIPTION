@@ -1,8 +1,8 @@
 Package: tRophicPosition
 Type: Package
 Title: Bayesian Trophic Position Estimation with Stable Isotopes
-Version: 0.8.0
-Date: 2022-12-11
+Version: 0.8.5
+Date: 2023-09-18
 Depends:
     R (>= 3.4.0)
 Imports:
@@ -16,7 +16,9 @@ Imports:
     plyr,
     rjags,
     RColorBrewer,
-    stats
+    stats,
+    brms,
+    do
 Author: Claudio Quezada-Romegialli, Andrew L Jackson, Chris Harrod
 URL: https://github.com/clquezada/tRophicPosition
 BugReports: https://groups.google.com/d/forum/trophicposition-support
