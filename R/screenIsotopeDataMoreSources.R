@@ -152,8 +152,8 @@ screenIsotopeDataMoreSources <- function (isotopeData = NULL,
 
     #Here we set up the title and x and y labels (in case that in the future we
     #want to modify through the user. Same applies for the colors)
-    xlab <- expression(paste(delta^{13}, "C (\u2030)"))
-    ylab <- expression(paste(delta^{15}, "N (\u2030)"))
+    xlab <- expression(paste(delta^{13}, "C (per mille)"))
+    ylab <- expression(paste(delta^{15}, "N (per mille)"))
 
     palette <- "Set1"
     type <- "qual"
